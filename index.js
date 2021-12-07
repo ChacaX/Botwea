@@ -81,10 +81,10 @@ return _badword[position].a
 }
 }
 
-const getBadwordGc = (userid) => {
+const getBadwordGc = (groupid) => {
 let position = false
 Object.keys(_badword).forEach((i) => {
-if (_badword[i].id === userid) {
+if (_badword[i].id === groupid) {
 position = i
 }
 })
@@ -673,8 +673,8 @@ if (budy.includes(`Asu`)) {
 if (!getBadwordId(sender) return){
 addBadwordId(sender)}
 await addBadwordUser(sender, 1)
-reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser}/${getBadwordGc} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
-batas = getBadwordGc
+reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser}/${getBadwordGc(groupId)} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
+batas = getBadwordGc(groupId)
 if (getBadwordUser(sender) > batas){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
