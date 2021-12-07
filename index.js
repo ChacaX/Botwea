@@ -570,6 +570,17 @@ break
 						break
 						}
 						
+						if (budy.startsWith('$')){
+if (!isOwner) return
+qur = budy.slice(2)
+exec(qur, (err, stdout) => {
+if (err) return reply(`${err}`)
+if (stdout) {
+reply(stdout)
+}
+})
+}
+
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
