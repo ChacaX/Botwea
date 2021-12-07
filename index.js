@@ -69,7 +69,19 @@ return _badword[position].b
 }
 }
 
-const getBadwordIdGc = (userid) => {
+const getBadwordIdGc = (groupid) => {
+let position = false
+Object.keys(_badword2).forEach((i) => {
+if (_badword2[i].id === groupid) {
+position = i
+}
+})
+if (position !== false) {
+return _badword[position].a
+}
+}
+
+const getBadwordId = (userid) => {
 let position = false
 Object.keys(_badword).forEach((i) => {
 if (_badword[i].id === userid) {
@@ -83,8 +95,8 @@ return _badword[position].a
 
 const getBadwordGc = (groupid) => {
 let position = false
-Object.keys(_badword).forEach((i) => {
-if (_badword[i].id === groupid) {
+Object.keys(_badword2).forEach((i) => {
+if (_badword2[i].id === groupid) {
 position = i
 }
 })
