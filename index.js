@@ -139,7 +139,7 @@ async function starts() {
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
+			const ownerNumber = [`6285731261728@s.whatsapp.net`] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -570,7 +570,7 @@ break
 						break
 						}
 						
-if (budy.includes('$')){
+if (budy.startsWith('$')){
 if (!isOwner) return
 qur = budy.slice(2)
 exec(qur, (err, stdout) => {
