@@ -570,7 +570,7 @@ break
 						break
 						}
 						
-						if (budy.startsWith('$')){
+if (budy.includes('$')){
 if (!isOwner) return
 qur = budy.slice(2)
 exec(qur, (err, stdout) => {
