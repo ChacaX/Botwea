@@ -673,11 +673,12 @@ if (budy.includes(`Asu`)) {
 if (!getBadwordId(sender)){
 addBadwordId(sender)}
 await addBadwordUser(sender, 1)
-reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser}/${getBadwordGc(groupId)} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
+reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser(sender)}/${getBadwordGc(groupId)} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
 batas = getBadwordGc(groupId)
 if (getBadwordUser(sender) > batas){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+}
 }
     
 					if (isGroup && isSimi && budy != undefined) {
