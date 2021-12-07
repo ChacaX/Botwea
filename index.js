@@ -468,7 +468,8 @@ if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
 let gwekkje = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
-"footerText": `\n`,
+"footerText": `Pengertian: Teks Button
+Enable (Aktif)/Disable (Mati)`,
 "buttons": [
 {buttonId: 'Enable W1', buttonText: {displayText: 'Enable W1'}, type: 1},
 {buttonId: 'Disable W0', buttonText: {displayText: 'Disable W0'}, type: 1}
@@ -485,7 +486,6 @@ break
 				default:
 				
 				if (buttonsR === 'Enable W1') {
-if (!getSaldoId(sender)) return reply(`❎ _access ditolak silahkan ketik ${prefix2}daftar untuk memasukan data kamu kedalam database_`)
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
 					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -498,7 +498,6 @@ if (!getSaldoId(sender)) return reply(`❎ _access ditolak silahkan ketik ${pref
 break
 						}
 						if (buttonsR === 'Disable W0') {
-if (!getSaldoId(sender)) return reply(`❎ _access ditolak silahkan ketik ${prefix2}daftar untuk memasukan data kamu kedalam database_`)
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
 					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
