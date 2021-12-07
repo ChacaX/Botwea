@@ -22,6 +22,7 @@ const { removeBackgroundFromImageFile } = require('remove.bg')
 const lolis = require('lolis.life')
 const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
+const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
@@ -149,6 +150,7 @@ async function starts() {
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
 			const isWelkom = isGroup ? welkom.includes(from) : false
+			const isAntiLink = isGroup ? antilink.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
@@ -245,9 +247,19 @@ mentionedJid: [sender],
 mek })
 }
 
+if (budy.includes("https://chat.whatsapp.com/")){
+if (!isGroup) return
+if (!isAntiLink) return
+if (isGroupAdmins) return 
+client.updatePresence(from, Presence.composing)
+var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+}
+
 			switch(command) {
 
 case 'menu':
+case 'help':
 teks =`*M I T S U H A - W A B O T*\n
 
 *❒ LIST FITUR BOT 💻*
@@ -259,7 +271,7 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}promote*
 *❒ ${prefix2}demote*
 *❒ ${prefix2}welcome*
-`
+*❒ ${prefix2}antilink*`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
 break
 
@@ -480,11 +492,54 @@ headerType: 1
 await client.relayWAMessage(gwekkje)
 break
 				
-				
+				case 'antilink':
+				if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+let gwekkkje = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
+"footerText": `Pengertian: Teks Button
+Enable (Aktif)/Disable (Mati)`,
+"buttons": [
+{buttonId: 'Enable A1', buttonText: {displayText: 'Enable A1'}, type: 1},
+{buttonId: 'Disable A0', buttonText: {displayText: 'Disable A0'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: mek})
+await client.relayWAMessage(gwekkkje)
+break
 					
 					      
 				default:
 				
+				if (buttonsR === 'Enable A1') {
+                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+					
+					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+							if (isAntiLink) return reply('_berhasil di aktifkan_')
+						antilink.push(from)
+						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+						reply('_berhasil di aktifkan_')
+						
+break
+						}
+						
+						if (buttonsR === 'Disable A0') {
+                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+					
+					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+							if (!isAntiLink) return reply('_berhasil di matikan_')
+						var ini = antilink.indexOf(from)
+						antilink.splice(ini, 1)
+						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+						reply('_berhasil di aktifkan_')
+break 
+						}
+						
 				if (buttonsR === 'Enable W1') {
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
