@@ -118,6 +118,7 @@ async function starts() {
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const buttonsR = (type === 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedDisplayText : '' || ''
+			const resbutton = (type == 'listResponseMessage') ? mek.message.listResponseMessage.selectedDisplayText : ''
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
@@ -253,34 +254,15 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}sticker*
 *❒ ${prefix2}toimg*
 *❒ ${prefix2}tagall*
-*❒ ${prefix2}ocr*
+*❒ ${prefix2}broadcast
 *❒ ${prefix2}kick*
 *❒ ${prefix2}promote*
 *❒ ${prefix2}demote*
-*❒ ${prefix2}gtts*
-*❒ ${prefix2}wait*
 `
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
 break
 
-				case 'ocr':
-					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						reply(mess.wait)
-						await recognize(media, {lang: 'eng+ind', oem: 1, psm: 3})
-							.then(teks => {
-								reply(teks.trim())
-								fs.unlinkSync(media)
-							})
-							.catch(err => {
-								reply(err.message)
-								fs.unlinkSync(media)
-							})
-					} else {
-						reply('Foto aja mas')
-					}
-					break
+				
 				
 					
 				case 'stiker':
@@ -394,19 +376,6 @@ break
 						reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah dikirim`)
 					}
 					break
-				case 'gtts':
-					if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: mek})
-					const gtts = require('./lib/gtts')(args[0])
-					if (args.length < 2) return client.sendMessage(from, 'Textnya mana om', text, {quoted: mek})
-					dtt = body.slice(9)
-					ranm = getRandom('.mp3')
-					dtt.length > 600
-					? reply('Textnya kebanyakan om')
-					: gtts.save(ranm, dtt, function() {
-						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-						fs.unlinkSync(ranm)
-					})
-					break
 				
 				case 'tagall':
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
@@ -423,23 +392,27 @@ teks += `╰❒`
 mentions(teks, members_id, true, {quoted: mek})
 					break
 
-				case 'bc':
+				case 'broadcast':
 					if (!isOwner) return reply('Kamu siapa?')
 					if (args.length < 1) return reply('.......')
-					anu = await client.chats.all()
-					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						buff = await client.downloadMediaMessage(encmedia)
-						for (let _ of anu) {
-							client.sendMessage(_.jid, buff, image, {caption: `[ Ini Broadcast ]\n\n${body.slice(4)}`})
-						}
-						reply('Suksess broadcast')
-					} else {
-						for (let _ of anu) {
-							sendMess(_.jid, `[ Ini Broadcast ]\n\n${body.slice(4)}`)
-						}
-						reply('Suksess broadcast')
-					}
+					bc = args.join(" ")
+if (args.length < 1) return reply('.......')
+anu = await client.chats.all()
+if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+buff = await client.downloadMediaMessage(encmedia)
+for (let _ of anu) {
+client.sendMessage(_.jid, buff, MessageType.image, {caption: `${body.slice(4)}\n\n_*BROADCAST*_`})
+}
+reply('Suksess broadcast ')
+} else {
+for (let _ of anu) {
+creator = "6285731261728@s.whatsapp.net"
+teks =`☁ *BROADCAST ALL CHAT* ☁`
+sendButLocation(_.jid, `${teks}`, `${bc}`, {jpegThumbnail:fakeimage}, [{buttonId:`OWNER BOT`,buttonText:{displayText:'OWNER BOT'},type:1}], {contextInfo: { mentionedJid: [creator,creator,creator,sender]}})
+}
+reply('Suksess broadcast ')
+}
 					break
                                 case 'promote':
 					if (!isGroup) return reply(mess.only.group)
@@ -546,21 +519,78 @@ mentions(teks, members_id, true, {quoted: mek})
 					}
                                       break
 				
-				case 'wait':
-					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-						reply(mess.wait)
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						media = await client.downloadMediaMessage(encmedia)
-						await wait(media).then(res => {
-							client.sendMessage(from, res.video, video, {quoted: mek, caption: res.teks.trim()})
-						}).catch(err => {
-							reply(err)
-						})
-					} else {
-						reply('Foto aja mas')
-					}
-					break
+				
+					
+					case 'u':
+					pooy = client.prepareMessageFromContent(from, {
+					
+                           "listMessage":{
+                  
+                           "title": "TERIMAKSIH KEPADA CREATOR",
+                  
+                           "description": `CREATOR MY BOT WHATSAPP`,
+                  
+                           "buttonText": "SAY HERE!",
+                  
+                           "listType": "SINGLE_SELECT",
+                  
+                           "sections": [
+                     
+                           {
+                        
+                           "rows": [
+                           
+                                  {
+                              
+                                  "title": "DIMAS",
+                              
+                                  "rowId": ``
+                           
+                                  },
+						   
+                                  {
+                              
+                                  "title": "ZAKI",
+                              
+                                  "rowId": ``
+                           
+                                  },
+						   
+                                  {
+                              
+                                  "title": "test",
+                              
+                                  "rowId": `tes`
+                           
+                                  },
+						   
+                                  {
+                              
+                                  "title": "tes",
+                              
+                                  "rowId": `tes`
+                           
+                                  }
+                                  ]
+                     
+                                  }]}}, {}) 
+             
+                           client.relayWAMessage(pooy, {waitForAck: true})
+             
+                         break
+                         
 				default:
+				
+				if (resbutton == 'tes') {
+					reply(`ia`)
+					break
+					}
+					
+					if (buttonsR === `DEVELOPER`) {
+						reply(`maintenance`)
+						break
+						}
+						
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
