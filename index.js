@@ -247,6 +247,19 @@ mentionedJid: [sender],
 mek })
 }
 
+sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
+kma = gam1
+mhan = await client.prepareMessage(from, kma, location)
+buttonMessages = {
+locationMessage: mhan.message.locationMessage,
+contentText: text1,
+footerText: desc1,
+buttons: but,
+headerType: 6
+}
+client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+}
+
 if (budy.includes("https://chat.whatsapp.com/")){
 if (!isGroup) return
 if (!isAntiLink) return
@@ -381,7 +394,7 @@ reply('Suksess broadcast ')
 for (let _ of anu) {
 creator = "6285731261728@s.whatsapp.net"
 teks =`☁ *BROADCAST ALL CHAT* ☁`
-sendButLocation(_.jid, `${teks}`, `${bc}`, {jpegThumbnail:fakeimage}, [{buttonId:`OWNER BOT`,buttonText:{displayText:'OWNER BOT'},type:1}], {contextInfo: { mentionedJid: [creator,creator,creator,sender]}})
+sendButLocation(_.jid, `${teks}`, `klick tombol dibawah untuk melihat pesan yang di sampaikan owner`, {jpegThumbnail:fs.readFileSync('./lib/odc.jpeg')}, [{buttonId:`${bc}`,buttonText:{displayText:`${bc}`},type:1}], {contextInfo: { mentionedJid: [creator,creator,creator,sender]}})
 }
 reply('Suksess broadcast ')
 }
