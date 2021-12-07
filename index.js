@@ -93,6 +93,18 @@ return _badword[position].a
 }
 }
 
+const getBadwordIdnya = (userid) => {
+let position = false
+Object.keys(_badword).forEach((i) => {
+if (_badword[i].id === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _badword[position].a
+}
+}
+
 const getBadwordGc = (groupid) => {
 let position = false
 Object.keys(_badword2).forEach((i) => {
@@ -685,7 +697,7 @@ reply(stdout)
 if (budy.includes(`Asu`)) {
 if (!getBadwordId(sender)) {
 addBadwordId(sender)
-} else if (getBadwordId(sender)) {
+} else if (getBadwordIdnya(sender)) {
 await addBadwordUser(sender, 1)
 reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser(sender)}/${getBadwordGc(groupId)} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
 batas = getBadwordGc(groupId)
