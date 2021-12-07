@@ -265,117 +265,76 @@ break
 				
 				
 					
-				case 'stiker':
-				case 'sticker':
-					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						ran = getRandom('.webp')
-						await ffmpeg(`./${media}`)
-							.input(media)
-							.on('start', function (cmd) {
-								console.log(`Started : ${cmd}`)
-							})
-							.on('error', function (err) {
-								console.log(`Error : ${err}`)
-								fs.unlinkSync(media)
-								reply(mess.error.stick)
-							})
-							.on('end', function () {
-								console.log('Finish')
-								exec(`webpmux -set exif ${addMetadata('BOT', authorname)} ${ran} -o ${ran}`, async (error) => {
-									if (error) return reply(mess.error.stick)
-									client.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
-									fs.unlinkSync(media)	
-									fs.unlinkSync(ran)	
-								})
-								/*client.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
-								fs.unlinkSync(media)
-								fs.unlinkSync(ran)*/
-							})
-							.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
-							.toFormat('webp')
-							.save(ran)
-					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
-						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						ran = getRandom('.webp')
-						reply(mess.wait)
-						await ffmpeg(`./${media}`)
-							.inputFormat(media.split('.')[1])
-							.on('start', function (cmd) {
-								console.log(`Started : ${cmd}`)
-							})
-							.on('error', function (err) {
-								console.log(`Error : ${err}`)
-								fs.unlinkSync(media)
-								tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-								reply(`❌ Gagal, pada saat mengkonversi ${tipe} ke stiker`)
-							})
-							.on('end', function () {
-								console.log('Finish')
-								exec(`webpmux -set exif ${addMetadata('BOT', authorname)} ${ran} -o ${ran}`, async (error) => {
-									if (error) return reply(mess.error.stick)
-									client.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
-									fs.unlinkSync(media)
-									fs.unlinkSync(ran)
-								})
-								/*client.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
-								fs.unlinkSync(media)
-								fs.unlinkSync(ran)*/
-							})
-							.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
-							.toFormat('webp')
-							.save(ran)
-					} else if ((isMedia || isQuotedImage) && args[0] == 'nobg') {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						ranw = getRandom('.webp')
-						ranp = getRandom('.png')
-						reply(mess.wait)
-						keyrmbg = 'Your-ApiKey'
-						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg, size: 'auto', type: 'auto', ranp}).then(res => {
-							fs.unlinkSync(media)
-							let buffer = Buffer.from(res.base64img, 'base64')
-							fs.writeFileSync(ranp, buffer, (err) => {
-								if (err) return reply('Gagal, Terjadi kesalahan, silahkan coba beberapa saat lagi.')
-							})
-							exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
-								fs.unlinkSync(ranp)
-								if (err) return reply(mess.error.stick)
-								exec(`webpmux -set exif ${addMetadata('BOT', authorname)} ${ranw} -o ${ranw}`, async (error) => {
-									if (error) return reply(mess.error.stick)
-									client.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: mek})
-									fs.unlinkSync(ranw)
-								})
-								//client.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: mek})
-							})
-						})
-					/*} else if ((isMedia || isQuotedImage) && colors.includes(args[0])) {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						ran = getRandom('.webp')
-						await ffmpeg(`./${media}`)
-							.on('start', function (cmd) {
-								console.log('Started :', cmd)
-							})
-							.on('error', function (err) {
-								fs.unlinkSync(media)
-								console.log('Error :', err)
-							})
-							.on('end', function () {
-								console.log('Finish')
-								fs.unlinkSync(media)
-								client.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
-								fs.unlinkSync(ran)
-							})
-							.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=${args[0]}@0.0, split [a][b]; [a] palettegen=reserve_transparent=off; [b][p] paletteuse`])
-							.toFormat('webp')
-							.save(ran)*/
-					} else {
-						reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah dikirim`)
-					}
-					break
+case 'stiker':
+case 'sticker':
+case 'stikergif':
+case 'stickergif':
+if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+const media = await client.downloadAndSaveMediaMessage(encmedia)
+ran = getRandom('.webp')
+await ffmpeg(`./${media}`)
+.input(media)
+.on('start', function (cmd) {
+console.log(`Started : ${cmd}`)
+})
+.on('error', function (err) {
+console.log(`Error : ${err}`)
+fs.unlinkSync(media)
+reply(`_system error_`)
+})
+.on('end', function () {
+console.log('Finish')
+exec(`webpmux -set exif ${addMetadata(`MITSUHA`,`BOT`)} ${ran} -o ${ran}`, async (error) => {
+//if (error) {
+// reply(`_ffmpeg error 404_`)
+// fs.unlinkSync(media)	
+// fs.unlinkSync(ran)
+// }
+client.sendMessage(from, fs.readFileSync(ran), sticker)
+fs.unlinkSync(media)	
+fs.unlinkSync(ran)	
+})
+})
+.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+.toFormat('webp')
+.save(ran)
+} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
+const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+const media = await client.downloadAndSaveMediaMessage(encmedia)
+ran = getRandom('.webp')
+reply(`_sedang di proses_`)
+await ffmpeg(`./${media}`)
+.inputFormat(media.split('.')[1])
+.on('start', function (cmd) {
+console.log(`Started : ${cmd}`)
+})
+.on('error', function (err) {
+console.log(`Error : ${err}`)
+fs.unlinkSync(media)
+tipe = media.endsWith('.mp4') ? 'video' : 'gif'
+reply(`_system error_`)
+})
+.on('end', function () {
+console.log('Finish')
+exec(`webpmux -set exif ${addMetadata(`MITSUHA`, `BOT`)} ${ran} -o ${ran}`, async (error) => {
+//if (error) {
+// reply(`_ffmpeg error 404_`)
+// fs.unlinkSync(media)	
+// fs.unlinkSync(ran)
+// }
+client.sendMessage(from, fs.readFileSync(ran), sticker)
+fs.unlinkSync(media)
+fs.unlinkSync(ran)
+})
+})
+.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+.toFormat('webp')
+.save(ran)
+} else {
+reply(`Kirim gambar dengan caption ${prefix2}sticker atau tag gambar yang sudah dikirim`)
+}
+break
 				
 				case 'tagall':
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
@@ -504,89 +463,61 @@ reply('Suksess broadcast ')
 				case 'welcome':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (args.length < 1) return reply('Hmmmm')
-					if (Number(args[0]) === 1) {
-						if (isWelkom) return reply('Udah aktif um')
-						welkom.push(from)
-						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply('Sukses mengaktifkan fitur welcome di group ini ✔️')
-					} else if (Number(args[0]) === 0) {
-						welkom.splice(from, 1)
-						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply('Sukses menonaktifkan fitur welcome di group ini ✔️')
-					} else {
-						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
-					}
-                                      break
+					if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+let gwekkje = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
+"footerText": `\n
+`,
+"buttons": [
+{buttonId: 'Enable W1', buttonText: {displayText: 'Enable W1'}, type: 1},
+{buttonId: 'Disable W0', buttonText: {displayText: 'Disable W0'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: mek}) 
+await client.relayWAMessage(gwekkje)
+break
 				
 				
 					
-					case 'u':
-					pooy = client.prepareMessageFromContent(from, {
-					
-                           "listMessage":{
-                  
-                           "title": "TERIMAKSIH KEPADA CREATOR",
-                  
-                           "description": `CREATOR MY BOT WHATSAPP`,
-                  
-                           "buttonText": "SAY HERE!",
-                  
-                           "listType": "SINGLE_SELECT",
-                  
-                           "sections": [
-                     
-                           {
-                        
-                           "rows": [
-                           
-                                  {
-                              
-                                  "title": "DIMAS",
-                              
-                                  "rowId": ``
-                           
-                                  },
-						   
-                                  {
-                              
-                                  "title": "ZAKI",
-                              
-                                  "rowId": ``
-                           
-                                  },
-						   
-                                  {
-                              
-                                  "title": "test",
-                              
-                                  "rowId": `tes`
-                           
-                                  },
-						   
-                                  {
-                              
-                                  "title": "tes",
-                              
-                                  "rowId": `tes`
-                           
-                                  }
-                                  ]
-                     
-                                  }]}}, {}) 
-             
-                           client.relayWAMessage(pooy, {waitForAck: true})
-             
-                         break
-                         
+					      
 				default:
 				
-				if (resbutton == 'tes') {
-					reply(`ia`)
-					break
-					}
+				if (buttonsR === 'Enable W1') {
+if (!getSaldoId(sender)) return reply(`❎ _access ditolak silahkan ketik ${prefix2}daftar untuk memasukan data kamu kedalam database_`)
+if (isBanChat) return 
+if (isBan) return reply(`❎ _﹝??﹞kamu telah dibanned bot_`)     
+                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
-					if (buttonsR === `DEVELOPER`) {
+					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+              	if (isWelkom) return reply('_berhasil di aktifkan_')
+						welkom.push(from)
+						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+						reply('_berhasil di aktifkan_')
+						
+break
+						}
+						if (buttonsR === 'Disable W0') {
+if (!getSaldoId(sender)) return reply(`❎ _access ditolak silahkan ketik ${prefix2}daftar untuk memasukan data kamu kedalam database_`)
+if (isBanChat) return 
+if (isBan) return 
+                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+					
+					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+							var ini = welkom.indexOf(from)
+						welkom.splice(ini, 1)
+						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+						reply('_berhasil di aktifkan_')
+						
+break
+						}
+				
+					if (buttonsR === `DEVELOEPER`) {
 						reply(`maintenance`)
 						break
 						}
