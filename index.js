@@ -695,10 +695,10 @@ reply(stdout)
 }
 
 if (budy.includes(`Asu`)) {
-ea = getBadwordId(sender)
-if (!ea){ return 
+if (!getBadwordId(sender)) {
 addBadwordId(sender)
 } else {
+if (!getBadwordId(sender)) return
 await addBadwordUser(sender, 1)
 reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser(sender)}/${getBadwordGc(groupId)} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
 batas = getBadwordGc(groupId)
