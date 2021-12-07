@@ -254,10 +254,11 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}sticker*
 *❒ ${prefix2}toimg*
 *❒ ${prefix2}tagall*
-*❒ ${prefix2}broadcast
+*❒ ${prefix2}broadcast*
 *❒ ${prefix2}kick*
 *❒ ${prefix2}promote*
 *❒ ${prefix2}demote*
+*❒ ${prefix2}welcome*
 `
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
 break
@@ -461,16 +462,13 @@ reply('Suksess broadcast ')
 					break
 				
 				case 'welcome':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
 if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
 let gwekkje = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
-"footerText": `\n
-`,
+"footerText": `\n`,
 "buttons": [
 {buttonId: 'Enable W1', buttonText: {displayText: 'Enable W1'}, type: 1},
 {buttonId: 'Disable W0', buttonText: {displayText: 'Disable W0'}, type: 1}
@@ -488,8 +486,6 @@ break
 				
 				if (buttonsR === 'Enable W1') {
 if (!getSaldoId(sender)) return reply(`❎ _access ditolak silahkan ketik ${prefix2}daftar untuk memasukan data kamu kedalam database_`)
-if (isBanChat) return 
-if (isBan) return reply(`❎ _﹝??﹞kamu telah dibanned bot_`)     
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
 					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -503,8 +499,6 @@ break
 						}
 						if (buttonsR === 'Disable W0') {
 if (!getSaldoId(sender)) return reply(`❎ _access ditolak silahkan ketik ${prefix2}daftar untuk memasukan data kamu kedalam database_`)
-if (isBanChat) return 
-if (isBan) return 
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
 					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
