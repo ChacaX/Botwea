@@ -26,6 +26,8 @@ const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
+const _badword = JSON.parse(fs.readFileSync('./src/badword.json'))
+const _badword2 = JSON.parse(fs.readFileSync('./src/badword2.json'))
 
 prefix = setting.prefix
 prefix2 = "."
@@ -43,9 +45,72 @@ function kyun(seconds){
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
 
+const addBadwordId = (userid) => {
+const obj = {a: userid, b: 0}
+_badword.push(obj)
+fs.writeFileSync('./src/badword.json', JSON.stringify(_badword))
+}
+
+const addBadwordGc = (groupid, amount) => {
+const obj = {a: groupid, b: amount}
+_badword2.push(obj)
+fs.writeFileSync('./src/badword2.json', JSON.stringify(_badword2))
+}
+
+const getBadwordUser = (userid) => {
+let position = false
+Object.keys(_badword).forEach((i) => {
+if (_badword[i].id === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _badword[position].b
+}
+}
+
+const getBadwordIdGc = (userid) => {
+let position = false
+Object.keys(_badword).forEach((i) => {
+if (_badword[i].id === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _badword[position].a
+}
+}
+
+const getBadwordGc = (userid) => {
+let position = false
+Object.keys(_badword).forEach((i) => {
+if (_badword[i].id === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _badword[position].b
+}
+}
+
+const addBadwordUser = (userid, amount) => {
+let position = false
+Object.keys(_badword).forEach((i) => {
+if (_badword[i].id === userid) {
+position = i
+}
+})
+if (position !== false) {
+_badword[position].b += amount
+fs.writeFileSync('./src/badword.json', JSON.stringify(_badword))
+}
+}
+
 async function starts() {
-	const client = new WAConnection()
-	client.logger.level = 'warn'
+const client = new WAConnection()
+//WWEB 
+client.version = [2, 2140, 12]
+client.logger.level = 'warn'
 	console.log(banner.string)
 	client.on('qr', () => {
 		console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code above'))
@@ -485,7 +550,17 @@ reply('Suksess broadcast ')
 						fs.unlinkSync(ran)
 					})
 					break
-				
+			
+			case 'warning':
+			if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					jumlah = args.join(" ")
+					jumlah_total = jumlah * 1
+					addBadwordGc(groupId, jumlah_total)
+					reply(`*Warning* Siap dinyalakan, Jika ada seseorang yang berkata toxic sebanyak ${jumlah} atau lebih maka otomatis akan ter Kick`)
+					break
+					
 				case 'welcome':
 					if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -594,6 +669,17 @@ reply(stdout)
 })
 }
 
+if (budy.includes(`Asu`)) {
+if (!getBadwordId(sender) return){
+addBadwordId(sender)}
+await addBadwordUser(sender, 1)
+reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser}/${getBadwordGc} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
+batas = getBadwordGc
+if (getBadwordUser(sender) > batas){
+kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+}
+    
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
