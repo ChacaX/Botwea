@@ -560,7 +560,8 @@ reply('Suksess broadcast ')
 					addBadwordGc(groupId, jumlah_total)
 					reply(`*Warning* Siap dinyalakan, Jika ada seseorang yang berkata toxic sebanyak ${jumlah} atau lebih maka otomatis akan ter Kick`)
 					break
-					
+				
+				
 				case 'welcome':
 					if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -670,14 +671,16 @@ reply(stdout)
 }
 
 if (budy.includes(`Asu`)) {
-if (!getBadwordId(sender)){
-addBadwordId(sender)}
+if (!getBadwordId(sender)) {
+addBadwordId(sender)
+} else if (getBadwordId(sender)) {
 await addBadwordUser(sender, 1)
 reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser(sender)}/${getBadwordGc(groupId)} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
 batas = getBadwordGc(groupId)
 if (getBadwordUser(sender) > batas){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+}
 }
 }
     
