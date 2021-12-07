@@ -3,6 +3,8 @@ const {
     MessageType,
     Presence,
     Mimetype,
+    relayWAMessage,
+    prepareMessageFromContent,
     GroupSettingChange
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
@@ -25,6 +27,7 @@ const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
 
 prefix = setting.prefix
+prefix2 = "."
 blocked = []
 
 function kyun(seconds){
@@ -114,6 +117,7 @@ async function starts() {
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
+			const buttonsR = (type === 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedDisplayText : '' || ''
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
@@ -212,9 +216,53 @@ async function starts() {
 				})	
 
 			}
+			
+const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
+kma = doc1
+mhan = await client.prepareMessage(from, media, document, kma)
+buttonMessages = {
+documentMessage: mhan.message.documentMessage,
+contentText: text1,
+footerText: desc1,
+buttons: but,
+headerType: "DOCUMENT"
+}
+client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, {
+thumbnail: fs.readFileSync('./lib/odc.jpeg'),
+caption: `y`,
+"contextInfo": {
+mentionedJid: [sender],
+"externalAdReply": {
+"title": `Dont Bully Me Please`,
+"body": "subscribe my chanel youtube",
+"mediaType": 2,
+"previewType": `https://youtu.be/dQw4w9WgXcQ`,
+"thumbnail": fs.readFileSync('./lib/odc.jpeg'),
+"mediaUrl": `https://youtu.be/dQw4w9WgXcQ`,
+"sourceUrl": ""
+}}, quoted: 
+mek })
+}
+
 			switch(command) {
-				
-				
+
+case 'menu':
+teks =`*M I T S U H A - W A B O T*\n
+
+*❒ LIST FITUR BOT 💻*
+*❒ ${prefix2}sticker*
+*❒ ${prefix2}toimg*
+*❒ ${prefix2}tagall*
+*❒ ${prefix2}ocr*
+*❒ ${prefix2}kick*
+*❒ ${prefix2}promote*
+*❒ ${prefix2}demote*
+*❒ ${prefix2}gtts*
+*❒ ${prefix2}wait*
+`
+sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
+break
+
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
@@ -361,19 +409,21 @@ async function starts() {
 					break
 				
 				case 'tagall':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
-					for (let mem of groupMembers) {
-						teks += `*#* @${mem.jid.split('@')[0]}\n`
-						members_id.push(mem.jid)
-					}
-					mentions(teks, members_id, true)
+if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+members_id = []
+eai = args.join(" ")
+teks = (args.length > 1) ? eai.trim() : ''
+teks += '\n\n╭─❒ *MENTION ALL*\n'
+for (let mem of groupMembers) {
+teks += `│-  @${mem.jid.split('@')[0]}\n`
+members_id.push(mem.jid)
+}
+teks += `╰❒`
+mentions(teks, members_id, true, {quoted: mek})
 					break
 
-				case 'broadcast':
+				case 'bc':
 					if (!isOwner) return reply('Kamu siapa?')
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
