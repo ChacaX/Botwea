@@ -27,8 +27,8 @@ const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const _badword = JSON.parse(fs.readFileSync('./src/badword.json'))
 
-prefix = ""
-prefix2 = "."
+prefix = ``
+prefix2 = `.`
 badword_limit = 3
 blocked = []
 
