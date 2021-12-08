@@ -586,9 +586,8 @@ reply('Suksess broadcast ')
 			
 			case 'warning':
 			if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
+					/*if (!isGroupAdmins) return reply(mess.only.admin)*/
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (!q) return reply(`tambahkan jumlah angka pada perintah tersebut!`)
 					jumlah = args.join(" ")
 					jumlah_total = jumlah * 1
 					addBadwordGc(groupId, jumlah_total)
