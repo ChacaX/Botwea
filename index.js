@@ -25,11 +25,10 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
-const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
 const _badword = JSON.parse(fs.readFileSync('./src/badword.json'))
 
 prefix = setting.prefix
-prefix2 = "."
+prefix2 = ""
 badword_limit = 3
 blocked = []
 
@@ -417,7 +416,7 @@ break
 case 'daftar':
 if (getBadwordId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 addBadwordId(sender)
-reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: @${sender.split("@s.whatsapp.net")},\ndate: ${date}`)
+reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}`)
 break
 				
 case 'tagall':
