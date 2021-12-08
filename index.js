@@ -713,6 +713,7 @@ if (getBadwordUser(sender) > batas){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 }
+}
     
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
