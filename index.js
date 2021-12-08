@@ -481,9 +481,18 @@ client.sendMessage(_.jid, buff, MessageType.image, {caption: `${body.slice(4)}\n
 reply('Suksess broadcast ')
 } else {
 for (let _ of anu) {
-creator = "6285731261728@s.whatsapp.net"
-teks =`☁ *BROADCAST ALL CHAT* ☁`
-sendButLocation(_.jid, `${teks}`, `klick tombol dibawah untuk melihat pesan yang di sampaikan owner`, {jpegThumbnail:fs.readFileSync('./lib/odc.jpeg')}, [{buttonId:`${bc}`,buttonText:{displayText:`${bc}`},type:1}], {contextInfo: { mentionedJid: [creator,creator,creator,sender]}})
+let gwekkkjhe = await client.prepareMessageFromContent(_.jid, {
+"buttonsMessage": {
+"contentText": `${bc}`,
+"footerText": `_*BROADCAST / PESAN SIARAN*_`,
+"buttons": [
+{buttonId: 'MENU', buttonText: {displayText: 'MENU'}, type: 1},
+{buttonId: 'OWNER', buttonText: {displayText: 'OWNER'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: mek})
+await client.relayWAMessage(gwekkkjhe)
 }
 reply('Suksess broadcast ')
 }
@@ -579,6 +588,7 @@ reply('Suksess broadcast ')
 			if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (!q) return reply(`tambahkan jumlah angka pada perintah tersebut!`)
 					jumlah = args.join(" ")
 					jumlah_total = jumlah * 1
 					addBadwordGc(groupId, jumlah_total)
@@ -695,17 +705,13 @@ reply(stdout)
 }
 
 if (budy.includes(`Asu`)) {
-if (!getBadwordId(sender)) {
+if (!getBadwordId(sender)) return addBadwordId(sender)
 await addBadwordUser(sender, 1)
 reply(`Kamu Bicara Kasar Sebanyak ${getBadwordUser(sender)}/${getBadwordGc(groupId)} Kali Jika Telah Mencampai Limit Kami Akak Terkick`)
 batas = getBadwordGc(groupId)
 if (getBadwordUser(sender) > batas){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
-}
-}
-} else {
-addBadwordId(sender)
 }
     
 					if (isGroup && isSimi && budy != undefined) {
