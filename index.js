@@ -167,6 +167,7 @@ client.logger.level = 'warn'
 			const args = body.trim().split(/ +/).slice(1)
 			const buttonsR = (type === 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedDisplayText : '' || ''
 			const resbutton = (type == 'listResponseMessage') ? mek.message.listResponseMessage.selectedDisplayText : ''
+			const date = new Date().toLocaleDateString()
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
@@ -201,6 +202,7 @@ client.logger.level = 'warn'
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
+			const pushname = client.contacts[sender] != undefined ? client.contacts[sender].vname || client.contacts[sender].notify : undefined
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -320,6 +322,7 @@ client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)}
 
 case 'menu':
 case 'help':
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 teks =`*M I T S U H A - W A B O T*\n
 
 *❒ LIST FITUR BOT 💻*
@@ -331,7 +334,8 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}promote*
 *❒ ${prefix2}demote*
 *❒ ${prefix2}welcome*
-*❒ ${prefix2}antilink*`
+*❒ ${prefix2}antilink*
+*❒ ${prefix2}warning*`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
 break
 
@@ -342,6 +346,7 @@ case 'stiker':
 case 'sticker':
 case 'stikergif':
 case 'stickergif':
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -408,8 +413,15 @@ fs.unlinkSync(ran)
 reply(`Kirim gambar dengan caption ${prefix2}sticker atau tag gambar yang sudah dikirim`)
 }
 break
+
+case 'daftar':
+if (getBadwordId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
+addBadwordId(sender)
+reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: @${sender.split("@s.whatsapp.net")},\ndate: ${date}`)
+break
 				
-				case 'tagall':
+case 'tagall':
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
 members_id = []
@@ -425,6 +437,7 @@ mentions(teks, members_id, true, {quoted: mek})
 					break
 
 				case 'broadcast':
+				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isOwner) return reply('Kamu siapa?')
 					if (args.length < 1) return reply('.......')
 					bc = args.join(" ")
@@ -456,6 +469,7 @@ reply('Suksess broadcast ')
 }
 					break
                                 case 'promote':
+                                if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -475,6 +489,7 @@ reply('Suksess broadcast ')
 					break
 					
 				case 'demote':
+				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -494,6 +509,7 @@ reply('Suksess broadcast ')
 					break
 					
 				case 'add':
+				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -509,6 +525,7 @@ reply('Suksess broadcast ')
 					break
 					
 				case 'kick':
+				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -528,6 +545,7 @@ reply('Suksess broadcast ')
 					break
 				
 				case 'toimg':
+				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isQuotedSticker) return reply('❌ reply stickernya um ❌')
 					reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -543,6 +561,7 @@ reply('Suksess broadcast ')
 					break
 			
 case 'warning':
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -554,6 +573,7 @@ break
 				
 				
 				case 'welcome':
+				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
 if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
@@ -573,6 +593,7 @@ await client.relayWAMessage(gwekkje)
 break
 				
 				case 'antilink':
+				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 				if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
 if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
@@ -595,6 +616,7 @@ break
 				default:
 				
 				if (buttonsR === 'Enable A1') {
+					if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
 					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -608,6 +630,7 @@ break
 						}
 						
 						if (buttonsR === 'Disable A0') {
+						if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
 					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -621,6 +644,7 @@ break
 						}
 						
 				if (buttonsR === 'Enable W1') {
+					if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
 					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -633,6 +657,7 @@ break
 break
 						}
 						if (buttonsR === 'Disable W0') {
+							if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
 					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -646,6 +671,7 @@ break
 						}
 				
 					if (buttonsR === `DEVELOEPER`) {
+						if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 						reply(`maintenance`)
 						break
 						}
@@ -662,6 +688,7 @@ reply(stdout)
 }
 
 if (budy.includes(`Asu`)) {
+if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
@@ -684,6 +711,7 @@ break
 }
 
 if (budy.includes(`emek`)) {
+if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
@@ -706,6 +734,7 @@ break
 }
    
 if (budy.includes(`ontol`)) {
+if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
@@ -728,6 +757,7 @@ break
 }
 
 if (budy.includes(`acot`)) {
+if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
@@ -750,6 +780,7 @@ break
 }
 
 if (budy.includes(`njg`)) {
+if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
@@ -772,6 +803,7 @@ break
 }
 
 if (budy.includes(`gsat`)) {
+if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
@@ -794,6 +826,7 @@ break
 }
 
 if (budy.includes(`ancok`)) {
+if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
