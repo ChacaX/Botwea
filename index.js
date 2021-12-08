@@ -692,7 +692,7 @@ if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
-"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/3\nkali jika sudah lebih dari 3 kali maka otomatis terkick`,
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
 "footerText": `Badword Detected`,
 "buttons": [
 {buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
@@ -715,7 +715,7 @@ if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
-"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/3\nkali jika sudah lebih dari 3 kali maka otomatis terkick`,
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
 "footerText": `Badword Detected`,
 "buttons": [
 {buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
@@ -738,7 +738,7 @@ if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
-"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/3\nkali jika sudah lebih dari 3 kali maka otomatis terkick`,
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
 "footerText": `Badword Detected`,
 "buttons": [
 {buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
@@ -761,7 +761,7 @@ if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
-"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/3\nkali jika sudah lebih dari 3 kali maka otomatis terkick`,
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
 "footerText": `Badword Detected`,
 "buttons": [
 {buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
@@ -784,7 +784,7 @@ if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
-"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/3\nkali jika sudah lebih dari 3 kali maka otomatis terkick`,
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
 "footerText": `Badword Detected`,
 "buttons": [
 {buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
@@ -807,7 +807,7 @@ if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
-"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/3\nkali jika sudah lebih dari 3 kali maka otomatis terkick`,
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
 "footerText": `Badword Detected`,
 "buttons": [
 {buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
@@ -830,7 +830,7 @@ if (!isBotGroupAdmins) return
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
-"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/3\nkali jika sudah lebih dari 3 kali maka otomatis terkick`,
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
 "footerText": `Badword Detected`,
 "buttons": [
 {buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
