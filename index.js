@@ -27,6 +27,13 @@ const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const _badword = JSON.parse(fs.readFileSync('./src/badword.json'))
 
+              vcard = 'BEGIN:VCARD\n' 
+              + 'VERSION:3.0\n' 
+              + 'FN: Owner BotWea\n' 
+              + 'ORG: CREATOR/OWNER BOT;\n' 
+              + 'TEL;type=CELL;type=VOICE;waid=6285731261728:+62 85731261728\n'  
+              + 'END:VCARD'
+              
 prefix = ``
 prefix2 = `.`
 badword_limit = 3
@@ -122,6 +129,7 @@ client.logger.level = 'warn'
 				teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+				addBadwordUser(sender)
 			} else if (anu.action == 'remove') {
 				num = anu.participants[0]
 				try {
@@ -132,6 +140,7 @@ client.logger.level = 'warn'
 				teks = `Sayonara @${num.split('@')[0]}👋`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+				addBadwordUser(sender)
 			}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
@@ -205,13 +214,13 @@ client.logger.level = 'warn'
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
 			const reply = (teks) => {
-				client.sendMessage(from, teks, text, {quoted:mek})
+				client.sendMessage(from, teks, text, , {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [sender],"externalAdReply": {"title": `whatsappボット`,"body": ``,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync('./lib/odc.jpeg'),"sourceUrl": "https://youtube.com/channel/UC-fcNjQQ5LXV50sSV6s2eXg"}},quoted: mek}))
 			}
 			const sendMess = (hehe, teks) => {
 				client.sendMessage(hehe, teks, text)
 			}
 			const mentions = (teks, memberr, id) => {
-				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
+				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: fakeimage, contextInfo: {"mentionedJid": memberr}})
 			}
 
 			colors = ['red','white','black','blue','yellow','green']
@@ -316,7 +325,9 @@ var kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 }
 
-			switch(command) {
+const fakeimage = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": `🔅 WhatsApp Bot 🔅`, "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('lib/odc.jpeg')} } }
+			
+switch(command) {
 
 case 'menu':
 case 'help':
@@ -333,13 +344,37 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}demote*
 *❒ ${prefix2}welcome*
 *❒ ${prefix2}antilink*
-*❒ ${prefix2}warning*`
+*❒ ${prefix2}warning*
+*❒ ${prefix2}hidetag*
+*❒ ${prefix2}open/close`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
 break
 
-				
-				
-					
+case 'owner':
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
+break
+
+case 'open'
+case 'close':
+case 'open/close':
+if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+gwekke = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
+"footerText": `_Gunakan fitur ini sewajarnya saja dan jangan spam agar nomor bot tetap beroprasi_`,
+"buttons": [
+{buttonId: 'Buka', buttonText: {displayText: 'Buka'}, type: 1},
+{buttonId: 'Tutup', buttonText: {displayText: 'Tutup'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: mek})
+await client.relayWAMessage(gwekke)
+break
+
 case 'stiker':
 case 'sticker':
 case 'stikergif':
@@ -415,9 +450,30 @@ break
 case 'daftar':
 if (getBadwordId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 addBadwordId(sender)
-reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}`)
+teks = `*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}`
+gambar = "https://telegra.ph/file/f5e2ccd205a0e51b9c799.jpg"
+client.sendMessage(from, gambar, messageType.video, { mimetype: 'video/mp4', quoted: mek, caption: teks})
 break
 				
+case 'hidetag':
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+var value = body.slice(9)
+var group = await client.groupMetadata(from)
+var member = group['participants']
+var mem = []
+member.map( async adm => {
+mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+})
+var options = {
+text: value,
+contextInfo: { mentionedJid: mem },
+quoted: mek
+}
+client.sendMessage(from, options, text, {quoted: mek})
+break
+
 case 'tagall':
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
@@ -431,7 +487,7 @@ teks += `│-  @${mem.jid.split('@')[0]}\n`
 members_id.push(mem.jid)
 }
 teks += `╰❒`
-mentions(teks, members_id, true, {quoted: mek})
+mentions(teks, members_id, true, {quoted: fakeimage})
 					break
 
 				case 'broadcast':
@@ -453,14 +509,14 @@ for (let _ of anu) {
 let gwekkkjhe = await client.prepareMessageFromContent(_.jid, {
 "buttonsMessage": {
 "contentText": `${bc}`,
-"footerText": `_*BROADCAST / PESAN SIARAN*_`,
+"footerText": `\n_*BROADCAST / PESAN SIARAN*_`,
 "buttons": [
 {buttonId: 'MENU', buttonText: {displayText: 'MENU'}, type: 1},
 {buttonId: 'OWNER', buttonText: {displayText: 'OWNER'}, type: 1}
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkkjhe)
 }
 reply('Suksess broadcast ')
@@ -553,7 +609,7 @@ reply('Suksess broadcast ')
 						fs.unlinkSync(media)
 						if (err) return reply('❌ Gagal, pada saat mengkonversi sticker ke gambar ❌')
 						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<'})
+						client.sendMessage(from, buffer, image, {quoted: fakeimage, caption: '>//<'})
 						fs.unlinkSync(ran)
 					})
 					break
@@ -586,7 +642,7 @@ Enable (Aktif)/Disable (Mati)`,
 ],
 headerType: 1
 },
-}, {quoted: mek}) 
+}, {quoted: fakeimage}) 
 await client.relayWAMessage(gwekkje)
 break
 				
@@ -606,7 +662,7 @@ Enable (Aktif)/Disable (Mati)`,
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkkje)
 break
 					
@@ -668,12 +724,6 @@ break
 break
 						}
 				
-					if (buttonsR === `DEVELOEPER`) {
-						if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-						reply(`maintenance`)
-						break
-						}
-						
 if (budy.startsWith('$')){
 if (!isOwner) return
 qur = budy.slice(2)
@@ -699,11 +749,12 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
 }
 break
 }
@@ -722,11 +773,12 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
 }
 break
 }
@@ -745,11 +797,12 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
 }
 break
 }
@@ -768,11 +821,12 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
 }
 break
 }
@@ -791,11 +845,12 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
 }
 break
 }
@@ -814,11 +869,12 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
 }
 break
 }
@@ -837,12 +893,75 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: mek})
+}, {quoted: fakeimage})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
 }
+break
+}
+
+if (buttonsR === `DEVELOEPER`) {
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
+break
+}
+
+if (buttonsR === `OWNER`) {
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
+break
+}
+
+if (buttonsR === `MENU`) {
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+teks =`*M I T S U H A - W A B O T*\n
+
+*❒ LIST FITUR BOT 💻*
+*❒ ${prefix2}sticker*
+*❒ ${prefix2}toimg*
+*❒ ${prefix2}tagall*
+*❒ ${prefix2}broadcast*
+*❒ ${prefix2}kick*
+*❒ ${prefix2}promote*
+*❒ ${prefix2}demote*
+*❒ ${prefix2}welcome*
+*❒ ${prefix2}antilink*
+*❒ ${prefix2}warning*
+*❒ ${prefix2}hidetag*
+*❒ ${prefix2}open/close`
+sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
+break
+}
+
+if (buttonsR === 'Tutup') {
+                  if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+					
+					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+	var nomor = mek.participant
+              const close = {
+              text: `Grup ditutup oleh admin @${nomor.split("@s.whatsapp.net")[0]}\nsekarang *hanya admin* yang dapat mengirim pesan`,
+              contextInfo: { mentionedJid: [nomor] }
+}
+              client.groupSettingChange (from, GroupSettingChange.messageSend, true);
+              reply(close)
+break
+}
+              if (buttonsR === 'Buka') {
+ 
+                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+					
+					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+open = {
+              text: `Grup dibuka oleh admin @${sender.split("@")[0]}\nsekarang *semua peserta* dapat mengirim pesan`,
+              contextInfo: { mentionedJid: [sender] }
+}
+              client.groupSettingChange (from, GroupSettingChange.messageSend, false)
+              client.sendMessage(from, open, text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [sender],"externalAdReply": {"title": `whatsappボット`,"body": ``,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": thumb,"sourceUrl": "https://youtube.com/channel/UC-fcNjQQ5LXV50sSV6s2eXg"}},quoted: mek})
 break
 }
 
