@@ -355,7 +355,7 @@ if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar
 await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 break
 
-case 'open'
+case 'open':
 case 'close':
 case 'open/close':
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
