@@ -531,6 +531,7 @@ reply('Suksess broadcast ')
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
+					if (args.length < 1) return reply('tag orangnya')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
 						teks = 'Berhasil Promote\n'
@@ -551,6 +552,7 @@ reply('Suksess broadcast ')
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
+					if (args.length < 1) return reply('tag orangnya')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
 						teks = 'Berhasil Demote\n'
@@ -918,7 +920,7 @@ await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.
 break
 }
 
-if (buttonsR === `MENU`) {
+if (budy.includes(`##//..`)) {
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
@@ -930,17 +932,52 @@ teks =`*INFROMATION SYSTEM BOT*
 *LIST FITUR BOT WHATSAPP*
    
 ❒ ${prefix2}sticker
+info: mengubah gambar/video menjadi sticker
+ex: tag gambar lalu ketik /sticker jika video maximal 10s
+
 ❒ ${prefix2}toimg
+info: mengubah sticker menjadi gambar
+ex: tag sticker kemudian ketik /toimg (tidak support sticker video)
+
 ❒ ${prefix2}tagall
+info: menge-tag semua member yang berada di grup
+ex: ketik /tagall <teks>
+
 ❒ ${prefix2}broadcast
+info: mengirimkan pesan kepada seluruh pengguna bot 
+ex: ketik /broadcast <teks> 
+
 ❒ ${prefix2}kick
+info: menendang member yang telah di targetkan oleh admin
+ex: ketik /kick @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
+
 ❒ ${prefix2}promote
+info: menjadikan admin kepada target yang telah di tag
+ex: ketik /promote @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
+
 ❒ ${prefix2}demote
+info: menurunkan jabatan admin menjadi member biasa
+ex: ketik /demote @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
+
 ❒ ${prefix2}welcome
+info: menyambut pengguna yang baru saja masuk kedalam grup
+ex: ketik /welcome kemudian pilih tombol yang bertuliskan enable
+
 ❒ ${prefix2}antilink
+info: menendang pengguna yang baru saja mengirimkan link grup lain
+ex: ketik /antilink kemudian pilih tombol yang bertuliskan enable
+
 ❒ ${prefix2}warning
+info: mengubah limit anti badword pada peserta yang telah terdaftar
+ex: auto on ketika bot menjadi admin
+
 ❒ ${prefix2}hidetag
-❒ ${prefix2}open/close`
+info: menge-tag seluruh anggota grup dengan teks tanpa mentioned
+ex: ketik /hidetag <teks>
+
+❒ ${prefix2}open/close
+info: mengizinkan seluruh peserta berbicara dan hanya mengizinkan admin berbicara
+ex: ketik /open/close kemudian pilih tombol yang ingin digunakan oleh kalian`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 }
