@@ -332,7 +332,7 @@ case 'menu':
 case 'help':
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`*M I T S U H A - W A B O T*\n
+teks =`*M I T S U H A - W E A B O T*\n
   
 *❒ language nodejs*
 *❒ runtime ${kyun(uptime)}*
@@ -458,7 +458,7 @@ if (getBadwordId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 addBadwordId(sender)
 teks = `*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}`
 gambar = "https://telegra.ph/file/f5e2ccd205a0e51b9c799.jpg"
-client.sendMessage(from, gambar, messageType.video, { mimetype: 'video/mp4', quoted: mek, caption: teks})
+client.sendMessage(from, gambar, MessageType.video, { mimetype: 'video/mp4', quoted: mek, caption: teks})
 break
 				
 case 'hidetag':
@@ -924,7 +924,7 @@ break
 if (buttonsR === `MENU`) {
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`*M I T S U H A - W A B O T*\n
+teks =`*M I T S U H A - W E A B O T*\n
   
 *❒ language nodejs*
 *❒ runtime ${kyun(uptime)}*
