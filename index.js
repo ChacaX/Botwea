@@ -352,7 +352,7 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}warning*
 *❒ ${prefix2}hidetag*
 *❒ ${prefix2}open/close*`
-sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
+sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 
 case 'owner':
@@ -942,10 +942,14 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}warning*
 *❒ ${prefix2}hidetag*
 *❒ ${prefix2}open/close*`
-sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
+sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 }
 
+if (buttonsR === 'SOURCE CODE') {
+reply(`Bot ini menggunakan script dari:\n\nhttps://www.github.com/ChacaX\n\nMenghapus thanks to dari sc auto labrak`)
+}
+	
 if (buttonsR === 'Tutup') {
                   if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 					
