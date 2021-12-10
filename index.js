@@ -129,7 +129,7 @@ client.logger.level = 'warn'
 				teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-				addBadwordUser(sender)
+				addBadwordId(sender)
 			} else if (anu.action == 'remove') {
 				num = anu.participants[0]
 				try {
@@ -140,7 +140,6 @@ client.logger.level = 'warn'
 				teks = `Sayonara @${num.split('@')[0]}👋`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-				addBadwordUser(sender)
 			}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
