@@ -346,7 +346,7 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}antilink*
 *❒ ${prefix2}warning*
 *❒ ${prefix2}hidetag*
-*❒ ${prefix2}open/close`
+*❒ ${prefix2}open/close*`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
 break
 
@@ -931,7 +931,7 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ ${prefix2}antilink*
 *❒ ${prefix2}warning*
 *❒ ${prefix2}hidetag*
-*❒ ${prefix2}open/close`
+*❒ ${prefix2}open/close*`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1}])
 break
 }
