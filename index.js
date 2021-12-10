@@ -48,7 +48,7 @@ function kyun(seconds){
   var seconds = Math.floor(seconds % 60);
 
   //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
-  return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
+  return `${pad(hours)} H ${pad(minutes)} M ${pad(seconds)} S`
 }
 
 const addBadwordId = (userid) => {
@@ -331,9 +331,15 @@ switch(command) {
 case 'menu':
 case 'help':
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+uptime = process.uptime()
 teks =`*M I T S U H A - W A B O T*\n
+  
+*❒ language nodejs*
+*❒ runtime ${kyun(uptime)}*
+*❒ user ${_badword.length} active*
 
-*❒ LIST FITUR BOT 💻*
+*L I S T - F E A T U R E - B O T*\n
+   
 *❒ ${prefix2}sticker*
 *❒ ${prefix2}toimg*
 *❒ ${prefix2}tagall*
@@ -914,11 +920,16 @@ await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.
 break
 }
 
-if (buttonsR === `MENU`) {
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+uptime = process.uptime()
 teks =`*M I T S U H A - W A B O T*\n
+  
+*❒ language nodejs*
+*❒ runtime ${kyun(uptime)}*
+*❒ user ${_badword.length} active*
 
-*❒ LIST FITUR BOT 💻*
+*L I S T - F E A T U R E - B O T*\n
+   
 *❒ ${prefix2}sticker*
 *❒ ${prefix2}toimg*
 *❒ ${prefix2}tagall*
