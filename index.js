@@ -332,27 +332,26 @@ case 'menu':
 case 'help':
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`*M I T S U H A - W E A B O T*\n
+teks =`*INFROMATION SYSTEM BOT*
   
-*❒ language nodejs*
-*❒ runtime ${kyun(uptime)}*
-*❒ user ${_badword.length} active*
+❒ language nodejs
+❒ runtime ${kyun(uptime)}
+❒ user ${_badword.length} active
 
-
-*L I S T - F E A T U R E - B O T*\n
+*LIST FITUR BOT WHATSAPP*
    
-*❒ ${prefix2}sticker*
-*❒ ${prefix2}toimg*
-*❒ ${prefix2}tagall*
-*❒ ${prefix2}broadcast*
-*❒ ${prefix2}kick*
-*❒ ${prefix2}promote*
-*❒ ${prefix2}demote*
-*❒ ${prefix2}welcome*
-*❒ ${prefix2}antilink*
-*❒ ${prefix2}warning*
-*❒ ${prefix2}hidetag*
-*❒ ${prefix2}open/close*`
+❒ ${prefix2}sticker
+❒ ${prefix2}toimg
+❒ ${prefix2}tagall
+❒ ${prefix2}broadcast
+❒ ${prefix2}kick
+❒ ${prefix2}promote
+❒ ${prefix2}demote
+❒ ${prefix2}welcome
+❒ ${prefix2}antilink
+❒ ${prefix2}warning
+❒ ${prefix2}hidetag
+❒ ${prefix2}open/close`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 
@@ -456,9 +455,7 @@ break
 case 'daftar':
 if (getBadwordId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 addBadwordId(sender)
-teks = `*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}`
-gambar = "https://telegra.ph/file/f5e2ccd205a0e51b9c799.jpg"
-client.sendMessage(from, gambar, MessageType.video, { mimetype: 'video/mp4', quoted: mek, caption: teks})
+reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}`)
 break
 				
 case 'hidetag':
@@ -924,27 +921,26 @@ break
 if (buttonsR === `MENU`) {
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`*M I T S U H A - W E A B O T*\n
+teks =`*INFROMATION SYSTEM BOT*
   
-*❒ language nodejs*
-*❒ runtime ${kyun(uptime)}*
-*❒ user ${_badword.length} active*
+❒ language nodejs
+❒ runtime ${kyun(uptime)}
+❒ user ${_badword.length} active
 
-
-*L I S T - F E A T U R E - B O T*\n
+*LIST FITUR BOT WHATSAPP*
    
-*❒ ${prefix2}sticker*
-*❒ ${prefix2}toimg*
-*❒ ${prefix2}tagall*
-*❒ ${prefix2}broadcast*
-*❒ ${prefix2}kick*
-*❒ ${prefix2}promote*
-*❒ ${prefix2}demote*
-*❒ ${prefix2}welcome*
-*❒ ${prefix2}antilink*
-*❒ ${prefix2}warning*
-*❒ ${prefix2}hidetag*
-*❒ ${prefix2}open/close*`
+❒ ${prefix2}sticker
+❒ ${prefix2}toimg
+❒ ${prefix2}tagall
+❒ ${prefix2}broadcast
+❒ ${prefix2}kick
+❒ ${prefix2}promote
+❒ ${prefix2}demote
+❒ ${prefix2}welcome
+❒ ${prefix2}antilink
+❒ ${prefix2}warning
+❒ ${prefix2}hidetag
+❒ ${prefix2}open/close`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 }
