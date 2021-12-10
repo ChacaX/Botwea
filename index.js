@@ -338,6 +338,7 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ runtime ${kyun(uptime)}*
 *❒ user ${_badword.length} active*
 
+
 *L I S T - F E A T U R E - B O T*\n
    
 *❒ ${prefix2}sticker*
@@ -928,6 +929,7 @@ teks =`*M I T S U H A - W A B O T*\n
 *❒ language nodejs*
 *❒ runtime ${kyun(uptime)}*
 *❒ user ${_badword.length} active*
+
 
 *L I S T - F E A T U R E - B O T*\n
    
