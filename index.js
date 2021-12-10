@@ -920,6 +920,7 @@ await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.
 break
 }
 
+if (buttonsR === `MENU`) {
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
 teks =`*M I T S U H A - W A B O T*\n
@@ -964,6 +965,7 @@ if (buttonsR === 'Tutup') {
               reply(close)
 break
 }
+
               if (buttonsR === 'Buka') {
  
                     if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
@@ -978,6 +980,7 @@ open = {
               client.sendMessage(from, open, text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [sender],"externalAdReply": {"title": `whatsappボット`,"body": ``,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": thumb,"sourceUrl": "https://youtube.com/channel/UC-fcNjQQ5LXV50sSV6s2eXg"}},quoted: mek})
 break
 }
+
 
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
