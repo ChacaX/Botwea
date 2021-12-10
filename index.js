@@ -352,7 +352,7 @@ teks =`*INFROMATION SYSTEM BOT*
 ❒ ${prefix2}warning
 ❒ ${prefix2}hidetag
 ❒ ${prefix2}open/close`
-sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
 break
 
 case 'owner':
@@ -920,7 +920,7 @@ await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.
 break
 }
 
-if (budy.includes(`##//..`)) {
+if (buttonsR === `HOW TO USE`) {
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
@@ -983,7 +983,7 @@ break
 }
 
 if (buttonsR === 'SOURCE CODE') {
-reply(`Bot ini menggunakan script dari:\n\nhttps://www.github.com/ChacaX\n\nMenghapus thanks to dari sc auto labrak`)
+reply(`Bot ini menggunakan script dari:\n\nhttps://www.github.com/ChacaX\n\nDilarang keras menghapus thanks to dari sc, Ketauan apus? nomor auto banned`)
 }
 	
 if (buttonsR === 'Tutup') {
