@@ -1202,7 +1202,7 @@ teks =`*INFROMATION SYSTEM BOT*
 ❒ ${prefix2}toimg`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
 break
-
+}
 
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
