@@ -779,7 +779,7 @@ reply(`💵 money : $.....
 *Pertahanan*
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
-🏇 barakuda : ${getBarakudaUser(sende)}
+🏇 barakuda : ${getBarakudaUser(sender)}
 ⛩ benteng : ${getBentengUser(sender)}`)
 break
 
