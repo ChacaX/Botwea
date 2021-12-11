@@ -116,7 +116,7 @@ return _rpg[position].a
 const addHealthUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].b === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -129,7 +129,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 const getHealthUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].b === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -141,7 +141,7 @@ return _rpg[position].b
 const addSamuraiUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].c === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -154,7 +154,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 const getSamuraiUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].c === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -166,7 +166,7 @@ return _rpg[position].c
 const addBarakudaUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].d === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -179,7 +179,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 const getBarakudaUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].d === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -191,7 +191,7 @@ return _rpg[position].d
 const addBentengUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].e === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -204,7 +204,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 const getBentengUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].e === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -216,7 +216,7 @@ return _rpg[position].e
 const addMoneyUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].f === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -229,7 +229,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 const getMoneyUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
-if (_rpg[i].f === userid) {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
@@ -780,7 +780,7 @@ reply(`💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}/25
 🏇 barakuda : ${getBarakudaUser(sender)}/25
-⛩ benteng : ${getBentengUser(sender)}`)/1
+⛩ benteng : ${getBentengUser(sender)}/1`)
 break
 
 case 'warning':
