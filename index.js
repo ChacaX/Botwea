@@ -26,6 +26,7 @@ const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const _badword = JSON.parse(fs.readFileSync('./src/badword.json'))
+const _rpg = JSON.parse(fs.readFileSync('./src/rpg.json'))
 
               vcard = 'BEGIN:VCARD\n' 
               + 'VERSION:3.0\n' 
