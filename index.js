@@ -774,13 +774,13 @@ break
 			
 case 'desa':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-reply(`💵 money : $..... 
+reply(`💵 money : $${getMoneyUser(sender)}
 
 *Pertahanan*
 🏯 health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}
-🏇 barakuda : ${getBarakudaUser(sender)}
-⛩ benteng : ${getBentengUser(sender)}`)
+🤺 samurai : ${getSamuraiUser(sender)}/25
+🏇 barakuda : ${getBarakudaUser(sender)}/25
+⛩ benteng : ${getBentengUser(sender)}`)/1
 break
 
 case 'warning':
