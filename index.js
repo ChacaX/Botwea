@@ -101,6 +101,18 @@ _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
 
+const getRpgId = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].id === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].a
+}
+}
+
 const addHealthUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
