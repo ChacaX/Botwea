@@ -601,7 +601,6 @@ break
 
 case 'daftar':
 if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
-addBadwordId(sender)
 addRpgId(sender)
 reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}\n\nKetik /desa untuk melihat perkembangan desamu`)
 break
