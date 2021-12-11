@@ -455,7 +455,7 @@ reply(`Kirim gambar dengan caption ${prefix2}sticker atau tag gambar yang sudah 
 break
 
 case 'daftar':
-if (getBalanceId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
+if (getBadwordId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 addBadwordId(sender)
 reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}`)
 break
@@ -934,8 +934,6 @@ uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
   
 ❒ name ${pushname}
-❒ balance $${getBalanceUser(sender)}
-❒ limit ${getLimitUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
 ❒ user ${_badword.length} active
