@@ -333,17 +333,15 @@ case 'help':
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
-  
+
+❒ name ${pushname}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
 ❒ user ${_badword.length} active
 
-*LIST FITUR BOT WHATSAPP*
-   
-❒ ${prefix2}sticker
-❒ ${prefix2}toimg
+*LIST FITUR WHATSAPP BOT*   
+
 ❒ ${prefix2}tagall
-❒ ${prefix2}broadcast
 ❒ ${prefix2}kick
 ❒ ${prefix2}promote
 ❒ ${prefix2}demote
@@ -351,7 +349,10 @@ teks =`*INFROMATION SYSTEM BOT*
 ❒ ${prefix2}antilink
 ❒ ${prefix2}warning
 ❒ ${prefix2}hidetag
-❒ ${prefix2}open/close`
+❒ ${prefix2}open/close
+❒ ${prefix2}broadcast
+❒ ${prefix2}sticker
+❒ ${prefix2}toimg
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
 break
 
@@ -363,6 +364,7 @@ break
 case 'open':
 case 'close':
 case 'open/close':
+if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
 if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
@@ -453,7 +455,7 @@ reply(`Kirim gambar dengan caption ${prefix2}sticker atau tag gambar yang sudah 
 break
 
 case 'daftar':
-if (getBadwordId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
+if (getBalanceId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 addBadwordId(sender)
 reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}`)
 break
@@ -491,8 +493,8 @@ members_id.push(mem.jid)
 }
 teks += `╰❒`
 mentions(teks, members_id, true, {quoted: fakeimage})
-					break
-
+break
+					
 				case 'broadcast':
 				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isOwner) return reply('Kamu siapa?')
@@ -524,7 +526,8 @@ await client.relayWAMessage(gwekkkjhe)
 }
 reply('Suksess broadcast ')
 }
-					break
+					
+break
                                 case 'promote':
                                 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 					if (!isGroup) return reply(mess.only.group)
@@ -544,7 +547,8 @@ reply('Suksess broadcast ')
 						mentions(`Berhasil Promote @${mentioned[0].split('@')[0]} Sebagai Admin Group!`, mentioned, true)
 						client.groupMakeAdmin(from, mentioned)
 					}
-					break
+					
+break
 					
 				case 'demote':
 				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
@@ -565,7 +569,8 @@ reply('Suksess broadcast ')
 						mentions(`Berhasil Demote @${mentioned[0].split('@')[0]} Menjadi Member Group!`, mentioned, true)
 						client.groupDemoteAdmin(from, mentioned)
 					}
-					break
+					
+break
 					
 				case 'add':
 				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
@@ -581,7 +586,8 @@ reply('Suksess broadcast ')
 						console.log('Error :', e)
 						reply('Gagal menambahkan target, mungkin karena di private')
 					}
-					break
+					
+break
 					
 				case 'kick':
 				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
@@ -601,7 +607,8 @@ reply('Suksess broadcast ')
 						mentions(`Perintah di terima, mengeluarkan : @${mentioned[0].split('@')[0]}`, mentioned, true)
 						client.groupRemove(from, mentioned)
 					}
-					break
+					
+break
 				
 				case 'toimg':
 				if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
@@ -617,7 +624,8 @@ reply('Suksess broadcast ')
 						client.sendMessage(from, buffer, image, {quoted: fakeimage, caption: '>//<'})
 						fs.unlinkSync(ran)
 					})
-					break
+					
+break
 			
 case 'warning':
 if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
@@ -925,6 +933,9 @@ if (!getBadwordId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar
 uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
   
+❒ name ${pushname}
+❒ balance $${getBalanceUser(sender)}
+❒ limit ${getLimitUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
 ❒ user ${_badword.length} active
@@ -950,6 +961,10 @@ ex: ketik /broadcast <teks>
 ❒ ${prefix2}kick
 info: menendang member yang telah di targetkan oleh admin
 ex: ketik /kick @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
+
+❒ ${prefix2}add
+info: mengundang seseorang kedalan grup whatsapp dengan menggunakan bot
+ex: ketik /add 628×××× pastikan tidak ada tanda "- + atau spasi"
 
 ❒ ${prefix2}promote
 info: menjadikan admin kepada target yang telah di tag
