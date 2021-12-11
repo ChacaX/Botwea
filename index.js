@@ -96,7 +96,7 @@ return _badword[position].id
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: tidak ada, f: 50}
+const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -184,7 +184,7 @@ position = i
 }
 })
 if (position !== false) {
-_rpg[position].e = amount
+_rpg[position].e += amount
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
 }
