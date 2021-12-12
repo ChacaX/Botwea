@@ -865,7 +865,7 @@ if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
 addHouseUser(sender, amount)
-addPendudukUser(sender, 15)
+addPendudukUser(sender, penduduk)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Penduduk`)
 } 
 } else if (args[0]=="hospital") {
