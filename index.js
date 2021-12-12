@@ -659,7 +659,7 @@ if (getSamuraiUser(sender) > 25) return reply(`Jumlah Personil Samurai Kamu Tela
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
-amount = payoute * 1
+amount = payout * 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -672,7 +672,7 @@ if (getBarakudaUser(sender) > 25) return reply(`Jumlah Personil Barakuda Kamu Te
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 2
-amount = payoute * 1
+amount = payout * 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -685,7 +685,7 @@ if (getBentengUser(sender) > 1) return reply(`Benteng Yang Kamu Buat Telah Menca
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 10
-amount = payoute * 1
+amount = payout * 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
