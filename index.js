@@ -655,7 +655,7 @@ break
 case 'barak':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
-if (getSamuraiUser(sender) > 25) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
+if (getSamuraiUser(sender) > 24) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
@@ -668,7 +668,7 @@ addSamuraiUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
 } 
 } else if (args[0]=="barakuda") {
-if (getBarakudaUser(sender) > 25) return reply(`Jumlah Personil Barakuda Kamu Telah Telah Mencampai Limit`)
+if (getBarakudaUser(sender) > 24) return reply(`Jumlah Personil Barakuda Kamu Telah Telah Mencampai Limit`)
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 2
@@ -681,7 +681,7 @@ addBarakudaUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Barakuda Sebanyak ${payout}`)
 } 
 } else if (args[0]=="benteng") {
-if (getBentengUser(sender) > 1) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getBentengUser(sender) > 0) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 10
@@ -1004,7 +1004,7 @@ reply(stdout)
 if (budy.startsWith('>')){
 if (!isOwner) return
 try {
-return client.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: floc2})
+return client.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: mek})
 } catch(err) {
 e = String(err)
 reply(e)
