@@ -614,6 +614,7 @@ kamus = kamu[Math.floor(Math.random() * kamu.length)]
 kamub = kamu[Math.floor(Math.random() * kamu.length)]
 kamuh = damage[Math.floor(Math.random() * damage.length)]
 kamum = kamuu[Math.floor(Math.random() * kamuu.length)]
+musuhm = kamuu[Math.floor(Math.random() * kamuu.length)]
 wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
@@ -651,7 +652,7 @@ break
 case 'barak':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
-if (getSamuraiUser(sender) === 25) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
+if (getSamuraiUser(sender) > 25) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
 payout = args.length[2]
 money = 1
 bayar = payout * money
@@ -662,7 +663,7 @@ addSamuraiUser(sender, payout)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
 } 
 } else if (args[0]=="barakuda") {
-if (getBarakudaUser(sender) === 25) return reply(`Jumlah Personil Barakuda Kamu Telah Telah Mencampai Limit`)
+if (getBarakudaUser(sender) > 25) return reply(`Jumlah Personil Barakuda Kamu Telah Telah Mencampai Limit`)
 payout = args.length[2]
 money = 2
 bayar = payout * money
@@ -673,7 +674,7 @@ addBarakudaUser(sender, payout)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Barakuda Sebanyak ${payout}`)
 } 
 } else if (args[0]=="benteng") {
-if (getBentengUser(sender) === 1) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getBentengUser(sender) > 1) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
 payout = args.length[2]
 money = 10
 bayar = payout * money
