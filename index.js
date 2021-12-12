@@ -602,6 +602,9 @@ break
 
 case 'training':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (getHealthUser(sender) < 15) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
+if (getSamuraiUser(sender) < 10) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 10`)
+if (getBarakudaUser(sender) < 10) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 10`)
 musuh = ["1","2","3","4","5","6","7","8","9","10","11","12"]
 damage = ["10","20","30","5"]
 musuhs = musuh[Math.floor(Math.random() * musuh.length)]
@@ -652,8 +655,7 @@ break
 case 'barak':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
-if (getSamuraiUser(sender) > 25) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
-payout = args.length[2]
+payout = args.length[1]
 money = 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
@@ -664,7 +666,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${pa
 } 
 } else if (args[0]=="barakuda") {
 if (getBarakudaUser(sender) > 25) return reply(`Jumlah Personil Barakuda Kamu Telah Telah Mencampai Limit`)
-payout = args.length[2]
+payout = args.length[1]
 money = 2
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
@@ -675,7 +677,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Barakuda Sebanyak ${p
 } 
 } else if (args[0]=="benteng") {
 if (getBentengUser(sender) > 1) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
-payout = args.length[2]
+payout = args.length[1]
 money = 10
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
