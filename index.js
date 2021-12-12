@@ -655,7 +655,9 @@ break
 case 'barak':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
-payout = args.length[1]
+if (getSamuraiUser(sender) > 25) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
+ppp = `${args.join(' ')}`
+payout = ppp.split(" ")[1];
 money = 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
@@ -666,7 +668,8 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${pa
 } 
 } else if (args[0]=="barakuda") {
 if (getBarakudaUser(sender) > 25) return reply(`Jumlah Personil Barakuda Kamu Telah Telah Mencampai Limit`)
-payout = args.length[1]
+ppp = `${args.join(' ')}`
+payout = ppp.split(" ")[1];
 money = 2
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
@@ -677,7 +680,8 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Barakuda Sebanyak ${p
 } 
 } else if (args[0]=="benteng") {
 if (getBentengUser(sender) > 1) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
-payout = args.length[1]
+ppp = `${args.join(' ')}`
+payout = ppp.split(" ")[1];
 money = 10
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
