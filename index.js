@@ -734,7 +734,7 @@ kamum = kamuu[Math.floor(Math.random() * kamuu.length)]
 musuhm = kamuu[Math.floor(Math.random() * kamuu.length)]
 sakit = ["2","1","1"]
 ksakit = sakit[Math.floor(Math.random() * sakit.length)]
-eksakit = sakit[Math.floor(Math.random() * sakit.length)]
+esakit = sakit[Math.floor(Math.random() * sakit.length)]
 wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
@@ -767,7 +767,7 @@ reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 🏯 health : -${kamuh}
 🤺 samurai : -${kamus}
 🏇 barakuda : -${kamub}
-🚑 terluka : +${ksakit}
+🚑 terluka : +${ksakit} + ${esakit}
 \n*musuh*
 💵 money : -$${musuhm}
 🏯 health : -${musuhh}
