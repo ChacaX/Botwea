@@ -656,6 +656,7 @@ case 'barak':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
 if (getSamuraiUser(sender) > 24) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
+if (getSamuraiUser(sender) == 24) return reply(`Jumlah Personil Samurai Kamu Telah Max`)
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
