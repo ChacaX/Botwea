@@ -636,6 +636,7 @@ headerType: 1
 await client.relayWAMessage(gwekke)
 if (!getHouseUser(sender)) return
 addPendudukUser(sender, 5)
+addMoneyUser(sender, 5)
 break
 
 case 'stiker':
@@ -726,7 +727,7 @@ sakit = ["2","1","1","3"]
 msakit = sakit[Math.floor(Math.random() * sakit.length)]
 kamu = ["1","2","3","4","5"]
 damage = ["10","5"]
-kamuu = ["4","5","7","10"]
+kamuu = ["15","5","10","10"]
 kamus = kamu[Math.floor(Math.random() * kamu.length)]
 kamub = kamu[Math.floor(Math.random() * kamu.length)]
 kamuh = damage[Math.floor(Math.random() * damage.length)]
@@ -776,6 +777,25 @@ reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 🚑 terluka : +${msakit}\n\n*KAMU* : ${jadi}`)
 }, 5000)
 addPendudukUser(sender, 2)
+if (!getBentengUser(sender)) return
+jarah = ["1","2","3","4"]
+jarahpenduduk = jarah[Math.floor(Math.random() * jarah.length)]
+jarah2 = ["5","10","5","5"]
+jarahnyawa = jarah2[Math.floor(Math.random() * jarah2.length)]
+jarah = ["1","2","4","5"]
+jarahuang = jarah[Math.floor(Math.random() * jarah.length)]
+uwang = jarahuang * 1
+nyawa = jarahnyawa * 1
+penduduk = jarahpenduduk * 1
+setTimeout( () => {
+addMoneyUser(sender, -uwang)
+addHealthUser(sender, -nyawa)
+addPendudukUser(sender, -penduduk)
+reply(`*DESAMU DIJARAH!!!*\n\n*riwayat*
+💵 money -$${jarahuang}
+🏯 health : -${jarahnyawa}/100
+🚑 terluka : -${jarahpenduduk}`)
+}, 60000)
 break
 
 case 'heal':
