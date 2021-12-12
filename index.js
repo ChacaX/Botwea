@@ -479,6 +479,7 @@ uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
 
 ❒ name ${pushname}
+❒ money $${getMoneyUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
 ❒ user ${_badword.length} active
@@ -1090,6 +1091,7 @@ uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
   
 ❒ name ${pushname}
+❒ money $${getMoneyUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
 ❒ user ${_badword.length} active
@@ -1192,6 +1194,7 @@ uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
 
 ❒ name ${pushname}
+❒ money $${getMoneyUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
 ❒ user ${_badword.length} active
