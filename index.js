@@ -727,7 +727,7 @@ sakit = ["2","1","1","3"]
 msakit = sakit[Math.floor(Math.random() * sakit.length)]
 kamu = ["1","2","3","4","5"]
 damage = ["10","5"]
-kamuu = ["15","5","10","10"]
+kamuu = ["9","10","7","8"]
 kamus = kamu[Math.floor(Math.random() * kamu.length)]
 kamub = kamu[Math.floor(Math.random() * kamu.length)]
 kamuh = damage[Math.floor(Math.random() * damage.length)]
@@ -777,13 +777,13 @@ reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 🚑 terluka : +${msakit}\n\n*KAMU* : ${jadi}`)
 }, 5000)
 addPendudukUser(sender, 2)
-if (!getBentengUser(sender)) return
+if (getBentengUser(sender)) return
 jarah = ["1","2","3","4"]
 jarahpenduduk = jarah[Math.floor(Math.random() * jarah.length)]
 jarah2 = ["5","10","5","5"]
 jarahnyawa = jarah2[Math.floor(Math.random() * jarah2.length)]
-jarah = ["1","2","4","5"]
-jarahuang = jarah[Math.floor(Math.random() * jarah.length)]
+jarah3 = ["2","5","4","3"]
+jarahuang = jarah3[Math.floor(Math.random() * jarah3.length)]
 uwang = jarahuang * 1
 nyawa = jarahnyawa * 1
 penduduk = jarahpenduduk * 1
