@@ -659,11 +659,12 @@ if (getSamuraiUser(sender) > 25) return reply(`Jumlah Personil Samurai Kamu Tela
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
+amount = payoute * 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
-addSamuraiUser(sender, payout)
+addSamuraiUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
 } 
 } else if (args[0]=="barakuda") {
@@ -671,11 +672,12 @@ if (getBarakudaUser(sender) > 25) return reply(`Jumlah Personil Barakuda Kamu Te
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 2
+amount = payoute * 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
-addBarakudaUser(sender, payout)
+addBarakudaUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Barakuda Sebanyak ${payout}`)
 } 
 } else if (args[0]=="benteng") {
@@ -683,11 +685,12 @@ if (getBentengUser(sender) > 1) return reply(`Benteng Yang Kamu Buat Telah Menca
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 10
+amount = payoute * 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
-addBentengUser(sender, payout)
+addBentengUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
 } 
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n\nLIST LATIH BARAK YG TERSEDIA\n- samurai\n- barakuda\n- benteng`)}
@@ -996,6 +999,16 @@ if (stdout) {
 reply(stdout)
 }
 })
+}
+
+if (budy.startsWith('>')){
+if (!isOwner) return
+try {
+return client.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: floc2})
+} catch(err) {
+e = String(err)
+reply(e)
+}
 }
 
 if (budy.includes(`Asu`)) {
