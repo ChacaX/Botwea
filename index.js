@@ -732,8 +732,9 @@ kamub = kamu[Math.floor(Math.random() * kamu.length)]
 kamuh = damage[Math.floor(Math.random() * damage.length)]
 kamum = kamuu[Math.floor(Math.random() * kamuu.length)]
 musuhm = kamuu[Math.floor(Math.random() * kamuu.length)]
-sakit = ["2","1","1","3"]
+sakit = ["2","1","1"]
 ksakit = sakit[Math.floor(Math.random() * sakit.length)]
+eksakit = sakit[Math.floor(Math.random() * sakit.length)]
 wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
@@ -751,11 +752,15 @@ samurainya = kamus * 1
 barakudanya = kamub * 1
 moneynya = kamum * 1
 sakitnya = ksakit * 1
+sakitnya2 = esakit * 1
 addHealthUser(sender, -hatinya)
 addSamuraiUser(sender, -samurainya)
 addBarakudaUser(sender, -barakudanya)
 addMoneyUser(sender, moneynya)
-addSamurai(sender, -ksakit)
+addSamuraiUser(sender, -sakitnya)
+addBarakudaUser(sender, -sakitnya2)
+addPasienUser(sender, sakitnya)
+addPasienUser(sender, sakitnya2)
 setTimeout( () => {
 reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 💵 money : +$${kamum}
