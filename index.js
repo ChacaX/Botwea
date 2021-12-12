@@ -601,6 +601,7 @@ reply(`Kirim gambar dengan caption ${prefix2}sticker atau tag gambar yang sudah 
 break
 
 case 'training':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 musuh = ["1","2","3","4","5","6","7","8","9","10","11","12"]
 damage = ["10","20","30","5"]
 musuhs = musuh[Math.floor(Math.random() * musuh.length)]
@@ -648,7 +649,7 @@ reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 break
 
 case 'barak':
-if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
 if (getSamuraiUser(sender) === 25) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
 payout = args.length[2]
