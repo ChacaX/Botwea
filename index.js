@@ -171,7 +171,7 @@ return _rpg[position].i
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 5, h: 0, i: 0}
+const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 5, h: 0, i: 0, j:0}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -739,12 +739,12 @@ wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
 💵 money : $${getMoneyUser(sender)}
-🏯 health : ${getHealthUser(sender)}
+🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 \n*musuh*
 💵 money : $${musuhm}
-🏯 health : ${musuhh}
+🏯 health : ${musuhh}/100
 🤺 samurai : ${musuhs}
 🏇 barakuda : ${musuhb}`)
 hatinya = kamuh * 1
@@ -764,13 +764,13 @@ addPasienUser(sender, sakitnya2)
 setTimeout( () => {
 reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 💵 money : +$${kamum}
-🏯 health : -${kamuh}
+🏯 health : -${kamuh}/100
 🤺 samurai : -${kamus}
 🏇 barakuda : -${kamub}
-🚑 terluka : +${ksakit} + ${esakit}
+🚑 terluka : +${ksakit} +${esakit}
 \n*musuh*
 💵 money : -$${musuhm}
-🏯 health : -${musuhh}
+🏯 health : -${musuhh}/100
 🤺 samurai : -${musuhs}
 🏇 barakuda : -${musuhb}
 🚑 terluka : +${msakit}\n\n*KAMU* : ${jadi}`)
@@ -835,12 +835,17 @@ addHealthUser(sender, 100)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
 } 
 } else if (args[0]=="house") {
-if (getHouseUser(sender) > 0) return reply(`Rumah Yang Kamu Buat Telah Mencampai Batas Maximal`)
-bayar = 1 * 15
+ppp = `${args.join(' ')}`
+payout = ppp.split(" ")[1];
+money = 10
+bayar = payout * money
+amount = payout * 1
+penduduk = payout * 15
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
-addHouseUser(sender, 1)
+addHouseUser(sender, amount)
+addPendudukUser(sender, 15)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Penduduk`)
 } 
 } else if (args[0]=="hospital") {
@@ -1033,7 +1038,7 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 reply(`💵 money : $${getMoneyUser(sender)}
 
 *Pertahanan*
-🏯 health : ${getHealthUser(sender)}
+🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 ⛩  benteng : ${getBentengUser(sender)}/1
@@ -1041,7 +1046,7 @@ reply(`💵 money : $${getMoneyUser(sender)}
 *Sosial*
 👥 penduduk : ${getPendudukUser(sender)}
 🏢 hospital : ${getHospitalUser(sender)}/1
-🏠 house : ${getHouseUser(sender)}/1
+🏠 house : ${getHouseUser(sender)}
 🚑 pasien : ${getPasienUser(sender)}`)
 break
 
