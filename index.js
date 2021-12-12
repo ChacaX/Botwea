@@ -95,8 +95,83 @@ return _badword[position].id
 }
 }
 
+const addPendudukUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].g += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getPendudukUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].g
+}
+}
+
+const addHospitalUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].h += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getHospitalUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].h
+}
+}
+
+const addHouseUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].i += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getHouseUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].i
+}
+}
+
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50}
+const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 5, h: 0, i: 0}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -235,6 +310,31 @@ position = i
 })
 if (position !== false) {
 return _rpg[position].f
+}
+}
+
+const addPasienUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].j += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getPasienUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].j
 }
 }
 
@@ -476,16 +576,20 @@ case 'menu':
 case 'help':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`*INFROMATION SYSTEM BOT*
-
+teks =`*INFORMASI*
 ❒ name ${pushname}
 ❒ money $${getMoneyUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
 ❒ user ${_badword.length} active
 
-*LIST FITUR WHATSAPP BOT*   
+*RPG MENU*
+❒ ${prefix2}desa
+❒ ${prefix2}barak
+❒ ${prefix2}training
+❒ ${prefix2}heal
 
+*GRUP MENU*   
 ❒ ${prefix2}tagall
 ❒ ${prefix2}kick
 ❒ ${prefix2}add
@@ -496,15 +600,19 @@ teks =`*INFROMATION SYSTEM BOT*
 ❒ ${prefix2}warning
 ❒ ${prefix2}hidetag
 ❒ ${prefix2}open/close
+
+*OTHER MENU*
 ❒ ${prefix2}broadcast
 ❒ ${prefix2}sticker
 ❒ ${prefix2}toimg`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
+addPendudukUser(sender, 2)
 break
 
 case 'owner':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
+addPendudukUser(sender, 2)
 break
 
 case 'open':
@@ -526,6 +634,8 @@ headerType: 1
 },
 }, {quoted: mek})
 await client.relayWAMessage(gwekke)
+if (!getHouseUser(sender)) return
+addPendudukUser(sender, 5)
 break
 
 case 'stiker':
@@ -598,6 +708,8 @@ fs.unlinkSync(ran)
 } else {
 reply(`Kirim gambar dengan caption ${prefix2}sticker atau tag gambar yang sudah dikirim`)
 }
+if (!getHouseUser(sender)) return
+addPendudukUser(sender, 3)
 break
 
 case 'training':
@@ -610,6 +722,8 @@ damage = ["10","20","30","5"]
 musuhs = musuh[Math.floor(Math.random() * musuh.length)]
 musuhb = musuh[Math.floor(Math.random() * musuh.length)]
 musuhh = damage[Math.floor(Math.random() * damage.length)]
+sakit = ["2","1","1","3"]
+msakit = sakit[Math.floor(Math.random() * sakit.length)]
 kamu = ["1","2","3","4","5"]
 damage = ["10","5"]
 kamuu = ["4","5","7","10"]
@@ -618,83 +732,122 @@ kamub = kamu[Math.floor(Math.random() * kamu.length)]
 kamuh = damage[Math.floor(Math.random() * damage.length)]
 kamum = kamuu[Math.floor(Math.random() * kamuu.length)]
 musuhm = kamuu[Math.floor(Math.random() * kamuu.length)]
+sakit = ["2","1","1","3"]
+ksakit = sakit[Math.floor(Math.random() * sakit.length)]
 wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
 💵 money : $${getMoneyUser(sender)}
-🏯 health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}/25
-🏇 barakuda : ${getBarakudaUser(sender)}/25
+🏯 health : ${getHealthUser(sender)}
+🤺 samurai : ${getSamuraiUser(sender)}
+🏇 barakuda : ${getBarakudaUser(sender)}
 \n*musuh*
 💵 money : $${musuhm}
-🏯 health : ${musuhh}/100
-🤺 samurai : ${musuhs}/25
-🏇 barakuda : ${musuhb}/25`)
+🏯 health : ${musuhh}
+🤺 samurai : ${musuhs}
+🏇 barakuda : ${musuhb}`)
 hatinya = kamuh * 1
 samurainya = kamus * 1
 barakudanya = kamub * 1
 moneynya = kamum * 1
+sakitnya = ksakit * 1
 addHealthUser(sender, -hatinya)
 addSamuraiUser(sender, -samurainya)
 addBarakudaUser(sender, -barakudanya)
 addMoneyUser(sender, moneynya)
+addSamurai(sender, -ksakit)
 setTimeout( () => {
 reply(`*HASIL PERTEMPURAN*\n\n*kamu*
-💵 money : $${kamum}
-🏯 health : -${kamuh}/100
-🤺 samurai : -${kamus}/25
-🏇 barakuda : -${kamub}/25
+💵 money : +$${kamum}
+🏯 health : -${kamuh}
+🤺 samurai : -${kamus}
+🏇 barakuda : -${kamub}
+🚑 terluka : +${ksakit}
 \n*musuh*
 💵 money : -$${musuhm}
-🏯 health : -${musuhh}/100
-🤺 samurai : -${musuhs}/25
-🏇 barakuda : -${musuhb}/25\n\nPEMENANG: *${jadi}*`)
+🏯 health : -${musuhh}
+🤺 samurai : -${musuhs}
+🏇 barakuda : -${musuhb}
+🚑 terluka : +${msakit}\n\n*KAMU* : ${jadi}`)
 }, 5000)
+addPendudukUser(sender, 2)
+break
+
+case 'heal':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getHospitalUser(sender)) return reply(`Kamu belum membangun rumah sakit atau hospital`)
+sakit = getPasienUser(sender)
+jumlah = sakit * 1
+addPasienUser(sender, -jumlah)
+addPendudukUser(sender, jumlah)
+addMoneyUser(sender, -3)
+reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $3 untuk pengobatan`)
 break
 
 case 'barak':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
-if (getSamuraiUser(sender) > 24) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
-if (getSamuraiUser(sender) == 24) return reply(`Jumlah Personil Samurai Kamu Telah Max`)
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
-if (getMoneyUser(sender) >= bayar ) {
-addMoneyUser(sender, -bayar)
+if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getPendudukUser(sender) >= bayar ) {
+addPendudukUser(sender, -bayar)
 addSamuraiUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
 } 
 } else if (args[0]=="barakuda") {
-if (getBarakudaUser(sender) > 24) return reply(`Jumlah Personil Barakuda Kamu Telah Telah Mencampai Limit`)
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
-money = 2
+money = 1
 amount = payout * 1
 bayar = payout * money
-if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
-if (getMoneyUser(sender) >= bayar ) {
-addMoneyUser(sender, -bayar)
+if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getPendudukUser(sender) >= bayar ) {
+addPendudukUser(sender, -bayar)
 addBarakudaUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Barakuda Sebanyak ${payout}`)
 } 
 } else if (args[0]=="benteng") {
 if (getBentengUser(sender) > 0) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
-ppp = `${args.join(' ')}`
-payout = ppp.split(" ")[1];
-money = 10
-amount = payout * 1
-bayar = payout * money
+bayar = 1 * 10
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
-addBentengUser(sender, amount)
+addBentengUser(sender, 1)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
 } 
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n\nLIST LATIH BARAK YG TERSEDIA\n- samurai\n- barakuda\n- benteng`)}
+} else if (args[0]=="ramuan") {
+bayar = 1 * 5
+if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getMoneyUser(sender) >= bayar ) {
+addMoneyUser(sender, -bayar)
+summon = getHealthUser(sender)
+addHealthUser(sender, -summon)
+addHealthUser(sender, 100)
+await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
+} 
+} else if (args[0]=="house") {
+if (getHouseUser(sender) > 0) return reply(`Rumah Yang Kamu Buat Telah Mencampai Batas Maximal`)
+bayar = 1 * 15
+if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getMoneyUser(sender) >= bayar ) {
+addMoneyUser(sender, -bayar)
+addHouseUser(sender, 1)
+await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Penduduk`)
+} 
+} else if (args[0]=="hospital") {
+if (getHospitalUser(sender) > 0) return reply(`Hospital Yang Kamu Buat Telah Mencampai Batas Maximal`)
+bayar = 1 * 20
+if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getMoneyUser(sender) >= bayar ) {
+addMoneyUser(sender, -bayar)
+addHospitalUser(sender, 1)
+await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Sakit Untuk Tentara Yang Terluka`)
+} 
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n\nLIST LATIH BARAK YG TERSEDIA\n- samurai\n- barakuda\n- benteng\n- ramuan\n- house`)}
 break
 
 case 'daftar':
@@ -867,7 +1020,7 @@ break
 						client.sendMessage(from, buffer, image, {quoted: fakeimage, caption: '>//<'})
 						fs.unlinkSync(ran)
 					})
-					
+addPendudukUser(sender, 2)
 break
 			
 case 'desa':
@@ -875,10 +1028,16 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 reply(`💵 money : $${getMoneyUser(sender)}
 
 *Pertahanan*
-🏯 health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}/25
-🏇 barakuda : ${getBarakudaUser(sender)}/25
-⛩ benteng : ${getBentengUser(sender)}/1`)
+🏯 health : ${getHealthUser(sender)}
+🤺 samurai : ${getSamuraiUser(sender)}
+🏇 barakuda : ${getBarakudaUser(sender)}
+⛩  benteng : ${getBentengUser(sender)}/1
+
+*Sosial*
+👥 penduduk : ${getPendudukUser(sender)}
+🏢 hospital : ${getHospitalUser(sender)}/1
+🏠 house : ${getHouseUser(sender)}/1
+🚑 pasien : ${getPasienUser(sender)}`)
 break
 
 case 'warning':
@@ -1298,16 +1457,20 @@ break
               if (buttonsR === 'MENU') {
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`*INFROMATION SYSTEM BOT*
-
+teks =`*INFORMASI*
 ❒ name ${pushname}
 ❒ money $${getMoneyUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
 ❒ user ${_badword.length} active
 
-*LIST FITUR WHATSAPP BOT*   
+*RPG MENU*
+❒ ${prefix2}desa
+❒ ${prefix2}barak
+❒ ${prefix2}training
+❒ ${prefix2}heal
 
+*GRUP MENU*   
 ❒ ${prefix2}tagall
 ❒ ${prefix2}kick
 ❒ ${prefix2}add
@@ -1318,10 +1481,13 @@ teks =`*INFROMATION SYSTEM BOT*
 ❒ ${prefix2}warning
 ❒ ${prefix2}hidetag
 ❒ ${prefix2}open/close
+
+*OTHER MENU*
 ❒ ${prefix2}broadcast
 ❒ ${prefix2}sticker
 ❒ ${prefix2}toimg`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
+addPendudukUser(sender, 2)
 break
 }
 
