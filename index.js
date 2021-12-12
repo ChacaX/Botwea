@@ -600,9 +600,94 @@ reply(`Kirim gambar dengan caption ${prefix2}sticker atau tag gambar yang sudah 
 }
 break
 
+case 'training':
+musuh = ["1","2","3","4","5","6","7","8","9","10","11","12"]
+damage = ["10","20","30","5"]
+musuhs = musuh[Math.floor(Math.random() * musuh.length)]
+musuhb = musuh[Math.floor(Math.random() * musuh.length)]
+musuhh = damage[Math.floor(Math.random() * damage.length)]
+kamu = ["1","2","3","4","5"]
+damage = ["10","5"]
+kamuu = ["4","5","7","10"]
+kamus = kamu[Math.floor(Math.random() * kamu.length)]
+kamub = kamu[Math.floor(Math.random() * kamu.length)]
+kamuh = damage[Math.floor(Math.random() * damage.length)]
+kamum = kamuu[Math.floor(Math.random() * kamuu.length)]
+wl = ["menang","kalah","menang"]
+jadi = wl[Math.floor(Math.random() * wl.length)]
+reply(`Memulai Pertempuran\n\n*kamu*
+💵 money : $${getMoneyUser(sender)}
+🏯 health : ${getHealthUser(sender)}/100
+🤺 samurai : ${getSamuraiUser(sender)}/25
+🏇 barakuda : ${getBarakudaUser(sender)}/25
+\n*musuh*
+💵 money : $${musuhm}
+🏯 health : ${musuhh}/100
+🤺 samurai : ${musuhs}/25
+🏇 barakuda : ${musuhb}/25`)
+hatinya = kamuh * 1
+samurainya = kamus * 1
+barakudanya = kamub * 1
+moneynya = kamum * 1
+addHealthUser(sender, -hatinya)
+addSamuraiUser(sender, -samurainya)
+addBarakudaUser(sender, -barakudanya)
+addMoneyUser(sender, moneynya)
+setTimeout( () => {
+reply(`*HASIL PERTEMPURAN*\n\n*kamu*
+💵 money : $${kamum}
+🏯 health : -${kamuh}/100
+🤺 samurai : -${kamus}/25
+🏇 barakuda : -${kamub}/25
+\n*musuh*
+💵 money : -$${musuhm}
+🏯 health : -${musuhh}/100
+🤺 samurai : -${musuhs}/25
+🏇 barakuda : -${musuhb}/25\n\nPEMENANG: *${jadi}*`)
+}, 5000)
+break
+
+case 'barak':
+if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
+if (args[0]=="samurai") {
+if (getSamuraiUser(sender) === 25) return reply(`Jumlah Personil Samurai Kamu Telah Telah Mencampai Limit`)
+payout = args.length[2]
+money = 1
+bayar = payout * money
+if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getMoneyUser(sender) >= bayar ) {
+addMoneyUser(sender, -bayar)
+addSamuraiUser(sender, payout)
+await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
+} 
+} else if (args[0]=="barakuda") {
+if (getBarakudaUser(sender) === 25) return reply(`Jumlah Personil Barakuda Kamu Telah Telah Mencampai Limit`)
+payout = args.length[2]
+money = 2
+bayar = payout * money
+if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getMoneyUser(sender) >= bayar ) {
+addMoneyUser(sender, -bayar)
+addBarakudaUser(sender, payout)
+await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Barakuda Sebanyak ${payout}`)
+} 
+} else if (args[0]=="benteng") {
+if (getBentengUser(sender) === 1) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
+payout = args.length[2]
+money = 10
+bayar = payout * money
+if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getMoneyUser(sender) >= bayar ) {
+addMoneyUser(sender, -bayar)
+addBentengUser(sender, payout)
+await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
+} 
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n\nLIST LATIH BARAK YG TERSEDIA\n- samurai\n- barakuda\n- benteng`)}
+break
+
 case 'daftar':
 if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
-addRpgId(sender)
+await addRpgId(sender)
 reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}\n\nKetik /desa untuk melihat perkembangan desamu`)
 break
 				
