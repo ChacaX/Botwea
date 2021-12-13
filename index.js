@@ -1213,7 +1213,7 @@ reply(`💵 money : $${getMoneyUser(sender)}
 
 *Ekonomi*
 🏗 pabrik : ${getPabrikUser(sender)}/1
-🗽 monumen : ${getMonumen(sender)}/1
+🗽 monumen : ${getMonumenUser(sender)}/1
 ⛲ hiburan : ${getHiburanUser(sender)}/1`)
 break
 
