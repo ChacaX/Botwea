@@ -663,6 +663,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}barak
 ❒ ${prefix2}bangun
 ❒ ${prefix2}training
+❒ ${prefix2}bank
 ❒ ${prefix2}heal
 
 *GRUP MENU*   
@@ -954,33 +955,28 @@ break
 
 case 'bank':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-if (!getPabrikUser(sender)) {
+if (args[0]=="pabrik") {
+if (!getPabrikUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
 reply(`tunggu 10 menit untuk mencairkan money`)
 setTimeout( () => {
 addMoneyUser(sender, 5)
 reply(`kamu mendapatkan money sebanyak $5`)
 }, 600000)
-} else if (!getMonumenUser(sender)) {
+} else if (args[0]=="monumen") {
+ if (!getMonumenUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
 reply(`tunggu 5 menit untuk mencairkan money`)
 setTimeout( () => {
 addMoneyUser(sender, 4)
 reply(`kamu mendapatkan money sebanyak $4`)
 }, 300000)
-} else if (!getHiburanUser(sender)) {
+} else if (args[0]=="hiburan") {
+ if (!getHiburanUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
 reply(`tunggu 5 menit untuk mencairkan money`)
 setTimeout( () => {
 addMoneyUser(sender, 3)
 reply(`kamu mendapatkan money sebanyak $3`)
 }, 300000)
-} else if (!getPabrikUser(sender)) {
-if (!getHiburanUser(sender)) return
-if (!getMonumenUser(sender)) return
-reply(`tunggu 20 menit untuk mencairkan money`)
-setTimeout( () => {
-addMoneyUser(sender, 15)
-reply(`kamu mendapatkan money sebanyak $15`)
-}, 1200000)
-}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bank pabrik\n\nLIST BANGUNAN YG TERSEDIA\n- pabrik\n- upah $5 money\n\n- monumen\n- upah $4 money\n\n- hiburan\n- upah $3 money`)}
 break
 
 case 'barak':
@@ -1646,6 +1642,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}barak
 ❒ ${prefix2}bangun
 ❒ ${prefix2}training
+❒ ${prefix2}bank
 ❒ ${prefix2}heal
 
 *GRUP MENU*   
