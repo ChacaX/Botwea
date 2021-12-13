@@ -661,6 +661,7 @@ teks =`*INFORMASI*
 *RPG MENU*
 ❒ ${prefix2}desa
 ❒ ${prefix2}barak
+❒ ${prefix2}bangun
 ❒ ${prefix2}training
 ❒ ${prefix2}heal
 
@@ -979,6 +980,7 @@ setTimeout( () => {
 addMoneyUser(sender, 15)
 reply(`kamu mendapatkan money sebanyak $15`)
 }, 1200000)
+}
 break
 
 case 'barak':
@@ -1642,6 +1644,7 @@ teks =`*INFORMASI*
 *RPG MENU*
 ❒ ${prefix2}desa
 ❒ ${prefix2}barak
+❒ ${prefix2}bangun
 ❒ ${prefix2}training
 ❒ ${prefix2}heal
 
