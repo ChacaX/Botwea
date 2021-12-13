@@ -802,15 +802,15 @@ musuhb = musuh[Math.floor(Math.random() * musuh.length)]
 musuhh = damage[Math.floor(Math.random() * damage.length)]
 sakit = ["2","1","1","3"]
 msakit = sakit[Math.floor(Math.random() * sakit.length)]
-kamu = ["1","2","3","4","5"]
-damage = ["10","5"]
+kamu = ["1","2","3","4","5","6","7","8"]
+damage = ["10","5","15","45","10","10"]
 kamuu = ["9","10","7","8"]
 kamus = kamu[Math.floor(Math.random() * kamu.length)]
 kamub = kamu[Math.floor(Math.random() * kamu.length)]
 kamuh = damage[Math.floor(Math.random() * damage.length)]
 kamum = kamuu[Math.floor(Math.random() * kamuu.length)]
 musuhm = kamuu[Math.floor(Math.random() * kamuu.length)]
-sakit = ["2","1","1"]
+sakit = ["2","5","3"]
 ksakit = sakit[Math.floor(Math.random() * sakit.length)]
 esakit = sakit[Math.floor(Math.random() * sakit.length)]
 wl = ["menang","kalah","menang"]
@@ -857,9 +857,9 @@ addPendudukUser(sender, 2)
 if (getBentengUser(sender)) return
 jarah = ["1","2","3","4"]
 jarahpenduduk = jarah[Math.floor(Math.random() * jarah.length)]
-jarah2 = ["5","10","5","5"]
+jarah2 = ["15","10","25","5"]
 jarahnyawa = jarah2[Math.floor(Math.random() * jarah2.length)]
-jarah3 = ["2","5","4","3"]
+jarah3 = ["7","5","4","3"]
 jarahuang = jarah3[Math.floor(Math.random() * jarah3.length)]
 uwang = jarahuang * 1
 nyawa = jarahnyawa * 1
@@ -882,8 +882,8 @@ sakit = getPasienUser(sender)
 jumlah = sakit * 1
 addPasienUser(sender, -jumlah)
 addPendudukUser(sender, jumlah)
-addMoneyUser(sender, -3)
-reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $3 untuk pengobatan`)
+addMoneyUser(sender, -5)
+reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $5 untuk pengobatan`)
 break
 
 case 'bangun':
@@ -904,7 +904,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Penduduk`)
 } 
 } else if (args[0]=="hospital") {
 if (getHospitalUser(sender) > 0) return reply(`Hospital Yang Kamu Buat Telah Mencampai Batas Maximal`)
-bayar = 1 * 20
+bayar = 1 * 30
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
@@ -913,7 +913,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Sakit Untuk Te
 } 
 } else if (args[0]=="benteng") {
 if (getBentengUser(sender) > 0) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
-bayar = 1 * 30
+bayar = 1 * 50
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
@@ -922,7 +922,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
 } 
 } else if (args[0]=="pabrik") {
 if (getPabrikUser(sender) > 0) return reply(`Pabrik Yang Kamu Buat Telah Mencampai Batas Maximal`)
-bayar = 1 * 15
+bayar = 1 * 45
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
@@ -932,7 +932,7 @@ reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else if (args[0]=="monumen") {
 if (getMonumenUser(sender) > 0) return reply(`Monument Yang Kamu Buat Telah Mencampai Batas Maximal`)
-bayar = 1 * 25
+bayar = 1 * 35
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
@@ -942,7 +942,7 @@ reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else if (args[0]=="hiburan") {
 if (getHiburanUser(sender) > 0) return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
-bayar = 1 * 5
+bayar = 1 * 20
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
@@ -950,7 +950,7 @@ addHiburanUser(sender, 1)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi Penduduk`)
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bangun house\n\nLIST BANGUNAN YG TERSEDIA\n- hospital\n- harga $20 money\n\n- house\n- harga $10 money\n\n- benteng\n- harga $30 money\n\n- pabrik\n- harga $15 money\n\n- monumen\n- harga $25 money\n\n- hiburan\n- harga $5 money`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bangun house\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ hospital\n💵 harga $30 money\n\n2⃣ house\n💵 harga $10 money\n\n3⃣ benteng\n💵 harga $50 money\n\n4⃣ pabrik\n💵 harga $45 money\n\n5⃣ monumen\n💵 harga $35 money\n\n6⃣ hiburan\n💵 harga $20 money`)}
 break
 
 case 'bank':
@@ -976,7 +976,7 @@ setTimeout( () => {
 addMoneyUser(sender, 3)
 reply(`kamu mendapatkan money sebanyak $3`)
 }, 300000)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bank pabrik\n\nLIST BANGUNAN YG TERSEDIA\n- pabrik\n- upah $5 money\n\n- monumen\n- upah $4 money\n\n- hiburan\n- upah $3 money`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bank pabrik\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ pabrik\n💵 upah $5 money\n\n2⃣ monumen\n💵 upah $4 money\n\n3⃣ hiburan\n💵 upah $3 money`)}
 break
 
 case 'barak':
@@ -1006,7 +1006,7 @@ addBarakudaUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Barakuda Sebanyak ${payout}`)
 } 
 } else if (args[0]=="ramuan") {
-bayar = 1 * 5
+bayar = 1 * 15
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
@@ -1015,7 +1015,7 @@ addHealthUser(sender, -summon)
 addHealthUser(sender, 100)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
 } 
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n\nLIST LATIH BARAK YG TERSEDIA\n- samurai\n- harga 1 penduduk\n\n- barakuda\n- harga 1 penduduk\n\n- ramuan\n- harga $5 money`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n\nLIST LATIH BARAK YG TERSEDIA\n\n1⃣ samurai\n💵 harga 1 penduduk\n\n2⃣ barakuda\n💵 harga 1 penduduk\n\n3⃣ ramuan\n💵 harga $15 money`)}
 break
 
 case 'daftar':
