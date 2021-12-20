@@ -1,3 +1,20 @@
+//===============( CREDIT SC INI )===============
+//[ base sc : mhankbarbar ] 
+//[ recode sc : mitsuha ]
+//[ eror? silahkan hubungi wa.me/6285731261728 ] 
+//[ thanks to : mhankbarbar, mitsuha, ridwan ] 
+//===============( PESAN SC INI )===============
+//[ berdebah anda china sialan ] 
+//[ taiwan adalah negara yang makmur ] 
+//[ saya benci rasis sebesar benci saya terhadapat china ] 
+//[ anda sipit sialan :v ] 
+//===============( CREDIT SYSTEM )===============
+//[ hapus thanks to -500 sosial credits ] 
+//[ menjual sc ini -200 sosial credits ] 
+//[ berteman dengan dev +999 sosial credits ] 
+//[ nonton kartun telanjang -999999 sosial credits] 
+//=============================================
+
 const {
     WAConnection,
     MessageType,
@@ -171,7 +188,7 @@ return _rpg[position].i
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 5, h: 0, i: 0, j:0, k:0, l:0, m:0}
+const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 5, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -210,6 +227,81 @@ position = i
 })
 if (position !== false) {
 return _rpg[position].b
+}
+}
+
+const addKerjaPabrikUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].n += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getKerjaPabrikUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].n
+}
+}
+
+const addKerjaMonumentUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].o += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getKerjaMonumentUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].o
+}
+}
+
+const addKerjaHiburanUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].p += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getKerjaHiburanUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].p
 }
 }
 
@@ -663,6 +755,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}barak
 ❒ ${prefix2}bangun
 ❒ ${prefix2}training
+❒ ${prefix2}war
 ❒ ${prefix2}bank
 ❒ ${prefix2}heal
 
@@ -714,6 +807,128 @@ await client.relayWAMessage(gwekke)
 if (!getHouseUser(sender)) return
 addPendudukUser(sender, 5)
 addMoneyUser(sender, 5)
+break
+
+case 'war':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
+musuh = args.join(" ")
+if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
+if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
+if (getBarakudaUser(sender) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
+if (getHealthUser(`${musuh.split("@")`) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
+if (getSamuraiUser(`${musuh.split("@")`) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
+if (getBarakudaUser(`${musuh.split("@")`) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
+pemain = [`@${sender.split("@s.whatsapp.net")}`,`${musuh.split("@s.whatsapp.net")}`] 
+user = pemain[Math.floor(Math.random() * pemain.length)]
+//==================================
+/*SENDER & MUSUH*/
+a1 = getHealthUser(sender) 
+a2 = getSamuraiUser(sender) 
+a3 = getBarakudaUser(sender) 
+a4 = getBentengUser(sender)
+a5 = getMoneyUser(sender)
+b1 = getHealthUser(`${musuh.split("@")}`) 
+b2 = getSamuraiUser(`${musuh.split("@")}`) 
+b3 = getBarakudaUser(`${musuh.split("@")}`) 
+b4 = getBentengUser(`${musuh.split("@")}`)
+b5 = getMoneyUser(`${musuh.split("@")}`)
+//==================================
+/*SENDER & MUSUH*/
+sam = [`5`,`6`,`8`,`10`,`11`,`13`,`15`] 
+samurai = sam[Math.floor(Math.random() * sam.length)]
+samuraix = sam[Math.floor(Math.random() * sam.length)]
+bar = [`5`,`6`,`8`,`10`,`11`,`13`] 
+barakuda = bar[Math.floor(Math.random() * bar.length)]
+barakudax = bar[Math.floor(Math.random() * bar.length)]
+heal = [`5`,`15`,`15`,`10`,`20`,`15`] 
+health = heal[Math.floor(Math.random() * heal.length)]
+healthx = heal[Math.floor(Math.random() * heal.length)]
+pas = [`5`,`10`,`15`,`5`,`7`,`5`] 
+pasien = pas[Math.floor(Math.random() * pas.length)]
+pasienx = pas[Math.floor(Math.random() * pas.length)]
+u = [`25`,`15`,`35`,`30`,`20`,`15`] 
+money = u[Math.floor(Math.random() * u.length)]
+moneyx = u[Math.floor(Math.random() * u.length)]
+be = [`-1`,`0`,`0`,`0`,`0`,`0`] 
+benteng = be[Math.floor(Math.random() * be.length)]
+bentengx = be[Math.floor(Math.random() * be.length)]
+//==================================
+/*SENDER & MUSUH*/
+samurainya = samurai * 1
+samurainyax = samuraix * 1
+barakudanya = barakuda * 1
+barakudanyax = barakudax * 1
+healthnya = health * 1
+healthnyax = healthx * 1
+pasiennya = pasien * 1
+pasiennyax = pasienx * 1
+moneynya = money * 1
+moneynyax = moneyx * 1
+bentengnya = benteng * 1
+bentengnyax = bentengx * 1
+//==================================
+/*AWAL PERANG*/
+reply(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}
+💵 money : $${getMoneyUser(sender)}
+🏯 health : ${getHealthUser(sender)}/100
+🤺 samurai : ${getSamuraiUser(sender)}
+🏇 barakuda : ${getBarakudaUser(sender)}
+⛩  benteng : ${getBentengUser(sender)}/1
+
+*TIM BIRU DESA ${musuh.split("@s.whatsapp.net")}
+💵 money : $${b5}
+🏯 health : ${b1}/100
+🤺 samurai : ${b2}
+🏇 barakuda : ${b3}
+⛩  benteng : ${b4}/1
+
+*PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`)
+//==================================
+/*TENGAH PERANG*/
+setTimeout( () => {
+reply(`*TIM MERAH VS TIM BIRU*
+
+🏇 ${getBarakudaUser(sender)} vs 🏇 ${b3} 
+🤺 ${getSamuraiUser(sender)} vs 🤺 ${b2}`) 
+}, 10000)
+//==================================
+/*AKHIR PERANG*/
+setTimeout( () => {
+reply(`*HASIL PERTEMPURAN
+
+DESA @${sender.split("@s.whatsapp.net")}
+💵 money : +$${money}
+🏯 health : -${health}/100
+🤺 samurai : -${samurai}
+🏇 barakuda : -${barakuda}
+⛩  benteng : ${benteng}/1
+🚑 pasien : +${pasien}
+
+DESA ${musuh.split("@s.whatsapp.net")}
+💵 money : +$${moneyx}
+🏯 health : -${healthx}/100
+🤺 samurai : -${samuraix}
+🏇 barakuda : -${barakudax}
+⛩  benteng : ${bentengx}/1
+🚑 pasien : +${pasienx}
+
+*PEMENANG*: ${user}`) 
+}, 5000)
+//==================================
+/*FUNC RPG MUSUH & SENDER*/
+addHealthUser(sender, healthnya) 
+addHealthUser(`${musuh.split("@")}`, healthnyax)
+addSamuraiUser(sender, samurainya) 
+addSamuraiUser(`${musuh.split("@"}`, samurainyax)
+addBarakudaUser(sender, barakudanya) 
+addBarakudaUser(`${musuh.split("@")}`, barakudanyax) 
+addMoneyUser(sender, moneynya) 
+addMoneyUser(`${musuh.split("@")}`, moneynyax) 
+addPasienUser(sender, pasiennya) 
+addPasienUser(`${musuh.split("@")}`, pasiennyax) 
+addBentengUser(sender, bentengnya) 
+addBentengUser(`${musuh.split("@")}`, bentengnyax) 
 break
 
 case 'stiker':
@@ -852,7 +1067,7 @@ reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 🤺 samurai : -${musuhs}
 🏇 barakuda : -${musuhb}
 🚑 terluka : +${msakit}\n\n*KAMU* : ${jadi}`)
-}, 5000)
+}, 10000)
 addPendudukUser(sender, 2)
 if (getBentengUser(sender)) return
 jarah = ["1","2","3","4"]
@@ -871,8 +1086,8 @@ addPendudukUser(sender, -penduduk)
 reply(`*DESAMU DIJARAH!!!*\n\n*riwayat*
 💵 money -$${jarahuang}
 🏯 health : -${jarahnyawa}/100
-🚑 terluka : -${jarahpenduduk}`)
-}, 60000)
+🚑 terluka : +${jarahpenduduk}`)
+}, 120000)
 break
 
 case 'heal':
@@ -957,24 +1172,33 @@ case 'bank':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="pabrik") {
 if (!getPabrikUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
+If (getKerjaPabrikUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 10 menit untuk mencairkan money`)
+addKerjaPabrikUser(sender, 1)
 setTimeout( () => {
 addMoneyUser(sender, 5)
 reply(`kamu mendapatkan money sebanyak $5`)
+addKerjaPabrikUser(sender, -1)
 }, 600000)
 } else if (args[0]=="monumen") {
  if (!getMonumenUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
+If (getKerjaMonumentUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 5 menit untuk mencairkan money`)
+addKerjaMonumentUser(sender, 1)
 setTimeout( () => {
 addMoneyUser(sender, 4)
 reply(`kamu mendapatkan money sebanyak $4`)
+addKerjaMonumentUser(sender, -1)
 }, 300000)
 } else if (args[0]=="hiburan") {
  if (!getHiburanUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
+If (getKerjaHiburanUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 5 menit untuk mencairkan money`)
+addKerjaHiburanUser(sender, 1)
 setTimeout( () => {
 addMoneyUser(sender, 3)
 reply(`kamu mendapatkan money sebanyak $3`)
+addKerjaHiburanUser(sender, -1)
 }, 300000)
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bank pabrik\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ pabrik\n💵 upah $5 money\n\n2⃣ monumen\n💵 upah $4 money\n\n3⃣ hiburan\n💵 upah $3 money`)}
 break
@@ -1642,6 +1866,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}barak
 ❒ ${prefix2}bangun
 ❒ ${prefix2}training
+❒ ${prefix2}war
 ❒ ${prefix2}bank
 ❒ ${prefix2}heal
 
