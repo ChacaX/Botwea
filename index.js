@@ -920,7 +920,7 @@ DESA ${musuh.split("@s.whatsapp.net")}
 addHealthUser(sender, healthnya) 
 addHealthUser(`${musuh.split("@")}`, healthnyax)
 addSamuraiUser(sender, samurainya) 
-addSamuraiUser(`${musuh.split("@"}`, samurainyax)
+addSamuraiUser(`${musuh.split("@")}`, samurainyax)
 addBarakudaUser(sender, barakudanya) 
 addBarakudaUser(`${musuh.split("@")}`, barakudanyax) 
 addMoneyUser(sender, moneynya) 
