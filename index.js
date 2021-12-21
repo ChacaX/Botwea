@@ -1106,7 +1106,7 @@ addMoneyUser(sender, 3)
 reply(`kamu mendapatkan money sebanyak $3`)
 addKerjaHiburanUser(sender, -1)
 }, 300000)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\nketik : /bank <query>\nexample : /bank pabrik\n\n/bank pabrik:        $5\n/bank monumen:        $4\n/bank hiburan:        $3`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n\n$5 - pabrik\n$4 - monumen\n$3 - hiburan`)}
 break
 
 case 'buy':
@@ -1218,7 +1218,7 @@ addPasienUser(sender, -jumlah)
 addPendudukUser(sender, jumlah)
 addMoneyUser(sender, -10)
 reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n\nsamurai:        1 \nbarakuda:        1 \nramuan:        $15 dolar\nhouse:        $15\nhospital:        $30\nbenteng:        $50\npabrik:        $45\nmonumen:        $35\nhiburan:        $20\nobat:        $10`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n\n1 - samurai\n1 - barakuda\n$15 - ramuan\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monument\n$20 - hiburan\n$10 - obat`)}
 break
 
 case 'daftar':
