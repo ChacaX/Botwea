@@ -1161,7 +1161,7 @@ break
 case 'donasi':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-o = args.join[0];
+o = body.slice(7)
 if (args.length < 1) return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /donasi @tagmem samurai 5\n
 =============================\n\nLIST DONASI YG TERSEDIA\n\n1⃣ samurai\n2⃣ barakuda\n3⃣ penduduk\n4⃣ money`) 
 if (!getRpgId(`${o.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar ketik /daftar untuk akses bot_`)
