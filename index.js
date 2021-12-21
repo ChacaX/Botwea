@@ -932,7 +932,6 @@ addPasienUser(`${musuh.split('@')[0]}`, pasiennyax)
 addBentengUser(sender, bentengnya) 
 addBentengUser(`${musuh.split('@')[0]}`, bentengnyax) 
 }
-}
 break
 
 case 'stiker':
