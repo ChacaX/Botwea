@@ -1172,7 +1172,7 @@ case 'bank':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="pabrik") {
 if (!getPabrikUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-If (getKerjaPabrikUser(sender) > 0) {
+if (getKerjaPabrikUser(sender) > 0) 
 reply(`tunggu 10 menit untuk mencairkan money`)
 addKerjaPabrikUser(sender, 1)
 setTimeout( () => {
@@ -1180,10 +1180,9 @@ addMoneyUser(sender, 5)
 reply(`kamu mendapatkan money sebanyak $5`)
 addKerjaPabrikUser(sender, -1)
 }, 600000)
-} 
 } else if (args[0]=="monumen") {
  if (!getMonumenUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-If (getKerjaMonumentUser(sender) > 0) {
+if (getKerjaMonumentUser(sender) > 0) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaMonumentUser(sender, 1)
 setTimeout( () => {
@@ -1191,10 +1190,9 @@ addMoneyUser(sender, 4)
 reply(`kamu mendapatkan money sebanyak $4`)
 addKerjaMonumentUser(sender, -1)
 }, 300000)
-} 
 } else if (args[0]=="hiburan") {
  if (!getHiburanUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-If (getKerjaHiburanUser(sender) > 0) {
+if (getKerjaHiburanUser(sender) > 0) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaHiburanUser(sender, 1)
 setTimeout( () => {
@@ -1202,7 +1200,6 @@ addMoneyUser(sender, 3)
 reply(`kamu mendapatkan money sebanyak $3`)
 addKerjaHiburanUser(sender, -1)
 }, 300000)
-} 
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bank pabrik\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ pabrik\n💵 upah $5 money\n\n2⃣ monumen\n💵 upah $4 money\n\n3⃣ hiburan\n💵 upah $3 money`)}
 break
 
