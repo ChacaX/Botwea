@@ -1208,7 +1208,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi 
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else if (args[0]=="obat") {
-if (getPasienUser(sender)  return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getPasienUser(sender)) return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
 if (!getHospitalUser(sender)) return reply(`Kamu belum membangun rumah sakit atau hospital`)
 if (getPasienUser(sender) < 10) return reply(`maaf pasien mu belum mencukupi untuk disembuhkan, minimal 10`)
 if (getMoneyUser(sender) < 15) return reply(`maaf uang mu belum mencukupi untuk berobat , minimal $15`)
