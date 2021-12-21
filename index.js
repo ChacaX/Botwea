@@ -865,7 +865,7 @@ moneynya = money * 1
 moneynyax = moneyx * 1
 //==================================
 /*AWAL PERANG*/
-mentions(`*TIM MERAH @${sender.split("@s.whatsapp.net ")[0]}*
+mentions(`*TIM MERAH @${sender.split("@s.whatsapp.net ")}*
 💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
@@ -883,7 +883,7 @@ mentions(`*TIM MERAH @${sender.split("@s.whatsapp.net ")[0]}*
 setTimeout( () => {
 mentions(`*HASIL PERTEMPURAN*
 
-*DESA @${sender.split("@s.whatsapp.net")[1]}*
+*DESA @${sender.split("@s.whatsapp.net")}*
 💵 money : +$${money}
 🏯 health : -${health}/100
 🤺 samurai : -${samurai}
