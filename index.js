@@ -817,6 +817,7 @@ mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
 if (getBarakudaUser(sender) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
+if (getBentengUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 0) return reply(`maaf kamu tidak bisa menyerang orang yang telah mendirikan benteng`)
 if (getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 30) return reply(`maaf health lawan terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(`maaf samurai lawan belum mencukupi untuk bertempur, minimal 20`)
 if (getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(`maaf barakuda lawan belum mencukupi untuk bertempur, minimal 20`)
@@ -828,12 +829,10 @@ kamu = sender
 a1 = getHealthUser(sender) 
 a2 = getSamuraiUser(sender) 
 a3 = getBarakudaUser(sender) 
-a4 = getBentengUser(sender)
 a5 = getMoneyUser(sender)
 b1 = getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
 b2 = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
 b3 = getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
-b4 = getBentengUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
 b5 = getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
 //==================================
 /*SENDER & MUSUH*/
@@ -852,9 +851,6 @@ pasienx = pas[Math.floor(Math.random() * pas.length)]
 u = [`25`,`15`,`35`,`30`,`20`,`15`] 
 money = u[Math.floor(Math.random() * u.length)]
 moneyx = u[Math.floor(Math.random() * u.length)]
-be = [`0`,`0`,`-1`,`0`,`0`,`0`,`0`,`0`] 
-benteng = be[Math.floor(Math.random() * be.length)]
-bentengx = be[Math.floor(Math.random() * be.length)]
 //==================================
 /*SENDER & MUSUH*/
 samurainya = samurai * 1
@@ -867,47 +863,41 @@ pasiennya = pasien * 1
 pasiennyax = pasienx * 1
 moneynya = money * 1
 moneynyax = moneyx * 1
-bentengnya = benteng * 1
-bentengnyax = bentengx * 1
 //==================================
 /*AWAL PERANG*/
-mentions(`*TIM MERAH DESA @${kamu.split("@s.whatsapp.net")}*
+mentions(`*TIM MERAH @${kamu.split("@")[1]}*
 💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
-⛩  benteng : ${getBentengUser(sender)}/1
 
-*TIM BIRU DESA @${musuh.split('@s.whatsapp.net')[0]}*
+*TIM BIRU @${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 🏯 health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-⛩  benteng : ${getBentengUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/1
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //==================================
 /*AKHIR PERANG*/
 setTimeout( () => {
-mentions(`*HASIL PERTEMPURAN
+mentions(`*HASIL PERTEMPURAN*
 
-DESA @${kamu.split("@s.whatsapp.net")}
+*DESA @${kamu.split("@")[1]}*
 💵 money : +$${money}
 🏯 health : -${health}/100
 🤺 samurai : -${samurai}
 🏇 barakuda : -${barakuda}
-⛩  benteng : ${benteng}/1
 🚑 pasien : +${pasien}
 
-DESA @${musuh.split('@s.whatsapp.net')[0]}
+*DESA @${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : +$${moneyx}
 🏯 health : -${healthx}/100
 🤺 samurai : -${samuraix}
 🏇 barakuda : -${barakudax}
-⛩  benteng : ${bentengx}/1
 🚑 pasien : +${pasienx}
 
-*PEMENANG*: @${user}`, mentioned, true) 
+*PEMENANG*: ${user}`, mentioned, true) 
 }, 10000)
 //==================================
 /*FUNC RPG MUSUH & SENDER*/
