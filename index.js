@@ -871,7 +871,7 @@ bentengnya = benteng * 1
 bentengnyax = bentengx * 1
 //==================================
 /*AWAL PERANG*/
-reply(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}*
+mentions(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}*
 💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
@@ -885,7 +885,7 @@ reply(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}*
 🏇 barakuda : ${b3}
 ⛩  benteng : ${b4}/1
 
-*PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`)
+*PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //==================================
 /*TENGAH PERANG*/
 await setTimeout( () => {
@@ -893,11 +893,11 @@ reply(`*TIM MERAH VS TIM BIRU*
 
 🏇 ${getBarakudaUser(sender)} vs 🏇 ${b3} 
 🤺 ${getSamuraiUser(sender)} vs 🤺 ${b2}`) 
-}, 10000)
+}, 3000)
 //==================================
 /*AKHIR PERANG*/
 setTimeout( () => {
-reply(`*HASIL PERTEMPURAN
+mentions(`*HASIL PERTEMPURAN
 
 DESA @${sender.split("@s.whatsapp.net")}
 💵 money : +$${money}
@@ -915,8 +915,8 @@ DESA @${musuh.split('@s.whatsapp.net')[0]}
 ⛩  benteng : ${bentengx}/1
 🚑 pasien : +${pasienx}
 
-*PEMENANG*: ${user}`) 
-}, 5000)
+*PEMENANG*: ${user}`, mentioned, true) 
+}, 10000)
 //==================================
 /*FUNC RPG MUSUH & SENDER*/
 addHealthUser(sender, -healthnya) 
