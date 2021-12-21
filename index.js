@@ -812,6 +812,8 @@ break
 case 'war':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
+musuh = args.join(' ') 
+mentionedJid: [musuh]
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 if (mentioned.length > 0) {
 for (let musuh of mentioned) {
