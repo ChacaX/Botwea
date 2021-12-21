@@ -813,7 +813,7 @@ case 'war':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-if (mentioned.length > 1) {
+if (mentioned.length > 0) {
 for (let musuh of mentioned) {
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
