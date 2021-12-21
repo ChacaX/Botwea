@@ -13,8 +13,7 @@
 //[ menjual sc ini -200 sosial credits ] 
 //[ berteman dengan dev +999 sosial credits ] 
 //[ nonton kartun telanjang -999999 sosial credits] 
-//
-===========================================
+//===========================================
 
 const {
     WAConnection,
