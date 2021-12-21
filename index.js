@@ -1106,7 +1106,7 @@ addMoneyUser(sender, 3)
 reply(`kamu mendapatkan money sebanyak $3`)
 addKerjaHiburanUser(sender, -1)
 }, 300000)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n\n$5 - pabrik\n$4 - monumen\n$3 - hiburan`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n*_________________________________*\n$5 - pabrik\n$4 - monumen\n$3 - hiburan\n*_________________________________*`)}
 break
 
 case 'buy':
@@ -1208,17 +1208,16 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi 
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else if (args[0]=="obat") {
-if (getPasienUser(sender)) return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
 if (!getHospitalUser(sender)) return reply(`Kamu belum membangun rumah sakit atau hospital`)
 if (getPasienUser(sender) < 10) return reply(`maaf pasien mu belum mencukupi untuk disembuhkan, minimal 10`)
-if (getMoneyUser(sender) < 15) return reply(`maaf uang mu belum mencukupi untuk berobat , minimal $15`)
+if (getPasienUser(sender) < 15) return reply(`maaf uang mu belum mencukupi untuk berobat , minimal $15`)
 sakit = getPasienUser(sender)
 jumlah = sakit * 1
 addPasienUser(sender, -jumlah)
 addPendudukUser(sender, jumlah)
 addMoneyUser(sender, -10)
 reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n\n1 - samurai\n1 - barakuda\n$15 - ramuan\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monument\n$20 - hiburan\n$10 - obat`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - barakuda\n$15 - ramuan\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monument\n$20 - hiburan\n$10 - obat\n*_________________________________*`)}
 break
 
 case 'daftar':
