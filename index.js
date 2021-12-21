@@ -818,9 +818,9 @@ for (let musuh of mentioned) {
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
 if (getBarakudaUser(sender) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
-if (getHealthUser(`${musuh.split("@")}`) < 30) return reply(`maaf health lawan terlalu rendah untuk memulai pertempuran`)
-if (getSamuraiUser(`${musuh.split("@")}`) < 20) return reply(`maaf samurai lawan belum mencukupi untuk bertempur, minimal 20`)
-if (getBarakudaUser(`${musuh.split("@")}`) < 20) return reply(`maaf barakuda lawan belum mencukupi untuk bertempur, minimal 20`)
+if (getHealthUser(`${musuh.split('@')[0]}`) < 30) return reply(`maaf health lawan terlalu rendah untuk memulai pertempuran`)
+if (getSamuraiUser(`${musuh.split('@')[0]}`) < 20) return reply(`maaf samurai lawan belum mencukupi untuk bertempur, minimal 20`)
+if (getBarakudaUser(`${musuh.split('@')[0]}`) < 20) return reply(`maaf barakuda lawan belum mencukupi untuk bertempur, minimal 20`)
 pemain = [`@${sender.split("@s.whatsapp.net")}`,`${musuh.split("@s.whatsapp.net")}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 //==================================
@@ -830,11 +830,11 @@ a2 = getSamuraiUser(sender)
 a3 = getBarakudaUser(sender) 
 a4 = getBentengUser(sender)
 a5 = getMoneyUser(sender)
-b1 = getHealthUser(`${musuh.split("@")}`) 
-b2 = getSamuraiUser(`${musuh.split("@")}`) 
-b3 = getBarakudaUser(`${musuh.split("@")}`) 
-b4 = getBentengUser(`${musuh.split("@")}`)
-b5 = getMoneyUser(`${musuh.split("@")}`)
+b1 = getHealthUser(`${musuh.split('@')[0]}`) 
+b2 = getSamuraiUser(`${musuh.split('@')[0]}`) 
+b3 = getBarakudaUser(`${musuh.split('@')[0]}`) 
+b4 = getBentengUser(`${musuh.split('@')[0]}`)
+b5 = getMoneyUser(`${musuh.split('@')[0]}`)
 //==================================
 /*SENDER & MUSUH*/
 sam = [`5`,`6`,`8`,`10`,`11`,`13`,`15`] 
@@ -920,17 +920,17 @@ DESA ${musuh.split("@s.whatsapp.net")}
 //==================================
 /*FUNC RPG MUSUH & SENDER*/
 addHealthUser(sender, healthnya) 
-addHealthUser(`${musuh.split("@")}`, healthnyax)
+addHealthUser(`${musuh.split('@')[0]}`, healthnyax)
 addSamuraiUser(sender, samurainya) 
-addSamuraiUser(`${musuh.split("@")}`, samurainyax)
+addSamuraiUser(`${musuh.split('@')[0]}`, samurainyax)
 addBarakudaUser(sender, barakudanya) 
-addBarakudaUser(`${musuh.split("@")}`, barakudanyax) 
+addBarakudaUser(`${musuh.split('@')[0]}`, barakudanyax) 
 addMoneyUser(sender, moneynya) 
-addMoneyUser(`${musuh.split("@")}`, moneynyax) 
+addMoneyUser(`${musuh.split('@')[0]}`, moneynyax) 
 addPasienUser(sender, pasiennya) 
-addPasienUser(`${musuh.split("@")}`, pasiennyax) 
+addPasienUser(`${musuh.split('@')[0]}`, pasiennyax) 
 addBentengUser(sender, bentengnya) 
-addBentengUser(`${musuh.split("@")}`, bentengnyax) 
+addBentengUser(`${musuh.split('@')[0]}`, bentengnyax) 
 }
 }
 break
@@ -1176,7 +1176,7 @@ case 'bank':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="pabrik") {
 if (!getPabrikUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-if (getKerjaPabrikUser(sender) === 1) 
+if (getKerjaPabrikUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 10 menit untuk mencairkan money`)
 addKerjaPabrikUser(sender, 1)
 setTimeout( () => {
