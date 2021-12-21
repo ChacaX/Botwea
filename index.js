@@ -13,7 +13,8 @@
 //[ menjual sc ini -200 sosial credits ] 
 //[ berteman dengan dev +999 sosial credits ] 
 //[ nonton kartun telanjang -999999 sosial credits] 
-//=============================================
+//
+===========================================
 
 const {
     WAConnection,
@@ -827,7 +828,8 @@ if (getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(
 pemain = [`PENANTANG`,`${musuh.split('@s.whatsapp.net')[0]}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 kamu = sender
-//==================================
+//
+================================
 /*SENDER & MUSUH*/
 a1 = getHealthUser(sender) 
 a2 = getSamuraiUser(sender) 
@@ -837,7 +839,8 @@ b1 = getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
 b2 = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
 b3 = getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
 b5 = getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
-//==================================
+//
+================================
 /*SENDER & MUSUH*/
 sam = [`8`,`14`,`12`,`10`,`11`,`13`,`15`] 
 samurai = sam[Math.floor(Math.random() * sam.length)]
@@ -854,7 +857,8 @@ pasienx = pas[Math.floor(Math.random() * pas.length)]
 u = [`25`,`15`,`35`,`30`,`20`,`15`] 
 money = u[Math.floor(Math.random() * u.length)]
 moneyx = u[Math.floor(Math.random() * u.length)]
-//==================================
+//
+================================
 /*SENDER & MUSUH*/
 samurainya = samurai * 1
 samurainyax = samuraix * 1
@@ -866,7 +870,8 @@ pasiennya = pasien * 1
 pasiennyax = pasienx * 1
 moneynya = money * 1
 moneynyax = moneyx * 1
-//==================================
+//
+================================
 /*AWAL PERANG*/
 mentions(`*TIM MERAH PENANTANG*
 💵 money : $${getMoneyUser(sender)}
@@ -881,7 +886,8 @@ mentions(`*TIM MERAH PENANTANG*
 🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
-//==================================
+//
+================================
 /*AKHIR PERANG*/
 setTimeout( () => {
 mentions(`*HASIL PERTEMPURAN*
@@ -902,7 +908,8 @@ mentions(`*HASIL PERTEMPURAN*
 
 *PEMENANG*: ${user}`, mentioned, true) 
 }, 10000)
-//==================================
+//
+================================
 /*FUNC RPG MUSUH & SENDER*/
 addHealthUser(sender, -healthnya) 
 addHealthUser(`${musuh.split('@')[1]}`, -healthnyax)
@@ -1154,14 +1161,16 @@ addHiburanUser(sender, 1)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi Penduduk`)
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bangun house\n===============================\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ hospital\n💵 harga $30 money\n\n2⃣ house\n💵 harga $10 money\n\n3⃣ benteng\n💵 harga $50 money\n\n4⃣ pabrik\n💵 harga $45 money\n\n5⃣ monumen\n💵 harga $35 money\n\n6⃣ hiburan\n💵 harga $20 money`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bangun house\n
+=============================\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ hospital\n💵 harga $30 money\n\n2⃣ house\n💵 harga $10 money\n\n3⃣ benteng\n💵 harga $50 money\n\n4⃣ pabrik\n💵 harga $45 money\n\n5⃣ monumen\n💵 harga $35 money\n\n6⃣ hiburan\n💵 harga $20 money`)}
 break
 
 case 'donasi':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-o = args.join(" ") 
-if (args.length < 1) return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /donasi @tagmem samurai 5\n===============================\n\nLIST DONASI YG TERSEDIA\n\n1⃣ samurai\n2⃣ barakuda\n3⃣ penduduk\n4⃣ money`) 
+o = args.join[0];
+if (args.length < 1) return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /donasi @tagmem samurai 5\n
+=============================\n\nLIST DONASI YG TERSEDIA\n\n1⃣ samurai\n2⃣ barakuda\n3⃣ penduduk\n4⃣ money`) 
 if (!getRpgId(`${o.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[1]=="samurai") {
 if (getSamuraiUser(sender) < 1) return reply(`maaf samuraimu belum mencukupi untuk disumbangkan, minimal 2`)
@@ -1242,7 +1251,8 @@ addMoneyUser(sender, 3)
 reply(`kamu mendapatkan money sebanyak $3`)
 addKerjaHiburanUser(sender, -1)
 }, 300000)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bank pabrik\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ pabrik\n💵 upah $5 money\n\n2⃣ monumen\n💵 upah $4 money\n\n3⃣ hiburan\n💵 upah $3 money`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bank pabrik\n
+=============================\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ pabrik\n💵 upah $5 money\n\n2⃣ monumen\n💵 upah $4 money\n\n3⃣ hiburan\n💵 upah $3 money`)}
 break
 
 case 'barak':
@@ -1281,7 +1291,8 @@ addHealthUser(sender, -summon)
 addHealthUser(sender, 100)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
 } 
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n===============================\n\nLIST LATIH BARAK YG TERSEDIA\n\n1⃣ samurai\n💵 harga 1 penduduk\n\n2⃣ barakuda\n💵 harga 1 penduduk\n\n3⃣ ramuan\n💵 harga $15 money`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n
+=============================\n\nLIST LATIH BARAK YG TERSEDIA\n\n1⃣ samurai\n💵 harga 1 penduduk\n\n2⃣ barakuda\n💵 harga 1 penduduk\n\n3⃣ ramuan\n💵 harga $15 money`)}
 break
 
 case 'daftar':
