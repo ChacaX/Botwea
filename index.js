@@ -812,14 +812,14 @@ break
 case 'war':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
-musuh = body.slice(5)
+musuh = args.join(" ") 
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
 if (getBarakudaUser(sender) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
-if (getHealthUser(`${musuh.split('@')[0]}`) < 30) return reply(`maaf health lawan terlalu rendah untuk memulai pertempuran`)
-if (getSamuraiUser(`${musuh.split('@')[0]}`) < 20) return reply(`maaf samurai lawan belum mencukupi untuk bertempur, minimal 20`)
-if (getBarakudaUser(`${musuh.split('@')[0]}`) < 20) return reply(`maaf barakuda lawan belum mencukupi untuk bertempur, minimal 20`)
+if (getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 30) return reply(`maaf health lawan terlalu rendah untuk memulai pertempuran`)
+if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(`maaf samurai lawan belum mencukupi untuk bertempur, minimal 20`)
+if (getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(`maaf barakuda lawan belum mencukupi untuk bertempur, minimal 20`)
 pemain = [`@${sender.split("@s.whatsapp.net")}`,`${musuh.split('@s.whatsapp.net')[0]}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 kamu = sender
@@ -830,11 +830,11 @@ a2 = getSamuraiUser(sender)
 a3 = getBarakudaUser(sender) 
 a4 = getBentengUser(sender)
 a5 = getMoneyUser(sender)
-b1 = getHealthUser(`${musuh.split('@')[0]}`) 
-b2 = getSamuraiUser(`${musuh.split('@')[0]}`) 
-b3 = getBarakudaUser(`${musuh.split('@')[0]}`) 
-b4 = getBentengUser(`${musuh.split('@')[0]}`)
-b5 = getMoneyUser(`${musuh.split('@')[0]}`)
+b1 = getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
+b2 = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
+b3 = getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
+b4 = getBentengUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
+b5 = getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
 //==================================
 /*SENDER & MUSUH*/
 sam = [`5`,`6`,`8`,`10`,`11`,`13`,`15`] 
@@ -879,11 +879,11 @@ mentions(`*TIM MERAH DESA @${kamu.split("@s.whatsapp.net")}*
 ⛩  benteng : ${getBentengUser(sender)}/1
 
 *TIM BIRU DESA @${musuh.split('@s.whatsapp.net')[0]}*
-💵 money : $${getMoneyUser(`${musuh.split('@')[0]}`)} 
-🏯 health : ${getHealthUser(`${musuh.split('@')[0]}`)}/100
-🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[0]}`)} 
-🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[0]}`)} 
-⛩  benteng : ${getBentengUser(`${musuh.split('@')[0]}`)}/1
+💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
+🏯 health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
+🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
+🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
+⛩  benteng : ${getBentengUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/1
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //==================================
@@ -912,17 +912,17 @@ DESA @${musuh.split('@s.whatsapp.net')[0]}
 //==================================
 /*FUNC RPG MUSUH & SENDER*/
 addHealthUser(sender, -healthnya) 
-addHealthUser(`${musuh.split('@')[0]}`, -healthnyax)
+addHealthUser(`${musuh.split('@')[1]}`, -healthnyax)
 addSamuraiUser(sender, -samurainya) 
-addSamuraiUser(`${musuh.split('@')[0]}`, -samurainyax)
+addSamuraiUser(`${musuh.split('@')[1]}`, -samurainyax)
 addBarakudaUser(sender, -barakudanya) 
-addBarakudaUser(`${musuh.split('@')[0]}`, -barakudanyax) 
+addBarakudaUser(`${musuh.split('@')[1]}`, -barakudanyax) 
 addMoneyUser(sender, moneynya) 
-addMoneyUser(`${musuh.split('@')[0]}`, moneynyax) 
+addMoneyUser(`${musuh.split('@')[1]}`, moneynyax) 
 addPasienUser(sender, pasiennya) 
-addPasienUser(`${musuh.split('@')[0]}`, pasiennyax) 
+addPasienUser(`${musuh.split('@')[1]}`, pasiennyax) 
 addBentengUser(sender, bentengnya) 
-addBentengUser(`${musuh.split('@')[0]}`, bentengnyax) 
+addBentengUser(`${musuh.split('@')[1]}`, bentengnyax) 
 break
 
 case 'stiker':
