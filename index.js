@@ -815,7 +815,7 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
 musuh = args.join(" ") 
-if (getRpgId(`${musuh.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _lawan kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(`${musuh.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _lawan kamu belum mendaftar ketik /daftar untuk akses bot_`)
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
@@ -1154,14 +1154,15 @@ addHiburanUser(sender, 1)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi Penduduk`)
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bangun house\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ hospital\n💵 harga $30 money\n\n2⃣ house\n💵 harga $10 money\n\n3⃣ benteng\n💵 harga $50 money\n\n4⃣ pabrik\n💵 harga $45 money\n\n5⃣ monumen\n💵 harga $35 money\n\n6⃣ hiburan\n💵 harga $20 money`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bangun house\n===============================\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ hospital\n💵 harga $30 money\n\n2⃣ house\n💵 harga $10 money\n\n3⃣ benteng\n💵 harga $50 money\n\n4⃣ pabrik\n💵 harga $45 money\n\n5⃣ monumen\n💵 harga $35 money\n\n6⃣ hiburan\n💵 harga $20 money`)}
 break
 
 case 'donasi':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-if (args.length < 1) return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /donasi samurai 5\n\nLIST DONASI YG TERSEDIA\n\n1⃣ samurai\n2⃣ barakuda\n3⃣ penduduk\n4⃣ money`) 
-if (getRpgId(`${musuh.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar ketik /daftar untuk akses bot_`)
+o = args.join(" ") 
+if (args.length < 1) return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /donasi @tagmem samurai 5\n===============================\n\nLIST DONASI YG TERSEDIA\n\n1⃣ samurai\n2⃣ barakuda\n3⃣ penduduk\n4⃣ money`) 
+if (!getRpgId(`${o.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[1]=="samurai") {
 if (getSamuraiUser(sender) < 1) return reply(`maaf samuraimu belum mencukupi untuk disumbangkan, minimal 2`)
 target = args.join[0];
@@ -1280,7 +1281,7 @@ addHealthUser(sender, -summon)
 addHealthUser(sender, 100)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
 } 
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n\nLIST LATIH BARAK YG TERSEDIA\n\n1⃣ samurai\n💵 harga 1 penduduk\n\n2⃣ barakuda\n💵 harga 1 penduduk\n\n3⃣ ramuan\n💵 harga $15 money`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /barak samurai 1\n===============================\n\nLIST LATIH BARAK YG TERSEDIA\n\n1⃣ samurai\n💵 harga 1 penduduk\n\n2⃣ barakuda\n💵 harga 1 penduduk\n\n3⃣ ramuan\n💵 harga $15 money`)}
 break
 
 case 'daftar':
