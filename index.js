@@ -188,7 +188,7 @@ return _rpg[position].i
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 5, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0}
+const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -748,7 +748,7 @@ teks =`*INFORMASI*
 ❒ money $${getMoneyUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
-❒ user ${_badword.length} active
+❒ user ${_rpg.length} active
 
 *RPG MENU*
 ❒ ${prefix2}desa
@@ -758,6 +758,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}war
 ❒ ${prefix2}bank
 ❒ ${prefix2}heal
+❒ ${prefix2}donasi
 
 *GRUP MENU*   
 ❒ ${prefix2}tagall
@@ -814,6 +815,7 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
 musuh = args.join(" ") 
+if (getRpgId(`${musuh.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _lawan kamu belum mendaftar ketik /daftar untuk akses bot_`)
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
@@ -837,10 +839,10 @@ b3 = getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
 b5 = getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
 //==================================
 /*SENDER & MUSUH*/
-sam = [`5`,`6`,`8`,`10`,`11`,`13`,`15`] 
+sam = [`8`,`14`,`12`,`10`,`11`,`13`,`15`] 
 samurai = sam[Math.floor(Math.random() * sam.length)]
 samuraix = sam[Math.floor(Math.random() * sam.length)]
-bar = [`5`,`6`,`8`,`10`,`11`,`13`] 
+bar = [`15`,`12`,`8`,`10`,`11`,`13`] 
 barakuda = bar[Math.floor(Math.random() * bar.length)]
 barakudax = bar[Math.floor(Math.random() * bar.length)]
 heal = [`5`,`15`,`15`,`10`,`20`,`15`] 
@@ -1078,12 +1080,14 @@ break
 case 'heal':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!getHospitalUser(sender)) return reply(`Kamu belum membangun rumah sakit atau hospital`)
+if (getPasienUser(sender) < 10) return reply(`maaf pasien mu belum mencukupi untuk disembuhkan, minimal 10`)
+if (getMoneyUser(sender) < 15) return reply(`maaf uang mu belum mencukupi untuk berobat , minimal $15`)
 sakit = getPasienUser(sender)
 jumlah = sakit * 1
 addPasienUser(sender, -jumlah)
 addPendudukUser(sender, jumlah)
-addMoneyUser(sender, -5)
-reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $5 untuk pengobatan`)
+addMoneyUser(sender, -10)
+reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
 break
 
 case 'bangun':
@@ -1151,6 +1155,58 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi 
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /bangun house\n\nLIST BANGUNAN YG TERSEDIA\n\n1⃣ hospital\n💵 harga $30 money\n\n2⃣ house\n💵 harga $10 money\n\n3⃣ benteng\n💵 harga $50 money\n\n4⃣ pabrik\n💵 harga $45 money\n\n5⃣ monumen\n💵 harga $35 money\n\n6⃣ hiburan\n💵 harga $20 money`)}
+break
+
+case 'donasi':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+if (args.length < 1) return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\n\nketik : /donasi samurai 5\n\nLIST DONASI YG TERSEDIA\n\n1⃣ samurai\n2⃣ barakuda\n3⃣ penduduk\n4⃣ money`) 
+if (getRpgId(`${musuh.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (args[1]=="samurai") {
+if (getSamuraiUser(sender) < 1) return reply(`maaf samuraimu belum mencukupi untuk disumbangkan, minimal 2`)
+target = args.join[0];
+jumlah = args.join[2];
+amt = jumlah * 1
+if (getSamuraiUser(sender) <= amt ) return reply(`Maaf samurai kamu belum mencukupi. silahkan kumpulkan dan donasi lagi nanti`)
+if (getSamuraiUser(sender) >= amt ) {
+addSamuraiUser(sender, -amt) 
+addSamuraiUser(`${target.split('@')[1]}`, amt) 
+reply(`${jumlah} pasukan samurai telah dikerahkan ke target`) 
+} 
+} else if (args[1]=="barakuda") {
+if (getBarakudaUser(sender) < 1) return reply(`maaf barakuda mu belum mencukupi untuk disumbangkan, minimal 2`)
+target = args.join[0];
+jumlah = args.join[2];
+amt = jumlah * 1
+if (getBarakudaUser(sender) <= amt ) return reply(`Maaf barakuda kamu belum mencukupi. silahkan kumpulkan dan donasi lagi nanti`)
+if (getBarakudaUser(sender) >= amt ) {
+addBarakudaUser(sender, -amt) 
+addBarakudaUser(`${target.split('@')[1]}`, amt) 
+reply(`${jumlah} pasukan barakuda telah dikerahkan ke target`) 
+} 
+} else if (args[1]=="penduduk") {
+if (getPendudukUser(sender) < 1) return reply(`maaf penduduk mu belum mencukupi untuk disumbangkan, minimal 2`)
+target = args.join[0];
+jumlah = args.join[2];
+amt = jumlah * 1
+if (getPendudukUser(sender) <= amt ) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan donasi lagi nanti`)
+if (getPendudukUser(sender) >= amt ) {
+addPendudukUser(sender, -amt) 
+addPendudukUser(`${target.split('@')[1]}`, amt) 
+reply(`${jumlah} penduduk desa telah dikerahkan ke target`) 
+} 
+} else if (args[1]=="money") {
+if (getMoneyUser(sender) < 1) return reply(`maaf money mu belum mencukupi untuk disumbangkan, minimal 2`)
+target = args.join[0];
+jumlah = args.join[2];
+amt = jumlah * 1
+if (getMoneyUser(sender) <= amt ) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan donasi lagi nanti`)
+if (getMoneyUser(sender) >= amt ) {
+addMoneyUser(sender, -amt) 
+addMoneyUser(`${target.split('@')[1]}`, amt) 
+reply(`$${jumlah} money telah dikerahkan ke target`) 
+} 
+} 
 break
 
 case 'bank':
@@ -1742,7 +1798,7 @@ teks =`*INFROMATION SYSTEM BOT*
 ❒ money $${getMoneyUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
-❒ user ${_badword.length} active
+❒ user ${_rpg.length} active
 
 *LIST FITUR BOT WHATSAPP*
    
@@ -1844,7 +1900,7 @@ teks =`*INFORMASI*
 ❒ money $${getMoneyUser(sender)}
 ❒ language nodejs
 ❒ runtime ${kyun(uptime)}
-❒ user ${_badword.length} active
+❒ user ${_rpg.length} active
 
 *RPG MENU*
 ❒ ${prefix2}desa
@@ -1854,6 +1910,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}war
 ❒ ${prefix2}bank
 ❒ ${prefix2}heal
+❒ ${prefix2}donasi
 
 *GRUP MENU*   
 ❒ ${prefix2}tagall
