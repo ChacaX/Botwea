@@ -811,6 +811,7 @@ break
 
 case 'war':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
 musuh = args.join(" ") 
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -821,7 +822,7 @@ if (getBentengUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 0) return reply(`m
 if (getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 30) return reply(`maaf health lawan terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(`maaf samurai lawan belum mencukupi untuk bertempur, minimal 20`)
 if (getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(`maaf barakuda lawan belum mencukupi untuk bertempur, minimal 20`)
-pemain = [`@${sender.split("@s.whatsapp.net")}`,`${musuh.split('@s.whatsapp.net')[0]}`] 
+pemain = [`PENANTANG`,`${musuh.split('@s.whatsapp.net')[0]}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 kamu = sender
 //==================================
@@ -865,7 +866,7 @@ moneynya = money * 1
 moneynyax = moneyx * 1
 //==================================
 /*AWAL PERANG*/
-mentions(`*TIM MERAH @${sender.split("@s.whatsapp.net ")}*
+mentions(`*TIM MERAH PENANTANG*
 💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
@@ -883,7 +884,7 @@ mentions(`*TIM MERAH @${sender.split("@s.whatsapp.net ")}*
 setTimeout( () => {
 mentions(`*HASIL PERTEMPURAN*
 
-*DESA @${sender.split("@s.whatsapp.net")}*
+*DESA PENANTANG*
 💵 money : +$${money}
 🏯 health : -${health}/100
 🤺 samurai : -${samurai}
