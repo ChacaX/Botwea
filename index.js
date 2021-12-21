@@ -865,7 +865,7 @@ moneynya = money * 1
 moneynyax = moneyx * 1
 //==================================
 /*AWAL PERANG*/
-mentions(`*TIM MERAH @${kamu.split("@")[1]}*
+mentions(`*TIM MERAH @${kamu.split("@s.whatsapp.net ")[1]}*
 💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
@@ -883,7 +883,7 @@ mentions(`*TIM MERAH @${kamu.split("@")[1]}*
 setTimeout( () => {
 mentions(`*HASIL PERTEMPURAN*
 
-*DESA @${kamu.split("@")[1]}*
+*DESA @${kamu.split("@s.whatsapp.net")[0]}*
 💵 money : +$${money}
 🏯 health : -${health}/100
 🤺 samurai : -${samurai}
