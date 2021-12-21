@@ -1172,7 +1172,7 @@ case 'bank':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="pabrik") {
 if (!getPabrikUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-If (getKerjaPabrikUser(sender) === "1") return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
+If (getKerjaPabrikUser(sender) > 0) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 10 menit untuk mencairkan money`)
 addKerjaPabrikUser(sender, 1)
 setTimeout( () => {
@@ -1182,7 +1182,7 @@ addKerjaPabrikUser(sender, -1)
 }, 600000)
 } else if (args[0]=="monumen") {
  if (!getMonumenUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-If (getKerjaMonumentUser(sender) === "1") return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
+If (getKerjaMonumentUser(sender) > 0) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaMonumentUser(sender, 1)
 setTimeout( () => {
@@ -1192,7 +1192,7 @@ addKerjaMonumentUser(sender, -1)
 }, 300000)
 } else if (args[0]=="hiburan") {
  if (!getHiburanUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-If (getKerjaHiburanUser(sender) === "1") return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
+If (getKerjaHiburanUser(sender) > 0) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaHiburanUser(sender, 1)
 setTimeout( () => {
