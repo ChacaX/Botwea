@@ -823,6 +823,7 @@ if (getSamuraiUser(`${musuh.split('@')[0]}`) < 20) return reply(`maaf samurai la
 if (getBarakudaUser(`${musuh.split('@')[0]}`) < 20) return reply(`maaf barakuda lawan belum mencukupi untuk bertempur, minimal 20`)
 pemain = [`@${sender.split("@s.whatsapp.net")}`,`${musuh.split('@s.whatsapp.net')[0]}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
+kamu = sender
 //==================================
 /*SENDER & MUSUH*/
 a1 = getHealthUser(sender) 
@@ -852,7 +853,7 @@ pasienx = pas[Math.floor(Math.random() * pas.length)]
 u = [`25`,`15`,`35`,`30`,`20`,`15`] 
 money = u[Math.floor(Math.random() * u.length)]
 moneyx = u[Math.floor(Math.random() * u.length)]
-be = [`-1`,`0`,`0`,`0`,`0`,`0`] 
+be = [`0`,`0`,`-1`,`0`,`0`,`0`,`0`,`0`] 
 benteng = be[Math.floor(Math.random() * be.length)]
 bentengx = be[Math.floor(Math.random() * be.length)]
 //==================================
@@ -871,7 +872,7 @@ bentengnya = benteng * 1
 bentengnyax = bentengx * 1
 //==================================
 /*AWAL PERANG*/
-mentions(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}*
+mentions(`*TIM MERAH DESA @${kamu.split("@s.whatsapp.net")}*
 💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
@@ -879,11 +880,11 @@ mentions(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}*
 ⛩  benteng : ${getBentengUser(sender)}/1
 
 *TIM BIRU DESA @${musuh.split('@s.whatsapp.net')[0]}*
-💵 money : $${b5}
-🏯 health : ${b1}/100
-🤺 samurai : ${b2}
-🏇 barakuda : ${b3}
-⛩  benteng : ${b4}/1
+💵 money : $${getMoneyUser(`${musuh.split('@')[0]}`)} 
+🏯 health : ${getHealthUser(`${musuh.split('@')[0]}`)}/100
+🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[0]}`)} 
+🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[0]}`)} 
+⛩  benteng : ${getBentengUser(`${musuh.split('@')[0]}`)}/1
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //==================================
@@ -899,7 +900,7 @@ reply(`*TIM MERAH VS TIM BIRU*
 setTimeout( () => {
 mentions(`*HASIL PERTEMPURAN
 
-DESA @${sender.split("@s.whatsapp.net")}
+DESA @${kamu.split("@s.whatsapp.net")}
 💵 money : +$${money}
 🏯 health : -${health}/100
 🤺 samurai : -${samurai}
@@ -915,7 +916,7 @@ DESA @${musuh.split('@s.whatsapp.net')[0]}
 ⛩  benteng : ${bentengx}/1
 🚑 pasien : +${pasienx}
 
-*PEMENANG*: ${user}`, mentioned, true) 
+*PEMENANG*: @${user}`, mentioned, true) 
 }, 10000)
 //==================================
 /*FUNC RPG MUSUH & SENDER*/
