@@ -813,6 +813,9 @@ case 'war':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
 musuh = args.join(" ")
+mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+if (mentioned.length > 1) {
+for (let musuh of mentioned) {
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
 if (getBarakudaUser(sender) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
@@ -869,14 +872,14 @@ bentengnya = benteng * 1
 bentengnyax = bentengx * 1
 //==================================
 /*AWAL PERANG*/
-reply(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}
+reply(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}*
 💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 ⛩  benteng : ${getBentengUser(sender)}/1
 
-*TIM BIRU DESA ${musuh.split("@s.whatsapp.net")}
+*TIM BIRU DESA ${musuh.split("@s.whatsapp.net")}*
 💵 money : $${b5}
 🏯 health : ${b1}/100
 🤺 samurai : ${b2}
@@ -886,7 +889,7 @@ reply(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`)
 //==================================
 /*TENGAH PERANG*/
-setTimeout( () => {
+await setTimeout( () => {
 reply(`*TIM MERAH VS TIM BIRU*
 
 🏇 ${getBarakudaUser(sender)} vs 🏇 ${b3} 
@@ -929,6 +932,8 @@ addPasienUser(sender, pasiennya)
 addPasienUser(`${musuh.split("@")}`, pasiennyax) 
 addBentengUser(sender, bentengnya) 
 addBentengUser(`${musuh.split("@")}`, bentengnyax) 
+} 
+} 
 break
 
 case 'stiker':
@@ -1172,7 +1177,7 @@ case 'bank':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="pabrik") {
 if (!getPabrikUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-if (getKerjaPabrikUser(sender) > 0) 
+if (getKerjaPabrikUser(sender) === 1) 
 reply(`tunggu 10 menit untuk mencairkan money`)
 addKerjaPabrikUser(sender, 1)
 setTimeout( () => {
@@ -1182,7 +1187,7 @@ addKerjaPabrikUser(sender, -1)
 }, 600000)
 } else if (args[0]=="monumen") {
  if (!getMonumenUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-if (getKerjaMonumentUser(sender) > 0) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
+if (getKerjaMonumentUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaMonumentUser(sender, 1)
 setTimeout( () => {
@@ -1192,7 +1197,7 @@ addKerjaMonumentUser(sender, -1)
 }, 300000)
 } else if (args[0]=="hiburan") {
  if (!getHiburanUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
-if (getKerjaHiburanUser(sender) > 0) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
+if (getKerjaHiburanUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
 reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaHiburanUser(sender, 1)
 setTimeout( () => {
