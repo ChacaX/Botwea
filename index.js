@@ -816,9 +816,9 @@ musuh = args.join(" ")
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
 if (getBarakudaUser(sender) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
-if (getHealthUser(`${musuh.split("@")`) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
-if (getSamuraiUser(`${musuh.split("@")`) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
-if (getBarakudaUser(`${musuh.split("@")`) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
+if (getHealthUser(`${musuh.split("@")}`) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
+if (getSamuraiUser(`${musuh.split("@")}`) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
+if (getBarakudaUser(`${musuh.split("@")}`) < 20) return reply(`maaf barakuda mu belum mencukupi untuk bertempur, minimal 20`)
 pemain = [`@${sender.split("@s.whatsapp.net")}`,`${musuh.split("@s.whatsapp.net")}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 //==================================
