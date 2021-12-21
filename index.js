@@ -865,13 +865,13 @@ moneynya = money * 1
 moneynyax = moneyx * 1
 //==================================
 /*AWAL PERANG*/
-mentions(`*TIM MERAH @${kamu.split("@s.whatsapp.net ")[1]}*
+mentions(`*TIM MERAH @${sender.split("@s.whatsapp.net ")[0]}*
 💵 money : $${getMoneyUser(sender)}
 🏯 health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 
-*TIM BIRU @${musuh.split('@s.whatsapp.net')[0]}*
+*TIM BIRU ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 🏯 health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
@@ -883,14 +883,14 @@ mentions(`*TIM MERAH @${kamu.split("@s.whatsapp.net ")[1]}*
 setTimeout( () => {
 mentions(`*HASIL PERTEMPURAN*
 
-*DESA @${kamu.split("@s.whatsapp.net")[0]}*
+*DESA @${sender.split("@s.whatsapp.net")[1]}*
 💵 money : +$${money}
 🏯 health : -${health}/100
 🤺 samurai : -${samurai}
 🏇 barakuda : -${barakuda}
 🚑 pasien : +${pasien}
 
-*DESA @${musuh.split('@s.whatsapp.net')[0]}*
+*DESA ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : +$${moneyx}
 🏯 health : -${healthx}/100
 🤺 samurai : -${samuraix}
