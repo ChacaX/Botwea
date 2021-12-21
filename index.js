@@ -812,7 +812,6 @@ break
 case 'war':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
-musuh = args.join(" ")
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 if (mentioned.length > 1) {
 for (let musuh of mentioned) {
@@ -932,8 +931,8 @@ addPasienUser(sender, pasiennya)
 addPasienUser(`${musuh.split("@")}`, pasiennyax) 
 addBentengUser(sender, bentengnya) 
 addBentengUser(`${musuh.split("@")}`, bentengnyax) 
-} 
-} 
+}
+}
 break
 
 case 'stiker':
