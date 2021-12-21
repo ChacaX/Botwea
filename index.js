@@ -827,8 +827,7 @@ if (getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(
 pemain = [`PENANTANG`,`${musuh.split('@s.whatsapp.net')[0]}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 kamu = sender
-//
-================================
+//================================
 /*SENDER & MUSUH*/
 a1 = getHealthUser(sender) 
 a2 = getSamuraiUser(sender) 
@@ -838,8 +837,7 @@ b1 = getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
 b2 = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
 b3 = getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
 b5 = getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)
-//
-================================
+//================================
 /*SENDER & MUSUH*/
 sam = [`8`,`14`,`12`,`10`,`11`,`13`,`15`] 
 samurai = sam[Math.floor(Math.random() * sam.length)]
@@ -856,8 +854,7 @@ pasienx = pas[Math.floor(Math.random() * pas.length)]
 u = [`25`,`15`,`35`,`30`,`20`,`15`] 
 money = u[Math.floor(Math.random() * u.length)]
 moneyx = u[Math.floor(Math.random() * u.length)]
-//
-================================
+//================================
 /*SENDER & MUSUH*/
 samurainya = samurai * 1
 samurainyax = samuraix * 1
@@ -869,8 +866,7 @@ pasiennya = pasien * 1
 pasiennyax = pasienx * 1
 moneynya = money * 1
 moneynyax = moneyx * 1
-//
-================================
+//================================
 /*AWAL PERANG*/
 mentions(`*TIM MERAH PENANTANG*
 💵 money : $${getMoneyUser(sender)}
@@ -885,8 +881,7 @@ mentions(`*TIM MERAH PENANTANG*
 🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
-//
-================================
+//================================
 /*AKHIR PERANG*/
 setTimeout( () => {
 mentions(`*HASIL PERTEMPURAN*
@@ -907,8 +902,7 @@ mentions(`*HASIL PERTEMPURAN*
 
 *PEMENANG*: ${user}`, mentioned, true) 
 }, 10000)
-//
-================================
+//================================
 /*FUNC RPG MUSUH & SENDER*/
 addHealthUser(sender, -healthnya) 
 addHealthUser(`${musuh.split('@')[1]}`, -healthnyax)
