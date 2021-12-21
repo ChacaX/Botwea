@@ -821,7 +821,7 @@ if (getBarakudaUser(sender) < 20) return reply(`maaf barakuda mu belum mencukupi
 if (getHealthUser(`${musuh.split('@')[0]}`) < 30) return reply(`maaf health lawan terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(`${musuh.split('@')[0]}`) < 20) return reply(`maaf samurai lawan belum mencukupi untuk bertempur, minimal 20`)
 if (getBarakudaUser(`${musuh.split('@')[0]}`) < 20) return reply(`maaf barakuda lawan belum mencukupi untuk bertempur, minimal 20`)
-pemain = [`@${sender.split("@s.whatsapp.net")}`,`${musuh.split("@s.whatsapp.net")}`] 
+pemain = [`@${sender.split("@s.whatsapp.net")}`,`${musuh.split('@s.whatsapp.net')[0]}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 //==================================
 /*SENDER & MUSUH*/
@@ -878,7 +878,7 @@ reply(`*TIM MERAH DESA @${sender.split("@s.whatsapp.net")}*
 🏇 barakuda : ${getBarakudaUser(sender)}
 ⛩  benteng : ${getBentengUser(sender)}/1
 
-*TIM BIRU DESA ${musuh.split("@s.whatsapp.net")}*
+*TIM BIRU DESA @${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${b5}
 🏯 health : ${b1}/100
 🤺 samurai : ${b2}
@@ -907,7 +907,7 @@ DESA @${sender.split("@s.whatsapp.net")}
 ⛩  benteng : ${benteng}/1
 🚑 pasien : +${pasien}
 
-DESA ${musuh.split("@s.whatsapp.net")}
+DESA @${musuh.split('@s.whatsapp.net')[0]}
 💵 money : +$${moneyx}
 🏯 health : -${healthx}/100
 🤺 samurai : -${samuraix}
@@ -919,12 +919,12 @@ DESA ${musuh.split("@s.whatsapp.net")}
 }, 5000)
 //==================================
 /*FUNC RPG MUSUH & SENDER*/
-addHealthUser(sender, healthnya) 
-addHealthUser(`${musuh.split('@')[0]}`, healthnyax)
-addSamuraiUser(sender, samurainya) 
-addSamuraiUser(`${musuh.split('@')[0]}`, samurainyax)
-addBarakudaUser(sender, barakudanya) 
-addBarakudaUser(`${musuh.split('@')[0]}`, barakudanyax) 
+addHealthUser(sender, -healthnya) 
+addHealthUser(`${musuh.split('@')[0]}`, -healthnyax)
+addSamuraiUser(sender, -samurainya) 
+addSamuraiUser(`${musuh.split('@')[0]}`, -samurainyax)
+addBarakudaUser(sender, -barakudanya) 
+addBarakudaUser(`${musuh.split('@')[0]}`, -barakudanyax) 
 addMoneyUser(sender, moneynya) 
 addMoneyUser(`${musuh.split('@')[0]}`, moneynyax) 
 addPasienUser(sender, pasiennya) 
