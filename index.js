@@ -887,14 +887,6 @@ mentions(`*TIM MERAH DESA @${kamu.split("@s.whatsapp.net")}*
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //==================================
-/*TENGAH PERANG*/
-await setTimeout( () => {
-reply(`*TIM MERAH VS TIM BIRU*
-
-🏇 ${getBarakudaUser(sender)} vs 🏇 ${b3} 
-🤺 ${getSamuraiUser(sender)} vs 🤺 ${b2}`) 
-}, 3000)
-//==================================
 /*AKHIR PERANG*/
 setTimeout( () => {
 mentions(`*HASIL PERTEMPURAN
@@ -931,7 +923,6 @@ addPasienUser(sender, pasiennya)
 addPasienUser(`${musuh.split('@')[0]}`, pasiennyax) 
 addBentengUser(sender, bentengnya) 
 addBentengUser(`${musuh.split('@')[0]}`, bentengnyax) 
-}
 break
 
 case 'stiker':
