@@ -1218,7 +1218,6 @@ addPasienUser(sender, -jumlah)
 addPendudukUser(sender, jumlah)
 addMoneyUser(sender, -10)
 reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
-} 
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA*\ncara penggunaan ketik : /buy <query> <amount>\nexample : /buy samurai 5\n\n/buy samurai  ¦  harga 1 penduduk\n/buy barakuda  ¦  harga 1 penduduk\n/buy ramuan  ¦  harga $15 dolar\n/buy house  ¦  harga $15 perbuah\n/buy hospital  ¦  harga $30 perbuah\n/buy benteng  ¦  harga $50 perbuah\n/buy pabrik  ¦  harga $45 perbuah\n/buy monumen  ¦  harga $35 perbuah\n/buy hiburan  ¦  harga $20 perbuah\n/buy obat  ¦  harga $10 seluruh pasien`)}
 break
 
