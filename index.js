@@ -505,7 +505,7 @@ return _rpg[position].m
 }
 }
 
-const addpohonUser = (userid, amount) => {
+const addPohonUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
 if (_rpg[i].a === userid) {
@@ -530,7 +530,7 @@ return _rpg[position].q
 }
 }
 
-const addbatuUser = (userid, amount) => {
+const addBatuUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
 if (_rpg[i].a === userid) {
@@ -543,7 +543,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
 }
 
-const getbatuUser = (userid) => {
+const getBatuUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
 if (_rpg[i].a === userid) {
@@ -555,7 +555,7 @@ return _rpg[position].r
 }
 }
 
-const addsemakUser = (userid, amount) => {
+const addSemakUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
 if (_rpg[i].a === userid) {
@@ -568,7 +568,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
 }
 
-const getsemakUser = (userid) => {
+const getSemakUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
 if (_rpg[i].a === userid) {
@@ -580,7 +580,7 @@ return _rpg[position].s
 }
 }
 
-const addjamurUser = (userid, amount) => {
+const addJamurUser = (userid, amount) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
 if (_rpg[i].a === userid) {
@@ -593,7 +593,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
 }
 
-const getjamurUser = (userid) => {
+const getJamurUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
 if (_rpg[i].a === userid) {
