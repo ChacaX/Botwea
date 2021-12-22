@@ -1342,7 +1342,8 @@ addBatuUser(sender, -jumlah)
 m = ["1","2","3","4","5","6","7"]
 money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -5)
-addMoneyUser(sender, money) 
+moneyy = money * 1
+addMoneyUser(sender, moneyy) 
 reply(`Kamu telah memangkas seluruh batu dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
 } else if (args[0]=="semak") {
 if (getSemakUser(sender) < 5 ) return reply(`maaf semak mu belum mencukupi untuk dipangkas, minimal 5`)
@@ -1353,7 +1354,8 @@ addSemakUser(sender, -jumlah)
 m = ["1","2","3","4","5"]
 money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -3)
-addMoneyUser(sender, money) 
+moneyy = money * 1
+addMoneyUser(sender, moneyy) 
 reply(`Kamu telah memangkas seluruh semak dengan biaya $3 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
 } else if (args[0]=="jamur") {
 if (getJamurUser(sender) < 5 ) return reply(`maaf jamur mu belum mencukupi untuk dipangkas, minimal 5`)
@@ -1364,7 +1366,8 @@ addJamurUser(sender, -jumlah)
 m = ["1","2","3"]
 money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -2)
-addMoneyUser(sender, money) 
+moneyy = money * 1
+addMoneyUser(sender, moneyy) 
 reply(`Kamu telah memangkas seluruh jamur dengan biaya $2 untuk pengobatan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /pangkas <query>\nexample : /pangkas pohon\n*_________________________________*\n$5 - pohon\n$5 - batu\n$3 - semak\n$2 - jamur\n*_________________________________*`)}
 break
@@ -1657,18 +1660,20 @@ break
 			
 case 'desa':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-reply(`💵 money : $${getMoneyUser(sender)}
+img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
+gmb = await getBuffer(img) 
+client.sendmessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA : ${pushname} 
+${castil} LEVEL DESA : ${getLevelUser(sender)}
 
 *Pertahanan*
-${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
-${benteng} : ${getBentengUser(sender)}/1
+${benteng} benteng : ${getBentengUser(sender)}/1
 
 *Sosial*
 👥 penduduk : ${getPendudukUser(sender)}
-🏢 hospital : ${getHospitalUser(sender)}/1
+🏥 hospital : ${getHospitalUser(sender)}/1
 ${rumah} house : ${getHouseUser(sender)}
 🚑 pasien : ${getPasienUser(sender)}
 
@@ -1676,12 +1681,13 @@ ${rumah} house : ${getHouseUser(sender)}
 ${pabrik} pabrik : ${getPabrikUser(sender)}/1
 ${monumen} monumen : ${getMonumenUser(sender)}/1
 ${hiburan} hiburan : ${getHiburanUser(sender)}/1
+💵 money : $${getMoneyUser(sender)}
 
 *Alam*
 🌳 pohon : ${getPohonUser(sender)} 
 🪨 batu : ${getBatuUser(sender)} 
 🌾 semak : ${getSemakUser(sender)} 
-🍄 jamur : ${getJamurUser(sender)}`)
+🍄 jamur : ${getJamurUser(sender)}`}) 
 break
 
 case 'warning':
