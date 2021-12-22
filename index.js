@@ -57,6 +57,12 @@ prefix = ``
 prefix2 = `.`
 badword_limit = 3
 blocked = []
+b = "🏯"
+c = "⛩️" 
+d =  "🏠"
+e = "🏗️" 
+f =  "🗽" 
+g =  "⛲" 
 
 function kyun(seconds){
   function pad(s){
@@ -607,8 +613,8 @@ return _rpg[position].t
 }
 
 const addRpgIdx = (userid) => {
-const objx = {a: userid, b: 🏯, c: ⛩️, d: 🏠, e: 🏗️, f: 🗽, g: ⛲, h:1}
-_rpgx.push(objx) 
+const objg = {a: userid, b: b, c: c, d: d, e: e, f: f, g: g, h:1}
+_rpgx.push(objg) 
 fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
 }
 
