@@ -44,7 +44,6 @@ const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const _badword = JSON.parse(fs.readFileSync('./src/badword.json'))
 const _rpg = JSON.parse(fs.readFileSync('./src/rpg.json'))
-const _rpgx = JSON.parse(fs.readFileSync('./src/rpgx.json'))
 
               vcard = 'BEGIN:VCARD\n' 
               + 'VERSION:3.0\n' 
@@ -57,12 +56,6 @@ prefix = ``
 prefix2 = `.`
 badword_limit = 3
 blocked = []
-b = "🏯"
-c = "⛩️" 
-d =  "🏠"
-e = "🏗️" 
-f =  "🗽" 
-g =  "⛲" 
 
 function kyun(seconds){
   function pad(s){
@@ -195,7 +188,7 @@ return _rpg[position].i
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3}
+const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3, u:1}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -612,185 +605,28 @@ return _rpg[position].t
 }
 }
 
-const addRpgIdx = (userid) => {
-const objg = {a: userid, b: b, c: c, d: d, e: e, f: f, g: g, h:1}
-_rpgx.push(objg) 
-fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
-}
-
-const getHiburanxUser = (userid) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-return _rpgx[position].g
-}
-}
-
-const getMonumenxUser = (userid) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-return _rpgx[position].f
-}
-}
-
-const getPabrikxUser = (userid) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-return _rpgx[position].e
-}
-}
-
-const getRumahxUser = (userid) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-return _rpgx[position].d
-}
-}
-
-const getBentengxUser = (userid) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-return _rpgx[position].c
-}
-}
-
-const getCastilexUser = (userid) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-return _rpgx[position].b
-}
-}
-
-const addHiburanxUser = (userid, amount) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-_rpgx[position].g += amount
-fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
-}
-}
-
-const addMonumenxUser = (userid, amount) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-_rpgx[position].f += amount
-fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
-}
-}
-
-const addPabrikxUser = (userid, amount) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-_rpgx[position].e += amount
-fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
-}
-}
-
-
-const addRumahxUser = (userid, amount) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-_rpgx[position].d += amount
-fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
-}
-}
-
-const addBentengxUser = (userid, amount) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-_rpgx[position].c += amount
-fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
-}
-}
-
-const addCastilexUser = (userid, amount) => {
-let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
-position = i
-}
-})
-if (position !== false) {
-_rpgx[position].b += amount
-fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
-}
-}
-
 const addLevelUser = (userid, amount) => {
 let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
 if (position !== false) {
-_rpgx[position].h += amount
-fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+_rpg[position].u += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
 }
 
 const getLevelUser = (userid) => {
 let position = false
-Object.keys(_rpgx).forEach((i) => {
-if (_rpgx[i].a === userid) {
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
 position = i
 }
 })
 if (position !== false) {
-return _rpgx[position].h
+return _rpg[position].u
 }
 }
 
@@ -974,7 +810,56 @@ client.logger.level = 'warn'
 				})	
 
 			}
+		
+
+const getCastilexUser = getLevelUser(sender)
+var role ='🏯'
+if (getCastilUser === 1) {
+role ='🏯'
+} else if (getCastilUser === 2) {
+role ='🏰'
+} 
+
+const getBentengxUser = getLevelUser(sender)
+var role ='⛩️'
+if (getBentengxUser === 1) {
+role ='⛩️'
+} else if (getBentengxUser === 2) {
+role ='🏛️'
+} 
+
+const getRumahxUser = getLevelUser(sender)
+var role ='🏠'
+if (getRumahxUser === 1) {
+role ='🏠'
+} else if (getRumahxUser === 2) {
+role ='🏢'
+} 
+
+const getPabrikxUser = getLevelUser(sender)
+var role ='🏗️'
+if (getPabrikxUser === 1) {
+role ='🏗️'
+} else if (getPabrikxUser === 2) {
+role ='🏭'
+} 
 			
+const getMonumentxUser = getLevelUser(sender)
+var role ='🗽'
+if (getMonumenxUser === 1) {
+role ='🗽'
+} else if (getMonumenxUser === 2) {
+role ='🗼'
+} 
+
+const getHiburanxUser = getLevelUser(sender)
+var role ='⛲'
+if (getHiburanxUser === 1) {
+role ='⛲'
+} else if (getHiburanxUser === 2) {
+role ='🏖️'
+} 
+
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
 kma = doc1
 mhan = await client.prepareMessage(from, media, document, kma)
@@ -1042,6 +927,7 @@ teks =`*INFORMASI*
 *RPG MENU*
 ❒ ${prefix2}desa
 ❒ ${prefix2}buy
+❒ ${prefix2}upgrade
 ❒ ${prefix2}training
 ❒ ${prefix2}war
 ❒ ${prefix2}bank
@@ -1099,23 +985,15 @@ break
 
 case 'upgrade':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-if (getMoneyUser(sender) < 100 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $75`)
+if (getLevelUser(sender)  === 2 ) return reply(`kamu sudah upgrade desa ke level maximum`) 
+if (getMoneyUser(sender) < 75 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $75`)
 addMoneyUser(sender, -75)
-addCastilexUser(sender, -🏯) 
-addBentengxUser(sender, -⛩️) 
-addLevelUser(sender, -1)
-addRumahxUserx(sender, -🏠) 
-addPabrikxUser(sender, -🏗️)
-addMonumenxUser(sender, -🗽) 
-addHiburanxUser(sender, -⛲) 
-addCastilexUser(sender, 🏰) 
-addBentengxUser(sender, 🏛️) 
-addLevelUser(sender, 2)
-addRumahxUserx(sender, 🏢) 
-addPabrikxUser(sender, 🏭)
-addMonumenxUser(sender, 🗼) 
-addHiburanxUser(sender, 🏖️) 
-reply(`succes upgrade desa, cek desamu untuk melihat hasil`) 
+addMoneyUser(sender, 10)
+addPendudukUser(sender, 20)
+addSamuraiUser(sender, 5)
+addBarakudaUser(sender, 5)
+addLevelUser(sender, 1)
+reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏯 > 🏰      ⛲ > 🏖️\n⛩️ > 🏛️      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $10\n🤺 + 5\n🏇 + 5\n👥 + 20`) 
 break
 
 case 'war':
@@ -2237,6 +2115,7 @@ teks =`*INFORMASI*
 *RPG MENU*
 ❒ ${prefix2}desa
 ❒ ${prefix2}buy
+❒ ${prefix2}upgrade
 ❒ ${prefix2}training
 ❒ ${prefix2}war
 ❒ ${prefix2}bank
