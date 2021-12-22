@@ -1333,7 +1333,6 @@ money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -5)
 addMoneyUser(sender, money) 
 reply(`Kamu telah memangkas seluruh pohon dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
-} 
 } else if (args[0]=="batu") {
 if (getBatuUser(sender) < 5 ) return reply(`maaf batu mu belum mencukupi untuk dipangkas, minimal 5`)
 if (getMoneyUser(sender) < 5 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $5`)
@@ -1345,7 +1344,6 @@ money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -5)
 addMoneyUser(sender, money) 
 reply(`Kamu telah memangkas seluruh batu dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
-} 
 } else if (args[0]=="semak") {
 if (getSemakUser(sender) < 5 ) return reply(`maaf semak mu belum mencukupi untuk dipangkas, minimal 5`)
 if (getMoneyUser(sender) < 3 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $3`)
@@ -1357,7 +1355,6 @@ money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -3)
 addMoneyUser(sender, money) 
 reply(`Kamu telah memangkas seluruh semak dengan biaya $3 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
-} 
 } else if (args[0]=="jamur") {
 if (getJamurUser(sender) < 5 ) return reply(`maaf jamur mu belum mencukupi untuk dipangkas, minimal 5`)
 if (getMoneyUser(sender) < 2 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $2`)
