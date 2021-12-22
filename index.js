@@ -608,7 +608,7 @@ return _rpg[position].t
 
 const addRpgIdx = (userid) => {
 const objx = {a: userid, b: 🏯, c: ⛩️, d: 🏠, e: 🏗️, f: 🗽, g: ⛲, h:1}
-_rpgx.push(obj)x
+_rpgx.push(objx) 
 fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
 }
 
