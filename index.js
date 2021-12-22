@@ -1747,7 +1747,7 @@ hiburanv ='🏖️'
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
-client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA : @${mem.split("@")[1]}
+client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA : ${mem.split("@s.whatsapp.net")[1]}
 ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 
 *Pertahanan*
