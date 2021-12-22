@@ -1662,7 +1662,7 @@ case 'desa':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
-client.sendmessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA : ${pushname} 
+client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA : ${pushname} 
 ${castil} LEVEL DESA : ${getLevelUser(sender)}
 
 *Pertahanan*
