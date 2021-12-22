@@ -1678,7 +1678,7 @@ ${getMonumenxUser} monumen : ${getMonumenUser(sender)}/1
 ${getHiburanxUser} hiburan : ${getHiburanUser(sender)}/1
 
 *Alam*
-🌳 pohon : ${getPohonUser(sendee)} 
+🌳 pohon : ${getPohonUser(sender)} 
 🪨 batu : ${getBatuUser(sender)} 
 🌾 semak : ${getSemakUser(sender)} 
 🍄 jamur : ${getJamurUser(sender)}`)
