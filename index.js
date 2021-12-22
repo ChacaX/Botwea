@@ -1366,7 +1366,6 @@ money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -2)
 addMoneyUser(sender, money) 
 reply(`Kamu telah memangkas seluruh jamur dengan biaya $2 untuk pengobatan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
-}
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /pangkas <query>\nexample : /pangkas pohon\n*_________________________________*\n$5 - pohon\n$5 - batu\n$3 - semak\n$2 - jamur\n*_________________________________*`)}
 break
 
@@ -2066,7 +2065,7 @@ break
 }
 
 if (buttonsR === 'SOURCE CODE') {
-reply(`Bot ini menggunakan script dari:\n\nhttps://www.github.com/ChacaX\n\nDilarang keras menghapus thanks to dari sc, Ketauan apus? nomor auto banned`)
+reply(`ingin meningstall script bot ini, harap jangan menghapus thanks to yang berada dimenu dan jangan diperjual belikan ke publik\n. \n. \nbot ini menggunakan script dari mentahan mhankbarbar kemudian di recode dan jadilah bot seperti sekarang\n. \n. \nurl : github.com/ChacaX`)
 }
 	
 if (buttonsR === 'Tutup') {
