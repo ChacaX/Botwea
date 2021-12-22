@@ -44,6 +44,7 @@ const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const _badword = JSON.parse(fs.readFileSync('./src/badword.json'))
 const _rpg = JSON.parse(fs.readFileSync('./src/rpg.json'))
+const _rpgx = JSON.parse(fs.readFileSync('./src/rpgx.json'))
 
               vcard = 'BEGIN:VCARD\n' 
               + 'VERSION:3.0\n' 
@@ -188,7 +189,7 @@ return _rpg[position].i
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0}
+const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -505,6 +506,288 @@ return _rpg[position].m
 }
 }
 
+const addpohonUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].q += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getpohonUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].q
+}
+}
+
+const addbatuUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].r += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getbatuUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].r
+}
+}
+
+const addsemakUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].s += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getsemakUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].s
+}
+}
+
+const addjamurUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].t += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getjamurUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].t
+}
+}
+
+const addRpgIdx = (userid) => {
+const objx = {a: userid, b: 🏯, c: ⛩️, d: 🏠, e: 🏗️, f: 🗽, g: ⛲, h:1}
+_rpgx.push(obj)x
+fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+}
+
+const getHiburanxUser = (userid) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpgx[position].g
+}
+}
+
+const getMonumenxUser = (userid) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpgx[position].f
+}
+}
+
+const getPabrikxUser = (userid) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpgx[position].e
+}
+}
+
+const getRumahxUser = (userid) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpgx[position].d
+}
+}
+
+const getBentengxUser = (userid) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpgx[position].c
+}
+}
+
+const getCastilexUser = (userid) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpgx[position].b
+}
+}
+
+const addHiburanxUser = (userid, amount) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpgx[position].g += amount
+fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+}
+}
+
+const addMonumenxUser = (userid, amount) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpgx[position].f += amount
+fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+}
+}
+
+const addPabrikxUser = (userid, amount) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpgx[position].e += amount
+fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+}
+}
+
+
+const addRumahxUser = (userid, amount) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpgx[position].d += amount
+fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+}
+}
+
+const addBentengxUser = (userid, amount) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpgx[position].c += amount
+fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+}
+}
+
+const addCastilexUser = (userid, amount) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpgx[position].b += amount
+fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+}
+}
+
+const addLevelUser = (userid, amount) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpgx[position].h += amount
+fs.writeFileSync('./src/rpgx.json', JSON.stringify(_rpgx))
+}
+}
+
+const getLevelUser = (userid) => {
+let position = false
+Object.keys(_rpgx).forEach((i) => {
+if (_rpgx[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpgx[position].h
+}
+}
+
 async function starts() {
 const client = new WAConnection()
 //WWEB 
@@ -756,6 +1039,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}training
 ❒ ${prefix2}war
 ❒ ${prefix2}bank
+❒ ${prefix2}pangkas
 
 *GRUP MENU*   
 ❒ ${prefix2}tagall
@@ -805,6 +1089,27 @@ await client.relayWAMessage(gwekke)
 if (!getHouseUser(sender)) return
 addPendudukUser(sender, 5)
 addMoneyUser(sender, 5)
+break
+
+case 'upgrade':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (getMoneyUser(sender) < 100 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $75`)
+addMoneyUser(sender, -75)
+addCastilexUser(sender, -🏯) 
+addBentengxUser(sender, -⛩️) 
+addLevelUser(sender, -1)
+addRumahxUserx(sender, -🏠) 
+addPabrikxUser(sender, -🏗️)
+addMonumenxUser(sender, -🗽) 
+addHiburanxUser(sender, -⛲) 
+addCastilexUser(sender, 🏰) 
+addBentengxUser(sender, 🏛️) 
+addLevelUser(sender, 2)
+addRumahxUserx(sender, 🏢) 
+addPabrikxUser(sender, 🏭)
+addMonumenxUser(sender, 🗼) 
+addHiburanxUser(sender, 🏖️) 
+reply(`succes upgrade desa, cek desamu untuk melihat hasil`) 
 break
 
 case 'war':
@@ -867,13 +1172,15 @@ moneynyax = moneyx * 1
 /*AWAL PERANG*/
 mentions(`*TIM MERAH PENANTANG*
 💵 money : $${getMoneyUser(sender)}
-🏯 health : ${getHealthUser(sender)}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 
 *TIM BIRU ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-🏯 health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 
@@ -885,14 +1192,16 @@ mentions(`*HASIL PERTEMPURAN*
 
 *DESA PENANTANG*
 💵 money : +$${money}
-🏯 health : -${health}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : -${health}/100
 🤺 samurai : -${samurai}
 🏇 barakuda : -${barakuda}
 🚑 pasien : +${pasien}
 
 *DESA ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : +$${moneyx}
-🏯 health : -${healthx}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : -${healthx}/100
 🤺 samurai : -${samuraix}
 🏇 barakuda : -${barakudax}
 🚑 pasien : +${pasienx}
@@ -913,6 +1222,14 @@ addPasienUser(sender, pasiennya)
 addPasienUser(`${musuh.split('@')[1]}`, pasiennyax) 
 addBentengUser(sender, bentengnya) 
 addBentengUser(`${musuh.split('@')[1]}`, bentengnyax) 
+addBatuUser(sender, 2)
+addJamurUser(sender, 2)
+addPohonUser(sender, 3)
+addSemakUser(sender, 2)
+addBatuUser(`${musuh.split('@')[1]}`, 2)
+addJamurUser(`${musuh.split('@')[1]}`, 2)
+addPohonUser(`${musuh.split('@')[1]}`, 3)
+addSemakUser(`${musuh.split('@')[1]}`, 2)
 break
 
 case 'stiker':
@@ -1016,12 +1333,14 @@ wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
 💵 money : $${getMoneyUser(sender)}
-🏯 health : ${getHealthUser(sender)}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 \n*musuh*
 💵 money : $${musuhm}
-🏯 health : ${musuhh}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : ${musuhh}/100
 🤺 samurai : ${musuhs}
 🏇 barakuda : ${musuhb}`)
 hatinya = kamuh * 1
@@ -1041,13 +1360,15 @@ addPasienUser(sender, sakitnya2)
 setTimeout( () => {
 reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 💵 money : +$${kamum}
-🏯 health : -${kamuh}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : -${kamuh}/100
 🤺 samurai : -${kamus}
 🏇 barakuda : -${kamub}
 🚑 terluka : +${ksakit} +${esakit}
 \n*musuh*
 💵 money : -$${musuhm}
-🏯 health : -${musuhh}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : -${musuhh}/100
 🤺 samurai : -${musuhs}
 🏇 barakuda : -${musuhb}
 🚑 terluka : +${msakit}\n\n*KAMU* : ${jadi}`)
@@ -1069,9 +1390,13 @@ addHealthUser(sender, -nyawa)
 addPendudukUser(sender, -penduduk)
 reply(`*DESAMU DIJARAH!!!*\n\n*riwayat*
 💵 money -$${jarahuang}
-🏯 health : -${jarahnyawa}/100
+${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : -${jarahnyawa}/100
 🚑 terluka : +${jarahpenduduk}`)
 }, 120000)
+addBatuUser(sender, 3)
+addJamurUser(sender, 1)
+addPohonUser(sender, 1)
 break
 
 case 'bank':
@@ -1107,6 +1432,61 @@ reply(`kamu mendapatkan money sebanyak $3`)
 addKerjaHiburanUser(sender, -1)
 }, 300000)
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n*_________________________________*\n$5 - pabrik\n$4 - monumen\n$3 - hiburan\n*_________________________________*`)}
+addsemakUser(sender, 2)
+addJamurUser(sender, 1)
+break
+
+case 'pangkas':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (args[0]=="pohon") {
+if (getPohonUser(sender) < 5 ) return reply(`maaf pohon mu belum mencukupi untuk dipangkas, minimal 5`)
+if (getMoneyUser(sender) < 5 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $5`)
+t = getPohonUser(sender)
+jumlah = t * 1
+addPohonUser(sender, -jumlah)
+m = ["1","2","3","4","5","6","7"]
+money = m[Math.floor(Math.random() * m.length)]
+addMoneyUser(sender, -5)
+addMoneyUser(sender, money) 
+reply(`Kamu telah memangkas seluruh pohon dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
+} 
+} else if (args[0]=="batu") {
+if (getBatuUser(sender) < 5 ) return reply(`maaf batu mu belum mencukupi untuk dipangkas, minimal 5`)
+if (getMoneyUser(sender) < 5 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $5`)
+t = getBatuUser(sender)
+jumlah = t * 1
+addBatuUser(sender, -jumlah)
+m = ["1","2","3","4","5","6","7"]
+money = m[Math.floor(Math.random() * m.length)]
+addMoneyUser(sender, -5)
+addMoneyUser(sender, money) 
+reply(`Kamu telah memangkas seluruh batu dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
+} 
+} else if (args[0]=="semak") {
+if (getSemakUser(sender) < 5 ) return reply(`maaf semak mu belum mencukupi untuk dipangkas, minimal 5`)
+if (getMoneyUser(sender) < 3 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $3`)
+t = getSemakUser(sender)
+jumlah = t * 1
+addSemakUser(sender, -jumlah)
+m = ["1","2","3","4","5"]
+money = m[Math.floor(Math.random() * m.length)]
+addMoneyUser(sender, -3)
+addMoneyUser(sender, money) 
+reply(`Kamu telah memangkas seluruh semak dengan biaya $3 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
+} 
+} else if (args[0]=="jamur") {
+if (getJamurUser(sender) < 5 ) return reply(`maaf jamur mu belum mencukupi untuk dipangkas, minimal 5`)
+if (getMoneyUser(sender) < 2 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $2`)
+t = getJamurUser(sender)
+jumlah = t * 1
+addJamurUser(sender, -jumlah)
+m = ["1","2","3"]
+money = m[Math.floor(Math.random() * m.length)]
+addMoneyUser(sender, -2)
+addMoneyUser(sender, money) 
+reply(`Kamu telah memangkas seluruh jamur dengan biaya $2 untuk pengobatan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
+}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /pangkas <query>\nexample : /pangkas pohon\n*_________________________________*\n$5 - pohon\n$5 - batu\n$3 - semak\n$2 - jamur\n*_________________________________*`)}
 break
 
 case 'buy':
@@ -1210,7 +1590,7 @@ reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } else if (args[0]=="obat") {
 if (!getHospitalUser(sender)) return reply(`Kamu belum membangun rumah sakit atau hospital`)
 if (getPasienUser(sender) < 10) return reply(`maaf pasien mu belum mencukupi untuk disembuhkan, minimal 10`)
-if (getPasienUser(sender) < 15) return reply(`maaf uang mu belum mencukupi untuk berobat , minimal $15`)
+if (getMoneyUser(sender) < 15) return reply(`maaf uang mu belum mencukupi untuk berobat , minimal $15`)
 sakit = getPasienUser(sender)
 jumlah = sakit * 1
 addPasienUser(sender, -jumlah)
@@ -1218,6 +1598,8 @@ addPendudukUser(sender, jumlah)
 addMoneyUser(sender, -10)
 reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - barakuda\n$15 - ramuan\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monument\n$20 - hiburan\n$10 - obat\n*_________________________________*`)}
+addBatuUser(sender, 2)
+addJamurUser(sender, 3)
 break
 
 case 'daftar':
@@ -1398,21 +1780,28 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 reply(`💵 money : $${getMoneyUser(sender)}
 
 *Pertahanan*
-🏯 health : ${getHealthUser(sender)}/100
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
-⛩  benteng : ${getBentengUser(sender)}/1
+${getBentengxUser(sender)} : ${getBentengUser(sender)}/1
 
 *Sosial*
 👥 penduduk : ${getPendudukUser(sender)}
 🏢 hospital : ${getHospitalUser(sender)}/1
-🏠 house : ${getHouseUser(sender)}
+${getRumahxUser(sender)} house : ${getHouseUser(sender)}
 🚑 pasien : ${getPasienUser(sender)}
 
 *Ekonomi*
-🏗 pabrik : ${getPabrikUser(sender)}/1
-🗽 monumen : ${getMonumenUser(sender)}/1
-⛲ hiburan : ${getHiburanUser(sender)}/1`)
+${getPabrikxUser(sender)} pabrik : ${getPabrikUser(sender)}/1
+${getMonumenxUser(sender)} monumen : ${getMonumenUser(sender)}/1
+${getHiburanxUser(sender)} hiburan : ${getHiburanUser(sender)}/1
+
+*Alam*
+🌳 pohon : ${getPohonUser(sendee)} 
+🪨 batu : ${getBatuUser(sender)} 
+🌾 semak : ${getSemakUser(sender)} 
+🍄 jamur : ${getJamurUser(sender)}`)
 break
 
 case 'warning':
@@ -1845,6 +2234,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}training
 ❒ ${prefix2}war
 ❒ ${prefix2}bank
+❒ ${prefix2}pangkas
 
 *GRUP MENU*   
 ❒ ${prefix2}tagall
