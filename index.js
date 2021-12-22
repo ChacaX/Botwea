@@ -1660,22 +1660,22 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 reply(`💵 money : $${getMoneyUser(sender)}
 
 *Pertahanan*
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
-${getBentengxUser(sender)} : ${getBentengUser(sender)}/1
+${getBentengxUser} : ${getBentengUser(sender)}/1
 
 *Sosial*
 👥 penduduk : ${getPendudukUser(sender)}
 🏢 hospital : ${getHospitalUser(sender)}/1
-${getRumahxUser(sender)} house : ${getHouseUser(sender)}
+${getRumahxUser} house : ${getHouseUser(sender)}
 🚑 pasien : ${getPasienUser(sender)}
 
 *Ekonomi*
-${getPabrikxUser(sender)} pabrik : ${getPabrikUser(sender)}/1
-${getMonumenxUser(sender)} monumen : ${getMonumenUser(sender)}/1
-${getHiburanxUser(sender)} hiburan : ${getHiburanUser(sender)}/1
+${getPabrikxUser} pabrik : ${getPabrikUser(sender)}/1
+${getMonumenxUser} monumen : ${getMonumenUser(sender)}/1
+${getHiburanxUser} hiburan : ${getHiburanUser(sender)}/1
 
 *Alam*
 🌳 pohon : ${getPohonUser(sendee)} 
