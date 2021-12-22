@@ -844,7 +844,7 @@ role ='🏗️'
 role ='🏭'
 } 
 			
-const getMonumentxUser = getLevelUser(sender)
+const getMonumenxUser = getLevelUser(sender)
 var role ='🗽'
 if (getMonumenxUser === 1) {
 role ='🗽'
