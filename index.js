@@ -1218,13 +1218,13 @@ wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
 💵 money : $${getMoneyUser(sender)}
-${castil(sender)} level : ${getLevelUser(sender)}
+${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 \n*musuh*
 💵 money : $${musuhm}
-${castil(sender)} level : ${getLevelUser(sender)}
+${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${musuhh}/100
 🤺 samurai : ${musuhs}
 🏇 barakuda : ${musuhb}`)
@@ -1245,14 +1245,14 @@ addPasienUser(sender, sakitnya2)
 setTimeout( () => {
 reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 💵 money : +$${kamum}
-${castil(sender)} level : ${getLevelUser(sender)}
+${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${kamuh}/100
 🤺 samurai : -${kamus}
 🏇 barakuda : -${kamub}
 🚑 terluka : +${ksakit} +${esakit}
 \n*musuh*
 💵 money : -$${musuhm}
-${castil(sender)} level : ${getLevelUser(sender)}
+${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${musuhh}/100
 🤺 samurai : -${musuhs}
 🏇 barakuda : -${musuhb}
@@ -1698,7 +1698,7 @@ if (args.length < 1) return reply(`tag @member yang ingin dicek\n\nexample: /cek
 mem = args.join(" ") 
 if (!getRpgId(`${mem.split("@")[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar_`)
 
-const getCastilevUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+ getCastilevUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var castilv ='🏯'
 if (getCastilevUser === 1) {
 castilv ='🏯'
@@ -1706,7 +1706,7 @@ castilv ='🏯'
 castilv ='🏰'
 } 
 
-const getBentengvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+ getBentengvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var bentengv ='⛩️'
 if (getBentengvUser === 1) {
 bentengv ='⛩️'
@@ -1714,7 +1714,7 @@ bentengv ='⛩️'
 bentengv ='🏛️'
 } 
 
-const getRumahvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+ getRumahvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var rumahv ='🏠'
 if (getRumahvUser === 1) {
 rumahv ='🏠'
@@ -1722,7 +1722,7 @@ rumahv ='🏠'
 rumahv ='🏢'
 } 
 
-const getPabrikvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+ getPabrikvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var pabrikv ='🏗️'
 if (getPabrikvUser === 1) {
 pabrikv ='🏗️'
@@ -1730,7 +1730,7 @@ pabrikv ='🏗️'
 pabrikv ='🏭'
 } 
 			
-const getMonumenvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+ getMonumenvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var monumenv ='🗽'
 if (getMonumenvUser === 1) {
 monumenv ='🗽'
@@ -1738,7 +1738,7 @@ monumenv ='🗽'
 monumenv ='🗼'
 } 
 
-const getHiburanvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+ getHiburanvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var hihuranv ='⛲'
 if (getHiburanvUser === 1) {
 hiburanv ='⛲'
@@ -1748,7 +1748,7 @@ hiburanv ='🏖️'
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
-client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA : ${mem.split("@s.whatsapp.net")[1]}
+client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA : @${mem.split("@")[1]}
 ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 
 *Pertahanan*
