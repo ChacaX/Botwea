@@ -1694,6 +1694,7 @@ break
 
 case 'cek':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (args.length < 1) return reply(`tag @member yang ingin dicek\n\nexample: /cek @${sender.split("@s.whatsapp.net")}`)
 mem = args.join(" ") 
 if (!getRpgId(`${mem.split("@")[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar_`)
 
