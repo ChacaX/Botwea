@@ -813,51 +813,51 @@ client.logger.level = 'warn'
 		
 
 const getCastilexUser = getLevelUser(sender)
-var role ='🏯'
+var castil ='🏯'
 if (getCastilexUser === 1) {
-role ='🏯'
+castil ='🏯'
 } else if (getCastilexUser === 2) {
-role ='🏰'
+castil ='🏰'
 } 
 
 const getBentengxUser = getLevelUser(sender)
-var role ='⛩️'
+var benteng ='⛩️'
 if (getBentengxUser === 1) {
-role ='⛩️'
+benteng ='⛩️'
 } else if (getBentengxUser === 2) {
-role ='🏛️'
+benteng ='🏛️'
 } 
 
 const getRumahxUser = getLevelUser(sender)
-var role ='🏠'
+var rumah ='🏠'
 if (getRumahxUser === 1) {
-role ='🏠'
+rumah ='🏠'
 } else if (getRumahxUser === 2) {
-role ='🏢'
+rumah ='🏢'
 } 
 
 const getPabrikxUser = getLevelUser(sender)
-var role ='🏗️'
+var pabrik ='🏗️'
 if (getPabrikxUser === 1) {
-role ='🏗️'
+pabrik ='🏗️'
 } else if (getPabrikxUser === 2) {
-role ='🏭'
+pabrik ='🏭'
 } 
 			
 const getMonumenxUser = getLevelUser(sender)
-var role ='🗽'
+var monumen ='🗽'
 if (getMonumenxUser === 1) {
-role ='🗽'
+monumen ='🗽'
 } else if (getMonumenxUser === 2) {
-role ='🗼'
+monumen ='🗼'
 } 
 
 const getHiburanxUser = getLevelUser(sender)
-var role ='⛲'
+var hihuran ='⛲'
 if (getHiburanxUser === 1) {
-role ='⛲'
+hiburan ='⛲'
 } else if (getHiburanxUser === 2) {
-role ='🏖️'
+hiburan ='🏖️'
 } 
 
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
@@ -1056,14 +1056,14 @@ moneynyax = moneyx * 1
 /*AWAL PERANG*/
 mentions(`*TIM MERAH PENANTANG*
 💵 money : $${getMoneyUser(sender)}
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 
 *TIM BIRU ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
@@ -1076,7 +1076,7 @@ mentions(`*HASIL PERTEMPURAN*
 
 *DESA PENANTANG*
 💵 money : +$${money}
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : -${health}/100
 🤺 samurai : -${samurai}
 🏇 barakuda : -${barakuda}
@@ -1084,7 +1084,7 @@ ${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 
 *DESA ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : +$${moneyx}
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : -${healthx}/100
 🤺 samurai : -${samuraix}
 🏇 barakuda : -${barakudax}
@@ -1217,13 +1217,13 @@ wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
 💵 money : $${getMoneyUser(sender)}
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 \n*musuh*
 💵 money : $${musuhm}
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : ${musuhh}/100
 🤺 samurai : ${musuhs}
 🏇 barakuda : ${musuhb}`)
@@ -1244,14 +1244,14 @@ addPasienUser(sender, sakitnya2)
 setTimeout( () => {
 reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 💵 money : +$${kamum}
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : -${kamuh}/100
 🤺 samurai : -${kamus}
 🏇 barakuda : -${kamub}
 🚑 terluka : +${ksakit} +${esakit}
 \n*musuh*
 💵 money : -$${musuhm}
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : -${musuhh}/100
 🤺 samurai : -${musuhs}
 🏇 barakuda : -${musuhb}
@@ -1274,7 +1274,7 @@ addHealthUser(sender, -nyawa)
 addPendudukUser(sender, -penduduk)
 reply(`*DESAMU DIJARAH!!!*\n\n*riwayat*
 💵 money -$${jarahuang}
-${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : -${jarahnyawa}/100
 🚑 terluka : +${jarahpenduduk}`)
 }, 120000)
@@ -1660,22 +1660,22 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 reply(`💵 money : $${getMoneyUser(sender)}
 
 *Pertahanan*
-${getCastilexUser} CASTILE LEVEL ${getLevelUser(sender)}
+${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
-${getBentengxUser} : ${getBentengUser(sender)}/1
+${benteng} : ${getBentengUser(sender)}/1
 
 *Sosial*
 👥 penduduk : ${getPendudukUser(sender)}
 🏢 hospital : ${getHospitalUser(sender)}/1
-${getRumahxUser} house : ${getHouseUser(sender)}
+${rumah} house : ${getHouseUser(sender)}
 🚑 pasien : ${getPasienUser(sender)}
 
 *Ekonomi*
-${getPabrikxUser} pabrik : ${getPabrikUser(sender)}/1
-${getMonumenxUser} monumen : ${getMonumenUser(sender)}/1
-${getHiburanxUser} hiburan : ${getHiburanUser(sender)}/1
+${pabrik} pabrik : ${getPabrikUser(sender)}/1
+${monumen} monumen : ${getMonumenUser(sender)}/1
+${hiburan} hiburan : ${getHiburanUser(sender)}/1
 
 *Alam*
 🌳 pohon : ${getPohonUser(sender)} 
