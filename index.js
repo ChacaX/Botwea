@@ -814,9 +814,9 @@ client.logger.level = 'warn'
 
 const getCastilexUser = getLevelUser(sender)
 var role ='🏯'
-if (getCastilUser === 1) {
+if (getCastilexUser === 1) {
 role ='🏯'
-} else if (getCastilUser === 2) {
+} else if (getCastilexUser === 2) {
 role ='🏰'
 } 
 
@@ -1056,14 +1056,14 @@ moneynyax = moneyx * 1
 /*AWAL PERANG*/
 mentions(`*TIM MERAH PENANTANG*
 💵 money : $${getMoneyUser(sender)}
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 
 *TIM BIRU ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 🏇 barakuda : ${getBarakudaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
@@ -1076,7 +1076,7 @@ mentions(`*HASIL PERTEMPURAN*
 
 *DESA PENANTANG*
 💵 money : +$${money}
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : -${health}/100
 🤺 samurai : -${samurai}
 🏇 barakuda : -${barakuda}
@@ -1084,7 +1084,7 @@ ${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 
 *DESA ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : +$${moneyx}
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : -${healthx}/100
 🤺 samurai : -${samuraix}
 🏇 barakuda : -${barakudax}
@@ -1217,13 +1217,13 @@ wl = ["menang","kalah","menang"]
 jadi = wl[Math.floor(Math.random() * wl.length)]
 reply(`Memulai Pertempuran\n\n*kamu*
 💵 money : $${getMoneyUser(sender)}
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏇 barakuda : ${getBarakudaUser(sender)}
 \n*musuh*
 💵 money : $${musuhm}
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : ${musuhh}/100
 🤺 samurai : ${musuhs}
 🏇 barakuda : ${musuhb}`)
@@ -1244,14 +1244,14 @@ addPasienUser(sender, sakitnya2)
 setTimeout( () => {
 reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 💵 money : +$${kamum}
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : -${kamuh}/100
 🤺 samurai : -${kamus}
 🏇 barakuda : -${kamub}
 🚑 terluka : +${ksakit} +${esakit}
 \n*musuh*
 💵 money : -$${musuhm}
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : -${musuhh}/100
 🤺 samurai : -${musuhs}
 🏇 barakuda : -${musuhb}
@@ -1274,7 +1274,7 @@ addHealthUser(sender, -nyawa)
 addPendudukUser(sender, -penduduk)
 reply(`*DESAMU DIJARAH!!!*\n\n*riwayat*
 💵 money -$${jarahuang}
-${getCastilUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
+${getCastilexUser(sender)} CASTILE LEVEL ${getLevelUser(sender)}
 ❤️ health : -${jarahnyawa}/100
 🚑 terluka : +${jarahpenduduk}`)
 }, 120000)
