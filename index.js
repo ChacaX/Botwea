@@ -931,6 +931,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}training
 ❒ ${prefix2}war
 ❒ ${prefix2}bank
+❒ ${prefix2}cek
 ❒ ${prefix2}pangkas
 
 *GRUP MENU*   
@@ -988,12 +989,12 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 if (getLevelUser(sender)  === 2 ) return reply(`kamu sudah upgrade desa ke level maximum`) 
 if (getMoneyUser(sender) < 75 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $75`)
 addMoneyUser(sender, -75)
-addMoneyUser(sender, 10)
+addMoneyUser(sender, 25)
 addPendudukUser(sender, 20)
 addSamuraiUser(sender, 5)
 addBarakudaUser(sender, 5)
 addLevelUser(sender, 1)
-reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏯 > 🏰      ⛲ > 🏖️\n⛩️ > 🏛️      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $10\n🤺 + 5\n🏇 + 5\n👥 + 20`) 
+reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏯 > 🏰      ⛲ > 🏖️\n⛩️ > 🏛️      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏇 + 5\n👥 + 20`) 
 break
 
 case 'war':
@@ -1331,7 +1332,8 @@ addPohonUser(sender, -jumlah)
 m = ["1","2","3","4","5","6","7"]
 money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -5)
-addMoneyUser(sender, money) 
+moneyy = money * 1
+addMoneyUser(sender, moneyy) 
 reply(`Kamu telah memangkas seluruh pohon dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
 } else if (args[0]=="batu") {
 if (getBatuUser(sender) < 5 ) return reply(`maaf batu mu belum mencukupi untuk dipangkas, minimal 5`)
@@ -1688,6 +1690,89 @@ ${hiburan} hiburan : ${getHiburanUser(sender)}/1
 🪨 batu : ${getBatuUser(sender)} 
 🌾 semak : ${getSemakUser(sender)} 
 🍄 jamur : ${getJamurUser(sender)}`}) 
+break
+
+case 'cek':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+mem = args.join(" ") 
+if (!getRpgId(`${mem.split("@")[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar_`)
+
+const getCastilevUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var castilv ='🏯'
+if (getCastilevUser === 1) {
+castilv ='🏯'
+} else if (getCastilevUser === 2) {
+castilv ='🏰'
+} 
+
+const getBentengvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var bentengv ='⛩️'
+if (getBentengvUser === 1) {
+bentengv ='⛩️'
+} else if (getBentengvUser === 2) {
+bentengv ='🏛️'
+} 
+
+const getRumahvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var rumahv ='🏠'
+if (getRumahvUser === 1) {
+rumahv ='🏠'
+} else if (getRumahvUser === 2) {
+rumahv ='🏢'
+} 
+
+const getPabrikvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var pabrikv ='🏗️'
+if (getPabrikvUser === 1) {
+pabrikv ='🏗️'
+} else if (getPabrikvUser === 2) {
+pabrikv ='🏭'
+} 
+			
+const getMonumenvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var monumenv ='🗽'
+if (getMonumenvUser === 1) {
+monumenv ='🗽'
+} else if (getMonumenvUser === 2) {
+monumenv ='🗼'
+} 
+
+const getHiburanvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var hihuranv ='⛲'
+if (getHiburanvUser === 1) {
+hiburanv ='⛲'
+} else if (getHiburanvUser === 2) {
+hiburanv ='🏖️'
+} 
+
+img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
+gmb = await getBuffer(img) 
+client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA : @${mem.split("@")[1]}
+${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+
+*Pertahanan*
+❤️ health : ${getHealthUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/100
+🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+🏇 barakuda : ${getBarakudaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+${bentengv} benteng : ${getBentengUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
+
+*Sosial*
+👥 penduduk : ${getPendudukUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+🏥 hospital : ${getHospitalUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
+${rumahv} house : ${getHouseUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+🚑 pasien : ${getPasienUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+
+*Ekonomi*
+${pabrikv} pabrik : ${getPabrikUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
+${monumenv} monumen : ${getMonumenUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
+${hiburanv} hiburan : ${getHiburanUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
+💵 money : $${getMoneyUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+
+*Alam*
+🌳 pohon : ${getPohonUser(`${mem.split("@")[1]}@s.whatsapp.net`)} 
+🪨 batu : ${getBatuUser(`${mem.split("@")[1]}@s.whatsapp.net`)} 
+🌾 semak : ${getSemakUser(`${mem.split("@")[1]}@s.whatsapp.net`)} 
+🍄 jamur : ${getJamurUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`}) 
 break
 
 case 'warning':
@@ -2121,6 +2206,7 @@ teks =`*INFORMASI*
 ❒ ${prefix2}training
 ❒ ${prefix2}war
 ❒ ${prefix2}bank
+❒ ${prefix2}cek
 ❒ ${prefix2}pangkas
 
 *GRUP MENU*   
