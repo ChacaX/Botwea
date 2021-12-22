@@ -518,7 +518,7 @@ fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
 }
 
-const getpohonUser = (userid) => {
+const getPohonUser = (userid) => {
 let position = false
 Object.keys(_rpg).forEach((i) => {
 if (_rpg[i].a === userid) {
