@@ -862,9 +862,9 @@ hiburan ='🏖️'
 
 const batesPabrik = getLevelUser(sender)
 var batesp ='1'
-if (batespabrik === 1) {
+if (batesPabrik === 1) {
 batesp = '1'
-} else if (batespabrik === 2) {
+} else if (batesPabrik === 2) {
 batesp ='3'
 } 
 
@@ -1738,9 +1738,9 @@ if (!getRpgId(`${mem.split("@")[1]}@s.whatsapp.net`)) return reply(`❎ _teman k
 
 const batesPabrikx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var batespx ='1'
-if (batespabrikx === 1) {
+if (batesPabrikx === 1) {
 batespx = '1'
-} else if (batespabrikx === 2) {
+} else if (batesPabrikx === 2) {
 batespx ='3'
 } 
 
