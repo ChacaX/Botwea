@@ -1134,7 +1134,7 @@ if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 50) return reply(`
 addBentengUser(sender, - 1) 
 break
 
-/*case 'war':
+//case 'war'://
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
@@ -1252,7 +1252,7 @@ addBatuUser(`${musuh.split('@')[1]}`, 2)
 addJamurUser(`${musuh.split('@')[1]}`, 2)
 addPohonUser(`${musuh.split('@')[1]}`, 3)
 addSemakUser(`${musuh.split('@')[1]}`, 2)
-break*/
+break
 
 case 'stiker':
 case 'sticker':
