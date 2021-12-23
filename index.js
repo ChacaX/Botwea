@@ -861,27 +861,27 @@ hiburan ='🏖️'
 } 
 
 const batesPabrik = getLevelUser(sender)
-var batesp ='1'
-if (batesPabrik < 2) {
-batesp = '1'
-} else if (batesPabrik < 3 ) {
-batesp ='3'
+var batesp ='2'
+if (batesPabrik === 1) {
+batesp = '2'
+} else if (batesPabrik === 2 ) {
+batesp ='4'
 } 
 
 const batesMonumen =  getLevelUser(sender)
-var batesm ='1'
-if (batesMonumen < 2) {
-batesm ='1'
-} else if (batesMonumen < 3) {
-batesm ='3'
+var batesm ='2'
+if (batesMonumen === 1) {
+batesm ='2'
+} else if (batesMonumen === 2) {
+batesm ='4'
 } 
 
 const batesHiburan =  getLevelUser(sender)
-var batesh ='1'
-if (batesHiburan < 2) {
-batesh ='1'
-} else if (batesHiburan < 3) {
-batesh ='3'
+var batesh ='2'
+if (batesHiburan === 1) {
+batesh ='2'
+} else if (batesHiburan === 2) {
+batesh ='4'
 } 
 
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
@@ -1481,7 +1481,7 @@ addBentengUser(sender, 1)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
 } 
 } else if (args[0]=="pabrik") {
-if (getPabrikUser(sender) === batesp) return reply(`Pabrik Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getPabrikUser(sender) < batesp) return reply(`Pabrik Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 45
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -1491,7 +1491,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Pabrik Untuk Mendapa
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else if (args[0]=="monumen") {
-if (getMonumenUser(sender) === batesm) return reply(`Monument Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getMonumenUser(sender) < batesm) return reply(`Monument Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 35
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -1501,7 +1501,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Monumen Untuk Memban
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else if (args[0]=="hiburan") {
-if (getHiburanUser(sender) === batesh) return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getHiburanUser(sender) < batesh) return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 20
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -1702,6 +1702,31 @@ case 'desa':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
+
+const batesPabrikv = getLevelUser(sender)
+var batespv ='1'
+if (batesPabrikv === 1) {
+batespv = '1'
+} else if (batesPabrikv === 2) {
+batespv ='3'
+} 
+
+const batesMonumenv =  getLevelUser(sender)
+var batesmv ='1'
+if (batesMonumenv === 1) {
+batesmv ='1'
+} else if (batesMonumenv === 2) {
+batesmv ='3'
+} 
+
+const batesHiburanv =  getLevelUser(sender)
+var bateshv ='1'
+if (batesHiburanv === 1) {
+bateshv ='1'
+} else if (batesHiburanv === 2) {
+bateshv ='3'
+} 
+
 client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA DESA : ${pushname} 
 ${castil} LEVEL DESA : ${getLevelUser(sender)}
 
@@ -1718,9 +1743,9 @@ ${rumah} house : ${getHouseUser(sender)}
 🚑 pasien : ${getPasienUser(sender)}
 
 *Ekonomi*
-${pabrik} pabrik : ${getPabrikUser(sender)}/${batesp}
-${monumen} monumen : ${getMonumenUser(sender)}/${batesm}
-${hiburan} hiburan : ${getHiburanUser(sender)}/${batesh}
+${pabrik} pabrik : ${getPabrikUser(sender)}/${batespv}
+${monumen} monumen : ${getMonumenUser(sender)}/${batesmv}
+${hiburan} hiburan : ${getHiburanUser(sender)}/${bateshv}
 💵 money : $${getMoneyUser(sender)}
 
 *Alam*
