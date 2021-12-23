@@ -1014,7 +1014,7 @@ levelnya = getLevelUser(sender)
 if (levelnya === 1) {
 if (getMoneyUser(sender) < 75 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $75`)
 if (getHospitalUser(sender) === 0) return reply(`kamu wajib membangun gedung hospital terlebih dahulu`)
-if (getPabrikUser(sender) > ===0) return reply(`kamu wajib membangun pabrik terlebih dahulu`)
+if (getPabrikUser(sender) > === 0) return reply(`kamu wajib membangun pabrik terlebih dahulu`)
 if (getMonumenUser(sender) === 0) return reply(`kamu wajib membangun monumen terlebih dahulu`)
 if (getHiburanUser(sender) === 0) return reply(`kamu wajib membangun hiburan terlebih dahulu`)
 addMoneyUser(sender, -75)
