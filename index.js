@@ -862,25 +862,25 @@ hiburan ='🏖️'
 
 const batesPabrik = getLevelUser(sender)
 var batesp ='1'
-if (batesPabrik === 1) {
+if (batesPabrik < 2) {
 batesp = '1'
-} else if (batesPabrik === 2) {
+} else if (batesPabrik < 3 ) {
 batesp ='3'
 } 
 
 const batesMonumen =  getLevelUser(sender)
 var batesm ='1'
-if (batesMonumen === 1) {
+if (batesMonumen < 2) {
 batesm ='1'
-} else if (batesMonumen === 2) {
+} else if (batesMonumen < 3) {
 batesm ='3'
 } 
 
 const batesHiburan =  getLevelUser(sender)
 var batesh ='1'
-if (batesHiburan === 1) {
+if (batesHiburan < 2) {
 batesh ='1'
-} else if (batesHiburan === 2) {
+} else if (batesHiburan < 3) {
 batesh ='3'
 } 
 
