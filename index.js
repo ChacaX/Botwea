@@ -860,15 +860,15 @@ hiburan ='⛲'
 hiburan ='🏖️'
 } 
 
-const batesPabrik = getPabrikUser(sender)
+const batesPabrik = getLevelUser(sender)
 var batesp ='1'
-if (batesPabrik === 1) {
-batesp ='1'
-} else if (batesPabrik === 2) {
+if (batespabrik === 1) {
+batesp = '1'
+} else if (batespabrik === 2) {
 batesp ='3'
 } 
 
-const batesMonumen = getMonumenUser(sender)
+const batesMonumen =  getLevelUser(sender)
 var batesm ='1'
 if (batesMonumen === 1) {
 batesm ='1'
@@ -876,7 +876,7 @@ batesm ='1'
 batesm ='3'
 } 
 
-const batesHiburan = getHiburanUser(sender)
+const batesHiburan =  getLevelUser(sender)
 var batesh ='1'
 if (batesHiburan === 1) {
 batesh ='1'
@@ -1736,15 +1736,15 @@ if (args.length < 1) return reply(`tag @member yang ingin dicek\n\nexample: /cek
 mem = args.join(" ") 
 if (!getRpgId(`${mem.split("@")[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar_`)
 
-const batesPabrikx = getPabrikUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+const batesPabrikx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var batespx ='1'
-if (getHiburanxUserx === 1) {
-batespx ='1'
-} else if (getHiburanxUserx === 2) {
+if (batespabrikx === 1) {
+batespx = '1'
+} else if (batespabrikx === 2) {
 batespx ='3'
 } 
 
-const batesMonumenx = getMonumenUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+const batesMonumenx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var batesmx ='1'
 if (batesMonumenx === 1) {
 batesmx ='1'
@@ -1752,12 +1752,12 @@ batesmx ='1'
 batesmx ='3'
 } 
 
-const batesHiburanx = getHiburanUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+const batesHiburanx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var bateshx ='1'
 if (batesHiburanx === 1) {
 bateshx ='1'
 } else if (batesHiburanx === 2) {
-batesmx ='3'
+bateshx ='3'
 } 
 
  getCastilevUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
