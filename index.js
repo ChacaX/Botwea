@@ -861,27 +861,27 @@ hiburan ='🏖️'
 } 
 
 const batesPabrik = getLevelUser(sender)
-var batesp ='2'
+var batesp ='0'
 if (batesPabrik === 1) {
-batesp = '2'
+batesp = '0'
 } else if (batesPabrik === 2) {
-batesp ='4'
+batesp ='2'
 } 
 
 const batesMonumen =  getLevelUser(sender)
-var batesm ='2'
+var batesm ='0'
 if (batesMonumen === 1) {
-batesm ='2'
+batesm ='0'
 } else if (batesMonumen === 2) {
-batesm ='4'
+batesm ='2'
 } 
 
 const batesHiburan =  getLevelUser(sender)
-var batesh ='2'
+var batesh ='0'
 if (batesHiburan === 1) {
-batesh ='2'
+batesh ='0'
 } else if (batesHiburan === 2) {
-batesh ='4'
+batesh ='2'
 } 
 
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
