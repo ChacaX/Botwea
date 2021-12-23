@@ -1481,7 +1481,7 @@ addBentengUser(sender, 1)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
 } 
 } else if (args[0]=="pabrik") {
-if (getPabrikUser(sender) === batesp) return reply(`Pabrik Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getPabrikUser(sender) < batesp) return reply(`Pabrik Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 45
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -1491,7 +1491,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Pabrik Untuk Mendapa
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else if (args[0]=="monumen") {
-if (getMonumenUser(sender) === batesm) return reply(`Monument Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getMonumenUser(sender) < batesm) return reply(`Monument Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 35
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -1501,7 +1501,7 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Monumen Untuk Memban
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 } 
 } else if (args[0]=="hiburan") {
-if (getHiburanUser(sender) === batesh) return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
+if (getHiburanUser(sender) < batesh) return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 20
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
