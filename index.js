@@ -1037,111 +1037,6 @@ musuh = args.join(" ")
 if (!getRpgId(`${musuh.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _lawan kamu belum mendaftar ketik /daftar untuk akses bot_`)
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
-if (getBentengUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 0) return reply(`maaf kamu tidak bisa menyerang orang yang telah mendirikan benteng`)
-if (getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 30) return reply(`maaf health lawan terlalu rendah untuk memulai pertempuran`)
-//================================
-//================================
-sam = [`8`,`14`,`12`,`10`,`11`,`13`,`15`] 
-samurai = sam[Math.floor(Math.random() * sam.length)]
-samuraix = sam[Math.floor(Math.random() * sam.length)]
-bar = [`15`,`12`,`8`,`10`,`11`,`13`] 
-archer = bar[Math.floor(Math.random() * bar.length)]
-archerx = bar[Math.floor(Math.random() * bar.length)]
-pas = [`5`,`10`,`15`,`5`,`7`,`5`] 
-pasien = pas[Math.floor(Math.random() * pas.length)]
-pasienx = pas[Math.floor(Math.random() * pas.length)]
-u = [`25`,`15`,`35`,`30`,`20`,`15`] 
-money = u[Math.floor(Math.random() * u.length)]
-moneyx = u[Math.floor(Math.random() * u.length)]
-musuhm = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) + getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) * 1
-kamum = getSamuraiUser(sender) + getArcherUser(sender) * 1
-//================================
-//================================
-samurainya = samurai * 1
-samurainyax = samuraix * 1
-archernya = archer * 1
-archernyax = archerx * 1
-pasiennya = pasien * 1
-pasiennyax = pasienx * 1
-moneynya = money * 1
-moneynyax = moneyx * 1
-//================================
-//================================
-mentions(`*TIM MERAH PENANTANG*
-💵 money : $${getMoneyUser(sender)}
-${castil} level : ${getLevelUser(sender)}
-❤️ health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}
-🏹 archer : ${getArcherUser(sender)}
-
-*TIM BIRU ${musuh.split('@s.whatsapp.net')[0]}*
-💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-${castil} level : ${getLevelUser(sender)}
-❤️ health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
-🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-🏹 archer : ${getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-
-*PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
-//================================
-//================================
-setTimeout( () => {
-mentions(`*HASIL PERTEMPURAN*
-
-*DESA PENANTANG*
-💵 money : +$${money}
-${castil} level : ${getLevelUser(sender)}
-❤️ health : -${kamum}/100
-🤺 samurai : -${samurai}
-🏹 archer : -${archer}
-🚑 pasien : +${pasien}
-
-*DESA ${musuh.split('@s.whatsapp.net')[0]}*
-💵 money : +$${moneyx}
-${castil} level : ${getLevelUser(sender)}
-❤️ health : -${musuhm}/${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-🤺 samurai : -${samuraix}
-🏹 archer : -${archerx}
-🚑 pasien : +${pasienx}
-
-*INFORMASI DAMAGE*:
-kamu : ${kamum} 
-musuh : ${musuhm}
-
-Yang memiliki damage paling banyak dia menang`, mentioned, true) 
-}, 10000)
-//================================
-//================================
-addHealthUser(sender, -kamum) 
-addHealthUser(`${musuh.split('@')[1]}`, -musuhm)
-addSamuraiUser(sender, -samurainya) 
-addSamuraiUser(`${musuh.split('@')[1]}`, -samurainyax)
-addArcherUser(sender, -archernya) 
-addArcherUser(`${musuh.split('@')[1]}`, -archernyax) 
-addMoneyUser(sender, moneynya) 
-addMoneyUser(`${musuh.split('@')[1]}`, moneynyax) 
-addPasienUser(sender, pasiennya) 
-addPasienUser(`${musuh.split('@')[1]}`, pasiennyax) 
-addBatuUser(sender, 2)
-addJamurUser(sender, 2)
-addPohonUser(sender, 3)
-addSemakUser(sender, 2)
-addBatuUser(`${musuh.split('@')[1]}`, 2)
-addJamurUser(`${musuh.split('@')[1]}`, 2)
-addPohonUser(`${musuh.split('@')[1]}`, 3)
-addSemakUser(`${musuh.split('@')[1]}`, 2)
-if (getBentengUser(sender) === 1) return
-if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 50) return reply(`*INFORMASI PENTING*\n\nBENTENG MILIK PENANTANG HANCUR KARENA LAWAN MEMILIKI PASUKAN YANG TERLALU BANYAK UNTUK DI TAKLUKAN`)
-addBentengUser(sender, - 1) 
-break
-
-//case 'war'://
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
-musuh = args.join(" ") 
-if (!getRpgId(`${musuh.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _lawan kamu belum mendaftar ketik /daftar untuk akses bot_`)
-mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
 if (getArcherUser(sender) < 20) return reply(`maaf archer mu belum mencukupi untuk bertempur, minimal 20`)
 if (getBentengUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 0) return reply(`maaf kamu tidak bisa menyerang orang yang telah mendirikan benteng`)
@@ -1190,6 +1085,10 @@ pasiennya = pasien * 1
 pasiennyax = pasienx * 1
 moneynya = money * 1
 moneynyax = moneyx * 1
+musuhm = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) + getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) * 1
+kamum = getSamuraiUser(sender) + getArcherUser(sender) * 1
+kamum2 = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) + getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) * 1
+musuhm2 = getSamuraiUser(sender) + getArcherUser(sender) * 1
 //================================
 /*AWAL PERANG*/
 mentions(`*TIM MERAH PENANTANG*
@@ -1215,7 +1114,7 @@ mentions(`*HASIL PERTEMPURAN*
 *DESA PENANTANG*
 💵 money : +$${money}
 ${castil} level : ${getLevelUser(sender)}
-❤️ health : -${health}/100
+❤️ health : -${kamum2}/100
 🤺 samurai : -${samurai}
 🏹 archer : -${archer}
 🚑 pasien : +${pasien}
@@ -1223,17 +1122,21 @@ ${castil} level : ${getLevelUser(sender)}
 *DESA ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : +$${moneyx}
 ${castil} level : ${getLevelUser(sender)}
-❤️ health : -${healthx}/100
+❤️ health : -${musuhm2}/100
 🤺 samurai : -${samuraix}
 🏹 archer : -${archerx}
 🚑 pasien : +${pasienx}
 
-*PEMENANG*: ${user}`, mentioned, true) 
+*DAMAGE*:
+kamu : ${kamum} 
+musuh : ${musuhm}
+
+yang mempunyai damage lebih banyak dialah yang menang`, mentioned, true) 
 }, 10000)
 //================================
 /*FUNC RPG MUSUH & SENDER*/
-addHealthUser(sender, -healthnya) 
-addHealthUser(`${musuh.split('@')[1]}`, -healthnyax)
+addHealthUser(sender, -kamum2) 
+addHealthUser(`${musuh.split('@')[1]}`, -musuhm2)
 addSamuraiUser(sender, -samurainya) 
 addSamuraiUser(`${musuh.split('@')[1]}`, -samurainyax)
 addArcherUser(sender, -archernya) 
@@ -1252,6 +1155,9 @@ addBatuUser(`${musuh.split('@')[1]}`, 2)
 addJamurUser(`${musuh.split('@')[1]}`, 2)
 addPohonUser(`${musuh.split('@')[1]}`, 3)
 addSemakUser(`${musuh.split('@')[1]}`, 2)
+if (getBentengUser(sender) === 1) return
+if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 50) return reply(`*INFORMASI PENTING*\n\nBENTENG MILIK PENANTANG HANCUR KARENA LAWAN MEMILIKI PASUKAN YANG TERLALU BANYAK UNTUK DI TAKLUKAN`)
+addBentengUser(sender, - 1) 
 break
 
 case 'stiker':
