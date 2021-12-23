@@ -862,9 +862,9 @@ hiburan ='🏖️'
 
 const batesPabrik = getPabrikUser(sender)
 var batesp ='1'
-if (getHiburanxUser === 1) {
+if (batesPabrik === 1) {
 batesp ='1'
-} else if (getHiburanxUser === 2) {
+} else if (batesPabrik === 2) {
 batesp ='3'
 } 
 
@@ -881,7 +881,7 @@ var batesh ='1'
 if (batesHiburan === 1) {
 batesh ='1'
 } else if (batesHiburan === 2) {
-batesm ='3'
+batesh ='3'
 } 
 
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
