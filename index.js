@@ -888,10 +888,12 @@ monumen ='🏟️'
 } 
 
 const getNagaxUser = getLevelUser(sender)
-var naganya ='terkunci'
+var naganya ='*terkunci*'
 if (getNagaxUser === 1) {
-naganya ='terkunci'
+naganya ='*terkunci*'
 } else if (getNagaxUser === 2) {
+naganya =`${getNagaUser(sender)}`
+} else if (getNagaxUser === 3) {
 naganya =`${getNagaUser(sender)}`
 } 
 
@@ -1515,7 +1517,7 @@ if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 10
-amount = payout * 10
+amount = payout * 1
 bayar = payout * money
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -1605,7 +1607,7 @@ addPasienUser(sender, -jumlah)
 addPendudukUser(sender, jumlah)
 addMoneyUser(sender, -10)
 reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n*_________________________________*`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$10 -  naga\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n*_________________________________*`)}
 addBatuUser(sender, 2)
 addJamurUser(sender, 3)
 break
@@ -1825,7 +1827,7 @@ ${castil} LEVEL DESA : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏹 archer : ${getArcherUser(sender)}
-🐉 naga : *${naganya}*
+🐉 naga : ${naganya}
 ${benteng} benteng : ${getBentengUser(sender)}/1
 
 *Sosial*
@@ -1945,11 +1947,13 @@ hiburanv ='🎢'
 } 
 
 const getNagaxUserx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var naganyax ='terkunci'
+var naganyax ='*terkunci*'
 if (getNagaxUserx === 1) {
-naganyax ='terkunci'
+naganyax ='*terkunci*'
 } else if (getNagaxUserx === 2) {
 naganyax =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`
+} else if (getNagaxUserx === 3 ) {
+naganya =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`
 } 
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
@@ -1961,7 +1965,7 @@ ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 ❤️ health : ${getHealthUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
-🐉 naga : *${naganyax}*
+🐉 naga : ${naganyax}
 ${bentengv} benteng : ${getBentengUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
 
 *Sosial*
