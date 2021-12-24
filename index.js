@@ -1064,9 +1064,9 @@ addLevelUser(sender, 1)
 reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏕️ > 🏯       ⛲ > 🏖️\n⛩️ > 🏦      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏡\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa gedung penghasil money kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏭 +2    🗼+2    🏖️ +2`) 
 } else if (levelnya === 2) {
 if (getMoneyUser(sender) < 150 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $150`)
-if (getPabrikUser(sender) === 3) return reply(`kamu wajib membangun pabrik terlebih dahulu`)
-if (getMonumenUser(sender) === 3) return reply(`kamu wajib membangun monumen terlebih dahulu`)
-if (getHiburanUser(sender) === 3) return reply(`kamu wajib membangun hiburan terlebih dahulu`)
+if (getPabrikUser(sender) === 2) return reply(`kamu wajib membangun pabrik terlebih dahulu`)
+if (getMonumenUser(sender) === 2) return reply(`kamu wajib membangun monumen terlebih dahulu`)
+if (getHiburanUser(sender) === 2) return reply(`kamu wajib membangun hiburan terlebih dahulu`)
 addMoneyUser(sender, -150)
 addMoneyUser(sender, 25)
 addPendudukUser(sender, 20)
@@ -1532,7 +1532,6 @@ break
 case 'buy':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
-if (getSamuraiUser(sender) > batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai lagi`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
@@ -1548,7 +1547,6 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${pa
 } 
 }
 } else if (args[0]=="archer") {
-if (getArcherUser(sender) > batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer lagi`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
@@ -1645,7 +1643,7 @@ addPasienUser(sender, -jumlah)
 addPendudukUser(sender, jumlah)
 addMoneyUser(sender, -10)
 reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monument\n$20 - hiburan\n$10 - obat\n*_________________________________*`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n*_________________________________*`)}
 addBatuUser(sender, 2)
 addJamurUser(sender, 3)
 break
