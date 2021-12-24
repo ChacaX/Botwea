@@ -1949,7 +1949,7 @@ var naganyax ='terkunci'
 if (getNagaxUserx === 1) {
 naganyax ='terkunci'
 } else if (getNagaxUserx === 2) {
-naganyax =`getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`) 
+naganyax =`getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`
 } 
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
