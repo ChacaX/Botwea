@@ -188,7 +188,7 @@ return _rpg[position].i
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3, u:1}
+const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3, u:1, v:0}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -227,6 +227,31 @@ position = i
 })
 if (position !== false) {
 return _rpg[position].b
+}
+}
+
+const addNagaUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].v += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getNagaUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].v
 }
 }
 
@@ -862,6 +887,14 @@ monumen ='🗼'
 monumen ='🏟️'
 } 
 
+const getNagaxUser = getLevelUser(sender)
+var naganya ='terkunci'
+if (getNagaxUser === 1) {
+naganya ='terkunci'
+} else if (getNagaxUser === 2) {
+naganya ='🐉'
+} 
+
 const getHiburanxUser = getLevelUser(sender)
 var hiburan ='⛲'
 if (getHiburanxUser === 1) {
@@ -1063,8 +1096,10 @@ case 'war':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
+if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke level 2 terlebih dahulu agar bisa memulai pertarungan`) 
 musuh = args.join(" ") 
 if (!getRpgId(`${musuh.split('@')[1]}@s.whatsapp.net`)) return reply(`❎ _lawan kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (getLevelUser(`${musuh.split('@')[1]}@s.whatsapp.net`) === 1) return reply(`Lawan harus meningkatkan desanya ke level 2 terlebih dahulu agar bisa memulai pertempuran`) 
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 if (getHealthUser(sender) < 30) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 20) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 20`)
@@ -1103,6 +1138,9 @@ pasienx = pas[Math.floor(Math.random() * pas.length)]
 u = [`25`,`15`,`35`,`30`,`20`,`15`] 
 money = u[Math.floor(Math.random() * u.length)]
 moneyx = u[Math.floor(Math.random() * u.length)]
+na = [`0`,`0`,`0`,`0`,`-1`,`0`] 
+nana = na[Math.floor(Math.random() * na.length)]
+nanax = na[Math.floor(Math.random() * na.length)]
 //================================
 /*SENDER & MUSUH*/
 samurainya = samurai * 1
@@ -1115,10 +1153,14 @@ pasiennya = pasien * 1
 pasiennyax = pasienx * 1
 moneynya = money * 1
 moneynyax = moneyx * 1
-musuhm = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) + getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) * 1
-kamum = getSamuraiUser(sender) + getArcherUser(sender) * 1
-kamum2 = getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) + getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) * 1
-musuhm2 = getSamuraiUser(sender) + getArcherUser(sender) * 1
+naga = nana * 1
+nagax = nanax * 1
+nagam = getNagaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) * 2
+nagak = getNagaUser(sender)  * 2
+musuhm = nagam + getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) + getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) * 1
+kamum = nagak + getSamuraiUser(sender) + getArcherUser(sender) * 1
+kamum2 = nagam + getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) + getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) * 1
+musuhm2 = nagak + getSamuraiUser(sender) + getArcherUser(sender) * 1
 //================================
 /*AWAL PERANG*/
 mentions(`*TIM MERAH PENANTANG*
@@ -1127,6 +1169,7 @@ ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏹 archer : ${getArcherUser(sender)}
+🐉 naga : ${getNagaUser(sender)}
 
 *TIM BIRU ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
@@ -1134,6 +1177,7 @@ ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}
 🏹 archer : ${getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}
+🐉 naga : ${getNagaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //================================
@@ -1147,6 +1191,7 @@ ${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${kamum2}/100
 🤺 samurai : -${samurai}
 🏹 archer : -${archer}
+🐉 naga : ${naga} 
 🚑 pasien : +${pasien}
 
 *DESA ${musuh.split('@s.whatsapp.net')[0]}*
@@ -1155,11 +1200,12 @@ ${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${musuhm2}/100
 🤺 samurai : -${samuraix}
 🏹 archer : -${archerx}
+🐉 naga : ${nagax} 
 🚑 pasien : +${pasienx}
 
 *DAMAGE*:
-kamu : ${kamum} 
-musuh : ${musuhm}
+kamu : ${kamum} damage
+musuh : ${musuhm} damage
 
 yang mempunyai damage lebih banyak dialah yang menang`, mentioned, true) 
 }, 10000)
@@ -1184,7 +1230,10 @@ addJamurUser(`${musuh.split('@')[1]}`, 2)
 addPohonUser(`${musuh.split('@')[1]}`, 3)
 addSemakUser(`${musuh.split('@')[1]}`, 2)
 if (getBentengUser(sender) === 1) return
-if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) >= 70) return reply(`*INFORMASI PENTING*\n\nBENTENG MILIK PENANTANG HANCUR KARENA LAWAN MEMILIKI PASUKAN YANG TERLALU BANYAK UNTUK DI TAKLUKAN`)
+if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 50) return 
+if (getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 30) return 
+if (getNagaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 2) return 
+reply(`*INFORMASI PENTING*\n\nBENTENG MILIK PENANTANG HANCUR KARENA LAWAN MEMILIKI PASUKAN YANG TERLALU BANYAK UNTUK DI TAKLUKAN`)
 addBentengUser(sender, - 1) 
 break
 
@@ -1466,6 +1515,19 @@ if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addArcherUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Archer Sebanyak ${payout}`)
+} 
+} else if (args[0]=="naga") {
+if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke level 2 terlebih dahulu agar bisa membeli naga`) 
+ppp = `${args.join(' ')}`
+payout = ppp.split(" ")[1];
+money = 10
+amount = payout * 10
+bayar = payout * money
+if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getMoneyUser(sender) >= bayar ) {
+addMoneyUser(sender, -bayar)
+addNagaUser(sender, amount)
+await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Sosok Naga Sebanyak ${payout}`)
 } 
 } else if (args[0]=="health") {
 bayar = 1 * 15
@@ -1769,6 +1831,7 @@ ${castil} LEVEL DESA : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏹 archer : ${getArcherUser(sender)}
+${naganya} naga : ${getNagaUser(sender)} 
 ${benteng} benteng : ${getBentengUser(sender)}/1
 
 *Sosial*
@@ -1887,6 +1950,14 @@ hiburanv ='🏖️'
 hiburanv ='🎢'
 } 
 
+const getNagaxUserx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var naganyax ='terkunci'
+if (getNagaxUserx === 1) {
+naganyax ='terkunci'
+} else if (getNagaxUserx === 2) {
+naganyax ='🐉'
+} 
+
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
 client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA DESA : @${mem.split("@")[1]}
@@ -1896,6 +1967,7 @@ ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 ❤️ health : ${getHealthUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+${naganyax} naga : ${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)} 
 ${bentengv} benteng : ${getBentengUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
 
 *Sosial*
