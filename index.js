@@ -1839,9 +1839,9 @@ batessxx ='100'
 batesArcherxx =  getLevelUser(sender)
 var batessxx ='50'
 if (batesArcherxx === 1) {
-batessax ='50'
+batesaxx ='50'
 } else if (batesArcherxx === 2) {
-batessxx ='75'
+batesaxx ='75'
 } else if (batesArcherxx === 3) {
 batesaxx ='100'
 } 
