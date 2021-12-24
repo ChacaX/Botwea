@@ -829,7 +829,7 @@ benteng ='⛩️'
 } else if (getBentengxUser === 2) {
 benteng ='🏦'
 } else if (getBentengxUser === 3) {
-castil ='⛰️'
+benteng ='⛰️'
 } 
 
 const getRumahxUser = getLevelUser(sender)
@@ -863,7 +863,7 @@ monumen ='🏟️'
 } 
 
 const getHiburanxUser = getLevelUser(sender)
-var hihuran ='⛲'
+var hiburan ='⛲'
 if (getHiburanxUser === 1) {
 hiburan ='⛲'
 } else if (getHiburanxUser === 2) {
@@ -1073,8 +1073,10 @@ addPendudukUser(sender, 20)
 addSamuraiUser(sender, 5)
 addArcherUser(sender, 5)
 addLevelUser(sender, 1)
-reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏹 +25    🤺 +25`) 
+reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏹 +25    🤺 +25`) 
 } 
+} else if (levelnya === 3) {
+reply('desa mu telah mencampai level maximum') 
 break
 
 case 'war':
@@ -1537,8 +1539,8 @@ payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (payout => batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
-if (payout <= batess) {
+if (payout > batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
+if (payout < batess) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
@@ -1552,8 +1554,8 @@ payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (payout >= batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer sebanyak itu`) 
-if (payout <= batesa) {
+if (payout > batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer sebanyak itu`) 
+if (payout < batesa) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
@@ -1960,13 +1962,6 @@ bateshx ='3'
 bateshx ='4'
 } 
 
- getCastilevUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var castilv ='🏯'
-if (getCastilevUser === 1) {
-castilv ='🏯'
-} else if (getCastilevUser === 2) {
-castilv ='🏰'
-} 
 
 const getCastilexUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var castilv ='🏕️'
@@ -1985,7 +1980,7 @@ bentengv ='⛩️'
 } else if (getBentengxUserv === 2) {
 bentengv ='🏦'
 } else if (getBentengxUserv === 3) {
-castilv ='⛰️'
+bentengv ='⛰️'
 } 
 
 const getRumahxUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
@@ -2019,7 +2014,7 @@ monumenv ='🏟️'
 } 
 
 const getHiburanxUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var hihuranv ='⛲'
+var hiburanv ='⛲'
 if (getHiburanxUserv === 1) {
 hiburanv ='⛲'
 } else if (getHiburanxUserv === 2) {
