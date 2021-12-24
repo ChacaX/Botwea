@@ -1073,8 +1073,7 @@ addPendudukUser(sender, 20)
 addSamuraiUser(sender, 5)
 addArcherUser(sender, 5)
 addLevelUser(sender, 1)
-reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏹 +25    🤺 +25`) 
-} 
+reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏹 +25    🤺 +25`)
 } else if (levelnya === 3) {
 reply('desa mu telah mencampai level maximum') 
 break
