@@ -813,10 +813,12 @@ client.logger.level = 'warn'
 		
 
 const getCastilexUser = getLevelUser(sender)
-var castil ='🏯'
-if (getCastilexUser === 1) {
-castil ='🏯'
+var castil ='🏕️'
+if (getCastilexUser === 2) {
+castil ='🏕️' 
 } else if (getCastilexUser === 2) {
+castil ='🏯'
+} else if (getCastilexUser === 3) {
 castil ='🏰'
 } 
 
@@ -825,7 +827,9 @@ var benteng ='⛩️'
 if (getBentengxUser === 1) {
 benteng ='⛩️'
 } else if (getBentengxUser === 2) {
-benteng ='🏛️'
+benteng ='🏦'
+} else if (getBentengxUser === 3) {
+castil ='⛰️'
 } 
 
 const getRumahxUser = getLevelUser(sender)
@@ -833,6 +837,8 @@ var rumah ='🏠'
 if (getRumahxUser === 1) {
 rumah ='🏠'
 } else if (getRumahxUser === 2) {
+rumah ='🏡'
+} else if (getRumahxUser === 3) {
 rumah ='🏢'
 } 
 
@@ -841,7 +847,9 @@ var pabrik ='🏗️'
 if (getPabrikxUser === 1) {
 pabrik ='🏗️'
 } else if (getPabrikxUser === 2) {
-pabrik ='🏭'
+pabrik ='🏭' 
+} else if (getPabrikxUser === 3) {
+pabrik ='🏤'
 } 
 			
 const getMonumenxUser = getLevelUser(sender)
@@ -850,6 +858,8 @@ if (getMonumenxUser === 1) {
 monumen ='🗽'
 } else if (getMonumenxUser === 2) {
 monumen ='🗼'
+} else if (getMonumenxUser === 3) {
+monumen ='🏟️'
 } 
 
 const getHiburanxUser = getLevelUser(sender)
@@ -859,6 +869,9 @@ hiburan ='⛲'
 } else if (getHiburanxUser === 2) {
 hiburan ='🏖️'
 } 
+} else if (getHiburanxUser === 3) {
+hiburan ='🎢'
+} 
 
 const batesPabrik = getLevelUser(sender)
 var batesp ='0'
@@ -867,6 +880,9 @@ batesp = '0'
 } else if (batesPabrik === 2) {
 batesp ='2'
 } 
+} else if (batesPabrik === 3) {
+batesp ='3'
+} 
 
 const batesMonumen =  getLevelUser(sender)
 var batesm ='0'
@@ -874,6 +890,8 @@ if (batesMonumen === 1) {
 batesm ='0'
 } else if (batesMonumen === 2) {
 batesm ='2'
+} else if (batesMonumen === 3) {
+batesm ='3'
 } 
 
 const batesHiburan =  getLevelUser(sender)
@@ -882,6 +900,28 @@ if (batesHiburan === 1) {
 batesh ='0'
 } else if (batesHiburan === 2) {
 batesh ='2'
+} else if (batesHiburan === 3) {
+batesh ='3'
+} 
+
+const batesSamurai =  getLevelUser(sender)
+var batess ='50'
+if (batesSamurai === 1) {
+batess ='50'
+} else if (batesSamurai === 2) {
+batess ='75'
+} else if (batesSamurai === 3) {
+batess ='100'
+} 
+
+const batesArcher =  getLevelUser(sender)
+var batess ='50'
+if (batesArcher === 1) {
+batesa ='50'
+} else if (batesArcher === 2) {
+batesa ='75'
+} else if (batesArcher === 3) {
+batesa ='100'
 } 
 
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
@@ -1023,9 +1063,19 @@ addPendudukUser(sender, 20)
 addSamuraiUser(sender, 5)
 addArcherUser(sender, 5)
 addLevelUser(sender, 1)
-reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏯 > 🏰      ⛲ > 🏖️\n⛩️ > 🏛️      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa gedung penghasil money kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏭 +2    🗼+2    🏖️ +2`) 
+reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏕️ > 🏯       ⛲ > 🏖️\n⛩️ > 🏦      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏡\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa gedung penghasil money kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏭 +2    🗼+2    🏖️ +2`) 
 } else if (levelnya === 2) {
-if (getLevelUser(sender) === 2) return reply(`kota kamu telah mencampai level maximum`) 
+if (getMoneyUser(sender) < 150 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $150`)
+if (getPabrikUser(sender) === 3) return reply(`kamu wajib membangun pabrik terlebih dahulu`)
+if (getMonumenUser(sender) === 3) return reply(`kamu wajib membangun monumen terlebih dahulu`)
+if (getHiburanUser(sender) === 3) return reply(`kamu wajib membangun hiburan terlebih dahulu`)
+addMoneyUser(sender, -150)
+addMoneyUser(sender, 25)
+addPendudukUser(sender, 20)
+addSamuraiUser(sender, 5)
+addArcherUser(sender, 5)
+addLevelUser(sender, 1)
+reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏹 +25    🤺 +25`) 
 } 
 break
 
@@ -1046,6 +1096,46 @@ if (getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(`m
 pemain = [`PENANTANG`,`${musuh.split('@s.whatsapp.net')[0]}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 kamu = sender
+//================================
+batesSamuraix =  getLevelUser(`${musuh.split("@")[1]}@s.whatsapp.net`)
+var batessx ='50'
+if (batesSamuraix === 1) {
+batessx ='50'
+} else if (batesSamuraix === 2) {
+batessx ='75'
+} else if (batesSamuraix === 3) {
+batessx ='100'
+} 
+
+batesArcherx =  getLevelUser(`${musuh.split("@")[1]}@s.whatsapp.net`)
+var batessx ='50'
+if (batesArcherx === 1) {
+batessx ='50'
+} else if (batesArcherx === 2) {
+batesax ='75'
+} else if (batesArcherx === 3) {
+batesax ='100'
+} 
+
+batesSamuraixx =  getLevelUser(sender)
+var batessxx ='50'
+if (batesSamuraixx === 1) {
+batessxx ='50'
+} else if (batesSamuraixx === 2) {
+batessxx ='75'
+} else if (batesSamuraixx === 3) {
+batessxx ='100'
+} 
+
+batesArcherxx =  getLevelUser(sender)
+var batessxx ='50'
+if (batesArcherxx === 1) {
+batessax ='50'
+} else if (batesArcherxx === 2) {
+batessxx ='75'
+} else if (batesArcherxx === 3) {
+batesaxx ='100'
+} 
 //================================
 /*SENDER & MUSUH*/
 a1 = getHealthUser(sender) 
@@ -1095,15 +1185,15 @@ mentions(`*TIM MERAH PENANTANG*
 💵 money : $${getMoneyUser(sender)}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}
-🏹 archer : ${getArcherUser(sender)}
+🤺 samurai : ${getSamuraiUser(sender)}/${batessxx} 
+🏹 archer : ${getArcherUser(sender)}/${batesaxx}
 
 *TIM BIRU ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
-🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
-🏹 archer : ${getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
+🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/${batessx} 
+🏹 archer : ${getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/${batesax} 
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //================================
@@ -1115,16 +1205,16 @@ mentions(`*HASIL PERTEMPURAN*
 💵 money : +$${money}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${kamum2}/100
-🤺 samurai : -${samurai}
-🏹 archer : -${archer}
+🤺 samurai : -${samurai}/${batessxx} 
+🏹 archer : -${archer}/${batesaxx}
 🚑 pasien : +${pasien}
 
 *DESA ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : +$${moneyx}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${musuhm2}/100
-🤺 samurai : -${samuraix}
-🏹 archer : -${archerx}
+🤺 samurai : -${samuraix}/${batessx} 
+🏹 archer : -${archerx}/${batesax} 
 🚑 pasien : +${pasienx}
 
 *DAMAGE*:
@@ -1145,8 +1235,6 @@ addMoneyUser(sender, moneynya)
 addMoneyUser(`${musuh.split('@')[1]}`, moneynyax) 
 addPasienUser(sender, pasiennya) 
 addPasienUser(`${musuh.split('@')[1]}`, pasiennyax) 
-addBentengUser(sender, bentengnya) 
-addBentengUser(`${musuh.split('@')[1]}`, bentengnyax) 
 addBatuUser(sender, 2)
 addJamurUser(sender, 2)
 addPohonUser(sender, 3)
@@ -1156,7 +1244,7 @@ addJamurUser(`${musuh.split('@')[1]}`, 2)
 addPohonUser(`${musuh.split('@')[1]}`, 3)
 addSemakUser(`${musuh.split('@')[1]}`, 2)
 if (getBentengUser(sender) === 1) return
-if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 50) return reply(`*INFORMASI PENTING*\n\nBENTENG MILIK PENANTANG HANCUR KARENA LAWAN MEMILIKI PASUKAN YANG TERLALU BANYAK UNTUK DI TAKLUKAN`)
+if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) >= 70) return reply(`*INFORMASI PENTING*\n\nBENTENG MILIK PENANTANG HANCUR KARENA LAWAN MEMILIKI PASUKAN YANG TERLALU BANYAK UNTUK DI TAKLUKAN`)
 addBentengUser(sender, - 1) 
 break
 
@@ -1239,6 +1327,26 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 if (getHealthUser(sender) < 15) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 10) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 10`)
 if (getArcherUser(sender) < 10) return reply(`maaf archer mu belum mencukupi untuk bertempur, minimal 10`)
+
+batesSamuraixx =  getLevelUser(sender)
+var batessxx ='50'
+if (batesSamuraixx === 1) {
+batessxx ='50'
+} else if (batesSamuraixx === 2) {
+batessxx ='75'
+} else if (batesSamuraixx === 3) {
+batessxx ='100'
+} 
+
+batesArcherxx =  getLevelUser(sender)
+var batessxx ='50'
+if (batesArcherxx === 1) {
+batessax ='50'
+} else if (batesArcherxx === 2) {
+batessxx ='75'
+} else if (batesArcherxx === 3) {
+batesaxx ='100'
+} 
 musuh = ["1","2","3","4","5","6","7","8","9","10","11","12"]
 damage = ["10","20","30","5"]
 musuhs = musuh[Math.floor(Math.random() * musuh.length)]
@@ -1263,8 +1371,8 @@ reply(`Memulai Pertempuran\n\n*kamu*
 💵 money : $${getMoneyUser(sender)}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}
-🏹 archer : ${getArcherUser(sender)}
+🤺 samurai : ${getSamuraiUser(sender)}/${batessxx} 
+🏹 archer : ${getArcherUser(sender)}/${batesaxx} 
 \n*musuh*
 💵 money : $${musuhm}
 ${castil} level : ${getLevelUser(sender)}
@@ -1290,8 +1398,8 @@ reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 💵 money : +$${kamum}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${kamuh}/100
-🤺 samurai : -${kamus}
-🏹 archer : -${kamub}
+🤺 samurai : -${kamus}/${batessxx}
+🏹 archer : -${kamub}/${batesaxx}
 🚑 terluka : +${ksakit} +${esakit}
 \n*musuh*
 💵 money : -$${musuhm}
@@ -1431,18 +1539,23 @@ payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
+if (payout >= batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
+if (payout <= batess) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addSamuraiUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
 } 
+}
 } else if (args[0]=="archer") {
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
+if (payout >= batesa) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
+if (payout <= batesa) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
@@ -1714,12 +1827,34 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
 
+batesSamuraixx =  getLevelUser(sender)
+var batessxx ='50'
+if (batesSamuraixx === 1) {
+batessxx ='50'
+} else if (batesSamuraixx === 2) {
+batessxx ='75'
+} else if (batesSamuraixx === 3) {
+batessxx ='100'
+} 
+
+batesArcherxx =  getLevelUser(sender)
+var batessxx ='50'
+if (batesArcherxx === 1) {
+batessax ='50'
+} else if (batesArcherxx === 2) {
+batessxx ='75'
+} else if (batesArcherxx === 3) {
+batesaxx ='100'
+} 
+
 const batesPabrikv = getLevelUser(sender)
 var batespv ='1'
 if (batesPabrikv === 1) {
 batespv = '1'
 } else if (batesPabrikv === 2) {
 batespv ='3'
+} else if (batesPabrikv === 3) {
+batespv ='4'
 } 
 
 const batesMonumenv =  getLevelUser(sender)
@@ -1728,6 +1863,8 @@ if (batesMonumenv === 1) {
 batesmv ='1'
 } else if (batesMonumenv === 2) {
 batesmv ='3'
+} else if (batesMonumenv === 3) {
+batesmv ='4'
 } 
 
 const batesHiburanv =  getLevelUser(sender)
@@ -1735,7 +1872,7 @@ var bateshv ='1'
 if (batesHiburanv === 1) {
 bateshv ='1'
 } else if (batesHiburanv === 2) {
-bateshv ='3'
+bateshv ='4'
 } 
 
 client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA DESA : ${pushname} 
@@ -1743,8 +1880,8 @@ ${castil} LEVEL DESA : ${getLevelUser(sender)}
 
 *Pertahanan*
 ❤️ health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}
-🏹 archer : ${getArcherUser(sender)}
+🤺 samurai : ${getSamuraiUser(sender)}/${batessxx}
+🏹 archer : ${getArcherUser(sender)}/${batesaxx}
 ${benteng} benteng : ${getBentengUser(sender)}/1
 
 *Sosial*
@@ -1772,12 +1909,34 @@ if (args.length < 1) return reply(`tag @member yang ingin dicek\n\nexample: /cek
 mem = args.join(" ") 
 if (!getRpgId(`${mem.split("@")[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar_`)
 
+batesSamuraix =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var batessx ='50'
+if (batesSamuraix === 1) {
+batessx ='50'
+} else if (batesSamuraix === 2) {
+batessx ='75'
+} else if (batesSamuraix === 3) {
+batessx ='100'
+} 
+
+batesArcherx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var batessx ='50'
+if (batesArcherx === 1) {
+batessx ='50'
+} else if (batesArcherx === 2) {
+batesax ='75'
+} else if (batesArcherx === 3) {
+batesax ='100'
+} 
+
 const batesPabrikx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var batespx ='1'
 if (batesPabrikx === 1) {
 batespx = '1'
 } else if (batesPabrikx === 2) {
 batespx ='3'
+} else if (batesPabrikx === 3) {
+batespx ='4'
 } 
 
 const batesMonumenx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
@@ -1786,6 +1945,8 @@ if (batesMonumenx === 1) {
 batesmx ='1'
 } else if (batesMonumenx === 2) {
 batesmx ='3'
+} else if (batesMonumenx === 3) {
+batesmx ='4'
 } 
 
 const batesHiburanx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
@@ -1794,6 +1955,8 @@ if (batesHiburanx === 1) {
 bateshx ='1'
 } else if (batesHiburanx === 2) {
 bateshx ='3'
+} else if (batesHiburanx === 3) {
+bateshx ='4'
 } 
 
  getCastilevUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
@@ -1804,44 +1967,65 @@ castilv ='🏯'
 castilv ='🏰'
 } 
 
- getBentengvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var bentengv ='⛩️'
-if (getBentengvUser === 1) {
-bentengv ='⛩️'
-} else if (getBentengvUser === 2) {
-bentengv ='🏛️'
+const getCastilexUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var castilv ='🏕️'
+if (getCastilexUserv === 2) {
+castilv ='🏕️' 
+} else if (getCastilexUserv === 2) {
+castilv ='🏯'
+} else if (getCastilexUserv === 3) {
+castilv ='🏰'
 } 
 
- getRumahvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+const getBentengxUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var bentengv ='⛩️'
+if (getBentengxUserv === 1) {
+bentengv ='⛩️'
+} else if (getBentengxUserv === 2) {
+bentengv ='🏦'
+} else if (getBentengxUserv === 3) {
+castilv ='⛰️'
+} 
+
+const getRumahxUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var rumahv ='🏠'
-if (getRumahvUser === 1) {
+if (getRumahxUserv === 1) {
 rumahv ='🏠'
-} else if (getRumahvUser === 2) {
+} else if (getRumahxUserv === 2) {
+rumahv ='🏡'
+} else if (getRumahxUserv === 3) {
 rumahv ='🏢'
 } 
 
- getPabrikvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+const getPabrikxUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var pabrikv ='🏗️'
-if (getPabrikvUser === 1) {
+if (getPabrikxUserv === 1) {
 pabrikv ='🏗️'
-} else if (getPabrikvUser === 2) {
-pabrikv ='🏭'
+} else if (getPabrikxUserv === 2) {
+pabrikv ='🏭' 
+} else if (getPabrikxUserv === 3) {
+pabrikv ='🏤'
 } 
 			
- getMonumenvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+const getMonumenxUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var monumenv ='🗽'
-if (getMonumenvUser === 1) {
+if (getMonumenxUserv === 1) {
 monumenv ='🗽'
-} else if (getMonumenvUser === 2) {
+} else if (getMonumenxUserv === 2) {
 monumenv ='🗼'
+} else if (getMonumenxUserv === 3) {
+monumenv ='🏟️'
 } 
 
- getHiburanvUser = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+const getHiburanxUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var hihuranv ='⛲'
-if (getHiburanvUser === 1) {
+if (getHiburanxUserv === 1) {
 hiburanv ='⛲'
-} else if (getHiburanvUser === 2) {
+} else if (getHiburanxUserv === 2) {
 hiburanv ='🏖️'
+} 
+} else if (getHiburanxUserv === 3) {
+hiburanv ='🎢'
 } 
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
@@ -1851,8 +2035,8 @@ ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 
 *Pertahanan*
 ❤️ health : ${getHealthUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/100
-🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
-🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batessx}
+🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batesax}
 ${bentengv} benteng : ${getBentengUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
 
 *Sosial*
