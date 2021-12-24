@@ -868,7 +868,6 @@ if (getHiburanxUser === 1) {
 hiburan ='⛲'
 } else if (getHiburanxUser === 2) {
 hiburan ='🏖️'
-} 
 } else if (getHiburanxUser === 3) {
 hiburan ='🎢'
 } 
@@ -879,7 +878,6 @@ if (batesPabrik === 1) {
 batesp = '0'
 } else if (batesPabrik === 2) {
 batesp ='2'
-} 
 } else if (batesPabrik === 3) {
 batesp ='3'
 } 
