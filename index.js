@@ -1538,8 +1538,8 @@ payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (payout > batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
-if (payout < batess) {
+if (payout => batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
+if (payout <= batess) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
@@ -1554,8 +1554,8 @@ payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (payout > batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer sebanyak itu`) 
-if (payout < batesa) {
+if (payout >= batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer sebanyak itu`) 
+if (payout <= batesa) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
