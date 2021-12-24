@@ -1177,7 +1177,7 @@ ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}
 🏹 archer : ${getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}
-🐉 naga : ${getNagaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) 
+🐉 naga : ${getNagaUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //================================
