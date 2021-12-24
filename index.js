@@ -1560,6 +1560,7 @@ addPendudukUser(sender, -bayar)
 addArcherUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Archer Sebanyak ${payout}`)
 } 
+} 
 } else if (args[0]=="health") {
 bayar = 1 * 15
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
