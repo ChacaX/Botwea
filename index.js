@@ -892,7 +892,7 @@ var naganya ='terkunci'
 if (getNagaxUser === 1) {
 naganya ='terkunci'
 } else if (getNagaxUser === 2) {
-naganya ='🐉'
+naganya =`getNagaUser(sender)`
 } 
 
 const getHiburanxUser = getLevelUser(sender)
@@ -1138,7 +1138,7 @@ pasienx = pas[Math.floor(Math.random() * pas.length)]
 u = [`25`,`15`,`35`,`30`,`20`,`15`] 
 money = u[Math.floor(Math.random() * u.length)]
 moneyx = u[Math.floor(Math.random() * u.length)]
-na = [`0`,`0`,`0`,`0`,`-1`,`0`] 
+na = [`0`,`0`,`0`,`0`,`0`,`0`,`0`,`0`,`0`,`0`,`0`,`0`,`-1`,`0`] 
 nana = na[Math.floor(Math.random() * na.length)]
 nanax = na[Math.floor(Math.random() * na.length)]
 //================================
@@ -1229,12 +1229,6 @@ addBatuUser(`${musuh.split('@')[1]}`, 2)
 addJamurUser(`${musuh.split('@')[1]}`, 2)
 addPohonUser(`${musuh.split('@')[1]}`, 3)
 addSemakUser(`${musuh.split('@')[1]}`, 2)
-if (getBentengUser(sender) === 1) return
-if (getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 50) return 
-if (getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 30) return 
-if (getNagaUser(`${musuh.split('@')[1]}@s.whatsapp.net`) > 2) return 
-reply(`*INFORMASI PENTING*\n\nBENTENG MILIK PENANTANG HANCUR KARENA LAWAN MEMILIKI PASUKAN YANG TERLALU BANYAK UNTUK DI TAKLUKAN`)
-addBentengUser(sender, - 1) 
 break
 
 case 'stiker':
@@ -1831,7 +1825,7 @@ ${castil} LEVEL DESA : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
 🤺 samurai : ${getSamuraiUser(sender)}
 🏹 archer : ${getArcherUser(sender)}
-${naganya} naga : ${getNagaUser(sender)} 
+🐉 naga : *${naganya}*
 ${benteng} benteng : ${getBentengUser(sender)}/1
 
 *Sosial*
@@ -1955,7 +1949,7 @@ var naganyax ='terkunci'
 if (getNagaxUserx === 1) {
 naganyax ='terkunci'
 } else if (getNagaxUserx === 2) {
-naganyax ='🐉'
+naganyax =`getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`) 
 } 
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
@@ -1967,7 +1961,7 @@ ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 ❤️ health : ${getHealthUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/100
 🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
-${naganyax} naga : ${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)} 
+🐉 naga : *${naganyax}*
 ${bentengv} benteng : ${getBentengUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
 
 *Sosial*
