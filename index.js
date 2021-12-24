@@ -814,7 +814,7 @@ client.logger.level = 'warn'
 
 const getCastilexUser = getLevelUser(sender)
 var castil ='🏕️'
-if (getCastilexUser === 2) {
+if (getCastilexUser === 1) {
 castil ='🏕️' 
 } else if (getCastilexUser === 2) {
 castil ='🏯'
@@ -900,26 +900,6 @@ batesh ='0'
 batesh ='2'
 } else if (batesHiburan === 3) {
 batesh ='3'
-} 
-
-const batesSamurai =  getLevelUser(sender)
-var batess ='49'
-if (batesSamurai === 1) {
-batess ='49'
-} else if (batesSamurai === 2) {
-batess ='74'
-} else if (batesSamurai === 3) {
-batess ='99'
-} 
-
-const batesArcher =  getLevelUser(sender)
-var batess ='49'
-if (batesArcher === 1) {
-batesa ='49'
-} else if (batesArcher === 2) {
-batesa ='74'
-} else if (batesArcher === 3) {
-batesa ='99'
 } 
 
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
@@ -1073,7 +1053,7 @@ addPendudukUser(sender, 20)
 addSamuraiUser(sender, 5)
 addArcherUser(sender, 5)
 addLevelUser(sender, 1)
-reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏹 +25    🤺 +25`)
+reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1`)
 } else if (levelnya === 3) {
 reply('desa mu telah mencampai level maximum') 
 break
@@ -1095,46 +1075,6 @@ if (getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`) < 20) return reply(`m
 pemain = [`PENANTANG`,`${musuh.split('@s.whatsapp.net')[0]}`] 
 user = pemain[Math.floor(Math.random() * pemain.length)]
 kamu = sender
-//================================
-batesSamuraix =  getLevelUser(`${musuh.split("@")[1]}@s.whatsapp.net`)
-var batessx ='50'
-if (batesSamuraix === 1) {
-batessx ='50'
-} else if (batesSamuraix === 2) {
-batessx ='75'
-} else if (batesSamuraix === 3) {
-batessx ='100'
-} 
-
-batesArcherx =  getLevelUser(`${musuh.split("@")[1]}@s.whatsapp.net`)
-var batessx ='50'
-if (batesArcherx === 1) {
-batessx ='50'
-} else if (batesArcherx === 2) {
-batesax ='75'
-} else if (batesArcherx === 3) {
-batesax ='100'
-} 
-
-batesSamuraixx =  getLevelUser(sender)
-var batessxx ='50'
-if (batesSamuraixx === 1) {
-batessxx ='50'
-} else if (batesSamuraixx === 2) {
-batessxx ='75'
-} else if (batesSamuraixx === 3) {
-batessxx ='100'
-} 
-
-batesArcherxx =  getLevelUser(sender)
-var batessxx ='50'
-if (batesArcherxx === 1) {
-batessax ='50'
-} else if (batesArcherxx === 2) {
-batessxx ='75'
-} else if (batesArcherxx === 3) {
-batesaxx ='100'
-} 
 //================================
 /*SENDER & MUSUH*/
 a1 = getHealthUser(sender) 
@@ -1184,15 +1124,15 @@ mentions(`*TIM MERAH PENANTANG*
 💵 money : $${getMoneyUser(sender)}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}/${batessxx} 
-🏹 archer : ${getArcherUser(sender)}/${batesaxx}
+🤺 samurai : ${getSamuraiUser(sender)}
+🏹 archer : ${getArcherUser(sender)}
 
 *TIM BIRU ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : $${getMoneyUser(`${musuh.split('@')[1]}@s.whatsapp.net`)} 
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/100
-🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/${batessx} 
-🏹 archer : ${getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}/${batesax} 
+🤺 samurai : ${getSamuraiUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}
+🏹 archer : ${getArcherUser(`${musuh.split('@')[1]}@s.whatsapp.net`)}
 
 *PERTEMPURAN DIMULAI DALAM 10 DETIK LAGI!*`, mentioned, true)
 //================================
@@ -1204,16 +1144,16 @@ mentions(`*HASIL PERTEMPURAN*
 💵 money : +$${money}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${kamum2}/100
-🤺 samurai : -${samurai}/${batessxx} 
-🏹 archer : -${archer}/${batesaxx}
+🤺 samurai : -${samurai}
+🏹 archer : -${archer}
 🚑 pasien : +${pasien}
 
 *DESA ${musuh.split('@s.whatsapp.net')[0]}*
 💵 money : +$${moneyx}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${musuhm2}/100
-🤺 samurai : -${samuraix}/${batessx} 
-🏹 archer : -${archerx}/${batesax} 
+🤺 samurai : -${samuraix}
+🏹 archer : -${archerx}
 🚑 pasien : +${pasienx}
 
 *DAMAGE*:
@@ -1234,10 +1174,10 @@ addMoneyUser(sender, moneynya)
 addMoneyUser(`${musuh.split('@')[1]}`, moneynyax) 
 addPasienUser(sender, pasiennya) 
 addPasienUser(`${musuh.split('@')[1]}`, pasiennyax) 
-addBatuUser(sender, 2)
-addJamurUser(sender, 2)
-addPohonUser(sender, 3)
-addSemakUser(sender, 2)
+addBatuUser(sender, 1)
+addJamurUser(sender, 1)
+addPohonUser(sender, 1)
+addSemakUser(sender, 1)
 addBatuUser(`${musuh.split('@')[1]}`, 2)
 addJamurUser(`${musuh.split('@')[1]}`, 2)
 addPohonUser(`${musuh.split('@')[1]}`, 3)
@@ -1326,26 +1266,6 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 if (getHealthUser(sender) < 15) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 10) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 10`)
 if (getArcherUser(sender) < 10) return reply(`maaf archer mu belum mencukupi untuk bertempur, minimal 10`)
-
-batesSamuraixx =  getLevelUser(sender)
-var batessxx ='50'
-if (batesSamuraixx === 1) {
-batessxx ='50'
-} else if (batesSamuraixx === 2) {
-batessxx ='75'
-} else if (batesSamuraixx === 3) {
-batessxx ='100'
-} 
-
-batesArcherxx =  getLevelUser(sender)
-var batessxx ='50'
-if (batesArcherxx === 1) {
-batessax ='50'
-} else if (batesArcherxx === 2) {
-batessxx ='75'
-} else if (batesArcherxx === 3) {
-batesaxx ='100'
-} 
 musuh = ["1","2","3","4","5","6","7","8","9","10","11","12"]
 damage = ["10","20","30","5"]
 musuhs = musuh[Math.floor(Math.random() * musuh.length)]
@@ -1370,8 +1290,8 @@ reply(`Memulai Pertempuran\n\n*kamu*
 💵 money : $${getMoneyUser(sender)}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}/${batessxx} 
-🏹 archer : ${getArcherUser(sender)}/${batesaxx} 
+🤺 samurai : ${getSamuraiUser(sender)} 
+🏹 archer : ${getArcherUser(sender)}
 \n*musuh*
 💵 money : $${musuhm}
 ${castil} level : ${getLevelUser(sender)}
@@ -1397,8 +1317,8 @@ reply(`*HASIL PERTEMPURAN*\n\n*kamu*
 💵 money : +$${kamum}
 ${castil} level : ${getLevelUser(sender)}
 ❤️ health : -${kamuh}/100
-🤺 samurai : -${kamus}/${batessxx}
-🏹 archer : -${kamub}/${batesaxx}
+🤺 samurai : -${kamus}
+🏹 archer : -${kamub}
 🚑 terluka : +${ksakit} +${esakit}
 \n*musuh*
 💵 money : -$${musuhm}
@@ -1429,7 +1349,7 @@ ${castil(sender)} level : ${getLevelUser(sender)}
 ❤️ health : -${jarahnyawa}/100
 🚑 terluka : +${jarahpenduduk}`)
 }, 120000)
-addBatuUser(sender, 3)
+addBatuUser(sender, 2)
 addJamurUser(sender, 1)
 addPohonUser(sender, 1)
 break
@@ -1488,45 +1408,35 @@ addPohonUser(sender, -jumlah)
 m = ["1","2","3","4","5","6","7"]
 money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -5)
-moneyy = money * 1
-addMoneyUser(sender, moneyy) 
-reply(`Kamu telah memangkas seluruh pohon dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
+addMoneyUser(sender, jumlah) 
+reply(`Kamu telah memangkas seluruh pohon dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${jumlah} money`)
 } else if (args[0]=="batu") {
 if (getBatuUser(sender) < 5 ) return reply(`maaf batu mu belum mencukupi untuk dipangkas, minimal 5`)
 if (getMoneyUser(sender) < 5 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $5`)
 t = getBatuUser(sender)
 jumlah = t * 1
 addBatuUser(sender, -jumlah)
-m = ["1","2","3","4","5","6","7"]
-money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -5)
-moneyy = money * 1
-addMoneyUser(sender, moneyy) 
-reply(`Kamu telah memangkas seluruh batu dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
+addMoneyUser(sender, jumlah) 
+reply(`Kamu telah memangkas seluruh batu dengan biaya $5 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${jumlah} money`)
 } else if (args[0]=="semak") {
 if (getSemakUser(sender) < 5 ) return reply(`maaf semak mu belum mencukupi untuk dipangkas, minimal 5`)
 if (getMoneyUser(sender) < 3 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $3`)
 t = getSemakUser(sender)
 jumlah = t * 1
 addSemakUser(sender, -jumlah)
-m = ["1","2","3","4","5"]
-money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -3)
-moneyy = money * 1
-addMoneyUser(sender, moneyy) 
-reply(`Kamu telah memangkas seluruh semak dengan biaya $3 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
+addMoneyUser(sender, jumlah) 
+reply(`Kamu telah memangkas seluruh semak dengan biaya $3 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${jumlah} money`)
 } else if (args[0]=="jamur") {
 if (getJamurUser(sender) < 5 ) return reply(`maaf jamur mu belum mencukupi untuk dipangkas, minimal 5`)
 if (getMoneyUser(sender) < 2 ) return reply(`maaf uang mu belum mencukupi untuk dipangkas , minimal $2`)
 t = getJamurUser(sender)
 jumlah = t * 1
 addJamurUser(sender, -jumlah)
-m = ["1","2","3"]
-money = m[Math.floor(Math.random() * m.length)]
 addMoneyUser(sender, -2)
-moneyy = money * 1
-addMoneyUser(sender, moneyy) 
-reply(`Kamu telah memangkas seluruh jamur dengan biaya $2 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${money}`)
+addMoneyUser(sender, jumlah) 
+reply(`Kamu telah memangkas seluruh jamur dengan biaya $2 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${jumlah} money`)
 } else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /pangkas <query>\nexample : /pangkas pohon\n*_________________________________*\n$5 - pohon\n$5 - batu\n$3 - semak\n$2 - jamur\n*_________________________________*`)}
 break
 
@@ -1538,29 +1448,23 @@ payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (payout > batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
-if (payout < batess) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addSamuraiUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
 } 
-}
 } else if (args[0]=="archer") {
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (payout > batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer sebanyak itu`) 
-if (payout < batesa) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addArcherUser(sender, amount)
 await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Archer Sebanyak ${payout}`)
-} 
 } 
 } else if (args[0]=="health") {
 bayar = 1 * 15
@@ -1827,26 +1731,6 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
 
-batesSamuraixx =  getLevelUser(sender)
-var batessxv ='50'
-if (batesSamuraixx === 1) {
-batessxv ='50'
-} else if (batesSamuraixx === 2) {
-batessxv ='75'
-} else if (batesSamuraixx === 3) {
-batessxv ='100'
-} 
-
-batesArcherxx =  getLevelUser(sender)
-var batessxx ='50'
-if (batesArcherxx === 1) {
-batesaxx ='50'
-} else if (batesArcherxx === 2) {
-batesaxx ='75'
-} else if (batesArcherxx === 3) {
-batesaxx ='100'
-} 
-
 const batesPabrikv = getLevelUser(sender)
 var batespv ='1'
 if (batesPabrikv === 1) {
@@ -1882,8 +1766,8 @@ ${castil} LEVEL DESA : ${getLevelUser(sender)}
 
 *Pertahanan*
 ❤️ health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}/${batessxv}
-🏹 archer : ${getArcherUser(sender)}/${batesaxx}
+🤺 samurai : ${getSamuraiUser(sender)}
+🏹 archer : ${getArcherUser(sender)}
 ${benteng} benteng : ${getBentengUser(sender)}/1
 
 *Sosial*
@@ -1910,26 +1794,6 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 if (args.length < 1) return reply(`tag @member yang ingin dicek\n\nexample: /cek @${sender.split("@s.whatsapp.net")}`)
 mem = args.join(" ") 
 if (!getRpgId(`${mem.split("@")[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar_`)
-
-batesSamuraix =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var batessx ='50'
-if (batesSamuraix === 1) {
-batessx ='50'
-} else if (batesSamuraix === 2) {
-batessx ='75'
-} else if (batesSamuraix === 3) {
-batessx ='100'
-} 
-
-batesArcherx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var batesax ='50'
-if (batesArcherx === 1) {
-batesax ='50'
-} else if (batesArcherx === 2) {
-batesax ='75'
-} else if (batesArcherx === 3) {
-batesax ='100'
-} 
 
 const batesPabrikx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var batespx ='1'
@@ -2029,8 +1893,8 @@ ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 
 *Pertahanan*
 ❤️ health : ${getHealthUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/100
-🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batessx}
-🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batesax}
+🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 ${bentengv} benteng : ${getBentengUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
 
 *Sosial*
