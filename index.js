@@ -903,23 +903,23 @@ batesh ='3'
 } 
 
 const batesSamurai =  getLevelUser(sender)
-var batess ='50'
+var batess ='49'
 if (batesSamurai === 1) {
-batess ='50'
+batess ='49'
 } else if (batesSamurai === 2) {
-batess ='75'
+batess ='74'
 } else if (batesSamurai === 3) {
-batess ='100'
+batess ='99'
 } 
 
 const batesArcher =  getLevelUser(sender)
-var batess ='50'
+var batess ='49'
 if (batesArcher === 1) {
-batesa ='50'
+batesa ='49'
 } else if (batesArcher === 2) {
-batesa ='75'
+batesa ='74'
 } else if (batesArcher === 3) {
-batesa ='100'
+batesa ='99'
 } 
 
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
@@ -1064,9 +1064,9 @@ addLevelUser(sender, 1)
 reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏕️ > 🏯       ⛲ > 🏖️\n⛩️ > 🏦      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏡\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa gedung penghasil money kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏭 +2    🗼+2    🏖️ +2`) 
 } else if (levelnya === 2) {
 if (getMoneyUser(sender) < 150 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $150`)
-if (getPabrikUser(sender) > 2) return reply(`kamu wajib membangun pabrik terlebih dahulu`)
-if (getMonumenUser(sender) > 2) return reply(`kamu wajib membangun monumen terlebih dahulu`)
-if (getHiburanUser(sender) > 2) return reply(`kamu wajib membangun hiburan terlebih dahulu`)
+if (getPabrikUser(sender) === 3) return reply(`kamu wajib membangun pabrik terlebih dahulu`)
+if (getMonumenUser(sender) === 3) return reply(`kamu wajib membangun monumen terlebih dahulu`)
+if (getHiburanUser(sender) === 3) return reply(`kamu wajib membangun hiburan terlebih dahulu`)
 addMoneyUser(sender, -150)
 addMoneyUser(sender, 25)
 addPendudukUser(sender, 20)
@@ -1532,14 +1532,14 @@ break
 case 'buy':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (args[0]=="samurai") {
-if (getSamuraiUser(sender) === batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai lagi`) 
+if (getSamuraiUser(sender) > batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai lagi`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (payout >= batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
-if (payout <= batess) {
+if (payout > batess) return reply(`Maaf desamu tidak cukup untuk menampung samurai sebanyak itu`) 
+if (payout < batess) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
@@ -1548,14 +1548,14 @@ await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${pa
 } 
 }
 } else if (args[0]=="archer") {
-if (getArcherUser(sender) === batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer lagi`) 
+if (getArcherUser(sender) > batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer lagi`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (payout >= batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer sebanyak itu`) 
-if (payout <= batesa) {
+if (payout > batesa) return reply(`Maaf desamu tidak cukup untuk menampung archer sebanyak itu`) 
+if (payout < batesa) {
 if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
