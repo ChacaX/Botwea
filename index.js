@@ -1574,21 +1574,16 @@ addHealthUser(sender, 100)
 reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
 } 
 } else if (args[0]=="house") {
-ppp = `${args.join(' ')}`
-payout = ppp.split(" ")[1];
-money = 10
-bayar = payout * money
-amount = payout * 1
-penduduk = payout * 15
+bayar = 1 * 15
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
 reply(`tukang desamu sedang menyelesaikan rumahmu dalam 2 menit`) 
 addTukangUser(sender, -1)
 setTimeout( () => {
 addTukangUser(sender, 1)
-addMoneyUser(sender, -bayar)
-addHouseUser(sender, amount)
-addPendudukUser(sender, penduduk)
+addMoneyUser(sender, -15)
+addHouseUser(sender, 1)
+addPendudukUser(sender, 20)
 reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Penduduk`)
 }, 12000)
 } 
@@ -1677,7 +1672,7 @@ addMoneyUser(sender, -10)
 reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
 } else if (args[0]=="tukang") {
 if (getTukangUser(sender) > batest) return reply(`Tukang kamu sudah berada di jumlah maximal`)
-if (getMoneyUser(sender) < 50) return reply(`maaf uang mu belum mencukupi untuk berobat , minimal $15`)
+if (getMoneyUser(sender) < 50) return reply(`maaf uang mu belum mencukupi untuk membeli tukang , minimal $50`)
 addTukangUser(sender, 1)
 addMoneyUser(sender, -50)
 reply(`Selamat tukang kamu bertambah 1 semua pekerjaan akan cepat selesai`)
