@@ -188,7 +188,7 @@ return _rpg[position].i
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100, c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3, u:1, v:0, y:2}
+const obj = {a: userid, b: 0 , c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3, u:1, v:0, y:2, x:0, z:0}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -302,6 +302,31 @@ position = i
 })
 if (position !== false) {
 return _rpg[position].n
+}
+}
+
+const addKerjaHotelUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].z += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getKerjaHotelUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].z
 }
 }
 
@@ -477,6 +502,31 @@ position = i
 })
 if (position !== false) {
 return _rpg[position].j
+}
+}
+
+const addHotelUser = (userid, amount) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+_rpg[position].x += amount
+fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
+}
+}
+
+const getHotelUser = (userid) => {
+let position = false
+Object.keys(_rpg).forEach((i) => {
+if (_rpg[i].a === userid) {
+position = i
+}
+})
+if (position !== false) {
+return _rpg[position].x
 }
 }
 
@@ -932,6 +982,16 @@ naganya =`${getNagaUser(sender)}`
 naganya =`${getNagaUser(sender)}`
 } 
 
+const getHotelxUser = getLevelUser(sender)
+var hotell ='*terkunci*'
+if (getHotelxUser === 1) {
+hotell ='*terkunci*'
+} else if (getHotelxUser === 2) {
+hotell ='*terkunci*'
+} else if (getHotelxUser === 3) {
+hotell =`${getHotelxUser(sender)}`
+} 
+
 const getHiburanxUser = getLevelUser(sender)
 var hiburan ='⛲'
 if (getHiburanxUser === 1) {
@@ -970,6 +1030,16 @@ batesh ='0'
 batesh ='2'
 } else if (batesHiburan === 3) {
 batesh ='3'
+} 
+
+const batesHotel =  getLevelUser(sender)
+var batesht ='0'
+if (batesHotel === 1) {
+batesht ='0'
+} else if (batesHotel === 2) {
+batesht ='0'
+} else if (batesHotel === 3) {
+batesht ='1'
 } 
 
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
@@ -1124,7 +1194,7 @@ addPendudukUser(sender, 20)
 addSamuraiUser(sender, 5)
 addArcherUser(sender, 5)
 addLevelUser(sender, 1)
-reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1`)
+reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏬 unlock`)
 } else if (levelnya === 3) {
 reply('desa mu telah mencampai level maximum') 
 } 
@@ -1474,7 +1544,19 @@ addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaHiburanUser(sender, -1)
 }, 300000)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n*_________________________________*\n$5 - pabrik\n$4 - monumen\n$3 - hiburan\n*_________________________________*`)}
+} else if (args[0]=="hotel") {
+ if (!getHotelUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
+if (getKerjaHotelUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
+reply(`tunggu 5 menit untuk mencairkan money`)
+addKerjaHotelUser(sender, 1)
+setTimeout( () => {
+user = getHotelUser(sender) 
+ea = user * 10
+addMoneyUser(sender, ea)
+reply(`kamu mendapatkan money sebanyak $${ea}`)
+addKerjaHotelUser(sender, -1)
+}, 600000)
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n*_________________________________*\n$5 - pabrik\n$4 - monumen\n$3 - hiburan\n$10 - hotel\n*_________________________________*`)}
 addsemakUser(sender, 2)
 addJamurUser(sender, 1)
 break
@@ -1584,8 +1666,8 @@ addTukangUser(sender, 1)
 addMoneyUser(sender, -15)
 addHouseUser(sender, 1)
 addPendudukUser(sender, 20)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Penduduk`)
-}, 12000)
+reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+}, 120000)
 } 
 } else if (args[0]=="hospital") {
 if (getHospitalUser(sender) > 0) return reply(`Hospital Yang Kamu Buat Telah Mencampai Batas Maximal`)
@@ -1598,7 +1680,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHospitalUser(sender, 1)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Sakit Untuk Tentara Yang Terluka`)
+reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 600000)
 } 
 } else if (args[0]=="benteng") {
@@ -1626,8 +1708,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addPabrikUser(sender, 1)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Pabrik Untuk Mendapatkan Uang`)
-reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
+reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 300000)
 } 
 } else if (args[0]=="monumen") {
@@ -1641,8 +1722,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addMonumenUser(sender, 1)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Monumen Untuk Membangun Perekonomian Dan Health`)
-reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
+reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 300000)
 } 
 } else if (args[0]=="hiburan") {
@@ -1656,9 +1736,23 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHiburanUser(sender, 1)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi Penduduk`)
-reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
+reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 300000)
+} 
+} else if (args[0]=="hotel") {
+if (getLevelUser(sender) < 3) return reply(`Kamu harus meningkatkan desamu ke level 3 terlebih dahulu agar bisa membangun hotel`) 
+if (getHotelUser(sender) > batesht) return reply(`Hotel Yang Kamu Buat Telah Mencampai Batas Maximal`)
+bayar = 1 * 95
+if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getMoneyUser(sender) >= bayar ) {
+reply(`tukang desamu sedang menyelesaikan pembangunan hiburan dalam 10 menit`) 
+addTukangUser(sender, -1)
+setTimeout( () => {
+addTukangUser(sender, 1)
+addMoneyUser(sender, -bayar)
+addHotelUser(sender, 1)
+reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+}, 600000)
 } 
 } else if (args[0]=="obat") {
 if (!getHospitalUser(sender)) return reply(`Kamu belum membangun rumah sakit atau hospital`)
@@ -1676,7 +1770,7 @@ if (getMoneyUser(sender) < 50) return reply(`maaf uang mu belum mencukupi untuk 
 addTukangUser(sender, 1)
 addMoneyUser(sender, -50)
 reply(`Selamat tukang kamu bertambah 1 semua pekerjaan akan cepat selesai`)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$10 - naga\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n$50 - tukang\n*_________________________________*`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$10 - naga\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n$50 - tukang\n$95 - hotel\n*_________________________________*`)}
 addBatuUser(sender, 1)
 addJamurUser(sender, 1)
 break
@@ -1859,6 +1953,16 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
 
+const batesHotelx =  getLevelUser(sender)
+var bateshtx ='0'
+if (batesHotelx === 1) {
+bateshtx ='0'
+} else if (batesHotelx === 2) {
+bateshtx ='0'
+} else if (batesHotelx === 3) {
+bateshtx ='2'
+} 
+
 const batesPabrikv = getLevelUser(sender)
 var batespv ='1'
 if (batesPabrikv === 1) {
@@ -1867,6 +1971,16 @@ batespv = '1'
 batespv ='3'
 } else if (batesPabrikv === 3) {
 batespv ='4'
+} 
+
+const batesTukangy = getLevelUser(sender)
+var batesty ='2'
+if (batesTukangy === 1) {
+batesty ='2'
+} else if (batesTukangy === 2) {
+batesty ='4'
+} else if (batesTukangy === 3) {
+batesty ='5'
 } 
 
 const batesMonumenv =  getLevelUser(sender)
@@ -1891,7 +2005,7 @@ bateshv ='4'
 
 client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA DESA : ${pushname} 
 ${castil} LEVEL DESA : ${getLevelUser(sender)}
-🏕 PONDOK TUKANG : ${getTukangUser(sender)}/${batest} 
+🏕 PONDOK TUKANG : ${getTukangUser(sender)}/${batesty} 
 
 *Pertahanan*
 ❤️ health : ${getHealthUser(sender)}/100
@@ -1910,6 +2024,7 @@ ${rumah} house : ${getHouseUser(sender)}
 ${pabrik} pabrik : ${getPabrikUser(sender)}/${batespv}
 ${monumen} monumen : ${getMonumenUser(sender)}/${batesmv}
 ${hiburan} hiburan : ${getHiburanUser(sender)}/${bateshv}
+🏬 hotel : ${getHotelUser(sender)}/${bateshtx}
 💵 money : $${getMoneyUser(sender)}
 
 *Alam*
@@ -1965,6 +2080,15 @@ bateshx ='3'
 bateshx ='4'
 } 
 
+const batesHotelxy =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var bateshtxy ='0'
+if (batesHotelxy === 1) {
+bateshtxy ='0'
+} else if (batesHotelxy === 2) {
+bateshtxy ='0'
+} else if (batesHotelxy === 3) {
+bateshtxy ='2'
+} 
 
 const getCastilexUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var castilv ='🏕️'
@@ -2059,6 +2183,7 @@ ${rumahv} house : ${getHouseUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 ${pabrikv} pabrik : ${getPabrikUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batespx} 
 ${monumenv} monumen : ${getMonumenUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batesmx} 
 ${hiburanv} hiburan : ${getHiburanUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${bateshx} 
+🏬 hotel : ${getHotelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${bateshtxy}
 💵 money : $${getMoneyUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 
 *Alam*
