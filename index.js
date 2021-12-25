@@ -1536,7 +1536,7 @@ if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum men
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addSamuraiUser(sender, amount)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
 } 
 } else if (args[0]=="archer") {
 ppp = `${args.join(' ')}`
@@ -1548,7 +1548,7 @@ if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum men
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addArcherUser(sender, amount)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Archer Sebanyak ${payout}`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Archer Sebanyak ${payout}`)
 } 
 } else if (args[0]=="naga") {
 if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke level 2 terlebih dahulu agar bisa membeli naga`) 
@@ -1561,7 +1561,7 @@ if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
 addNagaUser(sender, amount)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Sosok Naga Sebanyak ${payout}`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Sosok Naga Sebanyak ${payout}`)
 } 
 } else if (args[0]=="health") {
 bayar = 1 * 15
@@ -1571,7 +1571,7 @@ addMoneyUser(sender, -bayar)
 summon = getHealthUser(sender)
 addHealthUser(sender, -summon)
 addHealthUser(sender, 100)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
 } 
 } else if (args[0]=="house") {
 ppp = `${args.join(' ')}`
@@ -1589,7 +1589,7 @@ addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHouseUser(sender, amount)
 addPendudukUser(sender, penduduk)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Penduduk`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Penduduk`)
 }, 12000)
 } 
 } else if (args[0]=="hospital") {
@@ -1603,7 +1603,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHospitalUser(sender, 1)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Sakit Untuk Tentara Yang Terluka`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Rumah Sakit Untuk Tentara Yang Terluka`)
 }, 600000)
 } 
 } else if (args[0]=="benteng") {
@@ -1617,7 +1617,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addBentengUser(sender, 1)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
 }, 900000)
 } 
 } else if (args[0]=="pabrik") {
@@ -1631,7 +1631,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addPabrikUser(sender, 1)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Pabrik Untuk Mendapatkan Uang`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Pabrik Untuk Mendapatkan Uang`)
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 }, 300000)
 } 
@@ -1646,7 +1646,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addMonumenUser(sender, 1)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Monumen Untuk Membangun Perekonomian Dan Health`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Monumen Untuk Membangun Perekonomian Dan Health`)
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 }, 300000)
 } 
@@ -1661,7 +1661,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHiburanUser(sender, 1)
-await reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi Penduduk`)
+reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Tempat Hiburan Bagi Penduduk`)
 reply(`Ketik /bank untuk menarik uangmu hasil kerja pabrik/monument/hiburan`)
 }, 300000)
 } 
