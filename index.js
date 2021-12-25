@@ -989,7 +989,7 @@ hotell ='*terkunci*'
 } else if (getHotelxUser === 2) {
 hotell ='*terkunci*'
 } else if (getHotelxUser === 3) {
-hotell =`${getHotelxUser(sender)}`
+hotell =`${getHotelUser(sender)}`
 } 
 
 const getHiburanxUser = getLevelUser(sender)
