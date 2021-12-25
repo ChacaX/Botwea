@@ -1206,8 +1206,8 @@ ${castil} level : ${getLevelUser(sender)}
 🚑 pasien : +${pasienx}
 
 *DAMAGE*:
-kamu : ${kamum} damage
-musuh : ${musuhm} damage
+Tim merah : ${kamum} damage (penantang) 
+Tim biru : ${musuhm} damage (korban) 
 
 yang mempunyai damage lebih banyak dialah yang menang`, mentioned, true) 
 }, 10000)
@@ -1607,7 +1607,7 @@ addPasienUser(sender, -jumlah)
 addPendudukUser(sender, jumlah)
 addMoneyUser(sender, -10)
 reply(`Kamu telah menyembuhkan seluruh pasien dengan biaya $10 untuk pengobatan`)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$10 -  naga\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n*_________________________________*`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$10 - naga\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n*_________________________________*`)}
 addBatuUser(sender, 2)
 addJamurUser(sender, 3)
 break
@@ -1953,7 +1953,7 @@ naganyax ='*terkunci*'
 } else if (getNagaxUserx === 2) {
 naganyax =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`
 } else if (getNagaxUserx === 3 ) {
-naganya =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`
+naganyax =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`
 } 
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
