@@ -1896,7 +1896,7 @@ bateshv ='4'
 
 client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA DESA : ${pushname} 
 ${castil} LEVEL DESA : ${getLevelUser(sender)}
-🏕 PONDOK TUKANG : {getTukangUser(sender)}/${batest} 
+🏕 PONDOK TUKANG : ${getTukangUser(sender)}/${batest} 
 
 *Pertahanan*
 ❤️ health : ${getHealthUser(sender)}/100
@@ -2043,7 +2043,7 @@ naganyax =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
-client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA DESA : @${mem.split("@")[1]}
+client.sendMessage(from, gmb, image, {thumbnile: gmb, caption: `🎓 NAMA DESA : - 
 ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 🏕 PONDOK TUKANG : ${getTukangUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batestt}
 
