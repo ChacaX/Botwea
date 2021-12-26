@@ -1052,21 +1052,7 @@ footerText: desc1,
 buttons: but,
 headerType: "DOCUMENT"
 }
-client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, {
-thumbnail: fs.readFileSync('./lib/odc.jpeg'),
-caption: `y`,
-"contextInfo": {
-mentionedJid: [sender],
-"externalAdReply": {
-"title": `Dont Bully Me Please`,
-"body": "subscribe my chanel youtube",
-"mediaType": 2,
-"previewType": `https://youtu.be/dQw4w9WgXcQ`,
-"thumbnail": fs.readFileSync('./lib/odc.jpeg'),
-"mediaUrl": `https://youtu.be/dQw4w9WgXcQ`,
-"sourceUrl": ""
-}}, quoted: 
-mek })
+client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, {thumbnile: fs.readFileSync('./lib/odc.jpeg'), quoted: mek}) 
 }
 
 sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
