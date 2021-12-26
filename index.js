@@ -2317,9 +2317,11 @@ reply(e)
 }
 
 if (budy.includes(`Asu`)) {
-if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
+if (!getBadwordId(sender)) {
+addBadwordId(sender) 
+} else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
@@ -2337,13 +2339,16 @@ kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 addBadwordUser(sender, -badword_limit)
 }
+} 
 break
 }
 
 if (budy.includes(`emek`)) {
-if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
+if (!getBadwordId(sender)) {
+addBadwordId(sender) 
+} else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
@@ -2361,13 +2366,16 @@ kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 addBadwordUser(sender, -badword_limit)
 }
+} 
 break
 }
    
 if (budy.includes(`ontol`)) {
-if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
+if (!getBadwordId(sender)) {
+addBadwordId(sender) 
+} else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
@@ -2385,13 +2393,16 @@ kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 addBadwordUser(sender, -badword_limit)
 }
+} 
 break
 }
 
 if (budy.includes(`acot`)) {
-if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
+if (!getBadwordId(sender)) {
+addBadwordId(sender) 
+} else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
@@ -2409,13 +2420,16 @@ kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 addBadwordUser(sender, -badword_limit)
 }
+} 
 break
 }
 
 if (budy.includes(`njg`)) {
-if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
+if (!getBadwordId(sender)) {
+addBadwordId(sender) 
+} else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
@@ -2433,13 +2447,16 @@ kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 addBadwordUser(sender, -badword_limit)
 }
+} 
 break
 }
 
 if (budy.includes(`gsat`)) {
-if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
+if (!getBadwordId(sender)) {
+addBadwordId(sender) 
+} else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
@@ -2457,13 +2474,16 @@ kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 addBadwordUser(sender, -badword_limit)
 }
+} 
 break
 }
 
 if (budy.includes(`ancok`)) {
-if (!getBadwordId(sender)) return
 if (!isGroup) return
 if (!isBotGroupAdmins) return
+if (!getBadwordId(sender)) {
+addBadwordId(sender) 
+} else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
@@ -2481,6 +2501,7 @@ kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 addBadwordUser(sender, -badword_limit)
 }
+} 
 break
 }
 
