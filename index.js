@@ -846,7 +846,8 @@ client.logger.level = 'warn'
 			const isOwner = ownerNumber.includes(sender)
 			const pushname = client.contacts[sender] != undefined ? client.contacts[sender].vname || client.contacts[sender].notify : undefined
 			const isUrl = (url) => {
-			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
+			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}
+b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
 			const reply = (teks) => {
 				client.sendMessage(from, teks, text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [sender],"externalAdReply": {"title": `whatsappボット`,"body": ``,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync('./lib/odc.jpeg'),"sourceUrl": "https://youtube.com/channel/UC-fcNjQQ5LXV50sSV6s2eXg"}},quoted: mek})
@@ -1666,7 +1667,8 @@ addTukangUser(sender, 1)
 addMoneyUser(sender, -15)
 addHouseUser(sender, 1)
 addPendudukUser(sender, 20)
-reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+reply(`  *SELESAI MEMBANGUN*\n
+bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 120000)
 } 
 } else if (args[0]=="hospital") {
@@ -1680,7 +1682,8 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHospitalUser(sender, 1)
-reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+reply(`  *SELESAI MEMBANGUN*\n
+bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 600000)
 } 
 } else if (args[0]=="benteng") {
@@ -1708,7 +1711,8 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addPabrikUser(sender, 1)
-reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+reply(`  *SELESAI MEMBANGUN*\n
+bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 300000)
 } 
 } else if (args[0]=="monumen") {
@@ -1722,7 +1726,8 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addMonumenUser(sender, 1)
-reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+reply(`  *SELESAI MEMBANGUN*\n
+bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 300000)
 } 
 } else if (args[0]=="hiburan") {
@@ -1736,7 +1741,8 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHiburanUser(sender, 1)
-reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+reply(`  *SELESAI MEMBANGUN*\n
+bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 300000)
 } 
 } else if (args[0]=="hotel") {
@@ -1751,7 +1757,8 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHotelUser(sender, 1)
-reply(`  *SELESAI MEMBANGUN*\n\bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+reply(`  *SELESAI MEMBANGUN*\n
+bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 600000)
 } 
 } else if (args[0]=="obat") {
@@ -1954,11 +1961,11 @@ img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg"
 gmb = await getBuffer(img) 
 
 const batesHotelx =  getLevelUser(sender)
-var bateshtx ='0'
+var bateshtx ='unlock'
 if (batesHotelx === 1) {
-bateshtx ='0'
+bateshtx ='unlock'
 } else if (batesHotelx === 2) {
-bateshtx ='0'
+bateshtx ='unlock'
 } else if (batesHotelx === 3) {
 bateshtx ='2'
 } 
@@ -2081,11 +2088,11 @@ bateshx ='4'
 } 
 
 const batesHotelxy =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var bateshtxy ='0'
+var bateshtxy ='unlock'
 if (batesHotelxy === 1) {
-bateshtxy ='0'
+bateshtxy ='unlock'
 } else if (batesHotelxy === 2) {
-bateshtxy ='0'
+bateshtxy ='unlock'
 } else if (batesHotelxy === 3) {
 bateshtxy ='2'
 } 
