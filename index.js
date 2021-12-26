@@ -1960,13 +1960,13 @@ img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg"
 gmb = await getBuffer(img) 
 
 const batesHotelx =  getLevelUser(sender)
-var bateshtx ='unlock'
+var bateshtx ='*terkunci*'
 if (batesHotelx === 1) {
-bateshtx ='unlock'
+bateshtx ='*terkunci*'
 } else if (batesHotelx === 2) {
-bateshtx ='unlock'
+bateshtx ='*terkunci*'
 } else if (batesHotelx === 3) {
-bateshtx ='2'
+bateshtx =`${getMonumenUser(sender)}/2`
 } 
 
 const batesPabrikv = getLevelUser(sender)
@@ -2028,7 +2028,7 @@ ${rumah} house : ${getHouseUser(sender)}
 
 *Ekonomi*
 ${pabrik} pabrik : ${getPabrikUser(sender)}/${batespv}
-${monumen} monumen : ${getMonumenUser(sender)}/${batesmv}
+${monumen} monumen : ${batesmv}
 ${hiburan} hiburan : ${getHiburanUser(sender)}/${bateshv}
 🏬 hotel : ${getHotelUser(sender)}/${bateshtx}
 💵 money : $${getMoneyUser(sender)}
@@ -2087,13 +2087,13 @@ bateshx ='4'
 } 
 
 const batesHotelxy =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var bateshtxy ='unlock'
+var bateshtxy ='*terkunci*'
 if (batesHotelxy === 1) {
-bateshtxy ='unlock'
+bateshtxy ='*terkunci*'
 } else if (batesHotelxy === 2) {
-bateshtxy ='unlock'
+bateshtxy ='*terkunci*'
 } else if (batesHotelxy === 3) {
-bateshtxy ='2'
+bateshtxy =`${getHotelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/2`
 } 
 
 const getCastilexUserv = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
@@ -2189,7 +2189,7 @@ ${rumahv} house : ${getHouseUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 ${pabrikv} pabrik : ${getPabrikUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batespx} 
 ${monumenv} monumen : ${getMonumenUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batesmx} 
 ${hiburanv} hiburan : ${getHiburanUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${bateshx} 
-🏬 hotel : ${getHotelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${bateshtxy}
+🏬 hotel : ${bateshtxy}
 💵 money : $${getMoneyUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 
 *Alam*
