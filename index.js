@@ -1966,7 +1966,7 @@ bateshtx ='*terkunci*'
 } else if (batesHotelx === 2) {
 bateshtx ='*terkunci*'
 } else if (batesHotelx === 3) {
-bateshtx =`${getMonumenUser(sender)}/2`
+bateshtx =`${getHotelUser(sender)}/2`
 } 
 
 const batesPabrikv = getLevelUser(sender)
@@ -2030,7 +2030,7 @@ ${rumah} house : ${getHouseUser(sender)}
 ${pabrik} pabrik : ${getPabrikUser(sender)}/${batespv}
 ${monumen} monumen : ${batesmv}
 ${hiburan} hiburan : ${getHiburanUser(sender)}/${bateshv}
-🏬 hotel : ${getHotelUser(sender)}/${bateshtx}
+🏬 hotel : ${bateshtx}
 💵 money : $${getMoneyUser(sender)}
 
 *Alam*
