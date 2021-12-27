@@ -1630,6 +1630,15 @@ if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
 addNagaUser(sender, amount)
 reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Sosok Naga Sebanyak ${payout}`)
+if (getNagaUser(sender) < 100) return reply(`Naga yang kamu beli terlalu banyak, maka sebagai pengembalian uangmu akan dikembalikan sebagian`)
+if (getNagaUser(sender) > 100 ) {
+jumlahn = getNagaUser(sender) * 1
+addNagaUser(sender, -jumlahn) 
+addNagaUser(sender, 100) 
+jumlahk = payout - 100
+jumlaha = jumlahk * 10
+addMoneyUser(sender, jumlaha) 
+}
 } 
 } else if (args[0]=="health") {
 bayar = 1 * 15
@@ -2320,7 +2329,24 @@ if (budy.includes(`Asu`)) {
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
-addBadwordId(sender) 
+await addBadwordId(sender) 
+addBadwordId(sender, 1)
+gwekkhkj1e = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
+"footerText": `Badword Detected`,
+"buttons": [
+{buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: fakeimage})
+await client.relayWAMessage(gwekkhkj1e)
+if (getBadwordUser(sender) > badword_limit){
+kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
+}
 } else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
@@ -2347,7 +2373,24 @@ if (budy.includes(`emek`)) {
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
-addBadwordId(sender) 
+await addBadwordId(sender) 
+addBadwordId(sender, 1)
+gwekkhkj1e = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
+"footerText": `Badword Detected`,
+"buttons": [
+{buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: fakeimage})
+await client.relayWAMessage(gwekkhkj1e)
+if (getBadwordUser(sender) > badword_limit){
+kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
+}
 } else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
@@ -2374,7 +2417,24 @@ if (budy.includes(`ontol`)) {
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
-addBadwordId(sender) 
+await addBadwordId(sender) 
+addBadwordId(sender, 1)
+gwekkhkj1e = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
+"footerText": `Badword Detected`,
+"buttons": [
+{buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: fakeimage})
+await client.relayWAMessage(gwekkhkj1e)
+if (getBadwordUser(sender) > badword_limit){
+kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
+}
 } else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
@@ -2401,7 +2461,24 @@ if (budy.includes(`acot`)) {
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
-addBadwordId(sender) 
+await addBadwordId(sender) 
+addBadwordId(sender, 1)
+gwekkhkj1e = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
+"footerText": `Badword Detected`,
+"buttons": [
+{buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: fakeimage})
+await client.relayWAMessage(gwekkhkj1e)
+if (getBadwordUser(sender) > badword_limit){
+kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
+}
 } else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
@@ -2428,7 +2505,24 @@ if (budy.includes(`njg`)) {
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
-addBadwordId(sender) 
+await addBadwordId(sender) 
+addBadwordId(sender, 1)
+gwekkhkj1e = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
+"footerText": `Badword Detected`,
+"buttons": [
+{buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: fakeimage})
+await client.relayWAMessage(gwekkhkj1e)
+if (getBadwordUser(sender) > badword_limit){
+kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
+}
 } else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
@@ -2455,7 +2549,24 @@ if (budy.includes(`gsat`)) {
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
-addBadwordId(sender) 
+await addBadwordId(sender) 
+addBadwordId(sender, 1)
+gwekkhkj1e = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
+"footerText": `Badword Detected`,
+"buttons": [
+{buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: fakeimage})
+await client.relayWAMessage(gwekkhkj1e)
+if (getBadwordUser(sender) > badword_limit){
+kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
+}
 } else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
@@ -2482,7 +2593,24 @@ if (budy.includes(`ancok`)) {
 if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
-addBadwordId(sender) 
+await addBadwordId(sender) 
+addBadwordId(sender, 1)
+gwekkhkj1e = await client.prepareMessageFromContent(from, {
+"buttonsMessage": {
+"contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
+"footerText": `Badword Detected`,
+"buttons": [
+{buttonId: 'astagfirulloh', buttonText: {displayText: 'astagfirulloh'}, type: 1}
+],
+headerType: 1
+},
+}, {quoted: fakeimage})
+await client.relayWAMessage(gwekkhkj1e)
+if (getBadwordUser(sender) > badword_limit){
+kic = `${sender.split("@")[0]}@s.whatsapp.net`
+client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
+addBadwordUser(sender, -badword_limit)
+}
 } else if (getBadwordId(sender)) {
 addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
