@@ -982,6 +982,36 @@ batasn ='5'
 batasn ='15'
 } 
 
+const batasArcherj =  getLevelUser(sender)
+var batasaj ='24'
+if (batasArcherj === 1) {
+batasaj ='24'
+} else if (batasArcherj === 2) {
+batasaj ='39'
+} else if (batasArcherj === 3) {
+batasaj ='49'
+} 
+
+const batasSamuraij =  getLevelUser(sender)
+var batassj ='24'
+if (batasSamuraij === 1) {
+batassj ='24'
+} else if (batasSamuraij === 2) {
+batassj ='39'
+} else if (batasSamuraij === 3) {
+batassj ='49'
+} 
+
+const batasNagaj =  getLevelUser(sender)
+var batasnj ='0'
+if (batasNagaj === 1) {
+batasnj ='0'
+} else if (batasNagaj === 2) {
+batasnj ='4'
+} else if (batasNagaj === 3) {
+batasnj ='14'
+} 
+
 const getNagaxUser = getLevelUser(sender)
 var naganya ='*terkunci*'
 if (getNagaxUser === 1) {
@@ -1625,7 +1655,7 @@ case 'buy':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (args[0]=="samurai") {
-if (getSamuraiUser(sender) === batass) return reply(`Archer yang kamu beli telah mencampai jumlah maximum`) 
+if (getSamuraiUser(sender) > batassj) return reply(`Archer yang kamu beli telah mencampai jumlah maximum`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
@@ -1645,7 +1675,7 @@ addSamuraiUser(sender, bat)
 }
 } 
 } else if (args[0]=="archer") {
-if (getArcherUser(sender) === batasa) return reply(`Archer yang kamu beli telah mencampai jumlah maximum`) 
+if (getArcherUser(sender) > batasaj) return reply(`Archer yang kamu beli telah mencampai jumlah maximum`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
@@ -1666,7 +1696,7 @@ addArcherUser(sender, bat)
 } 
 } else if (args[0]=="naga") {
 if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke level 2 terlebih dahulu agar bisa membeli naga`) 
-if (getNagaUser(sender) === batasn) return reply(`Naga yang kamu beli telah mencampai jumlah maximum`) 
+if (getNagaUser(sender) > batasnj) return reply(`Naga yang kamu beli telah mencampai jumlah maximum`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 10
