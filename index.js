@@ -979,7 +979,7 @@ batasn ='0'
 } else if (batasNaga === 2) {
 batasn ='5'
 } else if (batasNaga === 3) {
-batasn ='10'
+batasn ='15'
 } 
 
 const getNagaxUser = getLevelUser(sender)
@@ -1037,9 +1037,9 @@ var batasa ='25'
 if (batasArcher === 1) {
 batasa ='25'
 } else if (batasArcher === 2) {
-batasa ='30'
+batasa ='40'
 } else if (batasArcher === 3) {
-batasa ='35'
+batasa ='50'
 } 
 
 const batasSamurai =  getLevelUser(sender)
@@ -1047,9 +1047,9 @@ var batass ='25'
 if (batasSamurai === 1) {
 batass ='25'
 } else if (batasSamurai === 2) {
-batass ='30'
+batass ='40'
 } else if (batasSamurai === 3) {
-batass ='35'
+batass ='50'
 } 
 
 const batesHiburan =  getLevelUser(sender)
@@ -1640,7 +1640,8 @@ if (getSamuraiUser(sender) < batass) return
 if (getSamuraiUser(sender) > batass) {
 jumlahn = getSamuraiUser(sender) * 1
 addSamuraiUser(sender, -jumlahn) 
-addSamuraiUser(sender, batasn) 
+bat = batass * 1
+addSamuraiUser(sender, bat) 
 }
 } 
 } else if (args[0]=="archer") {
@@ -1659,7 +1660,8 @@ if (getArcherUser(sender) < batasn) return
 if (getArcherUser(sender) > batasn ) {
 jumlahn = getArcherUser(sender) * 1
 addArcherUser(sender, -jumlahn) 
-addArcherUser(sender, batasn) 
+bat = batasa * 1
+addArcherUser(sender, bat) 
 }
 } 
 } else if (args[0]=="naga") {
@@ -1679,7 +1681,8 @@ if (getNagaUser(sender) < batasn) return
 if (getNagaUser(sender) > batasn ) {
 jumlahn = getNagaUser(sender) * 1
 addNagaUser(sender, -jumlahn) 
-addNagaUser(sender, batasn) 
+bat = batasn * 1
+addNagaUser(sender, bat) 
 }
 } 
 } else if (args[0]=="health") {
@@ -2200,7 +2203,7 @@ batasnx ='0'
 } else if (batasNagax === 2) {
 batasnx ='5'
 } else if (batasNagax === 3) {
-batasnx ='10'
+batasnx ='15'
 } 
 
 const batasArcherx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
@@ -2208,9 +2211,9 @@ var batasax ='25'
 if (batasArcherx === 1) {
 batasax ='25'
 } else if (batasArcherx === 2) {
-batasax ='30'
+batasax ='40'
 } else if (batasArcherx === 3) {
-batasax ='35'
+batasax ='50'
 } 
 
 const batasSamuraix =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
@@ -2218,9 +2221,9 @@ var batassx ='25'
 if (batasSamuraix === 1) {
 batassx ='25'
 } else if (batasSamuraix === 2) {
-batassx ='30'
+batassx ='40'
 } else if (batasSamuraix === 3) {
-batassx ='35'
+batassx ='50'
 } 
 
 const getNagaxUserx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
