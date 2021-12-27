@@ -1635,7 +1635,7 @@ if (getNagaUser(sender) > 100 ) {
 jumlahn = getNagaUser(sender) * 1
 addNagaUser(sender, -jumlahn) 
 addNagaUser(sender, 100) 
-jumlahk = payout - 100
+jumlahk = 100 -  payout
 jumlaha = jumlahk * 10
 addMoneyUser(sender, jumlaha) 
 }
