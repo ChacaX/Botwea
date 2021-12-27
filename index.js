@@ -972,14 +972,24 @@ batest ='3'
 batest ='4'
 } 
 
+const batasNaga =  getLevelUser(sender)
+var batasn ='0'
+if (batasNaga === 1) {
+batasn ='0'
+} else if (batasNaga === 2) {
+batasn ='5'
+} else if (batasNaga === 3) {
+batasn ='10'
+} 
+
 const getNagaxUser = getLevelUser(sender)
 var naganya ='*terkunci*'
 if (getNagaxUser === 1) {
 naganya ='*terkunci*'
 } else if (getNagaxUser === 2) {
-naganya =`${getNagaUser(sender)}`
+naganya =`${getNagaUser(sender)}/${batasn}`
 } else if (getNagaxUser === 3) {
-naganya =`${getNagaUser(sender)}`
+naganya =`${getNagaUser(sender)}/${batasn}`
 } 
 
 const getHotelxUser = getLevelUser(sender)
@@ -1020,6 +1030,26 @@ batesm ='0'
 batesm ='2'
 } else if (batesMonumen === 3) {
 batesm ='3'
+} 
+
+const batasArcher =  getLevelUser(sender)
+var batasa ='25'
+if (batasArcher === 1) {
+batasa ='25'
+} else if (batasArcher === 2) {
+batasa ='30'
+} else if (batasArcher === 3) {
+batasa ='35'
+} 
+
+const batasSamurai =  getLevelUser(sender)
+var batass ='25'
+if (batasSamurai === 1) {
+batass ='25'
+} else if (batasSamurai === 2) {
+batass ='30'
+} else if (batasSamurai === 3) {
+batass ='35'
 } 
 
 const batesHiburan =  getLevelUser(sender)
@@ -1168,7 +1198,7 @@ addSamuraiUser(sender, 5)
 addArcherUser(sender, 5)
 addLevelUser(sender, 1)
 addTukangUser(sender, 1)
-reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏕️ > 🏯       ⛲ > 🏖️\n⛩️ > 🏦      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏡\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n🏕 + 1\n. \n. \n. \nbeberapa gedung penghasil money kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏭 +2    🗼+2    🏖️ +2\n🐉 unlock`) 
+reply(`*YES DESAMU MENCAPAI LEVEL 2*\napa saja yang baru di level2 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 1 telah di upgrade di level 2\n🏕️ > 🏯       ⛲ > 🏖️\n⛩️ > 🏦      🏗️ > 🏭\n🗽 > 🗼      🏠 > 🏡\n.\n.\n.\nbonus karena sudah upgrade ke level 2\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n🏕 + 1\n. \n. \n. \nbeberapa item slotnya bertambah kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏭 +2    🗼+2    🏖️ +2\n🐉 unlock\ndan beberapa pasukan kini slotnya bertambah`) 
 } else if (levelnya === 2) {
 if (getMoneyUser(sender) < 150 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $150`)
 if (getPabrikUser(sender) === 2) return reply(`kamu wajib membangun pabrik terlebih dahulu`)
@@ -1180,7 +1210,7 @@ addPendudukUser(sender, 20)
 addSamuraiUser(sender, 5)
 addArcherUser(sender, 5)
 addLevelUser(sender, 1)
-reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏬 unlock`)
+reply(`*YES DESAMU MENCAPAI LEVEL 3*\napa saja yang baru di level3 simak dibawah ya 👇\n. \n. \n. \nbangunan bangunan yang berada di level 2 telah di upgrade di level 3\n🏯 > 🏰      🏖️ > 🎢\n🏛️ > ⛰️     🏭 > 🏤\n🗼 > 🏟️      🏡 > 🏢\n.\n.\n.\nbonus karena sudah upgrade ke level 3\n💵 + $25\n🤺 + 5\n🏹 + 5\n👥 + 20\n. \n. \n. \nbeberapa pembaruan kini dapat kamu beli lagi sesuai slot yang kamu terima\n🏤 +1    🏟️ +1    🎢 +1\n🏬 unlock\ndan beberapa pasukan slotnya bertambah`)
 } else if (levelnya === 3) {
 reply('desa mu telah mencampai level maximum') 
 } 
@@ -1595,6 +1625,7 @@ case 'buy':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (args[0]=="samurai") {
+if (getSamuraiUser(sender) === batass) return reply(`Archer yang kamu beli telah mencampai jumlah maximum`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
@@ -1605,8 +1636,15 @@ if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addSamuraiUser(sender, amount)
 reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
+if (getSamuraiUser(sender) < batass) return 
+if (getSamuraiUser(sender) > batass) {
+jumlahn = getSamuraiUser(sender) * 1
+addSamuraiUser(sender, -jumlahn) 
+addSamuraiUser(sender, batasn) 
+}
 } 
 } else if (args[0]=="archer") {
+if (getArcherUser(sender) === batasa) return reply(`Archer yang kamu beli telah mencampai jumlah maximum`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 1
@@ -1617,9 +1655,16 @@ if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addArcherUser(sender, amount)
 reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Archer Sebanyak ${payout}`)
+if (getArcherUser(sender) < batasn) return 
+if (getArcherUser(sender) > batasn ) {
+jumlahn = getArcherUser(sender) * 1
+addArcherUser(sender, -jumlahn) 
+addArcherUser(sender, batasn) 
+}
 } 
 } else if (args[0]=="naga") {
 if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke level 2 terlebih dahulu agar bisa membeli naga`) 
+if (getNagaUser(sender) === batasn) return reply(`Naga yang kamu beli telah mencampai jumlah maximum`) 
 ppp = `${args.join(' ')}`
 payout = ppp.split(" ")[1];
 money = 10
@@ -1630,14 +1675,11 @@ if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
 addNagaUser(sender, amount)
 reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Sosok Naga Sebanyak ${payout}`)
-if (getNagaUser(sender) < 100) return reply(`Naga yang kamu beli terlalu banyak, maka sebagai pengembalian uangmu akan dikembalikan sebagian`)
-if (getNagaUser(sender) > 100 ) {
+if (getNagaUser(sender) < batasn) return 
+if (getNagaUser(sender) > batasn ) {
 jumlahn = getNagaUser(sender) * 1
 addNagaUser(sender, -jumlahn) 
-addNagaUser(sender, 100) 
-jumlahk = 100 -  payout
-jumlaha = jumlahk * 10
-addMoneyUser(sender, jumlaha) 
+addNagaUser(sender, batasn) 
 }
 } 
 } else if (args[0]=="health") {
@@ -2010,8 +2052,8 @@ ${castil} LEVEL DESA : ${getLevelUser(sender)}
 
 *Pertahanan*
 ❤️ health : ${getHealthUser(sender)}/100
-🤺 samurai : ${getSamuraiUser(sender)}
-🏹 archer : ${getArcherUser(sender)}
+🤺 samurai : ${getSamuraiUser(sender)}/${batass} 
+🏹 archer : ${getArcherUser(sender)}/${batasa} 
 🐉 naga : ${naganya}
 ${benteng} benteng : ${getBentengUser(sender)}/1
 
@@ -2151,14 +2193,44 @@ hiburanv ='🏖️'
 hiburanv ='🎢'
 } 
 
+const batasNagax =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var batasnx ='0'
+if (batasNagax === 1) {
+batasnx ='0'
+} else if (batasNagax === 2) {
+batasnx ='5'
+} else if (batasNagax === 3) {
+batasnx ='10'
+} 
+
+const batasArcherx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var batasax ='25'
+if (batasArcherx === 1) {
+batasax ='25'
+} else if (batasArcherx === 2) {
+batasax ='30'
+} else if (batasArcherx === 3) {
+batasax ='35'
+} 
+
+const batasSamuraix =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
+var batassx ='25'
+if (batasSamuraix === 1) {
+batassx ='25'
+} else if (batasSamuraix === 2) {
+batassx ='30'
+} else if (batasSamuraix === 3) {
+batassx ='35'
+} 
+
 const getNagaxUserx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
 var naganyax ='*terkunci*'
 if (getNagaxUserx === 1) {
 naganyax ='*terkunci*'
 } else if (getNagaxUserx === 2) {
-naganyax =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`
+naganyax =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batasnx} `
 } else if (getNagaxUserx === 3 ) {
-naganyax =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}`
+naganyax =`${getNagaUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batasnx} `
 } 
 
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
@@ -2169,8 +2241,8 @@ ${castilv} LEVEL DESA : ${getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
 
 *Pertahanan*
 ❤️ health : ${getHealthUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/100
-🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
-🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}
+🤺 samurai : ${getSamuraiUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batassx}
+🏹 archer : ${getArcherUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/${batasax} 
 🐉 naga : ${naganyax}
 ${bentengv} benteng : ${getBentengUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/1
 
