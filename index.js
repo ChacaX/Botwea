@@ -2023,7 +2023,7 @@ ${rumah} house : ${getHouseUser(sender)}
 
 *Ekonomi*
 ${pabrik} pabrik : ${getPabrikUser(sender)}/${batespv}
-${monumen} monumen : ${getMonumenUser(sender) /${batesmv}
+${monumen} monumen : ${getMonumenUser(sender)}/${batesmv}
 ${hiburan} hiburan : ${getHiburanUser(sender)}/${bateshv}
 🏬 hotel : ${bateshtx}
 💵 money : $${getMoneyUser(sender)}
