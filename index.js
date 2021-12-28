@@ -1145,39 +1145,42 @@ case 'menu':
 case 'help':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`*INFORMASI*
-❒ name ${pushname}
-❒ money $${getMoneyUser(sender)}
-❒ language nodejs
-❒ runtime ${kyun(uptime)}
-❒ user ${_rpg.length} active
+teks =`  *YOUR-INFORMASI*
+• name ${pushname}
+• money $${getMoneyUser(sender)}
+• runtime ${kyun(uptime)}
+• user ${_rpg.length} active
 
-*RPG MENU*
-❒ ${prefix2}desa
-❒ ${prefix2}buy
-❒ ${prefix2}upgrade
-❒ ${prefix2}training
-❒ ${prefix2}war
-❒ ${prefix2}bank
-❒ ${prefix2}cek
-❒ ${prefix2}pangkas
+  *RPG-MENU*
+• ${prefix2}desa
+• ${prefix2}buy 
+• ${prefix2}upgrade
+• ${prefix2}training
+• ${prefix2}war
+• ${prefix2}bank
+• ${prefix2}cek
+• ${prefix2}pangkas
 
-*GRUP MENU*   
-❒ ${prefix2}tagall
-❒ ${prefix2}kick
-❒ ${prefix2}add
-❒ ${prefix2}promote
-❒ ${prefix2}demote
-❒ ${prefix2}welcome
-❒ ${prefix2}antilink
-❒ ${prefix2}warning
-❒ ${prefix2}hidetag
-❒ ${prefix2}open/close
+  *GRUP-MENU*   
+• ${prefix2}tagall
+• ${prefix2}kick
+• ${prefix2}add
+• ${prefix2}promote
+• ${prefix2}demote
+• ${prefix2}welcome
+• ${prefix2}antilink
+• ${prefix2}warning
+• ${prefix2}hidetag
+• ${prefix2}open/close
 
-*OTHER MENU*
-❒ ${prefix2}broadcast
-❒ ${prefix2}sticker
-❒ ${prefix2}toimg`
+  *OTHER-MENU*
+• ${prefix2}broadcast
+• ${prefix2}sticker
+• ${prefix2}toimg
+• ${prefix2}cecan
+• ${prefix2}cogan
+• ${prefix2}owner
+• ${prefix2}waifu`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
 addPendudukUser(sender, 2)
 break
@@ -1186,6 +1189,53 @@ case 'owner':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 addPendudukUser(sender, 2)
+break
+
+case 'waifu':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+let b = (await fetchJson(`https://waifu.pics/api/sfw/waifu`))
+fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(b.url))
+buttons = [{buttonId:`get pict waifu`,buttonText:{displayText:`get pict waifu`},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage')).message.imageMessage
+buttonsMessage = {footerText:'click tombol yang ada dibawah untuk menampilkan gambar selanjutnya', imageMessage: imageMsg,
+contentText:`🎮 *GACHA WAIFU*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+fs.unlinkSync(`./${sender}.jpeg`)
+break
+
+case 'cecan':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+data = fs.readFileSync('./lib/apirandom.js');
+jsonData = JSON.parse(data);
+randIndex = Math.floor(Math.random() * jsonData.length);
+randKey = jsonData[randIndex];
+/*let b = (await fetchJson(`https://waifu.pics/api/sfw/waifu`))*/
+fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(randKey.result.cecan))
+buttons = [{buttonId:`get pict cecan`,buttonText:{displayText:`get pict cecan`},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage')).message.imageMessage
+buttonsMessage = {footerText:'click tombol yang ada dibawah untuk menampilkan gambar selanjutnya', imageMessage: imageMsg,
+contentText:`🎮 *GACHA CECAN*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+fs.unlinkSync(`./${sender}.jpeg`)
+break
+
+case 'cogan':
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+data = fs.readFileSync('./lib/apirandom.js');
+jsonData = JSON.parse(data);
+randIndex = Math.floor(Math.random() * jsonData.length);
+randKey = jsonData[randIndex];
+/*let b = (await fetchJson(`https://waifu.pics/api/sfw/waifu`))*/
+fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(randKey.result.cogan))
+buttons = [{buttonId:`get pict cogan`,buttonText:{displayText:`get pict cogan`},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage')).message.imageMessage
+buttonsMessage = {footerText:'click tombol yang ada dibawah untuk menampilkan gambar selanjutnya', imageMessage: imageMsg,
+contentText:`🎮 *GACHA COGAN*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+fs.unlinkSync(`./${sender}.jpeg`)
 break
 
 case 'open':
@@ -1883,12 +1933,12 @@ if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)
 members_id = []
 eai = args.join(" ")
 teks = (args.length > 1) ? eai.trim() : ''
-teks += '\n\n╭─❒ *MENTION ALL*\n'
+teks += '\n\n╭─• *MENTION ALL*\n'
 for (let mem of groupMembers) {
 teks += `│-  @${mem.jid.split('@')[0]}\n`
 members_id.push(mem.jid)
 }
-teks += `╰❒`
+teks += `╰•`
 mentions(teks, members_id, true, {quoted: fakeimage})
 break
 					
@@ -2435,7 +2485,7 @@ if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
 await addBadwordId(sender) 
-addBadwordId(sender, 1)
+addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
@@ -2479,7 +2529,7 @@ if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
 await addBadwordId(sender) 
-addBadwordId(sender, 1)
+addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
@@ -2523,7 +2573,7 @@ if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
 await addBadwordId(sender) 
-addBadwordId(sender, 1)
+addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
@@ -2567,7 +2617,7 @@ if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
 await addBadwordId(sender) 
-addBadwordId(sender, 1)
+addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
@@ -2611,7 +2661,7 @@ if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
 await addBadwordId(sender) 
-addBadwordId(sender, 1)
+addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
@@ -2655,7 +2705,7 @@ if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
 await addBadwordId(sender) 
-addBadwordId(sender, 1)
+addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
@@ -2699,7 +2749,7 @@ if (!isGroup) return
 if (!isBotGroupAdmins) return
 if (!getBadwordId(sender)) {
 await addBadwordId(sender) 
-addBadwordId(sender, 1)
+addBadwordUser(sender, 1)
 gwekkhkj1e = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `kamu berkata kasar sebanyak ${getBadwordUser(sender)}/${badword_limit}\nkali jika sudah lebih dari ${badword_limit} kali maka otomatis terkick`,
@@ -2755,64 +2805,67 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 uptime = process.uptime()
 teks =`*INFROMATION SYSTEM BOT*
   
-❒ name ${pushname}
-❒ money $${getMoneyUser(sender)}
-❒ language nodejs
-❒ runtime ${kyun(uptime)}
-❒ user ${_rpg.length} active
+• name ${pushname}
+• money $${getMoneyUser(sender)}
+• runtime ${kyun(uptime)}
+• user ${_rpg.length} active
 
 *LIST FITUR BOT WHATSAPP*
    
-❒ ${prefix2}sticker
+• ${prefix2}sticker
 info: mengubah gambar/video menjadi sticker
 ex: tag gambar lalu ketik /sticker jika video maximal 10s
 
-❒ ${prefix2}toimg
+• ${prefix2}toimg
+• ${prefix2}cecan
+• ${prefix2}cogan
+• ${prefix2}owner
+• ${prefix2}waifu
 info: mengubah sticker menjadi gambar
 ex: tag sticker kemudian ketik /toimg (tidak support sticker video)
 
-❒ ${prefix2}tagall
+• ${prefix2}tagall
 info: menge-tag semua member yang berada di grup
 ex: ketik /tagall <teks>
 
-❒ ${prefix2}broadcast
+• ${prefix2}broadcast
 info: mengirimkan pesan kepada seluruh pengguna bot 
 ex: ketik /broadcast <teks> 
 
-❒ ${prefix2}kick
-❒ ${prefix2}add
+• ${prefix2}kick
+• ${prefix2}add
 info: menendang member yang telah di targetkan oleh admin
 ex: ketik /kick @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
 
-❒ ${prefix2}add
+• ${prefix2}add
 info: mengundang seseorang kedalan grup whatsapp dengan menggunakan bot
 ex: ketik /add 628×××× pastikan tidak ada tanda "- + atau spasi"
 
-❒ ${prefix2}promote
+• ${prefix2}promote
 info: menjadikan admin kepada target yang telah di tag
 ex: ketik /promote @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
 
-❒ ${prefix2}demote
+• ${prefix2}demote
 info: menurunkan jabatan admin menjadi member biasa
 ex: ketik /demote @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
 
-❒ ${prefix2}welcome
+• ${prefix2}welcome
 info: menyambut pengguna yang baru saja masuk kedalam grup
 ex: ketik /welcome kemudian pilih tombol yang bertuliskan enable
 
-❒ ${prefix2}antilink
+• ${prefix2}antilink
 info: menendang pengguna yang baru saja mengirimkan link grup lain
 ex: ketik /antilink kemudian pilih tombol yang bertuliskan enable
 
-❒ ${prefix2}warning
+• ${prefix2}warning
 info: mengubah limit anti badword pada peserta yang telah terdaftar
 ex: auto on ketika bot menjadi admin
 
-❒ ${prefix2}hidetag
+• ${prefix2}hidetag
 info: menge-tag seluruh anggota grup dengan teks tanpa mentioned
 ex: ketik /hidetag <teks>
 
-❒ ${prefix2}open/close
+• ${prefix2}open/close
 info: mengizinkan seluruh peserta berbicara dan hanya mengizinkan admin berbicara
 ex: ketik /open/close kemudian pilih tombol yang ingin digunakan oleh kalian`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
@@ -2856,43 +2909,96 @@ break
               if (buttonsR === 'MENU') {
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`*INFORMASI*
-❒ name ${pushname}
-❒ money $${getMoneyUser(sender)}
-❒ language nodejs
-❒ runtime ${kyun(uptime)}
-❒ user ${_rpg.length} active
+teks =`  *YOUR-INFORMASI*
+• name ${pushname}
+• money $${getMoneyUser(sender)}
+• runtime ${kyun(uptime)}
+• user ${_rpg.length} active
 
-*RPG MENU*
-❒ ${prefix2}desa
-❒ ${prefix2}buy
-❒ ${prefix2}upgrade
-❒ ${prefix2}training
-❒ ${prefix2}war
-❒ ${prefix2}bank
-❒ ${prefix2}cek
-❒ ${prefix2}pangkas
+  *RPG-MENU*
+• ${prefix2}desa
+• ${prefix2}buy
+• ${prefix2}upgrade
+• ${prefix2}training
+• ${prefix2}war
+• ${prefix2}bank
+• ${prefix2}cek
+• ${prefix2}pangkas
 
-*GRUP MENU*   
-❒ ${prefix2}tagall
-❒ ${prefix2}kick
-❒ ${prefix2}add
-❒ ${prefix2}promote
-❒ ${prefix2}demote
-❒ ${prefix2}welcome
-❒ ${prefix2}antilink
-❒ ${prefix2}warning
-❒ ${prefix2}hidetag
-❒ ${prefix2}open/close
+  *GRUP-MENU*   
+• ${prefix2}tagall
+• ${prefix2}kick
+• ${prefix2}add
+• ${prefix2}promote
+• ${prefix2}demote
+• ${prefix2}welcome
+• ${prefix2}antilink
+• ${prefix2}warning
+• ${prefix2}hidetag
+• ${prefix2}open/close
 
-*OTHER MENU*
-❒ ${prefix2}broadcast
-❒ ${prefix2}sticker
-❒ ${prefix2}toimg`
+  *OTHER-MENU*
+• ${prefix2}broadcast
+• ${prefix2}sticker
+• ${prefix2}toimg
+• ${prefix2}cecan
+• ${prefix2}cogan
+• ${prefix2}owner
+• ${prefix2}waifu`
 sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
 addPendudukUser(sender, 2)
 break
 }
+
+if (buttonsR === 'get pict waifu') {
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+let b = (await fetchJson(`https://waifu.pics/api/sfw/waifu`))
+fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(b.url))
+buttons = [{buttonId:`get pict waifu`,buttonText:{displayText:`get pict waifu`},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage')).message.imageMessage
+buttonsMessage = {footerText:'click tombol yang ada dibawah untuk menampilkan gambar selanjutnya', imageMessage: imageMsg,
+contentText:`🎮 *GACHA WAIFU*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+fs.unlinkSync(`./${sender}.jpeg`)
+break
+} 
+
+if (buttonsR === 'get pict cecan') {
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+data = fs.readFileSync('./lib/apirandom.js');
+jsonData = JSON.parse(data);
+randIndex = Math.floor(Math.random() * jsonData.length);
+randKey = jsonData[randIndex];
+/*let b = (await fetchJson(`https://waifu.pics/api/sfw/waifu`))*/
+fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(randKey.result.cecan))
+buttons = [{buttonId:`get pict cecan`,buttonText:{displayText:`get pict cecan`},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage')).message.imageMessage
+buttonsMessage = {footerText:'click tombol yang ada dibawah untuk menampilkan gambar selanjutnya', imageMessage: imageMsg,
+contentText:`🎮 *GACHA CECAN*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+fs.unlinkSync(`./${sender}.jpeg`)
+break
+} 
+
+if (buttonsR === 'get pict cogan') {
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+data = fs.readFileSync('./lib/apirandom.js');
+jsonData = JSON.parse(data);
+randIndex = Math.floor(Math.random() * jsonData.length);
+randKey = jsonData[randIndex];
+/*let b = (await fetchJson(`https://waifu.pics/api/sfw/waifu`))*/
+fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(randKey.result.cogan))
+buttons = [{buttonId:`get pict cogan`,buttonText:{displayText:`get pict cogan`},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage')).message.imageMessage
+buttonsMessage = {footerText:'click tombol yang ada dibawah untuk menampilkan gambar selanjutnya', imageMessage: imageMsg,
+contentText:`🎮 *GACHA COGAN*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+fs.unlinkSync(`./${sender}.jpeg`)
+break
+} 
 
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
