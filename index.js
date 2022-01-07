@@ -1145,15 +1145,16 @@ case 'menu':
 case 'help':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks =`  *YOUR-INFORMASI*
+teks =`*MITSUHA-BOTWEA*
 • name ${pushname}
 • money $${getMoneyUser(sender)}
-• runtime ${kyun(uptime)}
-• user ${_rpg.length} active
+• user ${_rpg.length} *active*
 
-  *RPG-MENU*
+Bot Ini Masih Dalam Tahap Pengembangan Maka Jika Menemukan Bug Atau Masalah Langsung Hubungi Owner Secepatnya
+
+*rpg*:
 • ${prefix2}desa
-• ${prefix2}buy 
+• ${prefix2}buy
 • ${prefix2}upgrade
 • ${prefix2}training
 • ${prefix2}war
@@ -1161,7 +1162,15 @@ teks =`  *YOUR-INFORMASI*
 • ${prefix2}cek
 • ${prefix2}pangkas
 
-  *GRUP-MENU*   
+
+*OTHER*:
+• ${prefix2}broadcast
+• ${prefix2}sticker
+• ${prefix2}toimg
+• ${prefix2}owner
+
+
+*GROUP*:
 • ${prefix2}tagall
 • ${prefix2}kick
 • ${prefix2}add
@@ -1173,15 +1182,12 @@ teks =`  *YOUR-INFORMASI*
 • ${prefix2}hidetag
 • ${prefix2}open/close
 
-  *OTHER-MENU*
-• ${prefix2}broadcast
-• ${prefix2}sticker
-• ${prefix2}toimg
+
+*IMAGE*:
 • ${prefix2}cecan
 • ${prefix2}cogan
-• ${prefix2}owner
-• ${prefix2}waifu`
-sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
+• ${prefix2}waifu
+sendButDocument(from, `${teks}`, `🎮 mitsuha`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 addPendudukUser(sender, 2)
 break
 
@@ -2800,78 +2806,6 @@ await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.
 break
 }
 
-if (buttonsR === `HOW TO USE`) {
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-uptime = process.uptime()
-teks =`*INFROMATION SYSTEM BOT*
-  
-• name ${pushname}
-• money $${getMoneyUser(sender)}
-• runtime ${kyun(uptime)}
-• user ${_rpg.length} active
-
-*LIST FITUR BOT WHATSAPP*
-   
-• ${prefix2}sticker
-info: mengubah gambar/video menjadi sticker
-ex: tag gambar lalu ketik /sticker jika video maximal 10s
-
-• ${prefix2}toimg
-• ${prefix2}cecan
-• ${prefix2}cogan
-• ${prefix2}owner
-• ${prefix2}waifu
-info: mengubah sticker menjadi gambar
-ex: tag sticker kemudian ketik /toimg (tidak support sticker video)
-
-• ${prefix2}tagall
-info: menge-tag semua member yang berada di grup
-ex: ketik /tagall <teks>
-
-• ${prefix2}broadcast
-info: mengirimkan pesan kepada seluruh pengguna bot 
-ex: ketik /broadcast <teks> 
-
-• ${prefix2}kick
-• ${prefix2}add
-info: menendang member yang telah di targetkan oleh admin
-ex: ketik /kick @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
-
-• ${prefix2}add
-info: mengundang seseorang kedalan grup whatsapp dengan menggunakan bot
-ex: ketik /add 628×××× pastikan tidak ada tanda "- + atau spasi"
-
-• ${prefix2}promote
-info: menjadikan admin kepada target yang telah di tag
-ex: ketik /promote @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
-
-• ${prefix2}demote
-info: menurunkan jabatan admin menjadi member biasa
-ex: ketik /demote @tagmember (pastikan 1 perintah 1 member dilarang lebih dari 1)
-
-• ${prefix2}welcome
-info: menyambut pengguna yang baru saja masuk kedalam grup
-ex: ketik /welcome kemudian pilih tombol yang bertuliskan enable
-
-• ${prefix2}antilink
-info: menendang pengguna yang baru saja mengirimkan link grup lain
-ex: ketik /antilink kemudian pilih tombol yang bertuliskan enable
-
-• ${prefix2}warning
-info: mengubah limit anti badword pada peserta yang telah terdaftar
-ex: auto on ketika bot menjadi admin
-
-• ${prefix2}hidetag
-info: menge-tag seluruh anggota grup dengan teks tanpa mentioned
-ex: ketik /hidetag <teks>
-
-• ${prefix2}open/close
-info: mengizinkan seluruh peserta berbicara dan hanya mengizinkan admin berbicara
-ex: ketik /open/close kemudian pilih tombol yang ingin digunakan oleh kalian`
-sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
-break
-}
-
 if (buttonsR === 'SOURCE CODE') {
 reply(`ingin meningstall script bot ini, harap jangan menghapus thanks to yang berada dimenu dan jangan diperjual belikan ke publik\n. \n. \nbot ini menggunakan script dari mentahan mhankbarbar kemudian di recode dan jadilah bot seperti sekarang\n. \n. \nurl : github.com/ChacaX`)
 }
@@ -2903,50 +2837,6 @@ open = {
 }
               client.groupSettingChange (from, GroupSettingChange.messageSend, false)
               client.sendMessage(from, open, text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [sender],"externalAdReply": {"title": `whatsappボット`,"body": ``,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": thumb,"sourceUrl": "https://youtube.com/channel/UC-fcNjQQ5LXV50sSV6s2eXg"}},quoted: mek})
-break
-}
-
-              if (buttonsR === 'MENU') {
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-uptime = process.uptime()
-teks =`  *YOUR-INFORMASI*
-• name ${pushname}
-• money $${getMoneyUser(sender)}
-• runtime ${kyun(uptime)}
-• user ${_rpg.length} active
-
-  *RPG-MENU*
-• ${prefix2}desa
-• ${prefix2}buy
-• ${prefix2}upgrade
-• ${prefix2}training
-• ${prefix2}war
-• ${prefix2}bank
-• ${prefix2}cek
-• ${prefix2}pangkas
-
-  *GRUP-MENU*   
-• ${prefix2}tagall
-• ${prefix2}kick
-• ${prefix2}add
-• ${prefix2}promote
-• ${prefix2}demote
-• ${prefix2}welcome
-• ${prefix2}antilink
-• ${prefix2}warning
-• ${prefix2}hidetag
-• ${prefix2}open/close
-
-  *OTHER-MENU*
-• ${prefix2}broadcast
-• ${prefix2}sticker
-• ${prefix2}toimg
-• ${prefix2}cecan
-• ${prefix2}cogan
-• ${prefix2}owner
-• ${prefix2}waifu`
-sendButDocument(from, `${teks}`, `\n`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1},{buttonId:`HOW TO USE`,buttonText:{displayText:'HOW TO USE'},type:1}])
-addPendudukUser(sender, 2)
 break
 }
 
