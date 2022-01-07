@@ -1186,7 +1186,7 @@ Bot Ini Masih Dalam Tahap Pengembangan Maka Jika Menemukan Bug Atau Masalah Lang
 *IMAGE*:
 • ${prefix2}cecan
 • ${prefix2}cogan
-• ${prefix2}waifu
+• ${prefix2}waifu`
 sendButDocument(from, `${teks}`, `🎮 mitsuha`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 addPendudukUser(sender, 2)
 break
