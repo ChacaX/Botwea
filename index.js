@@ -1248,6 +1248,8 @@ break
 case 'open':
 case 'close':
 case 'open/close':
+case 'tutup':
+case 'buka':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
 if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
 if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
@@ -1618,7 +1620,7 @@ reply(`tunggu 10 menit untuk mencairkan money`)
 addKerjaPabrikUser(sender, 1)
 setTimeout( () => {
 user = getPabrikUser(sender) 
-ea = user * 5
+ea = user * 20
 addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaPabrikUser(sender, -1)
@@ -1630,7 +1632,7 @@ reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaMonumentUser(sender, 1)
 setTimeout( () => {
 user = getMonumenUser(sender) 
-ea = user * 5
+ea = user * 15
 addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaMonumentUser(sender, -1)
@@ -1642,7 +1644,7 @@ reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaHiburanUser(sender, 1)
 setTimeout( () => {
 user = getHiburanUser(sender) 
-ea = user * 5
+ea = user * 10
 addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaHiburanUser(sender, -1)
@@ -1654,12 +1656,12 @@ reply(`tunggu 5 menit untuk mencairkan money`)
 addKerjaHotelUser(sender, 1)
 setTimeout( () => {
 user = getHotelUser(sender) 
-ea = user * 10
+ea = user * 25
 addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaHotelUser(sender, -1)
 }, 600000)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n*_________________________________*\n$5 - pabrik\n$4 - monumen\n$3 - hiburan\n$10 - hotel\n*_________________________________*`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n*_________________________________*\n$20 - pabrik\n$15 - monumen\n$10 - hiburan\n$25 - hotel\n*_________________________________*`)}
 addsemakUser(sender, 2)
 addJamurUser(sender, 1)
 break
@@ -1718,11 +1720,11 @@ payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti. Beli house di /buy untuk mendapatkan penduduk`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addSamuraiUser(sender, amount)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
+reply(`*BARAK PERTAHANAN*\n\nKamu Telah Merekrut Samurai Sebanyak ${payout}`)
 if (getSamuraiUser(sender) < batass) return 
 if (getSamuraiUser(sender) > batass) {
 jumlahn = getSamuraiUser(sender) * 1
@@ -1738,11 +1740,11 @@ payout = ppp.split(" ")[1];
 money = 1
 amount = payout * 1
 bayar = payout * money
-if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+if (getPendudukUser(sender) <= bayar) return reply(`Maaf penduduk kamu belum mencukupi. silahkan kumpulkan dan beli nanti. Beli house di /buy untuk mendapatkan penduduk`)
 if (getPendudukUser(sender) >= bayar ) {
 addPendudukUser(sender, -bayar)
 addArcherUser(sender, amount)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Archer Sebanyak ${payout}`)
+reply(`*BARAK PERTAHANAN*\n\nKamu Telah Merekrut Archer Sebanyak ${payout}`)
 if (getArcherUser(sender) < batasn) return 
 if (getArcherUser(sender) > batasn ) {
 jumlahn = getArcherUser(sender) * 1
@@ -1763,7 +1765,7 @@ if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi
 if (getMoneyUser(sender) >= bayar ) {
 addMoneyUser(sender, -bayar)
 addNagaUser(sender, amount)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Merekrut Sosok Naga Sebanyak ${payout}`)
+reply(`*BARAK PERTAHANAN*\n\nKamu Telah Merekrut Sosok Naga Sebanyak ${payout}`)
 if (getNagaUser(sender) < batasn) return 
 if (getNagaUser(sender) > batasn ) {
 jumlahn = getNagaUser(sender) * 1
@@ -1780,7 +1782,7 @@ addMoneyUser(sender, -bayar)
 summon = getHealthUser(sender)
 addHealthUser(sender, -summon)
 addHealthUser(sender, 100)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
+reply(`*BARAK PERTAHANAN*\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
 } 
 } else if (args[0]=="house") {
 bayar = 1 * 15
@@ -1823,7 +1825,7 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addBentengUser(sender, 1)
-reply(`* BARAK PERTAHANAN *\n\nKamu Telah Membangun Benteng Pertahanan`)
+reply(`*BARAK PERTAHANAN*\n\nKamu Telah Membangun Benteng Pertahanan`)
 }, 900000)
 } 
 } else if (args[0]=="pabrik") {
@@ -1911,7 +1913,7 @@ break
 case 'daftar':
 if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 await addRpgId(sender)
-reply(`『•• *BERHASIL TERDAFTAR* ••』\n\nkeuntungan terdaftar:\n• kamu dapat mengakses semua fitur bot kecuali fitur untuk admin grup dan owner\n\n• kamu dapat memainkan game rpg, ketik /desa untuk melihat proggres desamu`)
+reply(`   ﹛ *SUCCES VERIFY* ﹜\n\n*Nama*: ${pushname}\n*Tgl*: ${date}\n*User*: ${getRpgId(sender)}\n*Verify WhatsappBot √*\n\n- ketik /desa untuk memulai permainan rpg dan melihat perkembangan desamu`)
 break
 				
 case 'hidetag':
