@@ -1063,23 +1063,23 @@ batesm ='3'
 } 
 
 const batasArcher =  getLevelUser(sender)
-var batasa ='25'
+var batasa ='15'
 if (batasArcher === 1) {
-batasa ='25'
+batasa ='15'
 } else if (batasArcher === 2) {
-batasa ='40'
+batasa ='25'
 } else if (batasArcher === 3) {
-batasa ='50'
+batasa ='35'
 } 
 
 const batasSamurai =  getLevelUser(sender)
-var batass ='25'
+var batass ='15'
 if (batasSamurai === 1) {
-batass ='25'
+batass ='15'
 } else if (batasSamurai === 2) {
-batass ='40'
+batass ='25'
 } else if (batasSamurai === 3) {
-batass ='50'
+batass ='35'
 } 
 
 const batesHiburan =  getLevelUser(sender)
