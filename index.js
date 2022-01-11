@@ -750,33 +750,50 @@ client.logger.level = 'warn'
 	await client.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./BarBar.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
 
-	client.on('group-participants-update', async (anu) => {
-		if (!welkom.includes(anu.jid)) return
-		try {
-			const mdata = await client.groupMetadata(anu.jid)
-			console.log(anu)
-			if (anu.action == 'add') {
-				num = anu.participants[0]
-				try {
-					ppimg = await client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
-				} catch {
-					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-				}
-				teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
-				let buff = await getBuffer(ppimg)
-				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-				addBadwordId(sender)
-			} else if (anu.action == 'remove') {
-				num = anu.participants[0]
-				try {
-					ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`)
-				} catch {
-					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-				}
-				teks = `Sayonara @${num.split('@')[0]}👋`
-				let buff = await getBuffer(ppimg)
-				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-			}
+client.on('group-participants-update', async (anu) => {
+if (!welkom.includes(anu.jid)) return
+try {
+const mdata = await client.groupMetadata(anu.jid)
+console.log(anu)
+if (anu.action == 'add') {
+num = anu.participants[0]
+try {
+ppimg = await client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+} catch {
+ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+}
+//teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
+let buff = await getBuffer(ppimg)
+//client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+addBadwordId(sender)
+fs.writeFileSync(`./${mdata.id}.jpeg`, await getBuffer(buff))
+buttons = [{buttonId:`Siap Mas Bro 🙏`,buttonText:{displayText:`Siap Mas Bro 🙏`},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${mdata.id}.jpeg`), 'imageMessage')).message.imageMessage
+buttonsMessage = {footerText:'hallo pengguna baru, selamat datang dan semoga betah. jangan lupa intro dan bersosialisasi dengan sesama member grup!', imageMessage: imageMsg,
+contentText:`🎮 *SELAMAT DATANG*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage})
+client.relayWAMessage(prep)
+fs.unlinkSync(`./${mdata.id}.jpeg`)
+
+} else if (anu.action == 'remove') {
+num = anu.participants[0]
+try {
+ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`)
+} catch {
+ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+}
+//teks = `Sayonara @${num.split('@')[0]}👋`
+let buff = await getBuffer(ppimg)
+//client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+fs.writeFileSync(`./${mdata.id}.jpeg`, await getBuffer(buff))
+buttons = [{buttonId:`GoodBye Dogy 😗`,buttonText:{displayText:`GoodBye Dogy 😗`},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${mdata.id}.jpeg`), 'imageMessage')).message.imageMessage
+buttonsMessage = {footerText:'balik bawain es jeruk di koprasi yo', imageMessage: imageMsg,
+contentText:`🎮 *SELAMAT TINGGAL*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage})
+client.relayWAMessage(prep)
+fs.unlinkSync(`./${mdata.id}.jpeg`)
+}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
@@ -849,7 +866,7 @@ client.logger.level = 'warn'
 return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
 			const reply = (teks) => {
-				client.sendMessage(from, teks, text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [sender],"externalAdReply": {"title": `whatsappボット`,"body": ``,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync('./lib/odc.jpeg'),"sourceUrl": "https://youtube.com/channel/UC-fcNjQQ5LXV50sSV6s2eXg"}},quoted: mek})
+				client.sendMessage(from, teks, text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [sender],"externalAdReply": {"title": `whatsappボット`,"body": `subscribe my channel youtube`,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync('./lib/odc.jpeg'),"sourceUrl": "https://youtube.com/channel/UC-fcNjQQ5LXV50sSV6s2eXg"}},quoted: mek})
 			}
 			const sendMess = (hehe, teks) => {
 				client.sendMessage(hehe, teks, text)
@@ -911,7 +928,6 @@ return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a
 
 			}
 		
-
 const getCastilexUser = getLevelUser(sender)
 var castil ='🏕️'
 if (getCastilexUser === 1) {
@@ -1919,7 +1935,7 @@ break
 case 'daftar':
 if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 await addRpgId(sender)
-reply(`   ﹛ *SUCCES VERIFY* ﹜\n\n*Nama*: ${pushname}\n*Tgl*: ${date}\n*User*: ${_rpg.length}\n*Verify WhatsappBot √*\n\n- ketik /desa untuk memulai permainan rpg dan melihat perkembangan desamu`)
+reply(`﹛ *SUCCES VERIFY* ﹜\n\n*Nama*: ${pushname}\n*Tgl*: ${date}\n*User*: ${_rpg.length}\n*Verify WhatsappBot √*\n\n_ketik /desa untuk memulai permainan rpg dan melihat perkembangan desamu_`)
 break
 				
 case 'hidetag':
@@ -2897,7 +2913,7 @@ prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek
 client.relayWAMessage(prep)
 fs.unlinkSync(`./${sender}.jpeg`)
 break
-} 
+}
 
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
