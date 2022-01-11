@@ -794,6 +794,7 @@ ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gamb
 teks = `Sayonara @${num.split('@')[0]}👋`
 let buff = await getBuffer(ppimg)
 client.sendMessage(mdata.id, buff, MessageType.image, {quoted: begitulah, caption: teks, contextInfo: {"mentionedJid": [num]}})
+}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
