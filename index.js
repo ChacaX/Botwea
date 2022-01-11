@@ -188,7 +188,7 @@ return _rpg[position].i
 }
 
 const addRpgId = (userid) => {
-const obj = {a: userid, b: 100 , c: 5, d: 0, e: 0, f: 50, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3, u:1, v:0, y:2, x:0, z:0}
+const obj = {a: userid, b: 100 , c: 5, d: 0, e: 0, f: 150, g: 15, h: 0, i: 0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:5, r:2, s:6, t:3, u:1, v:0, y:2, x:0, z:0}
 _rpg.push(obj)
 fs.writeFileSync('./src/rpg.json', JSON.stringify(_rpg))
 }
@@ -977,29 +977,29 @@ var batasn ='0'
 if (batasNaga === 1) {
 batasn ='0'
 } else if (batasNaga === 2) {
-batasn ='5'
+batasn ='10'
 } else if (batasNaga === 3) {
 batasn ='15'
 } 
 
 const batasArcherj =  getLevelUser(sender)
-var batasaj ='24'
+var batasaj ='14'
 if (batasArcherj === 1) {
-batasaj ='24'
+batasaj ='14'
 } else if (batasArcherj === 2) {
-batasaj ='39'
+batasaj ='24'
 } else if (batasArcherj === 3) {
-batasaj ='49'
+batasaj ='34'
 } 
 
 const batasSamuraij =  getLevelUser(sender)
-var batassj ='24'
+var batassj ='14'
 if (batasSamuraij === 1) {
-batassj ='24'
+batassj ='14'
 } else if (batasSamuraij === 2) {
-batassj ='39'
+batassj ='24'
 } else if (batasSamuraij === 3) {
-batassj ='49'
+batassj ='34'
 } 
 
 const batasNagaj =  getLevelUser(sender)
@@ -1007,7 +1007,7 @@ var batasnj ='0'
 if (batasNagaj === 1) {
 batasnj ='0'
 } else if (batasNagaj === 2) {
-batasnj ='4'
+batasnj ='9'
 } else if (batasNagaj === 3) {
 batasnj ='14'
 } 
@@ -1616,7 +1616,7 @@ if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar unt
 if (args[0]=="pabrik") {
 if (!getPabrikUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
 if (getKerjaPabrikUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
-reply(`tunggu 10 menit untuk mencairkan money`)
+reply(`tunggu 3 menit untuk mencairkan money`)
 addKerjaPabrikUser(sender, 1)
 setTimeout( () => {
 user = getPabrikUser(sender) 
@@ -1624,11 +1624,11 @@ ea = user * 20
 addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaPabrikUser(sender, -1)
-}, 600000)
+}, 180000)
 } else if (args[0]=="monumen") {
  if (!getMonumenUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
 if (getKerjaMonumentUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
-reply(`tunggu 5 menit untuk mencairkan money`)
+reply(`tunggu 2 menit untuk mencairkan money`)
 addKerjaMonumentUser(sender, 1)
 setTimeout( () => {
 user = getMonumenUser(sender) 
@@ -1636,11 +1636,11 @@ ea = user * 15
 addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaMonumentUser(sender, -1)
-}, 300000)
+}, 120000)
 } else if (args[0]=="hiburan") {
  if (!getHiburanUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
 if (getKerjaHiburanUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
-reply(`tunggu 5 menit untuk mencairkan money`)
+reply(`tunggu 2 menit untuk mencairkan money`)
 addKerjaHiburanUser(sender, 1)
 setTimeout( () => {
 user = getHiburanUser(sender) 
@@ -1648,7 +1648,7 @@ ea = user * 10
 addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaHiburanUser(sender, -1)
-}, 300000)
+}, 120000)
 } else if (args[0]=="hotel") {
  if (!getHotelUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
 if (getKerjaHotelUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
@@ -1712,7 +1712,6 @@ break
 
 case 'buy':
 if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (args[0]=="samurai") {
 if (getSamuraiUser(sender) > batassj) return reply(`Archer yang kamu beli telah mencampai jumlah maximum`) 
 ppp = `${args.join(' ')}`
@@ -1785,6 +1784,7 @@ addHealthUser(sender, 100)
 reply(`*BARAK PERTAHANAN*\n\nKamu Telah Meningkatan Nyawa Pertahananmu`)
 } 
 } else if (args[0]=="house") {
+if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 bayar = 1 * 15
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
@@ -1794,17 +1794,18 @@ setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -15)
 addHouseUser(sender, 1)
-addPendudukUser(sender, 20)
+addPendudukUser(sender, 10)
 reply(`  *SELESAI MEMBANGUN*\n
 bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
 }, 120000)
 } 
 } else if (args[0]=="hospital") {
+if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (getHospitalUser(sender) > 0) return reply(`Hospital Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 30
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
-reply(`tukang desamu sedang menyelesaikan pembangunan hospital dalam 10 menit`) 
+reply(`tukang desamu sedang menyelesaikan pembangunan hospital dalam 3 menit`) 
 addTukangUser(sender, -1)
 setTimeout( () => {
 addTukangUser(sender, 1)
@@ -1812,23 +1813,25 @@ addMoneyUser(sender, -bayar)
 addHospitalUser(sender, 1)
 reply(`  *SELESAI MEMBANGUN*\n
 bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
-}, 600000)
+}, 180000)
 } 
 } else if (args[0]=="benteng") {
+if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (getBentengUser(sender) > 0) return reply(`Benteng Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 50
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
-reply(`tukang desamu sedang menyelesaikan pembangunan benteng dalam 15 menit`) 
+reply(`tukang desamu sedang menyelesaikan pembangunan benteng dalam 5 menit`) 
 addTukangUser(sender, -1)
 setTimeout( () => {
 addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addBentengUser(sender, 1)
 reply(`*BARAK PERTAHANAN*\n\nKamu Telah Membangun Benteng Pertahanan`)
-}, 900000)
+}, 300000)
 } 
 } else if (args[0]=="pabrik") {
+if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (getPabrikUser(sender) > batesp) return reply(`Pabrik Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 45
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
@@ -1844,11 +1847,12 @@ bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk
 }, 300000)
 } 
 } else if (args[0]=="monumen") {
+if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (getMonumenUser(sender) > batesm) return reply(`Monument Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 35
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
-reply(`tukang desamu sedang menyelesaikan pembangunan monumen dalam 5 menit`) 
+reply(`tukang desamu sedang menyelesaikan pembangunan monumen dalam 3 menit`) 
 addTukangUser(sender, -1)
 setTimeout( () => {
 addTukangUser(sender, 1)
@@ -1856,14 +1860,15 @@ addMoneyUser(sender, -bayar)
 addMonumenUser(sender, 1)
 reply(`  *SELESAI MEMBANGUN*\n
 bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
-}, 300000)
+}, 180000)
 } 
 } else if (args[0]=="hiburan") {
+if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (getHiburanUser(sender) > batesh) return reply(`Hiburan Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 20
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
-reply(`tukang desamu sedang menyelesaikan pembangunan hiburan dalam 5 menit`) 
+reply(`tukang desamu sedang menyelesaikan pembangunan hiburan dalam 1 menit`) 
 addTukangUser(sender, -1)
 setTimeout( () => {
 addTukangUser(sender, 1)
@@ -1871,15 +1876,16 @@ addMoneyUser(sender, -bayar)
 addHiburanUser(sender, 1)
 reply(`  *SELESAI MEMBANGUN*\n
 bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
-}, 300000)
+}, 60000)
 } 
 } else if (args[0]=="hotel") {
+if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (getLevelUser(sender) < 3) return reply(`Kamu harus meningkatkan desamu ke level 3 terlebih dahulu agar bisa membangun hotel`) 
 if (getHotelUser(sender) > batesht) return reply(`Hotel Yang Kamu Buat Telah Mencampai Batas Maximal`)
 bayar = 1 * 95
 if (getMoneyUser(sender) <= bayar) return reply(`Maaf money kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
 if (getMoneyUser(sender) >= bayar ) {
-reply(`tukang desamu sedang menyelesaikan pembangunan hiburan dalam 10 menit`) 
+reply(`tukang desamu sedang menyelesaikan pembangunan hiburan dalam 6 menit`) 
 addTukangUser(sender, -1)
 setTimeout( () => {
 addTukangUser(sender, 1)
@@ -1887,7 +1893,7 @@ addMoneyUser(sender, -bayar)
 addHotelUser(sender, 1)
 reply(`  *SELESAI MEMBANGUN*\n
 bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
-}, 600000)
+}, 360000)
 } 
 } else if (args[0]=="obat") {
 if (!getHospitalUser(sender)) return reply(`Kamu belum membangun rumah sakit atau hospital`)
@@ -1913,7 +1919,7 @@ break
 case 'daftar':
 if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
 await addRpgId(sender)
-reply(`   ﹛ *SUCCES VERIFY* ﹜\n\n*Nama*: ${pushname}\n*Tgl*: ${date}\n*User*: ${getRpgId(sender)}\n*Verify WhatsappBot √*\n\n- ketik /desa untuk memulai permainan rpg dan melihat perkembangan desamu`)
+reply(`   ﹛ *SUCCES VERIFY* ﹜\n\n*Nama*: ${pushname}\n*Tgl*: ${date}\n*User*: ${_rpg.length}\n*Verify WhatsappBot √*\n\n- ketik /desa untuk memulai permainan rpg dan melihat perkembangan desamu`)
 break
 				
 case 'hidetag':
@@ -2296,23 +2302,23 @@ batasnx ='15'
 } 
 
 const batasArcherx =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var batasax ='25'
+var batasax ='15'
 if (batasArcherx === 1) {
-batasax ='25'
+batasax ='15'
 } else if (batasArcherx === 2) {
-batasax ='40'
+batasax ='25'
 } else if (batasArcherx === 3) {
-batasax ='50'
+batasax ='35'
 } 
 
 const batasSamuraix =  getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
-var batassx ='25'
+var batassx ='15'
 if (batasSamuraix === 1) {
-batassx ='25'
+batassx ='15'
 } else if (batasSamuraix === 2) {
-batassx ='40'
+batassx ='25'
 } else if (batasSamuraix === 3) {
-batassx ='50'
+batassx ='35'
 } 
 
 const getNagaxUserx = getLevelUser(`${mem.split("@")[1]}@s.whatsapp.net`)
