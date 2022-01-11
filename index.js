@@ -750,6 +750,23 @@ client.logger.level = 'warn'
 	await client.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./BarBar.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
 
+begitulah = {
+	key : {
+                          participant : '0@s.whatsapp.net'
+                        },
+       message: {
+                    orderMessage: {
+                            itemCount : 0,
+                            status: 0,
+                            surface : 0,
+                            message: `Im MitsuhaBot`,
+                            orderTitle: `Im MitsuhaBot`,
+                            thumbnail: fs.readFileSync('./lib/img.jpg'),
+                            sellerJid: '0@s.whatsapp.net' 
+                          }
+                        }
+                      }
+                      
 client.on('group-participants-update', async (anu) => {
 if (!welkom.includes(anu.jid)) return
 try {
@@ -762,18 +779,10 @@ ppimg = await client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.u
 } catch {
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
-//teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
+teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
 let buff = await getBuffer(ppimg)
-//client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+client.sendMessage(mdata.id, buff, MessageType.image, {quoted: begitulah, caption: teks, contextInfo: {"mentionedJid": [num]}})
 addBadwordId(sender)
-fs.writeFileSync(`./${mdata.id}.jpeg`, await getBuffer(buff))
-buttons = [{buttonId:`Siap Mas Bro 🙏`,buttonText:{displayText:`Siap Mas Bro 🙏`},type:1}]
-imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${mdata.id}.jpeg`), 'imageMessage')).message.imageMessage
-buttonsMessage = {footerText:'hallo pengguna baru, selamat datang dan semoga betah. jangan lupa intro dan bersosialisasi dengan sesama member grup!', imageMessage: imageMsg,
-contentText:`🎮 *SELAMAT DATANG*`,buttons,headerType:4}
-prep = await client.prepareMessageFromContent(from,{buttonsMessage})
-client.relayWAMessage(prep)
-fs.unlinkSync(`./${mdata.id}.jpeg`)
 
 } else if (anu.action == 'remove') {
 num = anu.participants[0]
@@ -782,18 +791,9 @@ ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`)
 } catch {
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
-//teks = `Sayonara @${num.split('@')[0]}👋`
+teks = `Sayonara @${num.split('@')[0]}👋`
 let buff = await getBuffer(ppimg)
-//client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-fs.writeFileSync(`./${mdata.id}.jpeg`, await getBuffer(buff))
-buttons = [{buttonId:`GoodBye Dogy 😗`,buttonText:{displayText:`GoodBye Dogy 😗`},type:1}]
-imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./${mdata.id}.jpeg`), 'imageMessage')).message.imageMessage
-buttonsMessage = {footerText:'balik bawain es jeruk di koprasi yo', imageMessage: imageMsg,
-contentText:`🎮 *SELAMAT TINGGAL*`,buttons,headerType:4}
-prep = await client.prepareMessageFromContent(from,{buttonsMessage})
-client.relayWAMessage(prep)
-fs.unlinkSync(`./${mdata.id}.jpeg`)
-}
+client.sendMessage(mdata.id, buff, MessageType.image, {quoted: begitulah, caption: teks, contextInfo: {"mentionedJid": [num]}})
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
