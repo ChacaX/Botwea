@@ -2916,6 +2916,56 @@ fs.unlinkSync(`./${sender}.jpeg`)
 break
 }
 
+if (buttonsR === 'MENU') {
+if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+uptime = process.uptime()
+teks = `
+╭﹛☕︎︎﹜ *PROFILE*
+│🂡 name ${pushname}
+│🂡 money $${getMoneyUser(sender)}
+│🂡 user ${_rpg.length} *active*
+╰
+
+╭﹛☕︎︎﹜ *RPG*
+│🂡 ${prefix2}desa
+│🂡 ${prefix2}buy
+│🂡 ${prefix2}upgrade
+│🂡 ${prefix2}training
+│🂡 ${prefix2}war
+│🂡 ${prefix2}bank
+│🂡 ${prefix2}cek
+│🂡 ${prefix2}pangkas
+╰
+
+╭﹛☕︎︎﹜ *OTHER*:
+│🂡 ${prefix2}broadcast
+│🂡 ${prefix2}sticker
+│🂡 ${prefix2}toimg
+│🂡 ${prefix2}owner
+╰
+
+╭﹛☕︎︎﹜ *GROUP*
+│🂡 ${prefix2}tagall
+│🂡 ${prefix2}kick
+│🂡 ${prefix2}add
+│🂡 ${prefix2}promote
+│🂡 ${prefix2}demote
+│🂡 ${prefix2}welcome
+│🂡 ${prefix2}antilink
+│🂡 ${prefix2}warning
+│🂡 ${prefix2}hidetag
+│🂡 ${prefix2}open/close
+╰
+
+╭﹛☕︎︎﹜ *IMAGE*
+│🂡 ${prefix2}cecan
+│🂡 ${prefix2}cogan
+│🂡 ${prefix2}waifu
+╰`
+sendButDocument(from, `${teks}`, `🎮 mitsuha`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+addPendudukUser(sender, 2)
+}
+
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
