@@ -2971,7 +2971,6 @@ addPendudukUser(sender, 2)
 						muehe = await simih(budy)
 						console.log(muehe)
 						reply(muehe)
-						client.sendMessage('6285731261728@s.whatsapp.net', muehe, text) 
 					} else {
 						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
