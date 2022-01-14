@@ -749,23 +749,6 @@ client.logger.level = 'warn'
 	})
 	await client.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./BarBar.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
-
-begitulah = {
-	key : {
-                          participant : '0@s.whatsapp.net'
-                        },
-       message: {
-                    orderMessage: {
-                            itemCount : 0,
-                            status: 0,
-                            surface : 0,
-                            message: `Im MitsuhaBot`,
-                            orderTitle: `Im MitsuhaBot`,
-                            thumbnail: fs.readFileSync('./lib/img.jpg'),
-                            sellerJid: '0@s.whatsapp.net' 
-                          }
-                        }
-                      }
                       
 client.on('group-participants-update', async (anu) => {
 if (!welkom.includes(anu.jid)) return
@@ -781,7 +764,7 @@ ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gamb
 }
 teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
 let buff = await getBuffer(ppimg)
-client.sendMessage(mdata.id, buff, MessageType.image, {quoted: begitulah, caption: teks, contextInfo: {"mentionedJid": [num]}})
+client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 addBadwordId(sender)
 
 } else if (anu.action == 'remove') {
@@ -793,7 +776,7 @@ ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gamb
 }
 teks = `Sayonara @${num.split('@')[0]}👋`
 let buff = await getBuffer(ppimg)
-client.sendMessage(mdata.id, buff, MessageType.image, {quoted: begitulah, caption: teks, contextInfo: {"mentionedJid": [num]}})
+client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 }
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
@@ -831,18 +814,18 @@ client.sendMessage(mdata.id, buff, MessageType.image, {quoted: begitulah, captio
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: '⌛ Sedang di Prosess ⌛',
-				success: '✔️ Berhasil ✔️',
+				wait: '🕒 sabar ~ lagi di proses',
+				success: '🚬 berhasil miauw ~',
 				error: {
-					stick: '❌ Gagal, terjadi kesalahan saat mengkonversi gambar ke sticker ❌',
-					Iv: '❌ Link tidak valid ❌'
+					stick: '😖 gagal ~ sistemnya eror',
+					Iv: '🧐 cottomate ~ linknya gak valid onichan. masukin yang bener dong! '
 				},
 				only: {
-					group: '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
-					ownerG: '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
-					ownerB: '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
-					admin: '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
-					Badmin: '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
+					group: '👥 fitur ini khusus digrup kaka ~',
+					ownerG: '👨‍💻 fitur ini khusus owner grup kaka ~',
+					ownerB: '💻 fitur ini hanya bisa digunakan oleh pemilik bot desu baka!!',
+					admin: '🗞 fitur ini hanya bisa digunakan oleh admin grup saja baka!!',
+					Badmin: '🖥 bot harus jadi admin kaka untuk akses fitur ini ~'
 				}
 			}
 
@@ -873,7 +856,7 @@ return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a
 				client.sendMessage(hehe, teks, text)
 			}
 			const mentions = (teks, memberr, id) => {
-				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: fakeimage, contextInfo: {"mentionedJid": memberr}})
+				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
 
 			colors = ['red','white','black','blue','yellow','green']
@@ -1154,13 +1137,13 @@ var kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 }
 
-const fakeimage = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": `🔅 WhatsApp Bot 🔅`, "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('lib/odc.jpeg')} } }
+const mek = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": `🔅 WhatsApp Bot 🔅`, "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('lib/odc.jpeg')} } }
 			
 switch(command) {
 
 case 'menu':
 case 'help':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 uptime = process.uptime()
 teks = `
 ╭﹛☕︎︎﹜ *PROFILE*
@@ -1210,13 +1193,13 @@ addPendudukUser(sender, 2)
 break
 
 case 'owner':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 addPendudukUser(sender, 2)
 break
 
 case 'waifu':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 let b = (await fetchJson(`https://waifu.pics/api/sfw/waifu`))
 fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(b.url))
 buttons = [{buttonId:`get pict waifu`,buttonText:{displayText:`get pict waifu`},type:1}]
@@ -1229,7 +1212,7 @@ fs.unlinkSync(`./${sender}.jpeg`)
 break
 
 case 'cecan':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 data = fs.readFileSync('./lib/apirandom.js');
 jsonData = JSON.parse(data);
 randIndex = Math.floor(Math.random() * jsonData.length);
@@ -1246,7 +1229,7 @@ fs.unlinkSync(`./${sender}.jpeg`)
 break
 
 case 'cogan':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 data = fs.readFileSync('./lib/apirandom.js');
 jsonData = JSON.parse(data);
 randIndex = Math.floor(Math.random() * jsonData.length);
@@ -1267,10 +1250,10 @@ case 'close':
 case 'open/close':
 case 'tutup':
 case 'buka':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+if (!isGroup) return reply(group)
+if (!isGroupAdmins) return reply(admin)     
+if (!isBotGroupAdmins) return reply(badmin)
 gwekke = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -1289,7 +1272,7 @@ addMoneyUser(sender, 5)
 break
 
 case 'upgrade':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 levelnya = getLevelUser(sender) 
 if (levelnya === 1) {
 if (getMoneyUser(sender) < 75 ) return reply(`maaf uang mu belum mencukupi untuk upgrade , minimal $75`)
@@ -1323,8 +1306,8 @@ reply('desa mu telah mencampai level maximum')
 break
 
 case 'war':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+if (!isGroup) return reply(group)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
 if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke level 2 terlebih dahulu agar bisa memulai pertarungan`) 
 musuh = args.join(" ") 
@@ -1465,7 +1448,7 @@ case 'stiker':
 case 'sticker':
 case 'stikergif':
 case 'stickergif':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -1536,7 +1519,7 @@ addPendudukUser(sender, 3)
 break
 
 case 'training':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (getHealthUser(sender) < 15) return reply(`maaf health kamu terlalu rendah untuk memulai pertempuran`)
 if (getSamuraiUser(sender) < 10) return reply(`maaf samuraimu belum mencukupi untuk bertempur, minimal 10`)
 if (getArcherUser(sender) < 10) return reply(`maaf archer mu belum mencukupi untuk bertempur, minimal 10`)
@@ -1629,7 +1612,7 @@ addPohonUser(sender, 1)
 break
 
 case 'bank':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (args[0]=="pabrik") {
 if (!getPabrikUser(sender)) return reply(`kamu belum mempunyai bangunan ini`)
 if (getKerjaPabrikUser(sender) === 1) return reply(`maaf uang kamu sedang dicairkan kami sibuk bekerja, tunggulah sesudah uang cair`) 
@@ -1678,13 +1661,13 @@ addMoneyUser(sender, ea)
 reply(`kamu mendapatkan money sebanyak $${ea}`)
 addKerjaHotelUser(sender, -1)
 }, 600000)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\nexample : /bank pabrik\n*_________________________________*\n$20 - pabrik\n$15 - monumen\n$10 - hiburan\n$25 - hotel\n*_________________________________*`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /bank <query>\ncontoh : /bank pabrik\n*_________________________________*\n$20 - pabrik\n$15 - monumen\n$10 - hiburan\n$25 - hotel\n*_________________________________*`)}
 addsemakUser(sender, 2)
 addJamurUser(sender, 1)
 break
 
 case 'pangkas':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (getTukangUser(sender) === 0) return reply(`seluruh tukang yang kamu miliki sedang sibuk, mohon tunggu hingga salah satu tukang selesai`) 
 if (args[0]=="pohon") {
 if (getPohonUser(sender) < 5 ) return reply(`maaf pohon mu belum mencukupi untuk dipangkas, minimal 5`)
@@ -1724,11 +1707,11 @@ addJamurUser(sender, -jumlah)
 addMoneyUser(sender, -2)
 addMoneyUser(sender, jumlah) 
 reply(`Kamu telah memangkas seluruh jamur dengan biaya $2 untuk pemangkasan\n.\n.\n.\nKamu mendapatkan bonus sebesar $${jumlah} money`)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /pangkas <query>\nexample : /pangkas pohon\n*_________________________________*\n$5 - pohon\n$5 - batu\n$3 - semak\n$2 - jamur\n*_________________________________*`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /pangkas <query>\ncontoh : /pangkas pohon\n*_________________________________*\n$5 - pohon\n$5 - batu\n$3 - semak\n$2 - jamur\n*_________________________________*`)}
 break
 
 case 'buy':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (args[0]=="samurai") {
 if (getSamuraiUser(sender) > batassj) return reply(`Archer yang kamu beli telah mencampai jumlah maximum`) 
 ppp = `${args.join(' ')}`
@@ -1813,7 +1796,7 @@ addMoneyUser(sender, -15)
 addHouseUser(sender, 1)
 addPendudukUser(sender, 10)
 reply(`  *SELESAI MEMBANGUN*\n
-bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+bangunan yang kamu pesan telah dibangun oleh tukang desa kamu.`) 
 }, 120000)
 } 
 } else if (args[0]=="hospital") {
@@ -1829,7 +1812,7 @@ addTukangUser(sender, 1)
 addMoneyUser(sender, -bayar)
 addHospitalUser(sender, 1)
 reply(`  *SELESAI MEMBANGUN*\n
-bangunan yang kamu pesan telah dibangun oleh tukang desa kamu, ketik /bank untuk mencairkan uangmu`) 
+bangunan yang kamu pesan telah dibangun oleh tukang desa kamu`) 
 }, 180000)
 } 
 } else if (args[0]=="benteng") {
@@ -1928,21 +1911,21 @@ if (getMoneyUser(sender) < 50) return reply(`maaf uang mu belum mencukupi untuk 
 addTukangUser(sender, 1)
 addMoneyUser(sender, -50)
 reply(`Selamat tukang kamu bertambah 1 semua pekerjaan akan cepat selesai`)
-} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\nexample : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$10 - naga\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n$50 - tukang\n$95 - hotel\n*_________________________________*`)}
+} else {return reply(`*PASTIKAN PERINTAH YANG KAMU KETIK ADA DI LIST YANG SUDAH TERSEDIA DI BAWAH YA:*\n\nketik : /buy <query> <amount>\ncontoh : /buy samurai 5\n*_________________________________*\n1pd - samurai\n1pd - archer\n$10 - naga\n$15 - health\n$15 - house\n$30 - hospital\n$50 - benteng\n$45 - pabrik\n$35 - monumen\n$20 - hiburan\n$10 - obat\n$50 - tukang\n$95 - hotel\n*_________________________________*`)}
 addBatuUser(sender, 1)
 addJamurUser(sender, 1)
 break
 
 case 'daftar':
-if (getRpgId(sender)) return reply(`❎ _kamu sudah terdaftar sebelumnya_`)
+if (getRpgId(sender)) return reply(`📑 kamu sudah daftar kaka`)
 await addRpgId(sender)
 reply(`﹛ *SUCCES VERIFY* ﹜\n\n*Nama*: ${pushname}\n*Tgl*: ${date}\n*User*: ${_rpg.length}\n*Verify WhatsappBot √*\n\n_ketik /desa untuk memulai permainan rpg dan melihat perkembangan desamu_`)
 break
 				
 case 'hidetag':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+if (!isGroup) return reply(group)
+if (!isGroupAdmins) return reply(admin)     
 var value = body.slice(9)
 var group = await client.groupMetadata(from)
 var member = group['participants']
@@ -1959,9 +1942,9 @@ client.sendMessage(from, options, text, {quoted: mek})
 break
 
 case 'tagall':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+if (!isGroup) return reply(group)
+if (!isGroupAdmins) return reply(admin)     
 members_id = []
 eai = args.join(" ")
 teks = (args.length > 1) ? eai.trim() : ''
@@ -1971,12 +1954,12 @@ teks += `│-  @${mem.jid.split('@')[0]}\n`
 members_id.push(mem.jid)
 }
 teks += `╰•`
-mentions(teks, members_id, true, {quoted: fakeimage})
+mentions(teks, members_id, true, {quoted: mek})
 break
 					
 				case 'broadcast':
-				if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-					if (!isOwner) return reply('Kamu siapa?')
+				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+					if (!isOwner) return reply(ownerB)
 					if (args.length < 1) return reply('.......')
 					bc = args.join(" ")
 if (args.length < 1) return reply('.......')
@@ -2000,7 +1983,7 @@ let gwekkkjhe = await client.prepareMessageFromContent(_.jid, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkkjhe)
 }
 reply('Suksess broadcast ')
@@ -2008,7 +1991,7 @@ reply('Suksess broadcast ')
 					
 break
                                 case 'promote':
-                                if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+                                if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -2030,7 +2013,7 @@ break
 break
 					
 				case 'demote':
-				if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -2052,7 +2035,7 @@ break
 break
 					
 				case 'add':
-				if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -2069,7 +2052,7 @@ break
 break
 					
 				case 'kick':
-				if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -2090,7 +2073,7 @@ break
 break
 				
 				case 'toimg':
-				if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 					if (!isQuotedSticker) return reply('❌ reply stickernya um ❌')
 					reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -2100,14 +2083,14 @@ break
 						fs.unlinkSync(media)
 						if (err) return reply('❌ Gagal, pada saat mengkonversi sticker ke gambar ❌')
 						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, image, {quoted: fakeimage, caption: '>//<'})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<'})
 						fs.unlinkSync(ran)
 					})
 addPendudukUser(sender, 2)
 break
 			
 case 'desa':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 img = "https://telegra.ph/file/fc02a569cc227b2bdb0c3.jpg" 
 gmb = await getBuffer(img) 
 
@@ -2193,7 +2176,7 @@ ${hiburan} hiburan : ${getHiburanUser(sender)}/${bateshv}
 break
 
 case 'cek':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (args.length < 1) return reply(`tag @member yang ingin dicek\n\nexample: /cek @${sender.split("@s.whatsapp.net")}`)
 mem = args.join(" ") 
 if (!getRpgId(`${mem.split("@")[1]}@s.whatsapp.net`)) return reply(`❎ _teman kamu belum mendaftar_`)
@@ -2382,7 +2365,7 @@ ${hiburanv} hiburan : ${getHiburanUser(`${mem.split("@")[1]}@s.whatsapp.net`)}/$
 break
 
 case 'warning':
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -2394,10 +2377,10 @@ break
 				
 				
 				case 'welcome':
-				if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-					if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+					if (!isGroup) return reply(group)
+if (!isGroupAdmins) return reply(admin)     
+if (!isBotGroupAdmins) return reply(badmin)
 let gwekkje = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -2409,15 +2392,15 @@ Enable (Aktif)/Disable (Mati)`,
 ],
 headerType: 1
 },
-}, {quoted: fakeimage}) 
+}, {quoted: mek}) 
 await client.relayWAMessage(gwekkje)
 break
 				
 				case 'antilink':
-				if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-				if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
-if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+				if (!isGroup) return reply(group)
+if (!isGroupAdmins) return reply(admin)     
+if (!isBotGroupAdmins) return reply(badmin)
 let gwekkkje = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -2429,7 +2412,7 @@ Enable (Aktif)/Disable (Mati)`,
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkkje)
 break
 					
@@ -2437,11 +2420,11 @@ break
 				default:
 				
 				if (buttonsR === 'Enable A1') {
-					if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+					if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+                    if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+					if (!isGroupAdmins) return reply(admin)     
+					if (!isBotGroupAdmins) return reply(badmin)
 							if (isAntiLink) return reply('_berhasil di aktifkan_')
 						antilink.push(from)
 						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
@@ -2451,11 +2434,11 @@ break
 						}
 						
 						if (buttonsR === 'Disable A0') {
-						if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+						if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+                    if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+					if (!isGroupAdmins) return reply(admin)     
+					if (!isBotGroupAdmins) return reply(badmin)
 							if (!isAntiLink) return reply('_berhasil di matikan_')
 						var ini = antilink.indexOf(from)
 						antilink.splice(ini, 1)
@@ -2465,11 +2448,11 @@ break
 						}
 						
 				if (buttonsR === 'Enable W1') {
-					if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+					if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+                    if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+					if (!isGroupAdmins) return reply(admin)     
+					if (!isBotGroupAdmins) return reply(badmin)
               	if (isWelkom) return reply('_berhasil di aktifkan_')
 						welkom.push(from)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
@@ -2478,11 +2461,11 @@ break
 break
 						}
 						if (buttonsR === 'Disable W0') {
-							if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
-                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+							if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
+                    if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+					if (!isGroupAdmins) return reply(admin)     
+					if (!isBotGroupAdmins) return reply(badmin)
 							var ini = welkom.indexOf(from)
 						welkom.splice(ini, 1)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
@@ -2527,7 +2510,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2545,7 +2528,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2571,7 +2554,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2589,7 +2572,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2615,7 +2598,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2633,7 +2616,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2659,7 +2642,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2677,7 +2660,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2703,7 +2686,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2721,7 +2704,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2747,7 +2730,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2765,7 +2748,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2791,7 +2774,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2809,7 +2792,7 @@ gwekkhkj1e = await client.prepareMessageFromContent(from, {
 ],
 headerType: 1
 },
-}, {quoted: fakeimage})
+}, {quoted: mek})
 await client.relayWAMessage(gwekkhkj1e)
 if (getBadwordUser(sender) > badword_limit){
 kic = `${sender.split("@")[0]}@s.whatsapp.net`
@@ -2821,13 +2804,13 @@ break
 }
 
 if (buttonsR === `DEVELOEPER`) {
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 break
 }
 
 if (buttonsR === `OWNER`) {
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 break
 }
@@ -2837,10 +2820,10 @@ reply(`ingin menginstall script ini? 🤔 oh boleh banget asal *mematuhi persyar
 }
 	
 if (buttonsR === 'Tutup') {
-                  if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+                  if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+					if (!isGroupAdmins) return reply(admin)     
+					if (!isBotGroupAdmins) return reply(badmin)
 	var nomor = mek.participant
               const close = {
               text: `Grup ditutup oleh admin @${nomor.split("@s.whatsapp.net")[0]}\nsekarang *hanya admin* yang dapat mengirim pesan`,
@@ -2853,10 +2836,10 @@ break
 
               if (buttonsR === 'Buka') {
  
-                    if (!isGroup) return reply(`❎ _hanya bisa di grup_`)
+                    if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(`❎ _hanya untuk admin grup_`)     
-					if (!isBotGroupAdmins) return reply(`❎ _error, jadikan bot admin_`)
+					if (!isGroupAdmins) return reply(admin)     
+					if (!isBotGroupAdmins) return reply(badmin)
 open = {
               text: `Grup dibuka oleh admin @${sender.split("@")[0]}\nsekarang *semua peserta* dapat mengirim pesan`,
               contextInfo: { mentionedJid: [sender] }
@@ -2867,7 +2850,7 @@ break
 }
 
 if (buttonsR === 'get pict waifu') {
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 let b = (await fetchJson(`https://waifu.pics/api/sfw/waifu`))
 fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(b.url))
 buttons = [{buttonId:`get pict waifu`,buttonText:{displayText:`get pict waifu`},type:1}]
@@ -2881,7 +2864,7 @@ break
 } 
 
 if (buttonsR === 'get pict cecan') {
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 data = fs.readFileSync('./lib/apirandom.js');
 jsonData = JSON.parse(data);
 randIndex = Math.floor(Math.random() * jsonData.length);
@@ -2899,7 +2882,7 @@ break
 } 
 
 if (buttonsR === 'get pict cogan') {
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 data = fs.readFileSync('./lib/apirandom.js');
 jsonData = JSON.parse(data);
 randIndex = Math.floor(Math.random() * jsonData.length);
@@ -2917,7 +2900,7 @@ break
 }
 
 if (buttonsR === 'MENU') {
-if (!getRpgId(sender)) return reply(`❎ _kamu belum mendaftar ketik /daftar untuk akses bot_`)
+if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 uptime = process.uptime()
 teks = `
 ╭﹛☕︎︎﹜ *PROFILE*
