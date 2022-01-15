@@ -766,7 +766,7 @@ ppimg = await client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.u
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
 let buffer = await getBuffer(ppimg)
-client.sendMessage(mdata.id, `Hi @${num.split('@s.whatsapp.net')[0]}, selamat satang di grup ${mdata.subject}\n\n${mdata.desc}\n\n📅 The date you join ${date}\n⏰ The time you join ${time}`, MessageType.text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [],"externalAdReply": {"title": `krah krah 🤠🌹`,"body": `join to my grup whatsapp`,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync('./lib/odc.jpeg'),"sourceUrl": "https://chat.whatsapp.com/KUaDGHR1Bln0iLuFERyJRo"}}) 
+client.sendMessage(mdata.id, `Hi @${num.split('@s.whatsapp.net')[0]}, selamat satang di grup ${mdata.subject}\n\n${mdata.desc}\n\n📅 The date you join ${date}\n⏰ The time you join ${time}`, MessageType.text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [],"externalAdReply": {"title": `krah krah 🤠🌹`,"body": `join to my grup whatsapp`,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync('./lib/odc.jpeg'),"sourceUrl": "https://chat.whatsapp.com/KUaDGHR1Bln0iLuFERyJRo"}}}) 
 
 } else if (anu.action == 'remove') {
 num = anu.participants[0]
@@ -775,7 +775,7 @@ ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`)
 } catch {
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
-client.sendMessage(mdata.id, `Bye @${num.split('@s.whatsapp.net')[0]}`, MessageType.text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [],"externalAdReply": {"title": `krah krah 🤠🌹`,"body": `join to my grup whatsapp`,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync('./lib/odc.jpeg'),"sourceUrl": "https://chat.whatsapp.com/KUaDGHR1Bln0iLuFERyJRo"}}) 
+client.sendMessage(mdata.id, `Bye @${num.split('@s.whatsapp.net')[0]}`, MessageType.text, {"contextInfo": {text: 'HelloWorld',"forwardingScore": 3,isForwarded: true,sendEphemeral: true,mentionedJid: [],"externalAdReply": {"title": `krah krah 🤠🌹`,"body": `join to my grup whatsapp`,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync('./lib/odc.jpeg'),"sourceUrl": "https://chat.whatsapp.com/KUaDGHR1Bln0iLuFERyJRo"}}}) 
 		}
 } catch (e) {
 			console.log('Error : %s', color(e, 'red'))
