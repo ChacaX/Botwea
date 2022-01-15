@@ -1170,50 +1170,51 @@ switch(command) {
 case 'menu':
 case 'help':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-buttons = [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}]
+buttons = [{buttonId:`👨‍💻 OWN`,buttonText:{displayText:'👨‍💻 OWN'},type:1},{buttonId:`💻 SCRIPT`,buttonText:{displayText:'💻 SCRIPT'},type:1}]
 imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./lib/odc.jpeg`), 'imageMessage', {thumbnail: fs.readFileSync('./lib/odc.jpeg')})).message.imageMessage
 buttonsMessage = {footerText:`╭﹛☎︎﹜ *PROFILE*
-│❍ name ${pushname}
-│❍ money $${getMoneyUser(sender)}
-│❍ user ${_rpg.length} *active*
+│❒ name ${pushname}
+│❒ money $${getMoneyUser(sender)}
+│❒ user ${_rpg.length} *active*
 ╰
 
 ╭﹛☎︎﹜ *RPG*
-│❍ ${prefix2}desa
-│❍ ${prefix2}buy
-│❍ ${prefix2}upgrade
-│❍ ${prefix2}training
-│❍ ${prefix2}war
-│❍ ${prefix2}bank
-│❍ ${prefix2}cek
-│❍ ${prefix2}pangkas
+│❒ ${prefix2}desa
+│❒ ${prefix2}buy
+│❒ ${prefix2}upgrade
+│❒ ${prefix2}training
+│❒ ${prefix2}war
+│❒ ${prefix2}bank
+│❒ ${prefix2}cek
+│❒ ${prefix2}pangkas
 ╰
 
 ╭﹛☎︎﹜ *OTHER*:
-│❍ ${prefix2}broadcast
-│❍ ${prefix2}sticker
-│❍ ${prefix2}toimg
-│❍ ${prefix2}owner
+│❒ ${prefix2}broadcast
+│❒ ${prefix2}sticker
+│❒ ${prefix2}toimg
+│❒ ${prefix2}owner
 ╰
 
 ╭﹛☎︎﹜ *GROUP*
-│❍ ${prefix2}tagall
-│❍ ${prefix2}kick
-│❍ ${prefix2}add
-│❍ ${prefix2}promote
-│❍ ${prefix2}demote
-│❍ ${prefix2}welcome
-│❍ ${prefix2}antilink
-│❍ ${prefix2}warning
-│❍ ${prefix2}hidetag
-│❍ ${prefix2}open/close
+│❒ ${prefix2}tagall
+│❒ ${prefix2}kick
+│❒ ${prefix2}add
+│❒ ${prefix2}promote
+│❒ ${prefix2}demote
+│❒ ${prefix2}welcome
+│❒ ${prefix2}antilink
+│❒ ${prefix2}warning
+│❒ ${prefix2}hidetag
+│❒ ${prefix2}open/close
 ╰
 
 ╭﹛☎︎﹜ *IMAGE*
-│❍ ${prefix2}cecan
-│❍ ${prefix2}cogan
-│❍ ${prefix2}waifu
-╰`, imageMessage: imageMsg,
+│❒ ${prefix2}cecan
+│❒ ${prefix2}cogan
+│❒ ${prefix2}waifu
+╰
+`, imageMessage: imageMsg,
 contentText:`*WHATSAPPP BOTZ*`,buttons,headerType:4}
 prep = await client.prepareMessageFromContent(from,{buttonsMessage}, {quoted: mek})
 client.relayWAMessage(prep)
@@ -1975,12 +1976,12 @@ if (!isGroupAdmins) return reply(mess.admin)
 members_id = []
 eai = args.join(" ")
 teks = (args.length > 1) ? eai.trim() : ''
-teks += '\n\n╭─• *MENTION ALL*\n\n'
+teks += '\n\n╭─• *MENTION ALL*\n'
 for (let mem of groupMembers) {
-teks += `│☑  @${mem.jid.split('@')[0]}\n`
+teks += `│☉  @${mem.jid.split('@')[0]}\n`
 members_id.push(mem.jid)
 }
-teks += `\n╰•`
+teks += `╰•`
 mentions(teks, members_id, true, {quoted: mek})
 break
 					
@@ -2830,7 +2831,7 @@ addBadwordUser(sender, -badword_limit)
 break
 }
 
-if (buttonsR === `DEVELOPER`) {
+if (buttonsR === `👨‍💻 OWN`) {
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 break
@@ -2842,7 +2843,7 @@ await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.
 break
 }
 
-if (buttonsR === 'SOURCE CODE') {
+if (buttonsR === '💻 SCRIPT') {
 reply(`ingin menginstall script ini? 🤔 oh boleh banget asal *mematuhi persyaratan* dari owner asli bot ini ya.\n.\n.\nsyarat syarat yang wajib dipatuhi:\n🌟 dilarang *menjual belikan* sc ini! harap hargai pembuat masal owner aja ngasih gratis tapi kamu jual\n🌟 *dilarang mengubah thanks to* yang berada di script ini oke\n\n*click* link berikut untuk menginstall script github.com/ChacaX/Botwea`)
 }
 	
@@ -2928,50 +2929,51 @@ break
 
 if (buttonsR === 'MENU') {
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-buttons = [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}]
+buttons = [{buttonId:`👨‍💻 OWN`,buttonText:{displayText:'👨‍💻 OWN'},type:1},{buttonId:`💻 SCRIPT`,buttonText:{displayText:'💻 SCRIPT'},type:1}]
 imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./lib/odc.jpeg`), 'imageMessage', {thumbnail: fs.readFileSync('./lib/odc.jpeg')})).message.imageMessage
 buttonsMessage = {footerText:`╭﹛☎︎﹜ *PROFILE*
-│❍ name ${pushname}
-│❍ money $${getMoneyUser(sender)}
-│❍ user ${_rpg.length} *active*
+│❒ name ${pushname}
+│❒ money $${getMoneyUser(sender)}
+│❒ user ${_rpg.length} *active*
 ╰
 
 ╭﹛☎︎﹜ *RPG*
-│❍ ${prefix2}desa
-│❍ ${prefix2}buy
-│❍ ${prefix2}upgrade
-│❍ ${prefix2}training
-│❍ ${prefix2}war
-│❍ ${prefix2}bank
-│❍ ${prefix2}cek
-│❍ ${prefix2}pangkas
+│❒ ${prefix2}desa
+│❒ ${prefix2}buy
+│❒ ${prefix2}upgrade
+│❒ ${prefix2}training
+│❒ ${prefix2}war
+│❒ ${prefix2}bank
+│❒ ${prefix2}cek
+│❒ ${prefix2}pangkas
 ╰
 
 ╭﹛☎︎﹜ *OTHER*:
-│❍ ${prefix2}broadcast
-│❍ ${prefix2}sticker
-│❍ ${prefix2}toimg
-│❍ ${prefix2}owner
+│❒ ${prefix2}broadcast
+│❒ ${prefix2}sticker
+│❒ ${prefix2}toimg
+│❒ ${prefix2}owner
 ╰
 
 ╭﹛☎︎﹜ *GROUP*
-│❍ ${prefix2}tagall
-│❍ ${prefix2}kick
-│❍ ${prefix2}add
-│❍ ${prefix2}promote
-│❍ ${prefix2}demote
-│❍ ${prefix2}welcome
-│❍ ${prefix2}antilink
-│❍ ${prefix2}warning
-│❍ ${prefix2}hidetag
-│❍ ${prefix2}open/close
+│❒ ${prefix2}tagall
+│❒ ${prefix2}kick
+│❒ ${prefix2}add
+│❒ ${prefix2}promote
+│❒ ${prefix2}demote
+│❒ ${prefix2}welcome
+│❒ ${prefix2}antilink
+│❒ ${prefix2}warning
+│❒ ${prefix2}hidetag
+│❒ ${prefix2}open/close
 ╰
 
 ╭﹛☎︎﹜ *IMAGE*
-│❍ ${prefix2}cecan
-│❍ ${prefix2}cogan
-│❍ ${prefix2}waifu
-╰`, imageMessage: imageMsg,
+│❒ ${prefix2}cecan
+│❒ ${prefix2}cogan
+│❒ ${prefix2}waifu
+╰
+`, imageMessage: imageMsg,
 contentText:`*WHATSAPPP BOTZ*`,buttons,headerType:4}
 prep = await client.prepareMessageFromContent(from,{buttonsMessage}, {quoted: mek})
 client.relayWAMessage(prep)
