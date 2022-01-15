@@ -1164,27 +1164,15 @@ var kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 }
 			
-sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
-kma = gam1
-mhan = await client.prepareMessage(from, kma, location)
-buttonMessages = {
-locationMessage: mhan.message.locationMessage,
-contentText: text1,
-footerText: desc1,
-buttons: but,
-headerType: 6
-}
-client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
-}
 
 switch(command) {
 
 case 'menu':
 case 'help':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-creator = "6285731261728@s.whatsapp.net"
-teks =`*M I T S U H A - W A B O T*\n`
-sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
+buttons = {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./lib/odc.jpeg`), 'imageMessage', {thumbnail: fs.readFileSync('./lib/odc.jpeg')})).message.imageMessage
+buttonsMessage = {footerText:`╭﹛☎︎﹜ *PROFILE*
 │❍ name ${pushname}
 │❍ money $${getMoneyUser(sender)}
 │❍ user ${_rpg.length} *active*
@@ -1225,7 +1213,10 @@ sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
 │❍ ${prefix2}cecan
 │❍ ${prefix2}cogan
 │❍ ${prefix2}waifu
-╰`,{jpegThumbnail: thumb}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+╰`, imageMessage: imageMsg,
+contentText:`*WHATSAPPP BOTZ*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage}, {quoted: mek})
+client.relayWAMessage(prep)
 break
 
 case 'owner':
@@ -2937,9 +2928,9 @@ break
 
 if (buttonsR === 'MENU') {
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-creator = "6285731261728@s.whatsapp.net"
-teks =`*M I T S U H A - W A B O T*\n`
-sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
+buttons = {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}]
+imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./lib/odc.jpeg`), 'imageMessage', {thumbnail: fs.readFileSync('./lib/odc.jpeg')})).message.imageMessage
+buttonsMessage = {footerText:`╭﹛☎︎﹜ *PROFILE*
 │❍ name ${pushname}
 │❍ money $${getMoneyUser(sender)}
 │❍ user ${_rpg.length} *active*
@@ -2980,8 +2971,10 @@ sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
 │❍ ${prefix2}cecan
 │❍ ${prefix2}cogan
 │❍ ${prefix2}waifu
-╰`,{jpegThumbnail: thumb}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
-addPendudukUser(sender, 2)
+╰`, imageMessage: imageMsg,
+contentText:`*WHATSAPPP BOTZ*`,buttons,headerType:4}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage}, {quoted: mek})
+client.relayWAMessage(prep)
 }
 
 					if (isGroup && isSimi && budy != undefined) {
