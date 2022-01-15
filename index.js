@@ -1249,7 +1249,7 @@ case 'open/close':
 case 'tutup':
 case 'buka':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(group)
+if (!isGroup) return reply(only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
 if (!isBotGroupAdmins) return reply(only.badmin)
 gwekke = await client.prepareMessageFromContent(from, {
@@ -1305,7 +1305,7 @@ break
 
 case 'war':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(group)
+if (!isGroup) return reply(only.group)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
 if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke level 2 terlebih dahulu agar bisa memulai pertarungan`) 
 musuh = args.join(" ") 
@@ -1922,7 +1922,7 @@ break
 				
 case 'hidetag':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(group)
+if (!isGroup) return reply(only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
 var value = body.slice(9)
 var group = await client.groupMetadata(from)
@@ -1941,7 +1941,7 @@ break
 
 case 'tagall':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(group)
+if (!isGroup) return reply(only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
 members_id = []
 eai = args.join(" ")
@@ -2376,7 +2376,7 @@ break
 				
 				case 'welcome':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-					if (!isGroup) return reply(group)
+					if (!isGroup) return reply(only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
 if (!isBotGroupAdmins) return reply(only.badmin)
 let gwekkje = await client.prepareMessageFromContent(from, {
@@ -2396,7 +2396,7 @@ break
 				
 				case 'antilink':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-				if (!isGroup) return reply(group)
+				if (!isGroup) return reply(only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
 if (!isBotGroupAdmins) return reply(only.badmin)
 let gwekkkje = await client.prepareMessageFromContent(from, {
@@ -2419,7 +2419,7 @@ break
 				
 				if (buttonsR === 'Enable A1') {
 					if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-                    if (!isGroup) return reply(group)
+                    if (!isGroup) return reply(only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
 					if (!isBotGroupAdmins) return reply(only.badmin)
@@ -2433,7 +2433,7 @@ break
 						
 						if (buttonsR === 'Disable A0') {
 						if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-                    if (!isGroup) return reply(group)
+                    if (!isGroup) return reply(only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
 					if (!isBotGroupAdmins) return reply(only.badmin)
@@ -2447,7 +2447,7 @@ break
 						
 				if (buttonsR === 'Enable W1') {
 					if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-                    if (!isGroup) return reply(group)
+                    if (!isGroup) return reply(only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
 					if (!isBotGroupAdmins) return reply(only.badmin)
@@ -2460,7 +2460,7 @@ break
 						}
 						if (buttonsR === 'Disable W0') {
 							if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-                    if (!isGroup) return reply(group)
+                    if (!isGroup) return reply(only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
 					if (!isBotGroupAdmins) return reply(only.badmin)
@@ -2818,7 +2818,7 @@ reply(`ingin menginstall script ini? 🤔 oh boleh banget asal *mematuhi persyar
 }
 	
 if (buttonsR === 'Tutup') {
-                  if (!isGroup) return reply(group)
+                  if (!isGroup) return reply(only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
 					if (!isBotGroupAdmins) return reply(only.badmin)
@@ -2834,7 +2834,7 @@ break
 
               if (buttonsR === 'Buka') {
  
-                    if (!isGroup) return reply(group)
+                    if (!isGroup) return reply(only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
 					if (!isBotGroupAdmins) return reply(only.badmin)
