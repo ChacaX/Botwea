@@ -1226,7 +1226,7 @@ sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
 │❍ ${prefix2}cogan
 │❍ ${prefix2}waifu
 ╰`
-`,{jpegThumbnail: thumb}, {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+`,{jpegThumbnail: thumb}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 
 case 'owner':
@@ -2982,7 +2982,7 @@ sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
 │❍ ${prefix2}cogan
 │❍ ${prefix2}waifu
 ╰`
-`,{jpegThumbnail: thumb}, {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+`,{jpegThumbnail: thumb}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 addPendudukUser(sender, 2)
 }
 
