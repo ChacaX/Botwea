@@ -846,7 +846,7 @@ sendButLocation(mdata.id, `${teks}`, `@${num.split('@')[0]} awok\nyang out pacar
 					stick: '😖 gagal ~ sistemnya eror',
 					Iv: '🧐 cottomate ~ linknya gak valid onichan. masukin yang bener dong! '
 				},
-				mess.only: {
+			  only: {
 					group: '👥 fitur ini khusus digrup kaka ~',
 					ownerG: '👨‍💻 fitur ini khusus owner grup kaka ~',
 					ownerB: '💻 fitur ini hanya bisa digunakan oleh pemilik bot desu baka!!',
