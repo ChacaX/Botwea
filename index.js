@@ -762,9 +762,22 @@ ppimg = await client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.u
 } catch {
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
-teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
-let buff = await getBuffer(ppimg)
-client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+let buffer = await getBuffer(ppimg)
+sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
+kma = gam1
+mhan = await client.prepareMessage(mdata.id, kma, location)
+buttonMessages = {
+locationMessage: mhan.message.locationMessage,
+contentText: text1,
+footerText: desc1,
+buttons: but,
+headerType: 6
+}
+client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+}
+creator = "6285731261728@s.whatsapp.net"
+teks =`⭐ *WELCOME MESSAGES*`
+sendButLocation(mdata.id, `${teks}`, `Hai @${num.split('@')[0]},\nselamat datang\ndi group ini :)`, {jpegThumbnail:buffer}, [{buttonId:`OWNER BOT`,buttonText:{displayText:'OWNER BOT'},type:1},{buttonId:`HELLO 👋`,buttonText:{displayText:'HELLO 👋'},type:1}], {contextInfo: { mentionedJid: [creator,creator,creator]}})
 addBadwordId(sender)
 
 } else if (anu.action == 'remove') {
@@ -774,11 +787,24 @@ ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`)
 } catch {
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
-teks = `Sayonara @${num.split('@')[0]}👋`
-let buff = await getBuffer(ppimg)
-client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+let buffer = await getBuffer(ppimg)
+sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
+kma = gam1
+mhan = await client.prepareMessage(mdata.id, kma, location)
+buttonMessages = {
+locationMessage: mhan.message.locationMessage,
+contentText: text1,
+footerText: desc1,
+buttons: but,
+headerType: 6
 }
-		} catch (e) {
+client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+}
+creator = "6285731261728@s.whatsapp.net"
+teks =`📜 *LEAVE MESSAGES*`
+sendButLocation(mdata.id, `${teks}`, `@${num.split('@')[0]} awok\nyang out pacarnya ragil`, {jpegThumbnail:buffer}, [{buttonId:`OWNER BOT`,buttonText:{displayText:'OWNER BOT'},type:1},{buttonId:`BYE 👋`,buttonText:{displayText:'BYE 👋'},type:1}], {contextInfo: { mentionedJid: [creator,creator,creator]}})
+		}
+} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
 	})
@@ -820,7 +846,7 @@ client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInf
 					stick: '😖 gagal ~ sistemnya eror',
 					Iv: '🧐 cottomate ~ linknya gak valid onichan. masukin yang bener dong! '
 				},
-				only: {
+				mess.only: {
 					group: '👥 fitur ini khusus digrup kaka ~',
 					ownerG: '👨‍💻 fitur ini khusus owner grup kaka ~',
 					ownerB: '💻 fitur ini hanya bisa digunakan oleh pemilik bot desu baka!!',
@@ -1137,57 +1163,69 @@ var kic = `${sender.split("@")[0]}@s.whatsapp.net`
 client.groupRemove(from, [kic]).catch((e)=>{reply(`_error, jadikan bot admin_`)})
 }
 			
+sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
+kma = gam1
+mhan = await client.prepareMessage(from, kma, location)
+buttonMessages = {
+locationMessage: mhan.message.locationMessage,
+contentText: text1,
+footerText: desc1,
+buttons: but,
+headerType: 6
+}
+client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+}
+
 switch(command) {
 
 case 'menu':
 case 'help':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-uptime = process.uptime()
-teks = `
-╭﹛☕︎︎﹜ *PROFILE*
-│🂡 name ${pushname}
-│🂡 money $${getMoneyUser(sender)}
-│🂡 user ${_rpg.length} *active*
+creator = "6285731261728@s.whatsapp.net"
+teks =`*M I T S U H A - W A B O T*\n`
+sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
+│❍ name ${pushname}
+│❍ money $${getMoneyUser(sender)}
+│❍ user ${_rpg.length} *active*
 ╰
 
-╭﹛☕︎︎﹜ *RPG*
-│🂡 ${prefix2}desa
-│🂡 ${prefix2}buy
-│🂡 ${prefix2}upgrade
-│🂡 ${prefix2}training
-│🂡 ${prefix2}war
-│🂡 ${prefix2}bank
-│🂡 ${prefix2}cek
-│🂡 ${prefix2}pangkas
+╭﹛☎︎﹜ *RPG*
+│❍ ${prefix2}desa
+│❍ ${prefix2}buy
+│❍ ${prefix2}upgrade
+│❍ ${prefix2}training
+│❍ ${prefix2}war
+│❍ ${prefix2}bank
+│❍ ${prefix2}cek
+│❍ ${prefix2}pangkas
 ╰
 
-╭﹛☕︎︎﹜ *OTHER*:
-│🂡 ${prefix2}broadcast
-│🂡 ${prefix2}sticker
-│🂡 ${prefix2}toimg
-│🂡 ${prefix2}owner
+╭﹛☎︎﹜ *OTHER*:
+│❍ ${prefix2}broadcast
+│❍ ${prefix2}sticker
+│❍ ${prefix2}toimg
+│❍ ${prefix2}owner
 ╰
 
-╭﹛☕︎︎﹜ *GROUP*
-│🂡 ${prefix2}tagall
-│🂡 ${prefix2}kick
-│🂡 ${prefix2}add
-│🂡 ${prefix2}promote
-│🂡 ${prefix2}demote
-│🂡 ${prefix2}welcome
-│🂡 ${prefix2}antilink
-│🂡 ${prefix2}warning
-│🂡 ${prefix2}hidetag
-│🂡 ${prefix2}open/close
+╭﹛☎︎﹜ *GROUP*
+│❍ ${prefix2}tagall
+│❍ ${prefix2}kick
+│❍ ${prefix2}add
+│❍ ${prefix2}promote
+│❍ ${prefix2}demote
+│❍ ${prefix2}welcome
+│❍ ${prefix2}antilink
+│❍ ${prefix2}warning
+│❍ ${prefix2}hidetag
+│❍ ${prefix2}open/close
 ╰
 
-╭﹛☕︎︎﹜ *IMAGE*
-│🂡 ${prefix2}cecan
-│🂡 ${prefix2}cogan
-│🂡 ${prefix2}waifu
+╭﹛☎︎﹜ *IMAGE*
+│❍ ${prefix2}cecan
+│❍ ${prefix2}cogan
+│❍ ${prefix2}waifu
 ╰`
-sendButDocument(from, `${teks}`, `🎮 mitsuha`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
-addPendudukUser(sender, 2)
+`,{jpegThumbnail: fs.readFileSync('./lib/odc.jpeg')}, {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 
 case 'owner':
@@ -1249,9 +1287,9 @@ case 'open/close':
 case 'tutup':
 case 'buka':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(only.group)
+if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
-if (!isBotGroupAdmins) return reply(only.badmin)
+if (!isBotGroupAdmins) return reply(mess.only.badmin)
 gwekke = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -1305,7 +1343,7 @@ break
 
 case 'war':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(only.group)
+if (!isGroup) return reply(mess.only.group)
 if (args.length < 1) return reply(`tag @member yang ingin diajak war\n\nexample: /war @${sender.split("@s.whatsapp.net")}`)
 if (getLevelUser(sender) === 1) return reply(`Kamu harus meningkatkan desamu ke level 2 terlebih dahulu agar bisa memulai pertarungan`) 
 musuh = args.join(" ") 
@@ -1922,7 +1960,7 @@ break
 				
 case 'hidetag':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(only.group)
+if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
 var value = body.slice(9)
 var group = await client.groupMetadata(from)
@@ -1941,23 +1979,23 @@ break
 
 case 'tagall':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(only.group)
+if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
 members_id = []
 eai = args.join(" ")
 teks = (args.length > 1) ? eai.trim() : ''
-teks += '\n\n╭─• *MENTION ALL*\n'
+teks += '\n\n╭─• *MENTION ALL*\n\n'
 for (let mem of groupMembers) {
-teks += `│-  @${mem.jid.split('@')[0]}\n`
+teks += `│☑  @${mem.jid.split('@')[0]}\n`
 members_id.push(mem.jid)
 }
-teks += `╰•`
+teks += `\n╰•`
 mentions(teks, members_id, true, {quoted: mek})
 break
 					
 				case 'broadcast':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-					if (!isOwner) return reply(only.ownerB)
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('.......')
 					bc = args.join(" ")
 if (args.length < 1) return reply('.......')
@@ -1990,9 +2028,9 @@ reply('Suksess broadcast ')
 break
                                 case 'promote':
                                 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (!isGroup) return reply(mess.mess.only.group)
+					if (!isGroupAdmins) return reply(mess.mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.mess.only.Badmin)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
 					if (args.length < 1) return reply('tag orangnya')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -2012,9 +2050,9 @@ break
 					
 				case 'demote':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (!isGroup) return reply(mess.mess.only.group)
+					if (!isGroupAdmins) return reply(mess.mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.mess.only.Badmin)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
 					if (args.length < 1) return reply('tag orangnya')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -2034,9 +2072,9 @@ break
 					
 				case 'add':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (!isGroup) return reply(mess.mess.only.group)
+					if (!isGroupAdmins) return reply(mess.mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.mess.only.Badmin)
 					if (args.length < 1) return reply('Yang mau di add jin ya?')
 					if (args[0].startsWith('08')) return reply('Gunakan kode negara mas')
 					try {
@@ -2051,9 +2089,9 @@ break
 					
 				case 'kick':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (!isGroup) return reply(mess.mess.only.group)
+					if (!isGroupAdmins) return reply(mess.mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.mess.only.Badmin)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag target yang ingin di tendang!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -2364,9 +2402,9 @@ break
 
 case 'warning':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-if (!isGroup) return reply(mess.only.group)
-if (!isGroupAdmins) return reply(mess.only.admin)
-if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+if (!isGroup) return reply(mess.mess.only.group)
+if (!isGroupAdmins) return reply(mess.mess.only.admin)
+if (!isBotGroupAdmins) return reply(mess.mess.only.Badmin)
 if (args.length < 1) return reply(`❎ _tambahkan angka pada perintah_`)
 jumlah = args.join(" ")
 badword_limit = jumlah
@@ -2376,9 +2414,9 @@ break
 				
 				case 'welcome':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-					if (!isGroup) return reply(only.group)
+					if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
-if (!isBotGroupAdmins) return reply(only.badmin)
+if (!isBotGroupAdmins) return reply(mess.only.badmin)
 let gwekkje = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -2396,9 +2434,9 @@ break
 				
 				case 'antilink':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-				if (!isGroup) return reply(only.group)
+				if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.admin)     
-if (!isBotGroupAdmins) return reply(only.badmin)
+if (!isBotGroupAdmins) return reply(mess.only.badmin)
 let gwekkkje = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -2419,10 +2457,10 @@ break
 				
 				if (buttonsR === 'Enable A1') {
 					if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-                    if (!isGroup) return reply(only.group)
+                    if (!isGroup) return reply(mess.only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
-					if (!isBotGroupAdmins) return reply(only.badmin)
+					if (!isBotGroupAdmins) return reply(mess.only.badmin)
 							if (isAntiLink) return reply('_berhasil di aktifkan_')
 						antilink.push(from)
 						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
@@ -2433,10 +2471,10 @@ break
 						
 						if (buttonsR === 'Disable A0') {
 						if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-                    if (!isGroup) return reply(only.group)
+                    if (!isGroup) return reply(mess.only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
-					if (!isBotGroupAdmins) return reply(only.badmin)
+					if (!isBotGroupAdmins) return reply(mess.only.badmin)
 							if (!isAntiLink) return reply('_berhasil di matikan_')
 						var ini = antilink.indexOf(from)
 						antilink.splice(ini, 1)
@@ -2447,10 +2485,10 @@ break
 						
 				if (buttonsR === 'Enable W1') {
 					if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-                    if (!isGroup) return reply(only.group)
+                    if (!isGroup) return reply(mess.only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
-					if (!isBotGroupAdmins) return reply(only.badmin)
+					if (!isBotGroupAdmins) return reply(mess.only.badmin)
               	if (isWelkom) return reply('_berhasil di aktifkan_')
 						welkom.push(from)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
@@ -2460,10 +2498,10 @@ break
 						}
 						if (buttonsR === 'Disable W0') {
 							if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-                    if (!isGroup) return reply(only.group)
+                    if (!isGroup) return reply(mess.only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
-					if (!isBotGroupAdmins) return reply(only.badmin)
+					if (!isBotGroupAdmins) return reply(mess.only.badmin)
 							var ini = welkom.indexOf(from)
 						welkom.splice(ini, 1)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
@@ -2818,10 +2856,10 @@ reply(`ingin menginstall script ini? 🤔 oh boleh banget asal *mematuhi persyar
 }
 	
 if (buttonsR === 'Tutup') {
-                  if (!isGroup) return reply(only.group)
+                  if (!isGroup) return reply(mess.only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
-					if (!isBotGroupAdmins) return reply(only.badmin)
+					if (!isBotGroupAdmins) return reply(mess.only.badmin)
 	var nomor = mek.participant
               const close = {
               text: `Grup ditutup oleh admin @${nomor.split("@s.whatsapp.net")[0]}\nsekarang *hanya admin* yang dapat mengirim pesan`,
@@ -2834,10 +2872,10 @@ break
 
               if (buttonsR === 'Buka') {
  
-                    if (!isGroup) return reply(only.group)
+                    if (!isGroup) return reply(mess.only.group)
 					
 					if (!isGroupAdmins) return reply(mess.admin)     
-					if (!isBotGroupAdmins) return reply(only.badmin)
+					if (!isBotGroupAdmins) return reply(mess.only.badmin)
 open = {
               text: `Grup dibuka oleh admin @${sender.split("@")[0]}\nsekarang *semua peserta* dapat mengirim pesan`,
               contextInfo: { mentionedJid: [sender] }
@@ -2899,51 +2937,51 @@ break
 
 if (buttonsR === 'MENU') {
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-uptime = process.uptime()
-teks = `
-╭﹛☕︎︎﹜ *PROFILE*
-│🂡 name ${pushname}
-│🂡 money $${getMoneyUser(sender)}
-│🂡 user ${_rpg.length} *active*
+creator = "6285731261728@s.whatsapp.net"
+teks =`*M I T S U H A - W A B O T*\n`
+sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
+│❍ name ${pushname}
+│❍ money $${getMoneyUser(sender)}
+│❍ user ${_rpg.length} *active*
 ╰
 
-╭﹛☕︎︎﹜ *RPG*
-│🂡 ${prefix2}desa
-│🂡 ${prefix2}buy
-│🂡 ${prefix2}upgrade
-│🂡 ${prefix2}training
-│🂡 ${prefix2}war
-│🂡 ${prefix2}bank
-│🂡 ${prefix2}cek
-│🂡 ${prefix2}pangkas
+╭﹛☎︎﹜ *RPG*
+│❍ ${prefix2}desa
+│❍ ${prefix2}buy
+│❍ ${prefix2}upgrade
+│❍ ${prefix2}training
+│❍ ${prefix2}war
+│❍ ${prefix2}bank
+│❍ ${prefix2}cek
+│❍ ${prefix2}pangkas
 ╰
 
-╭﹛☕︎︎﹜ *OTHER*:
-│🂡 ${prefix2}broadcast
-│🂡 ${prefix2}sticker
-│🂡 ${prefix2}toimg
-│🂡 ${prefix2}owner
+╭﹛☎︎﹜ *OTHER*:
+│❍ ${prefix2}broadcast
+│❍ ${prefix2}sticker
+│❍ ${prefix2}toimg
+│❍ ${prefix2}owner
 ╰
 
-╭﹛☕︎︎﹜ *GROUP*
-│🂡 ${prefix2}tagall
-│🂡 ${prefix2}kick
-│🂡 ${prefix2}add
-│🂡 ${prefix2}promote
-│🂡 ${prefix2}demote
-│🂡 ${prefix2}welcome
-│🂡 ${prefix2}antilink
-│🂡 ${prefix2}warning
-│🂡 ${prefix2}hidetag
-│🂡 ${prefix2}open/close
+╭﹛☎︎﹜ *GROUP*
+│❍ ${prefix2}tagall
+│❍ ${prefix2}kick
+│❍ ${prefix2}add
+│❍ ${prefix2}promote
+│❍ ${prefix2}demote
+│❍ ${prefix2}welcome
+│❍ ${prefix2}antilink
+│❍ ${prefix2}warning
+│❍ ${prefix2}hidetag
+│❍ ${prefix2}open/close
 ╰
 
-╭﹛☕︎︎﹜ *IMAGE*
-│🂡 ${prefix2}cecan
-│🂡 ${prefix2}cogan
-│🂡 ${prefix2}waifu
+╭﹛☎︎﹜ *IMAGE*
+│❍ ${prefix2}cecan
+│❍ ${prefix2}cogan
+│❍ ${prefix2}waifu
 ╰`
-sendButDocument(from, `${teks}`, `🎮 mitsuha`, fs.readFileSync(`./lib/odc.jpeg`), {mimetype: Mimetype.pdf, thumbnail:fs.readFileSync(`./lib/odc.jpeg`), filename: `MITSUHA BOT BETA 🦈`}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+`,{jpegThumbnail: fs.readFileSync('./lib/odc.jpeg')}, {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 addPendudukUser(sender, 2)
 }
 
