@@ -56,6 +56,7 @@ prefix = ``
 prefix2 = `.`
 badword_limit = 3
 blocked = []
+thumb = fs.readFileSync('./lib/odc.jpeg') 
 
 function kyun(seconds){
   function pad(s){
@@ -1225,7 +1226,7 @@ sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
 │❍ ${prefix2}cogan
 │❍ ${prefix2}waifu
 ╰`
-`,{jpegThumbnail: fs.readFileSync('./lib/odc.jpeg')}, {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+`,{jpegThumbnail: thumb}, {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 
 case 'owner':
@@ -2981,7 +2982,7 @@ sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
 │❍ ${prefix2}cogan
 │❍ ${prefix2}waifu
 ╰`
-`,{jpegThumbnail: fs.readFileSync('./lib/odc.jpeg')}, {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+`,{jpegThumbnail: thumb}, {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 addPendudukUser(sender, 2)
 }
 
