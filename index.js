@@ -764,7 +764,7 @@ ppimg = await client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.u
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
 let buffer = await getBuffer(ppimg)
-client.sendMessage(mdata.id, `Hi @${num.split('@')[0]}, selamat satang di grup ${mdata.subject}\n${mdata.desc}\n📌 `\`\`This mesagge will be deleted after 5 minutes`\`\``, text) 
+client.sendMessage(mdata.id, `Hi @${num.split('@')[0]}, selamat satang di grup ${mdata.subject}\n${mdata.desc}\n📌 This mesagge will be deleted after 5 minutes`, text) 
 setTimeout( () => {
 i = mdata.id
 client.deleteMessage(mdata.id, { id: i.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: mdata.id, fromMe: true })
