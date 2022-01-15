@@ -1225,8 +1225,7 @@ sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
 │❍ ${prefix2}cecan
 │❍ ${prefix2}cogan
 │❍ ${prefix2}waifu
-╰`
-`,{jpegThumbnail: thumb}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+╰`,{jpegThumbnail: thumb}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 break
 
 case 'owner':
@@ -2840,7 +2839,7 @@ addBadwordUser(sender, -badword_limit)
 break
 }
 
-if (buttonsR === `DEVELOEPER`) {
+if (buttonsR === `DEVELOPER`) {
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 await client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 break
@@ -2981,8 +2980,7 @@ sendButLocation(from, `╭﹛☎︎﹜ *PROFILE*
 │❍ ${prefix2}cecan
 │❍ ${prefix2}cogan
 │❍ ${prefix2}waifu
-╰`
-`,{jpegThumbnail: thumb}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOEPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
+╰`,{jpegThumbnail: thumb}, [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}])
 addPendudukUser(sender, 2)
 }
 
