@@ -1170,7 +1170,7 @@ switch(command) {
 case 'menu':
 case 'help':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-buttons = {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}]
+buttons = [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}]
 imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./lib/odc.jpeg`), 'imageMessage', {thumbnail: fs.readFileSync('./lib/odc.jpeg')})).message.imageMessage
 buttonsMessage = {footerText:`╭﹛☎︎﹜ *PROFILE*
 │❍ name ${pushname}
@@ -2928,7 +2928,7 @@ break
 
 if (buttonsR === 'MENU') {
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-buttons = {buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}]
+buttons = [{buttonId:`DEVELOPER`,buttonText:{displayText:'DEVELOPER'},type:1},{buttonId:`SOURCE CODE`,buttonText:{displayText:'SOURCE CODE'},type:1}]
 imageMsg = ( await client.prepareMessage(from, fs.readFileSync(`./lib/odc.jpeg`), 'imageMessage', {thumbnail: fs.readFileSync('./lib/odc.jpeg')})).message.imageMessage
 buttonsMessage = {footerText:`╭﹛☎︎﹜ *PROFILE*
 │❍ name ${pushname}
