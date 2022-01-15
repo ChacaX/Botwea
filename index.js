@@ -1250,8 +1250,8 @@ case 'tutup':
 case 'buka':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (!isGroup) return reply(group)
-if (!isGroupAdmins) return reply(admin)     
-if (!isBotGroupAdmins) return reply(badmin)
+if (!isGroupAdmins) return reply(mess.admin)     
+if (!isBotGroupAdmins) return reply(only.badmin)
 gwekke = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -1923,7 +1923,7 @@ break
 case 'hidetag':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (!isGroup) return reply(group)
-if (!isGroupAdmins) return reply(admin)     
+if (!isGroupAdmins) return reply(mess.admin)     
 var value = body.slice(9)
 var group = await client.groupMetadata(from)
 var member = group['participants']
@@ -1942,7 +1942,7 @@ break
 case 'tagall':
 if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 if (!isGroup) return reply(group)
-if (!isGroupAdmins) return reply(admin)     
+if (!isGroupAdmins) return reply(mess.admin)     
 members_id = []
 eai = args.join(" ")
 teks = (args.length > 1) ? eai.trim() : ''
@@ -1957,7 +1957,7 @@ break
 					
 				case 'broadcast':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
-					if (!isOwner) return reply(ownerB)
+					if (!isOwner) return reply(only.ownerB)
 					if (args.length < 1) return reply('.......')
 					bc = args.join(" ")
 if (args.length < 1) return reply('.......')
@@ -2377,8 +2377,8 @@ break
 				case 'welcome':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 					if (!isGroup) return reply(group)
-if (!isGroupAdmins) return reply(admin)     
-if (!isBotGroupAdmins) return reply(badmin)
+if (!isGroupAdmins) return reply(mess.admin)     
+if (!isBotGroupAdmins) return reply(only.badmin)
 let gwekkje = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -2397,8 +2397,8 @@ break
 				case 'antilink':
 				if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
 				if (!isGroup) return reply(group)
-if (!isGroupAdmins) return reply(admin)     
-if (!isBotGroupAdmins) return reply(badmin)
+if (!isGroupAdmins) return reply(mess.admin)     
+if (!isBotGroupAdmins) return reply(only.badmin)
 let gwekkkje = await client.prepareMessageFromContent(from, {
 "buttonsMessage": {
 "contentText": `\`\`\`SILAHKAN PILIH SATU\`\`\``,
@@ -2421,8 +2421,8 @@ break
 					if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
                     if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(admin)     
-					if (!isBotGroupAdmins) return reply(badmin)
+					if (!isGroupAdmins) return reply(mess.admin)     
+					if (!isBotGroupAdmins) return reply(only.badmin)
 							if (isAntiLink) return reply('_berhasil di aktifkan_')
 						antilink.push(from)
 						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
@@ -2435,8 +2435,8 @@ break
 						if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
                     if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(admin)     
-					if (!isBotGroupAdmins) return reply(badmin)
+					if (!isGroupAdmins) return reply(mess.admin)     
+					if (!isBotGroupAdmins) return reply(only.badmin)
 							if (!isAntiLink) return reply('_berhasil di matikan_')
 						var ini = antilink.indexOf(from)
 						antilink.splice(ini, 1)
@@ -2449,8 +2449,8 @@ break
 					if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
                     if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(admin)     
-					if (!isBotGroupAdmins) return reply(badmin)
+					if (!isGroupAdmins) return reply(mess.admin)     
+					if (!isBotGroupAdmins) return reply(only.badmin)
               	if (isWelkom) return reply('_berhasil di aktifkan_')
 						welkom.push(from)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
@@ -2462,8 +2462,8 @@ break
 							if (!getRpgId(sender)) return reply(`kamu belum daftar kaka ~ ketik /daftar untuk mengakses fitur bot`)
                     if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(admin)     
-					if (!isBotGroupAdmins) return reply(badmin)
+					if (!isGroupAdmins) return reply(mess.admin)     
+					if (!isBotGroupAdmins) return reply(only.badmin)
 							var ini = welkom.indexOf(from)
 						welkom.splice(ini, 1)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
@@ -2820,8 +2820,8 @@ reply(`ingin menginstall script ini? 🤔 oh boleh banget asal *mematuhi persyar
 if (buttonsR === 'Tutup') {
                   if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(admin)     
-					if (!isBotGroupAdmins) return reply(badmin)
+					if (!isGroupAdmins) return reply(mess.admin)     
+					if (!isBotGroupAdmins) return reply(only.badmin)
 	var nomor = mek.participant
               const close = {
               text: `Grup ditutup oleh admin @${nomor.split("@s.whatsapp.net")[0]}\nsekarang *hanya admin* yang dapat mengirim pesan`,
@@ -2836,8 +2836,8 @@ break
  
                     if (!isGroup) return reply(group)
 					
-					if (!isGroupAdmins) return reply(admin)     
-					if (!isBotGroupAdmins) return reply(badmin)
+					if (!isGroupAdmins) return reply(mess.admin)     
+					if (!isBotGroupAdmins) return reply(only.badmin)
 open = {
               text: `Grup dibuka oleh admin @${sender.split("@")[0]}\nsekarang *semua peserta* dapat mengirim pesan`,
               contextInfo: { mentionedJid: [sender] }
