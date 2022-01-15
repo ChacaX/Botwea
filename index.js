@@ -764,21 +764,11 @@ ppimg = await client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.u
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
 let buffer = await getBuffer(ppimg)
-sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
-kma = gam1
-mhan = await client.prepareMessage(mdata.id, kma, location)
-buttonMessages = {
-locationMessage: mhan.message.locationMessage,
-contentText: text1,
-footerText: desc1,
-buttons: but,
-headerType: 6
-}
-client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
-}
-creator = "6285731261728@s.whatsapp.net"
-teks =`⭐ *WELCOME MESSAGES*`
-sendButLocation(mdata.id, `${teks}`, `Hai @${num.split('@')[0]},\nselamat datang\ndi group ini :)`, {jpegThumbnail:buffer}, [{buttonId:`OWNER BOT`,buttonText:{displayText:'OWNER BOT'},type:1},{buttonId:`HELLO 👋`,buttonText:{displayText:'HELLO 👋'},type:1}], {contextInfo: { mentionedJid: [creator,creator,creator]}})
+client.sendMessage(mdata.id, `Hi @${num.split('@')[0]}, selamat satang di grup ${mdata.subject}\n${mdata.desc}\n📌 `\`\`This mesagge will be deleted after 5 minutes`\`\``, text) 
+setTimeout( () => {
+i = mdata.id
+client.deleteMessage(mdata.id, { id: i.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: mdata.id, fromMe: true })
+}, 300000)
 addBadwordId(sender)
 
 } else if (anu.action == 'remove') {
@@ -788,22 +778,6 @@ ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`)
 } catch {
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
-let buffer = await getBuffer(ppimg)
-sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
-kma = gam1
-mhan = await client.prepareMessage(mdata.id, kma, location)
-buttonMessages = {
-locationMessage: mhan.message.locationMessage,
-contentText: text1,
-footerText: desc1,
-buttons: but,
-headerType: 6
-}
-client.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
-}
-creator = "6285731261728@s.whatsapp.net"
-teks =`📜 *LEAVE MESSAGES*`
-sendButLocation(mdata.id, `${teks}`, `@${num.split('@')[0]} awok\nyang out pacarnya ragil`, {jpegThumbnail:buffer}, [{buttonId:`OWNER BOT`,buttonText:{displayText:'OWNER BOT'},type:1},{buttonId:`BYE 👋`,buttonText:{displayText:'BYE 👋'},type:1}], {contextInfo: { mentionedJid: [creator,creator,creator]}})
 		}
 } catch (e) {
 			console.log('Error : %s', color(e, 'red'))
